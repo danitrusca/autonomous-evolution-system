@@ -114,16 +114,10 @@ class DistributedAutonomousStartup {
     console.log(`🔍 [autonomous-startup] Searching up directory tree (max depth: ${maxDepth})`);
     
     for (let i = 0; i < maxDepth; i++) {
-      const cursorPath = path.join(currentDir, '.cursor');
+      // Look for AES files directly in current directory
       results.searchDepth = i + 1;
       
-      console.log(`   📂 Level ${i + 1}: ${cursorPath}`);
-      
-      if (!fs.existsSync(cursorPath)) {
-        console.log(`      └─ ❌ .cursor directory not found`);
-        currentDir = path.dirname(currentDir);
-        continue;
-      }
+      console.log(`   📂 Level ${i + 1}: ${currentDir}`);
       
       const requiredFiles = [
         'autonomous-evolution-engine.js',
@@ -135,7 +129,7 @@ class DistributedAutonomousStartup {
       let allFilesExist = true;
       
       requiredFiles.forEach(file => {
-        const filePath = path.join(cursorPath, file);
+        const filePath = path.join(currentDir, file);
         const exists = fs.existsSync(filePath);
         fileResults[file] = exists;
         
@@ -150,10 +144,10 @@ class DistributedAutonomousStartup {
       });
       
       if (allFilesExist) {
-        this.systemPath = cursorPath;
-        this.journalPath = path.join(cursorPath, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+        this.systemPath = currentDir;
+        this.journalPath = path.join(currentDir, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
         results.found = true;
-        results.path = cursorPath;
+        results.path = currentDir;
         results.files = fileResults;
         results.details = `Found at depth ${i + 1} in parent directory`;
         break;
