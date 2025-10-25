@@ -40,24 +40,26 @@ A comprehensive, self-learning AI development system that provides autonomous ev
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📁 **Directory Structure**
+## 📁 **Repository Structure**
 
 ```
 autonomous-evolution-system/
-├── .cursor/                          # Core AES system
-│   ├── autonomous-startup.js         # Distributed startup system
-│   ├── autonomous-evolution-engine.js # Core evolution engine
-│   ├── mistake-prevention-engine.js  # Mistake prevention system
-│   ├── docs/                         # Learning and documentation
-│   │   ├── AUTONOMOUS_EVOLUTION_JOURNAL.md
-│   │   ├── README.md
-│   │   └── CHANGES_JOURNAL.md
-│   ├── rules/                        # ECP rules and protocols
-│   ├── skills/                       # Autonomous skills system
-│   ├── agents/                       # AI agents and coordination
-│   └── memories/                     # Persistent learning data
-├── distributed-startup.js            # Standalone distributed startup
+├── autonomous-evolution-engine.js    # Core AES files at root level
+├── mistake-prevention-engine.js      # Mistake prevention system
+├── autonomous-startup.js             # Distribution file for projects
+├── distributed-startup.js            # Standalone testing file
+├── docs/                             # Learning and documentation
+│   ├── AUTONOMOUS_EVOLUTION_JOURNAL.md
+│   ├── README_PROMPT.md
+│   └── CHANGES_JOURNAL.md
+├── rules/                            # ECP rules and protocols
+├── skills/                           # Autonomous skills system
+├── agents/                           # AI agents and coordination
+├── memories/                         # Persistent learning data
+├── commands/                         # ECP command definitions
 ├── package.json                      # Node.js dependencies
+├── test-aes.js                       # Repository test suite
+├── DEPLOYMENT.md                     # Deployment guide
 └── README.md                         # This file
 ```
 
@@ -65,17 +67,19 @@ autonomous-evolution-system/
 
 ### **1. Install in Your Project**
 
-Copy the distributed startup file to your project:
+Copy the distribution file to your project:
 
 ```bash
 # Copy to your project's .cursor folder
-cp autonomous-evolution-system/distributed-startup.js your-project/.cursor/autonomous-startup.js
+cp autonomous-evolution-system/autonomous-startup.js your-project/.cursor/autonomous-startup.js
 ```
 
-### **2. Automatic Discovery**
+### **2. Smart Discovery**
 
 The system will automatically:
-- 🔍 **Search for AES** in current and parent directories
+- 🔍 **Search for AES** in current directory first
+- 📂 **Check parent directories** up to 5 levels
+- 📁 **Look for autonomous-evolution-system** folders
 - 📊 **Provide detailed feedback** about discovery process
 - 🎯 **Load learned patterns** and insights
 - 🛡️ **Handle missing AES** gracefully
@@ -83,6 +87,23 @@ The system will automatically:
 ### **3. Usage**
 
 The system initializes automatically when loaded. No manual setup required!
+
+## 🎯 **Deployment Patterns**
+
+### **Pattern 1: Standalone AES Repository**
+- Clone the AES repository
+- Use `autonomous-startup.js` in your projects
+- System discovers AES in the repository
+
+### **Pattern 2: Distributed Projects**
+- Copy `autonomous-startup.js` to each project's `.cursor` folder
+- System discovers AES in parent directories
+- Shared learning across all projects
+
+### **Pattern 3: Centralized AES**
+- Keep AES in one location (e.g., `Building with AI/autonomous-evolution-system`)
+- Copy `autonomous-startup.js` to individual projects
+- System automatically finds the central AES
 
 ## 🔧 **Advanced Configuration**
 
@@ -119,6 +140,7 @@ The system provides comprehensive status reporting:
 - **Patterns Loaded**: Number of learned patterns
 - **Insights Loaded**: Number of insights available
 - **Journal Size**: Size of evolution journal
+- **Discovery Method**: How the AES was found (local, parent, or named folder)
 
 ## 🛡️ **Error Handling**
 
@@ -145,6 +167,23 @@ The system gracefully handles all scenarios:
 - Anti-patterns prevent known mistakes
 - Continuous improvement through experience
 
+## 🧪 **Testing**
+
+### **Repository Testing**
+```bash
+# Test the AES repository
+npm test
+
+# Test in your project
+node your-project/.cursor/autonomous-startup.js
+```
+
+### **Test Scenarios**
+- ✅ **Local AES**: AES files in current directory
+- ✅ **Parent AES**: AES files in parent directories  
+- ✅ **Named Folder AES**: AES in `autonomous-evolution-system` folder
+- ✅ **Missing AES**: Graceful fallback when AES not found
+
 ## 🤝 **Contributing**
 
 This system is designed to evolve autonomously. Contributions are welcome for:
@@ -153,10 +192,27 @@ This system is designed to evolve autonomously. Contributions are welcome for:
 - Enhanced error handling
 - Additional skills and capabilities
 - Documentation improvements
+- Testing scenarios
 
 ## 📄 **License**
 
 This project is part of the Building with AI ecosystem and follows the same licensing terms.
+
+## 🆕 **Recent Improvements**
+
+### **Repository Restructuring (2025-10-25)**
+- ✅ **Eliminated Redundancy**: Removed redundant `.cursor` subfolder structure
+- ✅ **Clean Architecture**: All AES files now at root level for intuitive organization
+- ✅ **Smart Discovery**: Enhanced discovery logic to find AES in multiple location patterns
+- ✅ **Easy Distribution**: Single `autonomous-startup.js` file for project deployment
+- ✅ **Comprehensive Testing**: Full test suite for all deployment scenarios
+
+### **Key Benefits**
+- 🎯 **Zero Configuration**: Works out of the box with automatic discovery
+- 🔄 **Cross-Session Learning**: Knowledge persists across all projects
+- 🛡️ **Error Handling**: Graceful fallback when AES missing
+- 📊 **Comprehensive Feedback**: Detailed status reporting and discovery process
+- 🚀 **Easy Deployment**: Single file copy enables full AES functionality
 
 ## 🔗 **Related Projects**
 
