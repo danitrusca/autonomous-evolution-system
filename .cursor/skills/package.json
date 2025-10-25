@@ -1,0 +1,27 @@
+{
+  "name": "skills-protocol",
+  "version": "1.0.0",
+  "description": "Skills Protocol v1 - Persistent procedural capabilities for Cursor",
+  "main": "compiler.js",
+  "scripts": {
+    "test": "node test-skills.js",
+    "list": "node -e \"const SkillsCompiler = require('./compiler.js'); const compiler = new SkillsCompiler(); console.log(JSON.stringify(compiler.listSkills(), null, 2));\"",
+    "autonomous": "node autonomous/start-autonomous.js",
+    "start-autonomous": "node autonomous/start-autonomous.js",
+    "changelog": "node view-changelog.js",
+    "changelog:full": "node view-changelog.js full",
+    "changelog:recent": "node view-changelog.js recent",
+    "changelog:summary": "node view-changelog.js summary",
+    "changelog:health": "node view-changelog.js health",
+    "create-skill": "node create-skill.js",
+    "create-skill:api": "node create-skill.js api-skill",
+    "create-skill:debug": "node create-skill.js debug-skill",
+    "create-skill:optimize": "node create-skill.js optimization-skill"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "keywords": ["skills", "cursor", "ecp", "ai", "automation"],
+  "author": "ECP System",
+  "license": "MIT"
+}

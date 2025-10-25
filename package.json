@@ -1,0 +1,47 @@
+{
+  "name": "autonomous-evolution-system",
+  "version": "1.0.0",
+  "description": "A comprehensive, self-learning AI development system that provides autonomous evolution capabilities, pattern recognition, and cross-session learning for AI-assisted development.",
+  "main": "distributed-startup.js",
+  "scripts": {
+    "test": "node test-aes.js",
+    "start": "node distributed-startup.js",
+    "dev": "node --watch distributed-startup.js"
+  },
+  "keywords": [
+    "ai",
+    "autonomous",
+    "evolution",
+    "learning",
+    "development",
+    "ecp",
+    "pattern-recognition",
+    "cross-session-learning"
+  ],
+  "author": "Building with AI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/building-with-ai/autonomous-evolution-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/building-with-ai/autonomous-evolution-system/issues"
+  },
+  "homepage": "https://github.com/building-with-ai/autonomous-evolution-system#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "files": [
+    ".cursor/",
+    "distributed-startup.js",
+    "README.md",
+    "package.json"
+  ]
+}
