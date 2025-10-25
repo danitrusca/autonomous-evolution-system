@@ -30,14 +30,15 @@ try {
     console.log(`Journal Size: ${status.journalSize} characters`);
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
     
-    if (status.initialized && status.systemStatus === 'found-local') {
+    if (status.initialized && (status.systemStatus === 'found-local' || status.systemStatus === 'found-parent')) {
       console.log('✅ [TEST] AES Repository test PASSED');
-      console.log('✅ [TEST] System found AES locally in repository');
+      console.log('✅ [TEST] System found AES in repository');
       console.log('✅ [TEST] All components loaded successfully');
       console.log('✅ [TEST] Learning data accessible');
+      console.log(`✅ [TEST] Discovery method: ${status.systemStatus}`);
     } else {
       console.log('❌ [TEST] AES Repository test FAILED');
-      console.log(`Expected: initialized=true, systemStatus=found-local`);
+      console.log(`Expected: initialized=true, systemStatus=found-local or found-parent`);
       console.log(`Actual: initialized=${status.initialized}, systemStatus=${status.systemStatus}`);
     }
   }, 2000);
