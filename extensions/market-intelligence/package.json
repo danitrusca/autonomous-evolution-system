@@ -1,0 +1,21 @@
+{
+  "name": "market-intelligence-extension",
+  "version": "1.0.0",
+  "description": "Market Intelligence Extension for Autonomous Evolution System",
+  "main": "components/market-intelligence-orchestrator.js",
+  "scripts": {
+    "test": "node tests/test-market-intelligence.js",
+    "demo": "node tests/demo-enhanced-evolution.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "keywords": [
+    "market-intelligence",
+    "autonomous-evolution",
+    "ai",
+    "development-intelligence"
+  ],
+  "author": "Autonomous Evolution System",
+  "license": "MIT"
+}

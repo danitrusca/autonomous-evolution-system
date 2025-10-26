@@ -1,0 +1,328 @@
+{
+  "runs": [
+    {
+      "id": "run-1761383842467-1",
+      "timestamp": "2025-10-25T09:17:22.491Z",
+      "duration": 24,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 24
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 24,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383842488-pbayq6"
+      }
+    },
+    {
+      "id": "run-1761383864957-1",
+      "timestamp": "2025-10-25T09:17:45.021Z",
+      "duration": 64,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 64
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 64,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383865010-0ok0tx"
+      }
+    },
+    {
+      "id": "run-1761383881761-1",
+      "timestamp": "2025-10-25T09:18:01.818Z",
+      "duration": 56,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 56
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 56,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383881808-fw7qdh"
+      }
+    },
+    {
+      "id": "run-1761383894311-1",
+      "timestamp": "2025-10-25T09:18:14.413Z",
+      "duration": 101,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 101
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 101,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383894399-vslc86"
+      }
+    },
+    {
+      "id": "run-1761383894461-2",
+      "timestamp": "2025-10-25T09:18:14.494Z",
+      "duration": 33,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 33
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 33,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383894486-sinpco"
+      }
+    },
+    {
+      "id": "run-1761383899476-3",
+      "timestamp": "2025-10-25T09:18:19.520Z",
+      "duration": 44,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 44
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 44,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761383899516-u9nmij"
+      }
+    },
+    {
+      "id": "run-1761386021278-1",
+      "timestamp": "2025-10-25T09:53:41.307Z",
+      "duration": 28,
+      "performance": {
+        "signal_processing": {
+          "total_signals": 4,
+          "filtered_signals": 4,
+          "filter_rate": 1,
+          "processing_time": 28
+        },
+        "trend_detection": {
+          "trends_detected": 4,
+          "alerts_generated": 0,
+          "momentum_score": 0.3
+        },
+        "market_intelligence": {
+          "opportunities": 0,
+          "solutions": 0,
+          "insights": 0
+        },
+        "digest_generation": {
+          "sections": 5,
+          "words": 160,
+          "insights": 0,
+          "actions": 0,
+          "score": 0.448
+        },
+        "overall": {
+          "total_duration": 28,
+          "success_rate": 1,
+          "efficiency_score": 0.48960000000000004
+        }
+      },
+      "results": {
+        "signals_collected": 4,
+        "signals_filtered": 4,
+        "trends_detected": 4,
+        "opportunities_identified": 0,
+        "solutions_generated": 0,
+        "digest_generated": "digest-1761386021301-5bisxv"
+      }
+    }
+  ],
+  "performance_metrics": {
+    "total_runs": 7,
+    "total_duration": 350,
+    "avg_duration": 50,
+    "signal_processing": {
+      "total_signals": 28,
+      "avg_filter_rate": 0.1734126984126984
+    },
+    "trend_detection": {
+      "total_trends": 28,
+      "avg_momentum": 0.05202380952380952
+    },
+    "market_intelligence": {
+      "total_opportunities": 0,
+      "total_solutions": 0
+    },
+    "digest_generation": {
+      "total_digests": 7,
+      "avg_score": 0.07768888888888889
+    },
+    "overall_efficiency": 0.08490285714285715
+  },
+  "lastUpdated": "2025-10-25T09:53:41.307Z"
+}

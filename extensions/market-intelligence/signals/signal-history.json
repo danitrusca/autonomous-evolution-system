@@ -1,0 +1,1424 @@
+{
+  "signals": [
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:16:49.334Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:16:49.335Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999993386243,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:16:49.334Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:16:49.335Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:16:49.334Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:16:49.335Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:16:49.335Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:16:49.335Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.67,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:17:22.483Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:17:22.483Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.64,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:17:22.483Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:22.483Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.67,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:17:22.483Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:17:22.483Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999999999999,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:17:22.483Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:22.483Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.67,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:17:44.993Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:17:44.998Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999966931217,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:17:44.994Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:44.998Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999973544974,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:17:44.995Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:17:44.998Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999980158731,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:17:44.996Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:44.998Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999986772487,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:17:45.025Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:17:45.030Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999966931217,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:17:45.026Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:45.031Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999966931217,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:17:45.027Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:17:45.031Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999973544973,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:17:45.027Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:17:45.031Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999973544974,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:01.795Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:01.798Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.639999998015873,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:01.796Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:01.798Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999986772487,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:01.797Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:01.798Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:01.797Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:01.798Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999993386243,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:01.823Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:01.824Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999986772487,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:01.824Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:01.825Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:01.824Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:01.825Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:01.824Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:01.825Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999993386243,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:14.372Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:14.379Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999953703703,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:14.372Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.379Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999953703704,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:14.373Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:14.379Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.909999996031746,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:14.374Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.379Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999966931217,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:14.416Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:14.417Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999993386243,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:14.416Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.417Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:14.416Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:14.417Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:14.416Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.417Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999993386243,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:14.479Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:14.480Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999993386243,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:14.479Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.480Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:14.479Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:14.480Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:14.480Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.480Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.67,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:14.498Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:14.499Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999993386243,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:14.498Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.499Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:14.498Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:14.499Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:14.499Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:14.499Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.67,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:19.507Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:19.510Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.639999998015873,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:19.508Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:19.510Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999986772487,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:19.509Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:19.510Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999993386243,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:19.509Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:19.510Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999993386243,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:18:19.523Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:18:19.525Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999986772487,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:18:19.523Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:19.525Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999986772487,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:18:19.523Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:18:19.525Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999986772487,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:18:19.524Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:18:19.525Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.6699999993386243,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "github",
+      "type": "trending_repo",
+      "title": "New AI framework gaining traction",
+      "description": "Repository showing rapid growth in AI development",
+      "url": "https://github.com/example/ai-framework",
+      "stars": 1500,
+      "language": "TypeScript",
+      "category": "ai_development",
+      "timestamp": "2025-10-25T09:53:41.296Z",
+      "relevance_score": 0.8,
+      "processed_at": "2025-10-25T09:53:41.297Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.8,
+        "impact_potential": 0.46,
+        "trend_indicator": 0.6399999993386243,
+        "category": "ai_development",
+        "keywords": [
+          "ai",
+          "development",
+          "framework"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "stackoverflow",
+      "type": "trending_question",
+      "title": "How to implement autonomous systems in JavaScript?",
+      "description": "Question showing high engagement and developer interest",
+      "url": "https://stackoverflow.com/questions/example",
+      "views": 5000,
+      "tags": [
+        "javascript",
+        "autonomous-systems",
+        "ai"
+      ],
+      "category": "autonomous_development",
+      "timestamp": "2025-10-25T09:53:41.296Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:53:41.297Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.33,
+        "trend_indicator": 0.6699999993386243,
+        "category": "autonomous_development",
+        "keywords": [
+          "autonomous",
+          "system"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "developer_forum",
+      "type": "discussion",
+      "title": "Frustration with current AI development tools",
+      "description": "Developer expressing need for better AI development workflow",
+      "url": "https://forum.example.com/discussion",
+      "engagement": "high",
+      "sentiment": "frustrated",
+      "category": "developer_frustration",
+      "timestamp": "2025-10-25T09:53:41.297Z",
+      "relevance_score": 0.7,
+      "processed_at": "2025-10-25T09:53:41.297Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.7,
+        "impact_potential": 0.33999999999999997,
+        "trend_indicator": 0.9099999999999999,
+        "category": "developer_frustration",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    },
+    {
+      "source": "technology_adoption",
+      "type": "emerging_trend",
+      "title": "Rapid adoption of AI-powered development tools",
+      "description": "Multiple indicators showing increased AI tool adoption",
+      "metrics": {
+        "adoption_rate": 0.3,
+        "growth_rate": 0.15,
+        "developer_satisfaction": 0.8
+      },
+      "category": "ai_adoption",
+      "timestamp": "2025-10-25T09:53:41.297Z",
+      "relevance_score": 0.9,
+      "processed_at": "2025-10-25T09:53:41.297Z",
+      "processed": true,
+      "analysis": {
+        "relevance_score": 0.9,
+        "impact_potential": 0.18000000000000002,
+        "trend_indicator": 0.67,
+        "category": "ai_adoption",
+        "keywords": [
+          "ai",
+          "development",
+          "tool"
+        ],
+        "sentiment": "neutral"
+      }
+    }
+  ],
+  "patterns": {},
+  "trends": {},
+  "lastUpdated": "2025-10-25T09:53:41.297Z"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "digest-1761383894486-sinpco",
+  "timestamp": "2025-10-25T09:18:14.486Z",
+  "type": "weekly_insight_digest",
+  "sections": {
+    "executive_summary": {
+      "title": "Executive Summary",
+      "content": "## Executive Summary\n\nThis week's development intelligence digest covers 4 signals, with 4 high-quality signals identified. We've detected 4 significant trends, identified 0 market opportunities, and generated 0 solution suggestions. The analysis reveals strong momentum in key development areas with actionable insights for immediate implementation.\n\n**Key Insights:**\n\n\n**Action Items:**\n",
+      "data": {
+        "summary": "This week's development intelligence digest covers 4 signals, with 4 high-quality signals identified. We've detected 4 significant trends, identified 0 market opportunities, and generated 0 solution suggestions. The analysis reveals strong momentum in key development areas with actionable insights for immediate implementation.",
+        "key_insights": [],
+        "action_items": []
+      }
+    },
+    "market_trends": {
+      "title": "Market Trends",
+      "content": "## Market Trends\n\nAnalysis of 4 trends reveals 0 strong trends with overall momentum of 30.0%. The trend analysis indicates significant activity in key development areas with strong momentum indicators.\n\n**Top Categories:**\n- ai_development: 1 trends\n- autonomous_development: 1 trends\n- developer_frustration: 1 trends\n- ai_adoption: 1 trends\n\n**Trending Keywords:**\n",
+      "data": {
+        "trends_summary": "Analysis of 4 trends reveals 0 strong trends with overall momentum of 30.0%. The trend analysis indicates significant activity in key development areas with strong momentum indicators.",
+        "top_categories": [
+          "- ai_development: 1 trends",
+          "- autonomous_development: 1 trends",
+          "- developer_frustration: 1 trends",
+          "- ai_adoption: 1 trends"
+        ],
+        "trending_keywords": []
+      }
+    },
+    "opportunities": {
+      "title": "Opportunities",
+      "content": "## Opportunities\n\nIdentified 0 market opportunities with 0 high-priority items. Average opportunity score is NaN, indicating strong potential for development initiatives.\n\n**High Priority:**\n\n\n**Quick Wins:**\n",
+      "data": {
+        "opportunities_summary": "Identified 0 market opportunities with 0 high-priority items. Average opportunity score is NaN, indicating strong potential for development initiatives.",
+        "high_priority": [],
+        "quick_wins": []
+      }
+    },
+    "solutions": {
+      "title": "Solution Suggestions",
+      "content": "## Solution Suggestions\n\nGenerated 0 solution suggestions with 0 high-feasibility options. Average feasibility score is NaN, indicating strong implementation potential.\n\n**High Feasibility:**\n\n\n**Strategic Plays:**\n",
+      "data": {
+        "solutions_summary": "Generated 0 solution suggestions with 0 high-feasibility options. Average feasibility score is NaN, indicating strong implementation potential.",
+        "high_feasibility": [],
+        "strategic_plays": []
+      }
+    },
+    "recommendations": {
+      "title": "Recommendations",
+      "content": "## Recommendations\n\nBased on analysis of 0 opportunities, 0 solutions, and 0 strong trends, we recommend immediate action on high-priority items and strategic consideration of long-term plays.\n\n**Immediate Actions:**\n\n\n**Strategic Considerations:**\n",
+      "data": {
+        "recommendations_summary": "Based on analysis of 0 opportunities, 0 solutions, and 0 strong trends, we recommend immediate action on high-priority items and strategic consideration of long-term plays.",
+        "immediate_actions": [],
+        "strategic_considerations": []
+      }
+    }
+  },
+  "metrics": {
+    "total_sections": 5,
+    "total_words": 160,
+    "total_insights": 0,
+    "total_actions": 0,
+    "digest_score": 0.448
+  }
+}

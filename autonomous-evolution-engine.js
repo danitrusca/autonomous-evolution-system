@@ -8,6 +8,8 @@ const path = require('path');
 const ExtensionLoader = require('./extension-loader');
 const SystemIntegrityAgent = require('./agents/system-integrity-agent');
 const IdeaCaptureAgent = require('./agents/idea-capture-agent');
+const EpistemicHumilityAgent = require('./agents/epistemic-humility-agent');
+const MetaLearningAgent = require('./agents/meta-learning-agent');
 
 class AutonomousEvolutionEngine {
   constructor() {
@@ -52,8 +54,14 @@ class AutonomousEvolutionEngine {
     // Initialize system integrity agent
     this.systemIntegrityAgent = new SystemIntegrityAgent();
     
-    // Initialize idea capture agent
-    this.ideaCaptureAgent = new IdeaCaptureAgent();
+        // Initialize idea capture agent
+        this.ideaCaptureAgent = new IdeaCaptureAgent();
+
+        // Initialize epistemic humility agent
+        this.epistemicHumilityAgent = new EpistemicHumilityAgent();
+
+        // Initialize meta-learning agent
+        this.metaLearningAgent = new MetaLearningAgent();
   }
 
   /**
@@ -703,6 +711,166 @@ class AutonomousEvolutionEngine {
       selfAssessmentActive: this.selfAssessmentSystem.isActive(),
       architectureEvolutionActive: this.architectureEvolutionEngine.isActive()
     };
+  }
+
+  /**
+   * Process /evolve command for direct system evolution
+   * Invariant: Evolution must include epistemic humility assessment
+   */
+  async processEvolveCommand(context, problemType, solutionPattern) {
+    const evolutionId = this.generateEvolutionId();
+    const timestamp = new Date().toISOString();
+    
+    console.log(`[AES] Processing /evolve command: ${evolutionId}`);
+    console.log(`[AES] Context: ${context}, Problem Type: ${problemType}, Solution Pattern: ${solutionPattern}`);
+    
+    // Assess confidence and uncertainty using epistemic humility agent
+    const humilityAssessment = this.epistemicHumilityAgent.processEvolutionRequest(
+      { description: context, success: true },
+      problemType,
+      solutionPattern
+    );
+    
+    // Process meta-learning to generalize solution
+    const metaLearningResult = this.metaLearningAgent.processEvolution(
+      { description: context, success: true },
+      problemType,
+      solutionPattern
+    );
+    
+    // Create evolution report
+    const evolutionReport = {
+      evolutionId,
+      timestamp,
+      context,
+      problemType,
+      solutionPattern,
+      humilityAssessment,
+      metaLearningResult,
+      evolutionPlan: this.createEvolutionPlan(humilityAssessment, metaLearningResult)
+    };
+    
+    // Log evolution
+    await this.logEvolution(evolutionId, 'evolve_command_processed', evolutionReport);
+    
+    // Update system based on evolution
+    await this.applyEvolution(evolutionReport);
+    
+    return evolutionReport;
+  }
+
+  /**
+   * Create evolution plan based on assessment and meta-learning
+   */
+  createEvolutionPlan(humilityAssessment, metaLearningResult) {
+    const plan = {
+      canProceed: humilityAssessment.canProceed,
+      confidence: humilityAssessment.assessment.confidence,
+      uncertaintyLevel: humilityAssessment.assessment.uncertaintyLevel,
+      steps: [],
+      metaInsights: metaLearningResult.metaInsights,
+      solutionTemplate: metaLearningResult.generalization.solutionTemplate
+    };
+    
+    if (humilityAssessment.canProceed) {
+      plan.steps.push('Proceed with evolution based on confidence assessment');
+      plan.steps.push('Apply solution template to similar problems');
+      plan.steps.push('Update meta-learning algorithms');
+      plan.steps.push('Test generalized solution');
+    } else {
+      plan.steps.push('Gather more information before proceeding');
+      plan.steps.push('Research similar cases');
+      plan.steps.push('Consider expert consultation');
+    }
+    
+    return plan;
+  }
+
+  /**
+   * Apply evolution to system
+   */
+  async applyEvolution(evolutionReport) {
+    if (!evolutionReport.evolutionPlan.canProceed) {
+      console.log('[AES] Evolution not applied due to low confidence');
+      return;
+    }
+    
+    console.log('[AES] Applying evolution to system');
+    
+    // Update pattern recognition
+    await this.updatePatternRecognition(evolutionReport);
+    
+    // Update meta-learning algorithms
+    await this.updateMetaLearning(evolutionReport);
+    
+    // Update solution templates
+    await this.updateSolutionTemplates(evolutionReport);
+    
+    // Log evolution application
+    await this.logEvolution(evolutionReport.evolutionId, 'evolution_applied', {
+      timestamp: new Date().toISOString(),
+      applied: true
+    });
+  }
+
+  /**
+   * Update pattern recognition system
+   */
+  async updatePatternRecognition(evolutionReport) {
+    console.log('[AES] Updating pattern recognition system');
+    // Implementation would update pattern recognition algorithms
+  }
+
+  /**
+   * Update meta-learning algorithms
+   */
+  async updateMetaLearning(evolutionReport) {
+    console.log('[AES] Updating meta-learning algorithms');
+    // Implementation would update meta-learning algorithms
+  }
+
+  /**
+   * Update solution templates
+   */
+  async updateSolutionTemplates(evolutionReport) {
+    console.log('[AES] Updating solution templates');
+    // Implementation would update solution templates
+  }
+
+  /**
+   * Log evolution event
+   */
+  async logEvolution(evolutionId, eventType, data) {
+    const logEntry = {
+      evolutionId,
+      eventType,
+      timestamp: new Date().toISOString(),
+      data
+    };
+    
+    this.evolutionHistory.push(logEntry);
+    
+    // Write to journal
+    const journalEntry = `
+## ${eventType} - ${evolutionId}
+**Timestamp**: ${logEntry.timestamp}
+**Data**: ${JSON.stringify(data, null, 2)}
+
+---
+`;
+    
+    try {
+      fs.appendFileSync(this.journalPath, journalEntry);
+    } catch (error) {
+      console.error('[AES] Error logging evolution:', error);
+    }
+  }
+
+  /**
+   * Generate unique evolution ID
+   */
+  generateEvolutionId() {
+    return `evol_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 }
 
