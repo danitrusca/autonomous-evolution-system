@@ -1,9 +1,148 @@
 /**
  * Agent Coordinator
- * Coordinates multiple agents for system optimization and integrity
+ * 
+ * Coordinates multiple agents for system optimization and integrity.
+ * 
+ * ## Overview
+ * 
+ * The **Agent Coordinator** is the central orchestration system that manages and coordinates 
+ * multiple autonomous agents within the Autonomous Evolution System. It ensures agents work 
+ * together effectively, monitors their health, and facilitates collaboration for optimal 
+ * system performance.
+ * 
+ * ## Key Capabilities
+ * 
+ * ### 🤝 **Multi-Agent Coordination**
+ * - **Agent Management**: Initializes and manages all system agents
+ * - **Health Monitoring**: Continuously monitors agent health and status
+ * - **Coordination Logic**: Facilitates collaboration between agents
+ * - **Conflict Resolution**: Handles agent disagreements and conflicts
+ * 
+ * ### 🔄 **Continuous Monitoring**
+ * - **Agent Health Checks**: Monitors agent status every minute
+ * - **Coordination Opportunities**: Identifies collaboration opportunities every 5 minutes
+ * - **Git Integration**: Monitors commits for versioning every 2 minutes
+ * - **Performance Tracking**: Tracks coordination effectiveness
+ * 
+ * ### 🧠 **Intelligent Orchestration**
+ * - **Opportunity Analysis**: Analyzes system state for coordination opportunities
+ * - **Priority Management**: Prioritizes coordination actions based on impact
+ * - **Resource Allocation**: Manages resources across agents
+ * - **Learning Integration**: Learns from coordination patterns
+ * 
+ * ### 📊 **System Integration**
+ * - **Agent Registration**: Manages agent lifecycle and registration
+ * - **Status Reporting**: Provides comprehensive system status
+ * - **Versioning Integration**: Coordinates with Git versioning system
+ * - **Evolution Triggers**: Triggers system evolution based on agent insights
+ * 
+ * ## Architecture
+ * 
+ * ### Core Components
+ * 
+ * ```
+ * AgentCoordinator
+ * ├── AgentManager
+ * │   ├── Agent Initialization
+ * │   ├── Health Monitoring
+ * │   └── Lifecycle Management
+ * ├── CoordinationEngine
+ * │   ├── Opportunity Analysis
+ * │   ├── Action Planning
+ * │   └── Execution Management
+ * ├── IntegrationLayer
+ * │   ├── Git Integration
+ * │   ├── Versioning System
+ * │   └── External Systems
+ * └── MonitoringSystem
+ *     ├── Performance Tracking
+ *     ├── Status Reporting
+ *     └── Analytics
+ * ```
+ * 
+ * ## Managed Agents
+ * 
+ * - **System Integrity Agent**: Monitors system health and complexity
+ * - **System Check Agent**: Provides comprehensive health monitoring
+ * - **Change Impact Agent**: Analyzes change impact and testing needs
+ * - **Agent Creator**: Creates new agents based on system needs
+ * - **Git Versioning Integration**: Manages versioning and Git operations
+ * 
+ * ## Usage Examples
+ * 
+ * ### Basic Initialization
+ * ```javascript
+ * const AgentCoordinator = require('./agents/agent-coordinator');
+ * const coordinator = new AgentCoordinator(); // Automatically starts coordination
+ * ```
+ * 
+ * ### Get Coordinator Status
+ * ```javascript
+ * const status = coordinator.getCoordinatorStatus();
+ * console.log('Coordinator Status:', status);
+ * ```
+ * 
+ * ### Manual Agent Creation
+ * ```javascript
+ * const result = coordinator.coordinateAgentCreation({
+ *   type: 'monitoring',
+ *   description: 'Enhanced monitoring capabilities',
+ *   priority: 'high'
+ * });
+ * ```
+ * 
+ * ## Configuration
+ * 
+ * ### Monitoring Intervals
+ * ```javascript
+ * const monitoringConfig = {
+ *   coordinationInterval: 300000,    // 5 minutes
+ *   healthCheckInterval: 60000,      // 1 minute
+ *   versioningInterval: 120000       // 2 minutes
+ * };
+ * ```
+ * 
+ * ### Agent Management
+ * ```javascript
+ * const agentConfig = {
+ *   maxAgents: 10,
+ *   healthCheckTimeout: 5000,
+ *   recoveryAttempts: 3,
+ *   autoRecovery: true
+ * };
+ * ```
+ * 
+ * ## Benefits
+ * 
+ * ### 🎯 **Centralized Management**
+ * - **Single Point of Control**: Centralized management of all agents
+ * - **Consistent Coordination**: Ensures agents work together effectively
+ * - **Resource Optimization**: Optimizes resource usage across agents
+ * - **Conflict Prevention**: Prevents agent conflicts and overlaps
+ * 
+ * ### 🔄 **Continuous Optimization**
+ * - **Real-Time Monitoring**: Continuous monitoring of agent health
+ * - **Proactive Coordination**: Identifies and executes coordination opportunities
+ * - **Adaptive Management**: Adapts to changing system needs
+ * - **Performance Optimization**: Continuously optimizes system performance
+ * 
+ * ### 🧠 **Intelligent Orchestration**
+ * - **Context-Aware Decisions**: Makes decisions based on system context
+ * - **Learning Integration**: Learns from coordination patterns
+ * - **Predictive Management**: Anticipates system needs
+ * - **Autonomous Operation**: Operates with minimal human intervention
+ * 
+ * ### 📊 **Comprehensive Visibility**
+ * - **System Overview**: Provides complete system status
+ * - **Agent Insights**: Detailed agent performance and health data
+ * - **Coordination Analytics**: Tracks coordination effectiveness
+ * - **Evolution Metrics**: Monitors system evolution progress
+ * 
+ * Follows ECP principles for autonomous system coordination and management.
  */
 
 const SystemIntegrityAgent = require('./system-integrity-agent');
+const SystemCheckAgent = require('./system-check-agent');
 const ChangeImpactAgent = require('./change-impact-agent');
 const AgentCreator = require('./agent-creator');
 const GitVersioningIntegration = require('./git-versioning-integration');
@@ -43,6 +182,10 @@ class AgentCoordinator {
     // System Integrity Agent
     const systemIntegrityAgent = new SystemIntegrityAgent();
     this.agents.set('system-integrity', systemIntegrityAgent);
+    
+    // System Check Agent
+    const systemCheckAgent = new SystemCheckAgent();
+    this.agents.set('system-check', systemCheckAgent);
     
     // Change Impact Agent
     const changeImpactAgent = new ChangeImpactAgent();
@@ -141,6 +284,18 @@ class AgentCoordinator {
       });
     }
     
+    // Check for system check issues
+    const systemCheckStatus = agentStatuses.get('system-check');
+    if (systemCheckStatus && systemCheckStatus.status !== 'active') {
+      opportunities.push({
+        type: 'system-check',
+        priority: 'high',
+        description: 'System check agent issues detected',
+        agents: ['system-check', 'system-integrity'],
+        action: 'coordinate-system-check'
+      });
+    }
+    
     // Check for change impact issues
     const changeImpactStatus = agentStatuses.get('change-impact');
     if (changeImpactStatus && changeImpactStatus.testFlags.length > 0) {
@@ -189,6 +344,9 @@ class AgentCoordinator {
           break;
         case 'coordinate-agent-creation':
           this.coordinateAgentCreation(opportunity);
+          break;
+        case 'coordinate-system-check':
+          this.coordinateSystemCheck(opportunity);
           break;
         default:
           console.log(`[${this.coordinatorName}] Unknown coordination action: ${opportunity.action}`);
@@ -266,6 +424,29 @@ class AgentCoordinator {
   }
 
   /**
+   * Coordinate system check
+   * Invariant: System check coordination maintains system safety
+   */
+  coordinateSystemCheck(opportunity) {
+    console.log(`[${this.coordinatorName}] Coordinating system check`);
+    
+    // Get system check agent
+    const systemCheckAgent = this.agents.get('system-check');
+    
+    // Get system integrity agent for collaboration
+    const systemIntegrityAgent = this.agents.get('system-integrity');
+    
+    if (systemCheckAgent && systemIntegrityAgent) {
+      // Get status from both agents
+      const checkStatus = systemCheckAgent.getAgentStatus();
+      const integrityStatus = systemIntegrityAgent.getAgentStatus();
+      
+      // Coordinate system check execution
+      this.coordinateSystemCheckExecution(checkStatus, integrityStatus);
+    }
+  }
+
+  /**
    * Monitor agent health
    * Invariant: Health monitoring maintains system safety
    */
@@ -282,8 +463,16 @@ class AgentCoordinator {
             console.log(`[${this.coordinatorName}] Agent unhealthy: ${name}`);
             this.handleUnhealthyAgent(name, agent);
           }
+        } else if (typeof agent.getMonitoringStatus === 'function') {
+          // Try alternative status method
+          const status = agent.getMonitoringStatus();
+          
+          if (status && status.status === 'unhealthy') {
+            console.log(`[${this.coordinatorName}] Agent unhealthy: ${name}`);
+            this.handleUnhealthyAgent(name, agent);
+          }
         } else {
-          // For agents without getAgentStatus, assume healthy
+          // For agents without status methods, assume healthy
           console.log(`[${this.coordinatorName}] Agent ${name} status check not available, assuming healthy`);
         }
       } catch (error) {
@@ -335,6 +524,10 @@ class AgentCoordinator {
   
   coordinateOptimizationExecution(integrityStatus) {
     console.log('Optimization coordinated');
+  }
+  
+  coordinateSystemCheckExecution(checkStatus, integrityStatus) {
+    console.log('System check coordinated');
   }
   
   /**

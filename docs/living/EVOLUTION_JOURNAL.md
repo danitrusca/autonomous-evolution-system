@@ -18,6 +18,34 @@ This journal captures the continuous evolution of the ECP system through autonom
 
 ## System Evolution Timeline
 
+### v1.2.0 (2025-10-26): Technical-Psychological Connection Discovery System
+**Breakthrough**: Deep mistake learning through psychological pattern recognition
+- **Insight**: Every error has both technical and psychological components - understanding the connection enables "never repeat the same mistake twice" learning
+- **Impact**: Revolutionary enhancement to mistake learning - from surface patterns to deep psychological understanding
+- **Learning**: Dual-layer analysis discovers connections between cognitive biases and technical errors (confidence: 0.85)
+- **Implementation**: [Technical-Psychological Connection Discovery System Implementation Summary](./implemented/PSYCHOLOGICAL_SYSTEM_IMPLEMENTATION_SUMMARY.md)
+- **Technical Details**: 
+  - TechnicalPsychologicalAnalyzer with dual-layer error analysis
+  - PsychologicalDecisionMonitor with real-time bias detection
+  - ConnectionDiscoverer with automatic pattern discovery
+  - Enhanced MistakePreventionEngine with integrated prevention
+  - Full ECP integration across all phases
+- **Evolution**: System now understands the human element in technical work and prevents mistakes at their psychological source
+
+### v1.2.0 (2025-10-26): Technical-Psychological Connection Discovery System
+**Breakthrough**: Deep mistake learning through psychological pattern recognition
+- **Insight**: Every error has both technical and psychological components - understanding the connection enables "never repeat the same mistake twice" learning
+- **Impact**: Revolutionary enhancement to mistake learning - from surface patterns to deep psychological understanding
+- **Learning**: Dual-layer analysis discovers connections between cognitive biases and technical errors (confidence: 0.85)
+- **Implementation**: [Technical-Psychological Connection Discovery System Implementation Summary](./implemented/PSYCHOLOGICAL_SYSTEM_IMPLEMENTATION_SUMMARY.md)
+- **Technical Details**: 
+  - TechnicalPsychologicalAnalyzer with dual-layer error analysis
+  - PsychologicalDecisionMonitor with real-time bias detection
+  - ConnectionDiscoverer with automatic pattern discovery
+  - Enhanced MistakePreventionEngine with integrated prevention
+  - Full ECP integration across all phases
+- **Evolution**: System now understands the human element in technical work and prevents mistakes at their psychological source
+
 ### v1.1.0 (2025-01-27): Autonomous Versioning System
 **Breakthrough**: Automatic commit analysis and semantic versioning
 - **Insight**: Versioning decisions should be autonomous and learn from patterns

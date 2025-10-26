@@ -7,6 +7,114 @@
  * - System evolution tracking (integrates with existing evolution system)
  * - ECP principles (invariants, observability, rollback)
  * 
+ * ## Overview
+ * 
+ * The **Autonomous Versioning Agent** automatically analyzes Git commits and assigns 
+ * semantic versions based on change impact analysis, pattern detection, and system 
+ * evolution tracking. It integrates seamlessly with the existing autonomous evolution 
+ * system to provide intelligent version management.
+ * 
+ * ## Key Capabilities
+ * 
+ * ### 🔍 **Automatic Version Assignment**
+ * - **Change Impact Analysis**: File importance and system impact
+ * - **Pattern Detection**: Commit message and code change patterns
+ * - **Confidence Scoring**: Statistical confidence in version decisions
+ * - **System Evolution**: Integration with autonomous learning
+ * 
+ * ### 📊 **Version Types**
+ * 
+ * #### Major Version (X.0.0)
+ * **Triggers:**
+ * - Architectural changes
+ * - Breaking changes
+ * - New agent creation
+ * - Core system redesign
+ * - API changes
+ * 
+ * #### Minor Version (X.Y.0)
+ * **Triggers:**
+ * - New features
+ * - Significant improvements
+ * - New capabilities
+ * - Enhanced functionality
+ * 
+ * #### Patch Version (X.Y.Z)
+ * **Triggers:**
+ * - Bug fixes
+ * - Minor improvements
+ * - Documentation updates
+ * - Performance optimizations
+ * 
+ * ### 🧠 **Intelligent Analysis**
+ * - **Commit Message Analysis**: Parses commit messages for version hints
+ * - **Code Change Analysis**: Analyzes actual code changes for impact
+ * - **File Importance**: Considers file importance in version decisions
+ * - **Pattern Recognition**: Learns from previous versioning decisions
+ * 
+ * ## Usage Examples
+ * 
+ * ### Basic Versioning
+ * ```javascript
+ * const AutonomousVersioningAgent = require('./agents/autonomous-versioning-agent');
+ * const agent = new AutonomousVersioningAgent();
+ * 
+ * // Analyze and version a commit
+ * const version = await agent.analyzeAndVersionCommit('abc123');
+ * console.log('Assigned version:', version);
+ * ```
+ * 
+ * ### Get Version History
+ * ```javascript
+ * const history = agent.getVersionHistory();
+ * console.log('Version history:', history);
+ * ```
+ * 
+ * ### Manual Version Override
+ * ```javascript
+ * await agent.manualVersionCommit('abc123', '2.1.0');
+ * ```
+ * 
+ * ## Configuration
+ * 
+ * ### Versioning Rules
+ * ```javascript
+ * const versioningRules = {
+ *   major: {
+ *     keywords: ['breaking', 'major', 'architectural'],
+ *     fileTypes: ['core', 'agent', 'system'],
+ *     impactThreshold: 0.8
+ *   },
+ *   minor: {
+ *     keywords: ['feature', 'enhancement', 'improvement'],
+ *     fileTypes: ['feature', 'capability'],
+ *     impactThreshold: 0.5
+ *   },
+ *   patch: {
+ *     keywords: ['fix', 'bug', 'patch'],
+ *     fileTypes: ['bugfix', 'optimization'],
+ *     impactThreshold: 0.2
+ *   }
+ * };
+ * ```
+ * 
+ * ### Confidence Thresholds
+ * ```javascript
+ * const confidenceThresholds = {
+ *   high: 0.8,    // High confidence version assignment
+ *   medium: 0.6,  // Medium confidence version assignment
+ *   low: 0.4      // Low confidence version assignment
+ * };
+ * ```
+ * 
+ * ## Integration Points
+ * 
+ * - **Change Impact Agent**: Leverages existing impact analysis
+ * - **Meta-Learning Agent**: Learns from versioning patterns
+ * - **System Integrity Agent**: Monitors versioning health
+ * - **Agent Coordinator**: Participates in system coordination
+ * - **Git Integration**: Works with Git operations and commit monitoring
+ * 
  * Follows ECP principles for autonomous version management
  */
 

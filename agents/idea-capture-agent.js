@@ -4,6 +4,110 @@
  * Automatically captures, categorizes, and preserves all future potential ideas,
  * insights, and opportunities to prevent knowledge loss and enable continuous innovation.
  * 
+ * ## Overview
+ * 
+ * The **Idea Capture Agent** is an autonomous knowledge management system that automatically 
+ * captures, categorizes, and preserves all future potential ideas, insights, and opportunities. 
+ * It prevents knowledge loss and enables continuous innovation by maintaining a comprehensive 
+ * repository of ideas from various sources.
+ * 
+ * ## Key Capabilities
+ * 
+ * ### 🧠 **Automatic Idea Capture**
+ * - **User Input Ideas**: Captures ideas from user suggestions and requests
+ * - **System Analysis Ideas**: Identifies insights from system analysis and monitoring
+ * - **Pattern Detection Ideas**: Captures patterns and insights from system behavior
+ * - **External Signal Ideas**: Integrates ideas from market intelligence and external sources
+ * - **Collaboration Ideas**: Captures ideas from team discussions and feedback
+ * 
+ * ### 🏷️ **Intelligent Categorization**
+ * - **System Evolution**: Ideas for system evolution and improvement
+ * - **Architecture**: Architectural improvements and patterns
+ * - **Optimization**: Performance and efficiency optimizations
+ * - **Features**: New features and capabilities
+ * - **Integration**: Integration opportunities and connections
+ * - **Automation**: Automation and autonomous capabilities
+ * - **Learning**: Learning and knowledge management
+ * - **User Experience**: User experience improvements
+ * - **Security**: Security and safety enhancements
+ * - **Scalability**: Scalability and performance improvements
+ * - **Monitoring**: Monitoring and observability
+ * - **Testing**: Testing and quality assurance
+ * - **Documentation**: Documentation and knowledge sharing
+ * - **Collaboration**: Collaboration and team improvements
+ * - **Innovation**: Innovative and breakthrough ideas
+ * 
+ * ### 📊 **Smart Prioritization**
+ * - **Critical**: Immediate implementation required
+ * - **High**: High priority for next iteration
+ * - **Medium**: Medium priority for future consideration
+ * - **Low**: Low priority, keep for reference
+ * - **Experimental**: Experimental or research ideas
+ * 
+ * ## Usage Examples
+ * 
+ * ### Basic Idea Capture
+ * ```javascript
+ * const IdeaCaptureAgent = require('./agents/idea-capture-agent');
+ * const agent = new IdeaCaptureAgent();
+ * 
+ * // Capture an idea
+ * await agent.captureIdea({
+ *   content: 'Implement real-time collaboration features',
+ *   category: 'features',
+ *   priority: 'high',
+ *   source: 'user_input'
+ * });
+ * ```
+ * 
+ * ### Search Ideas
+ * ```javascript
+ * // Search ideas by category
+ * const ideas = await agent.searchIdeas({
+ *   category: 'optimization',
+ *   priority: 'high'
+ * });
+ * ```
+ * 
+ * ### Get Idea Statistics
+ * ```javascript
+ * const stats = agent.getIdeaStatistics();
+ * console.log('Total ideas:', stats.totalIdeas);
+ * console.log('By category:', stats.byCategory);
+ * ```
+ * 
+ * ## Configuration
+ * 
+ * ### Idea Categories
+ * ```javascript
+ * const categories = {
+ *   'system_evolution': 'Ideas for system evolution and improvement',
+ *   'architecture': 'Architectural improvements and patterns',
+ *   'optimization': 'Performance and efficiency optimizations',
+ *   'features': 'New features and capabilities',
+ *   'integration': 'Integration opportunities and connections'
+ * };
+ * ```
+ * 
+ * ### Priority Levels
+ * ```javascript
+ * const priorities = {
+ *   'critical': 'Immediate implementation required',
+ *   'high': 'High priority for next iteration',
+ *   'medium': 'Medium priority for future consideration',
+ *   'low': 'Low priority, keep for reference',
+ *   'experimental': 'Experimental or research ideas'
+ * };
+ * ```
+ * 
+ * ## Integration Points
+ * 
+ * - **System Evolution**: Feeds ideas into system evolution process
+ * - **Agent Coordinator**: Participates in multi-agent coordination
+ * - **Learning System**: Captures learning insights and patterns
+ * - **Change Impact Agent**: Provides ideas for change analysis
+ * - **Meta-Learning Agent**: Contributes to meta-learning processes
+ * 
  * Follows ECP principles for autonomous knowledge management
  */
 

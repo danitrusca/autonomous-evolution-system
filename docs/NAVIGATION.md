@@ -14,9 +14,11 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 - **[EVOLUTION_SYSTEM.md](./system/EVOLUTION_SYSTEM.md)** - How the system evolves and learns
 
 #### **Agent Documentation** (`agents/`)
-- **[IDEA_CAPTURE_SYSTEM.md](./agents/IDEA_CAPTURE_SYSTEM.md)** - Idea capture and management
-- **[SYSTEM_INTEGRITY_AGENT.md](./agents/SYSTEM_INTEGRITY_AGENT.md)** - System monitoring and optimization
-- **[AUTONOMOUS_VERSIONING_SYSTEM.md](./agents/AUTONOMOUS_VERSIONING_SYSTEM.md)** - Automatic versioning and tagging
+- **[AGENT_SYSTEM_OVERVIEW.md](./agents/AGENT_SYSTEM_OVERVIEW.md)** - Complete agent system overview and architecture
+- **[COORDINATION_PATTERNS.md](./agents/COORDINATION_PATTERNS.md)** - How agents work together and collaborate
+- **[AGENT_DEVELOPMENT_GUIDE.md](./agents/AGENT_DEVELOPMENT_GUIDE.md)** - Creating, extending, and maintaining agents
+- **[TROUBLESHOOTING.md](./agents/TROUBLESHOOTING.md)** - Common issues and solutions
+- **Individual Agent APIs**: See JSDoc documentation in each agent file for detailed API reference
 
 #### **Reference Documentation** (`reference/`)
 - **[API_REFERENCE.md](./reference/API_REFERENCE.md)** - All agent interfaces and methods

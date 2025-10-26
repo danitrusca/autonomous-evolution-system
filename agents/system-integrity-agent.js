@@ -8,6 +8,142 @@
  * - Performance bottlenecks
  * - Code quality degradation
  * 
+ * ## Overview
+ * 
+ * The **System Integrity Agent** is an autonomous monitoring system that continuously scans 
+ * the Autonomous Evolution System for complexity creep, optimization opportunities, and 
+ * architectural debt. It provides actionable recommendations to maintain system health and 
+ * drive continuous improvement.
+ * 
+ * ## Key Capabilities
+ * 
+ * ### 🔍 **Complexity Creep Detection**
+ * - **File Size Monitoring**: Detects files exceeding size thresholds (default: 500 lines)
+ * - **Cyclomatic Complexity Analysis**: Identifies overly complex functions (default: >10 complexity)
+ * - **Dependency Tracking**: Monitors excessive dependencies (default: >15 imports)
+ * - **Nesting Depth Analysis**: Detects deeply nested code structures
+ * 
+ * ### ⚡ **Optimization Opportunity Scanning**
+ * - **Duplicate Code Detection**: Identifies repeated code patterns
+ * - **Unused Import Detection**: Finds unused dependencies
+ * - **Inefficient Pattern Detection**: Spots performance anti-patterns
+ * - **Algorithm Optimization**: Identifies opportunities for better algorithms
+ * 
+ * ### 🏗️ **Architectural Debt Identification**
+ * - **Circular Dependency Detection**: Finds problematic dependency cycles
+ * - **Separation of Concerns Violations**: Identifies mixed responsibilities
+ * - **Missing Abstractions**: Detects repeated patterns that could be abstracted
+ * - **Architecture Drift**: Monitors system coherence
+ * 
+ * ### 🐌 **Performance Bottleneck Detection**
+ * - **Synchronous I/O Detection**: Identifies blocking file operations
+ * - **Blocking Operations**: Finds synchronous operations in async contexts
+ * - **Inefficient Loops**: Detects O(n²) patterns and nested searches
+ * - **Memory Leak Detection**: Identifies potential memory leaks
+ * 
+ * ### 📝 **Code Quality Analysis**
+ * - **Documentation Coverage**: Checks for missing documentation
+ * - **Error Handling**: Identifies missing try-catch blocks
+ * - **Code Standards**: Enforces consistent coding practices
+ * - **Maintainability Metrics**: Tracks code quality over time
+ * 
+ * ## Architecture
+ * 
+ * ### Core Components
+ * 
+ * ```
+ * SystemIntegrityAgent
+ * ├── ComplexityAnalyzer
+ * │   ├── FileSizeAnalyzer
+ * │   ├── CyclomaticComplexityCalculator
+ * │   └── DependencyAnalyzer
+ * ├── OptimizationScanner
+ * │   ├── DuplicateCodeDetector
+ * │   ├── UnusedImportDetector
+ * │   └── InefficientPatternDetector
+ * ├── ArchitectureAnalyzer
+ * │   ├── CircularDependencyDetector
+ * │   ├── ConcernViolationDetector
+ * │   └── AbstractionGapDetector
+ * ├── PerformanceMonitor
+ * │   ├── SynchronousIODetector
+ * │   ├── BlockingOperationDetector
+ * │   └── MemoryLeakDetector
+ * └── QualityAnalyzer
+ *     ├── DocumentationChecker
+ *     ├── ErrorHandlingChecker
+ *     └── StandardsEnforcer
+ * ```
+ * 
+ * ## Usage Examples
+ * 
+ * ### Basic System Scan
+ * ```javascript
+ * const SystemIntegrityAgent = require('./agents/system-integrity-agent');
+ * const agent = new SystemIntegrityAgent();
+ * const results = await agent.performSystemScan();
+ * ```
+ * 
+ * ### Get Monitoring Status
+ * ```javascript
+ * const status = agent.getMonitoringStatus();
+ * console.log('Monitoring Status:', status);
+ * ```
+ * 
+ * ### Generate Report
+ * ```javascript
+ * const report = await agent.generateMonitoringReport();
+ * console.log('Monitoring Report:', report);
+ * ```
+ * 
+ * ## Configuration
+ * 
+ * ### Complexity Thresholds
+ * ```javascript
+ * const complexityThresholds = {
+ *   maxFileSize: 500,           // Maximum lines per file
+ *   maxFunctionLength: 50,       // Maximum lines per function
+ *   maxCyclomaticComplexity: 10, // Maximum cyclomatic complexity
+ *   maxDependencies: 15,         // Maximum imports per file
+ *   maxNestingDepth: 4          // Maximum nesting depth
+ * };
+ * ```
+ * 
+ * ### Optimization Patterns
+ * ```javascript
+ * const optimizationPatterns = [
+ *   'duplicate_code',
+ *   'unused_imports',
+ *   'long_parameter_lists',
+ *   'large_classes',
+ *   'deep_inheritance',
+ *   'circular_dependencies',
+ *   'performance_anti_patterns'
+ * ];
+ * ```
+ * 
+ * ## Benefits
+ * 
+ * ### 🎯 **Proactive Complexity Management**
+ * - **Early Detection**: Identifies complexity issues before they become unmanageable
+ * - **Preventive Maintenance**: Prevents technical debt accumulation
+ * - **Continuous Improvement**: Drives system evolution based on real metrics
+ * 
+ * ### ⚡ **Performance Optimization**
+ * - **Automatic Detection**: Finds optimization opportunities without manual review
+ * - **Actionable Insights**: Provides specific recommendations for improvement
+ * - **Performance Monitoring**: Tracks system performance over time
+ * 
+ * ### 🏗️ **Architectural Health**
+ * - **Debt Prevention**: Identifies architectural issues early
+ * - **Coherence Maintenance**: Ensures system remains coherent and maintainable
+ * - **Evolution Guidance**: Provides data-driven evolution triggers
+ * 
+ * ### 📊 **Data-Driven Evolution**
+ * - **Quantitative Metrics**: Provides concrete measurements of system health
+ * - **Trend Analysis**: Tracks system evolution over time
+ * - **Autonomous Triggers**: Automatically triggers system evolution when needed
+ * 
  * Follows ECP principles for autonomous system monitoring
  */
 

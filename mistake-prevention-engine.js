@@ -1,10 +1,14 @@
 /**
  * Mistake Prevention Engine - Ensures lessons learned prevent future mistakes
  * Invariant: All captured lessons must be converted into active prevention mechanisms
+ * Enhanced with Technical-Psychological Connection Discovery
  */
 
 const fs = require('fs');
 const path = require('path');
+const TechnicalPsychologicalAnalyzer = require('./agents/technical-psychological-analyzer');
+const PsychologicalDecisionMonitor = require('./agents/psychological-decision-monitor');
+const ConnectionDiscoverer = require('./agents/connection-discoverer');
 
 class MistakePreventionEngine {
   constructor() {
@@ -13,6 +17,12 @@ class MistakePreventionEngine {
     this.preventionRules = new Map();
     this.journalPath = path.join(__dirname, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
     this.activePrevention = true;
+    
+    // Initialize psychological analysis components
+    this.psychologicalAnalyzer = new TechnicalPsychologicalAnalyzer();
+    this.decisionMonitor = new PsychologicalDecisionMonitor();
+    this.connectionDiscoverer = new ConnectionDiscoverer();
+    this.psychologicalEnabled = false;
   }
 
   /**
@@ -31,10 +41,16 @@ class MistakePreventionEngine {
       // Create quality gates
       this.createQualityGates();
       
+      // Initialize psychological analysis (requires user consent)
+      await this.initializePsychologicalAnalysis();
+      
       // Activate prevention system
       this.activatePreventionSystem();
       
       console.log('[MistakePreventionEngine] Mistake prevention system initialized with', this.antiPatterns.size, 'anti-patterns');
+      if (this.psychologicalEnabled) {
+        console.log('[MistakePreventionEngine] Psychological analysis enabled for deep mistake learning');
+      }
       
     } catch (error) {
       console.error('[MistakePreventionEngine] Error initializing mistake prevention system:', error);
@@ -378,10 +394,296 @@ class MistakePreventionEngine {
       }
     });
   }
+
+  /**
+   * Initialize psychological analysis components
+   */
+  async initializePsychologicalAnalysis() {
+    try {
+      // Check for user consent (in real implementation, this would be user-configurable)
+      const userConsent = process.env.PSYCHOLOGICAL_ANALYSIS_CONSENT === 'true';
+      
+      if (userConsent) {
+        this.psychologicalEnabled = true;
+        this.psychologicalAnalyzer.enablePsychologicalAnalysis(true);
+        this.decisionMonitor.enableMonitoring(true);
+        
+        console.log('[MistakePreventionEngine] Psychological analysis enabled with user consent');
+      } else {
+        console.log('[MistakePreventionEngine] Psychological analysis disabled - requires user consent');
+      }
+    } catch (error) {
+      console.error('[MistakePreventionEngine] Error initializing psychological analysis:', error);
+    }
+  }
+
+  /**
+   * Enhanced error analysis with psychological layer
+   */
+  analyzeErrorWithPsychologicalLayer(error, context) {
+    if (!this.psychologicalEnabled) {
+      return this.analyzeErrorTechnicalOnly(error, context);
+    }
+
+    // Perform dual-layer analysis
+    const psychologicalAnalysis = this.psychologicalAnalyzer.analyzeError(error, context);
+    
+    // Discover connections
+    const connections = this.connectionDiscoverer.discoverConnections(psychologicalAnalysis);
+    
+    // Generate enhanced recommendations
+    const recommendations = this.generateEnhancedRecommendations(psychologicalAnalysis, connections);
+    
+    return {
+      ...psychologicalAnalysis,
+      connections: connections,
+      enhancedRecommendations: recommendations,
+      psychologicalEnabled: true
+    };
+  }
+
+  /**
+   * Enhanced action prevention with psychological analysis
+   */
+  preventActionWithPsychologicalLayer(action, context) {
+    // Technical prevention
+    const technicalPrevention = this.preventAction(action, context);
+    
+    if (!this.psychologicalEnabled) {
+      return technicalPrevention;
+    }
+
+    // Psychological prevention
+    const psychologicalPrevention = this.psychologicalAnalyzer.preventAction(action, context);
+    
+    // Decision monitoring
+    const decisionAnalysis = this.decisionMonitor.monitorDecision(action, context);
+    
+    // Combine results
+    if (technicalPrevention.blocked || psychologicalPrevention.blocked) {
+      return {
+        blocked: true,
+        reasons: [
+          ...(technicalPrevention.reasons || []),
+          ...(psychologicalPrevention.reasons ? [psychologicalPrevention.reason] : [])
+        ],
+        technical: technicalPrevention,
+        psychological: psychologicalPrevention,
+        decisionAnalysis: decisionAnalysis,
+        recommendations: this.combineRecommendations(technicalPrevention, psychologicalPrevention, decisionAnalysis)
+      };
+    }
+
+    return {
+      blocked: false,
+      technical: technicalPrevention,
+      psychological: psychologicalPrevention,
+      decisionAnalysis: decisionAnalysis
+    };
+  }
+
+  /**
+   * Generate enhanced recommendations combining technical and psychological insights
+   */
+  generateEnhancedRecommendations(analysis, connections) {
+    const recommendations = [];
+
+    // Technical recommendations
+    if (analysis.technical && analysis.technical.rootCause) {
+      recommendations.push({
+        type: 'technical',
+        priority: 'high',
+        description: `Fix technical root cause: ${analysis.technical.rootCause}`,
+        action: 'address_technical_issue'
+      });
+    }
+
+    // Psychological recommendations
+    if (analysis.psychological && analysis.psychological.biasRisks) {
+      for (const bias of analysis.psychological.biasRisks) {
+        recommendations.push({
+          type: 'psychological',
+          priority: 'medium',
+          description: `Prevent ${bias}: Apply bias prevention strategies`,
+          action: 'apply_bias_prevention',
+          bias: bias
+        });
+      }
+    }
+
+    // Connection-based recommendations
+    if (connections && connections.length > 0) {
+      for (const connection of connections) {
+        if (connection.confidence >= 0.7) {
+          recommendations.push({
+            type: 'connection',
+            priority: 'high',
+            description: `Prevent ${connection.description}`,
+            action: 'apply_connection_prevention',
+            psychological: connection.psychological,
+            technical: connection.technical,
+            prevention: connection.prevention,
+            confidence: connection.confidence
+          });
+        }
+      }
+    }
+
+    return recommendations;
+  }
+
+  /**
+   * Combine recommendations from different sources
+   */
+  combineRecommendations(technicalPrevention, psychologicalPrevention, decisionAnalysis) {
+    const recommendations = [];
+
+    if (technicalPrevention.alternatives) {
+      recommendations.push(...technicalPrevention.alternatives);
+    }
+
+    if (psychologicalPrevention.recommendation) {
+      recommendations.push({
+        type: 'psychological',
+        description: psychologicalPrevention.recommendation,
+        action: 'apply_psychological_prevention'
+      });
+    }
+
+    if (decisionAnalysis.recommendations) {
+      recommendations.push(...decisionAnalysis.recommendations);
+    }
+
+    return recommendations;
+  }
+
+  /**
+   * Learn from error (technical only)
+   */
+  learnFromError(error, context, outcome) {
+    // Basic technical learning - store error pattern
+    const errorPattern = {
+      error: error,
+      context: context,
+      outcome: outcome,
+      timestamp: new Date().toISOString()
+    };
+    
+    // This would typically store in a database or learning system
+    console.log('[MistakePreventionEngine] Learned from technical error:', error.message);
+  }
+
+  /**
+   * Learn from error with psychological analysis
+   */
+  learnFromErrorWithPsychologicalLayer(error, context, outcome) {
+    // Technical learning
+    this.learnFromError(error, context, outcome);
+
+    if (!this.psychologicalEnabled) {
+      return;
+    }
+
+    // Psychological learning
+    const analysis = this.psychologicalAnalyzer.analyzeError(error, context);
+    this.psychologicalAnalyzer.learnFromAnalysis(analysis);
+
+    // Connection learning
+    const connections = this.connectionDiscoverer.discoverConnections(analysis);
+    for (const connection of connections) {
+      this.connectionDiscoverer.learnFromOutcome(connection, outcome);
+    }
+
+    // Decision learning
+    if (context.decision) {
+      this.decisionMonitor.learnFromDecision(context.decision, context, outcome);
+    }
+  }
+
+  /**
+   * Technical-only error analysis (fallback)
+   */
+  analyzeErrorTechnicalOnly(error, context) {
+    return {
+      timestamp: new Date().toISOString(),
+      error: error,
+      context: context,
+      technical: {
+        errorType: this.classifyErrorType(error),
+        rootCause: this.identifyTechnicalRootCause(error),
+        severity: this.calculateTechnicalSeverity(error)
+      },
+      psychological: null,
+      connections: null,
+      enhancedRecommendations: [{
+        type: 'technical',
+        priority: 'high',
+        description: 'Enable psychological analysis for deeper insights',
+        action: 'enable_psychological_analysis'
+      }],
+      psychologicalEnabled: false
+    };
+  }
+
+  /**
+   * Get enhanced system status
+   */
+  getEnhancedStatus() {
+    const baseStatus = this.getPreventionStatus();
+    
+    return {
+      ...baseStatus,
+      psychological: {
+        enabled: this.psychologicalEnabled,
+        analyzer: this.psychologicalAnalyzer.getStatus(),
+        decisionMonitor: this.decisionMonitor.getStatus(),
+        connectionDiscoverer: this.connectionDiscoverer.getStatus()
+      }
+    };
+  }
+
+  /**
+   * Enable psychological analysis (requires user consent)
+   */
+  enablePsychologicalAnalysis(consent = true) {
+    this.psychologicalEnabled = consent;
+    this.psychologicalAnalyzer.enablePsychologicalAnalysis(consent);
+    this.decisionMonitor.enableMonitoring(consent);
+    
+    console.log(`[MistakePreventionEngine] Psychological analysis ${consent ? 'enabled' : 'disabled'}`);
+  }
+
+  // Helper methods for technical analysis
+  classifyErrorType(error) {
+    if (error.message) {
+      if (error.message.includes('TypeError')) return 'type_error';
+      if (error.message.includes('ReferenceError')) return 'reference_error';
+      if (error.message.includes('SyntaxError')) return 'syntax_error';
+      if (error.message.includes('NetworkError')) return 'network_error';
+    }
+    return 'unknown_error';
+  }
+
+  identifyTechnicalRootCause(error) {
+    if (error.stack) {
+      if (error.stack.includes('undefined')) return 'undefined_variable';
+      if (error.stack.includes('null')) return 'null_reference';
+      if (error.stack.includes('async')) return 'async_handling';
+    }
+    return 'unknown_cause';
+  }
+
+  calculateTechnicalSeverity(error) {
+    if (error.message && error.message.includes('fatal')) return 'critical';
+    if (error.message && error.message.includes('error')) return 'high';
+    if (error.message && error.message.includes('warning')) return 'medium';
+    return 'low';
+  }
 }
 
-// Auto-initialize when module is loaded
-const mistakePreventionEngine = new MistakePreventionEngine();
-mistakePreventionEngine.initialize();
+// Export the class
+module.exports = MistakePreventionEngine;
 
-module.exports = mistakePreventionEngine;
+// Auto-initialize when module is loaded (optional)
+// const mistakePreventionEngine = new MistakePreventionEngine();
+// mistakePreventionEngine.initialize();

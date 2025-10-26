@@ -1,0 +1,15 @@
+[
+  {
+    "system": "psychological-system",
+    "version": "1.0.0",
+    "timestamp": "2025-10-26T15:39:15.390Z",
+    "files": [
+      "docs/implemented/PSYCHOLOGICAL_SYSTEM_IMPLEMENTATION_SUMMARY.md",
+      "docs/README.md",
+      "docs/NAVIGATION.md",
+      "docs/living/EVOLUTION_JOURNAL.md",
+      "docs/reference/API_REFERENCE.md",
+      "docs/reference/CONFIGURATION_GUIDE.md"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "high_complexity": {
+    "frequency": 225,
+    "impact": "high",
+    "resolution": "refactor",
+    "learned": true,
+    "lastSeen": "2025-10-26T16:00:55.790Z"
+  },
+  "performance_bottleneck": {
+    "frequency": 126,
+    "impact": "medium",
+    "resolution": "optimize",
+    "learned": true,
+    "lastSeen": "2025-10-26T16:00:55.790Z"
+  },
+  "missing_documentation": {
+    "frequency": 102,
+    "impact": "low",
+    "resolution": "document",
+    "learned": true,
+    "lastSeen": "2025-10-26T16:00:55.790Z"
+  },
+  "unused_imports": {
+    "frequency": 222,
+    "impact": "low",
+    "resolution": "cleanup",
+    "learned": true,
+    "lastSeen": "2025-10-26T16:00:55.790Z"
+  }
+}

@@ -24,8 +24,8 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created the first Skills infrastructure with YAML + Markdown schema
 - **Evolution**: System now has persistent, callable procedures that survive across sessions
 - **Files Created**: 
-  - `skills/README.md` - Skills Protocol overview
-  - `skills/schema.md` - YAML schema specification
+  - `docs/skills/README.md` - Skills Protocol overview
+  - `docs/skills/reference/schema.md` - YAML schema specification
   - `skills/compiler.js` - Skills execution engine
   - `skills/package.json` - Dependencies and scripts
   - `skills/test-skills.js` - Test suite
@@ -55,13 +55,13 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created system that continuously learns new capabilities
 - **Evolution**: System now learns from patterns and generates skills automatically
 - **Files Created**:
-  - `skills/autonomous/autonomous-skill-learner.md` - Meta-skill for learning
-  - `skills/autonomous/pattern-detector.md` - Pattern detection skill
-  - `skills/autonomous/skill-generator.md` - Skill generation skill
-  - `skills/autonomous/autonomous-executor.md` - Autonomous execution skill
+  - `docs/skills/autonomous/autonomous-skill-learner.md` - Meta-skill for learning
+  - `docs/skills/autonomous/pattern-detector.md` - Pattern detection skill
+  - `docs/skills/autonomous/skill-generator.md` - Skill generation skill
+  - `docs/skills/autonomous/autonomous-executor.md` - Autonomous execution skill
   - `skills/autonomous/autonomous-skill-system.js` - Core autonomous system
   - `skills/autonomous/start-autonomous.js` - System launcher
-  - `skills/autonomous/autonomous-examples.md` - Usage examples
+  - `docs/skills/autonomous/autonomous-examples.md` - Usage examples
 
 ### 2025-01-27: Advanced Intelligence Era
 **Breakthrough**: Context Awareness System
@@ -69,7 +69,7 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created context-aware skill system that adapts to project types and user preferences
 - **Evolution**: System now provides intelligent, context-appropriate skill execution
 - **Files Created**:
-  - `skills/meta/context-awareness.md` - Context-aware skill adaptation
+  - `docs/skills/meta/context-awareness.md` - Context-aware skill adaptation
   - `skills/meta/context-awareness.js` - Context detection and adaptation
 
 **Breakthrough**: Collaborative Intelligence
@@ -77,7 +77,7 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created collaborative skill system for emergent intelligence
 - **Evolution**: System now enables skill composition for complex problem-solving
 - **Files Created**:
-  - `skills/meta/collaborative-intelligence.md` - Skill collaboration system
+  - `docs/skills/meta/collaborative-intelligence.md` - Skill collaboration system
   - `skills/meta/collaborative-intelligence.js` - Skill orchestration and composition
 
 **Breakthrough**: Adaptive Learning
@@ -85,7 +85,7 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created adaptive learning system for continuous skill improvement
 - **Evolution**: System now enables skills to evolve based on their own performance
 - **Files Created**:
-  - `skills/meta/adaptive-learning.md` - Adaptive learning system
+  - `docs/skills/meta/adaptive-learning.md` - Adaptive learning system
   - `skills/meta/adaptive-learning.js` - Pattern-based skill adaptation
 
 **Breakthrough**: Emergent Capabilities
@@ -93,7 +93,7 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Created emergent capability system for capability synthesis
 - **Evolution**: System now enables emergence of new capabilities through skill interaction
 - **Files Created**:
-  - `skills/meta/emergent-capabilities.md` - Emergent capability system
+  - `docs/skills/meta/emergent-capabilities.md` - Emergent capability system
   - `skills/meta/emergent-capabilities.js` - Capability emergence and integration
 
 ### 2025-01-27: Critical Weakness Analysis Era
@@ -102,11 +102,11 @@ This changelog tracks the continuous evolution of the Skills Protocol, documenti
 - **Impact**: Identified and addressed critical weaknesses in the Skills Protocol system
 - **Evolution**: System now focuses on simplicity, transparency, and robustness
 - **Files Created**:
-  - `skills/meta/simplicity-principle.md` - Complexity reduction and simplification
-  - `skills/meta/transparency-system.md` - System behavior transparency and explainability
-  - `skills/meta/robustness-system.md` - Failure handling and graceful degradation
-  - `skills/meta/validation-feedback-loop.md` - Learning validation and feedback
-  - `skills/SYSTEM_EVOLUTION_ADDRESSING_WEAKNESSES.md` - Comprehensive weakness analysis
+  - `docs/skills/meta/simplicity-principle.md` - Complexity reduction and simplification
+  - `docs/skills/meta/transparency-system.md` - System behavior transparency and explainability
+  - `docs/skills/meta/robustness-system.md` - Failure handling and graceful degradation
+  - `docs/skills/meta/validation-feedback-loop.md` - Learning validation and feedback
+  - `docs/skills/meta/system-evolution-addressing-weaknesses.md` - Comprehensive weakness analysis
 
 **Critical Weaknesses Identified**:
 - **Complexity Explosion**: System became too complex to understand or maintain

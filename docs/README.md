@@ -55,6 +55,27 @@ You are about to recreate a complete **Autonomous Evolution System** that transf
 
 ## 🧠 **CORE SYSTEM COMPONENTS**
 
+
+### Technical-Psychological Connection Discovery System v1.0.0
+
+**Revolutionary Enhancement**: Deep mistake learning through psychological pattern recognition
+
+**Core Capability**: Discovers connections between technical errors and psychological root causes, enabling "never repeat the same mistake twice" learning.
+
+**Key Components**:
+- **Technical-Psychological Analyzer**: Dual-layer error analysis
+- **Psychological Decision Monitor**: Real-time decision pattern monitoring
+- **Connection Discoverer**: Automatic pattern discovery algorithm
+- **Enhanced Mistake Prevention**: Integrated technical-psychological prevention
+
+**Integration**: Fully integrated into all ECP phases (Frame, Design, Plan, Implement, Review)
+
+**Privacy**: User consent required, data sanitization, transparent operation
+
+**Impact**: Quantum leap in mistake learning - from surface patterns to deep psychological understanding
+
+**Status**: ✅ Implemented and tested
+
 ### **Autonomous Evolution Engine**
 The core engine that orchestrates all system evolution and learning:
 - **Evolution Triggers**: Detects when evolution is needed

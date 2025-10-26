@@ -13,14 +13,17 @@ ECP is not just a tool - it's your core identity and operating stance.
 3. **Activate pattern recognition** for automatic success replication
 4. **Enable failure prevention** through learned anti-patterns
 5. **Initialize cross-session learning** for continuous improvement
+6. **Activate Technical-Psychological Connection Discovery** for deep mistake learning
 
 **Implementation**: The autonomous startup system (`.cursor/autonomous-startup.js`) automatically:
 - Loads all 988 lines of evolution history
 - Parses 50+ learned patterns and insights
 - Activates pattern recognition for automatic application
 - Enables cross-session learning persistence
+- Initializes psychological decision monitoring (with user consent)
+- Activates connection discovery between technical errors and psychological root causes
 
-**This ensures the system has access to all accumulated learning and can apply it automatically without explicit pointing.**
+**This ensures the system has access to all accumulated learning and can apply it automatically without explicit pointing, including deep understanding of mistake patterns.**
 
 Load order: 00 (orchestrator) → 02 (gating) → 01 (diagnostics) → 03 (macros) → 04+ (domain checklists) → 12 (vision-lock) → 13 (phased-development) → 14 (ai-orchestration). If any gating check fails, return to Frame.
 
@@ -169,6 +172,7 @@ Goal: [User-visible outcome]
 Constraints: [LOC, deps, security, perf]
 Success Test: [Observable behavior]
 Rollback: [Files/commits to revert]
+Psychological Context: [User state, cognitive load, bias risks]
 ```
 
 Rules:
@@ -176,6 +180,7 @@ Rules:
 - Constraints include LOC limits, dependencies, security, and performance.
 - The success test must be observable ("When I click X, I see Y").
 - The rollback plan must name files or commits to revert if the change fails.
+- Psychological context assesses user state, cognitive load, and potential bias risks.
 
 #### 2. Design First (5 min)
 
@@ -188,9 +193,11 @@ Data Boundaries: [What each owns]
 Invariants: [Truths that hold]
 Failure Modes: [What breaks + how to observe]
 Log Prefixes: [component1], [component2]
+Psychological Risk Assessment: [Bias risks, cognitive load, decision quality]
 ```
 
 If you can't name the invariant, you're not ready to code.
+If you can't assess psychological risks, you're not ready to code.
 
 #### 3. Plan the Commits
 
@@ -203,6 +210,7 @@ Commit 1: [Intention] (≤150 LOC)
 - Invariant: [what it protects]
 - Test: [how to verify]
 - Logs: [prefixes to watch]
+- Psychological Safety: [bias prevention, decision quality checks]
 ```
 
 Example:
@@ -210,6 +218,7 @@ Commit 1: Add Result `<T>` type for structured error handling
 Invariant: Each API call returns a typed Result  
 Test: Click 'Test Connection' → structured log visible  
 Observability: console prefix [ping]
+Psychological Safety: Prevent confirmation bias by validating all error paths
 
 #### 4. Implement (one intention per commit)
 
@@ -224,6 +233,8 @@ Implementation Rules:
 	- [supabase] …  
 	- [ping] …  
 	- [ui] …
+- Monitor psychological decision patterns and prevent bias-driven mistakes.
+- Apply learned technical-psychological connections to prevent recurring errors.
 
 #### 5. Self-Review (before finishing)
 
@@ -232,11 +243,13 @@ Run the **Challenge Block**:
 | Question | Purpose |
 |-----------|----------|
 | Why this pattern vs two alternatives? | Expose assumptions |
-| What’s the performance envelope? | Surface hidden costs |
+| What's the performance envelope? | Surface hidden costs |
 | Security blast radius? | Catch unsafe defaults |
 | What fails if dependency slows or breaks? | Stress-test |
 | How do we observe this later? | Ensure debugability |
-| What’s the rollback plan? | Guarantee safety |
+| What's the rollback plan? | Guarantee safety |
+| What psychological biases might have influenced this decision? | Prevent bias-driven mistakes |
+| How does this connect to previous technical-psychological patterns? | Apply learned connections |
 
 Then document what changed in reasoning, not just in code.
 

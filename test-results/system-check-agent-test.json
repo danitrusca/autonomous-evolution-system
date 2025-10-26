@@ -1,0 +1,67 @@
+{
+  "timestamp": "2025-10-26T16:00:56.881Z",
+  "summary": {
+    "total": 6,
+    "passed": 5,
+    "failed": 1,
+    "successRate": 83.33333333333334
+  },
+  "results": [
+    {
+      "test": "agent_initialization",
+      "status": "passed",
+      "details": {
+        "agent": "SystemCheckAgent",
+        "version": "1.0.0",
+        "status": "active",
+        "checksPerformed": 1,
+        "issuesDetected": 225,
+        "recommendationsGenerated": 2,
+        "learningInsights": 4,
+        "lastCheck": "2025-10-26T16:00:53.805Z",
+        "recommendations": 2,
+        "learningPatterns": 4
+      }
+    },
+    {
+      "test": "health_check_execution",
+      "status": "passed",
+      "details": {
+        "checksPerformed": 2,
+        "issuesDetected": 450,
+        "recommendations": 4
+      }
+    },
+    {
+      "test": "learning_system",
+      "status": "passed",
+      "details": {
+        "learningPatterns": 4,
+        "learningInsights": 4
+      }
+    },
+    {
+      "test": "recommendation_generation",
+      "status": "passed",
+      "details": {
+        "recommendationsGenerated": 4,
+        "currentRecommendations": 2
+      }
+    },
+    {
+      "test": "agent_coordination",
+      "status": "failed",
+      "error": "agent.getAgentStatus is not a function"
+    },
+    {
+      "test": "performance_metrics",
+      "status": "passed",
+      "details": {
+        "checksPerformed": 2,
+        "issuesDetected": 450,
+        "recommendationsGenerated": 4,
+        "learningInsights": 4
+      }
+    }
+  ]
+}

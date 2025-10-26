@@ -1,0 +1,260 @@
+{
+  "timestamp": "2025-10-26T15:49:26.658Z",
+  "overall": "excellent",
+  "components": {
+    "core": {
+      "status": "healthy",
+      "components": {
+        "autonomous-evolution-engine.js": {
+          "exists": true,
+          "status": "present"
+        },
+        "mistake-prevention-engine.js": {
+          "exists": true,
+          "status": "present"
+        },
+        "autonomous-startup.js": {
+          "exists": true,
+          "status": "present"
+        },
+        "distributed-startup.js": {
+          "exists": true,
+          "status": "present"
+        }
+      },
+      "issues": []
+    },
+    "psychological": {
+      "status": "healthy",
+      "components": {
+        "agents/technical-psychological-analyzer.js": {
+          "exists": true,
+          "status": "present"
+        },
+        "agents/psychological-decision-monitor.js": {
+          "exists": true,
+          "status": "present"
+        },
+        "agents/connection-discoverer.js": {
+          "exists": true,
+          "status": "present"
+        }
+      },
+      "issues": [],
+      "tests": {
+        "analyzer": {
+          "status": "working",
+          "message": "TechnicalPsychologicalAnalyzer can be instantiated"
+        }
+      }
+    },
+    "documentation": {
+      "status": "healthy",
+      "files": {
+        "docs/README.md": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/NAVIGATION.md": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/living/EVOLUTION_JOURNAL.md": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/reference/API_REFERENCE.md": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/reference/CONFIGURATION_GUIDE.md": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/implemented/PSYCHOLOGICAL_SYSTEM_IMPLEMENTATION_SUMMARY.md": {
+          "exists": true,
+          "status": "present"
+        }
+      },
+      "issues": [],
+      "consistency": {
+        "docs/README.md": {
+          "hasPsychologicalRef": true,
+          "status": "consistent"
+        },
+        "docs/living/EVOLUTION_JOURNAL.md": {
+          "hasPsychologicalRef": true,
+          "status": "consistent"
+        }
+      }
+    },
+    "ecp": {
+      "status": "fully_integrated",
+      "phases": {
+        "ecp_mode": {
+          "exists": true,
+          "status": "present"
+        },
+        "frame": {
+          "hasPsychologicalIntegration": true
+        },
+        "design": {
+          "hasPsychologicalIntegration": true
+        },
+        "plan": {
+          "hasPsychologicalIntegration": true
+        },
+        "implement": {
+          "hasPsychologicalIntegration": true
+        },
+        "review": {
+          "hasPsychologicalIntegration": true
+        }
+      },
+      "issues": []
+    },
+    "structure": {
+      "status": "healthy",
+      "directories": {
+        "agents": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/implemented": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/living": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/reference": {
+          "exists": true,
+          "status": "present"
+        },
+        "docs/system": {
+          "exists": true,
+          "status": "present"
+        },
+        "rules": {
+          "exists": true,
+          "status": "present"
+        },
+        "skills": {
+          "exists": true,
+          "status": "present"
+        }
+      },
+      "issues": []
+    },
+    "tests": {
+      "status": "healthy",
+      "tests": {
+        "psychological_system": {
+          "status": "available",
+          "message": "Psychological system test file exists"
+        },
+        "documentation_updater": {
+          "status": "working",
+          "message": "Documentation updater is functional",
+          "details": {
+            "implementedDirectory": "D:\\Learning Playground\\Building with AI\\autonomous-evolution-system\\docs\\implemented",
+            "updateHistory": 0,
+            "active": true
+          }
+        },
+        "mistake_prevention": {
+          "status": "working",
+          "message": "Mistake prevention engine is functional",
+          "details": {
+            "active": true,
+            "antiPatterns": 0,
+            "qualityGates": 0,
+            "preventionRules": 0,
+            "psychological": {
+              "enabled": false,
+              "analyzer": {
+                "userConsent": false,
+                "psychologicalPatterns": 9,
+                "connectionDatabase": 0,
+                "analysisHistory": 0,
+                "active": false
+              },
+              "decisionMonitor": {
+                "monitoringActive": false,
+                "userConsent": false,
+                "decisionHistory": 0,
+                "patternDatabase": 4,
+                "active": false
+              },
+              "connectionDiscoverer": {
+                "connectionDatabase": 10,
+                "patternHistory": 0,
+                "learningThreshold": 3,
+                "confidenceThreshold": 0.7,
+                "active": true
+              }
+            }
+          }
+        }
+      },
+      "issues": []
+    },
+    "integrity": {
+      "status": "healthy",
+      "complexity_issues": 75,
+      "optimization_opportunities": 74,
+      "architectural_debt": 0,
+      "performance_bottlenecks": 42,
+      "code_quality_issues": 34
+    }
+  },
+  "totalIssues": 225,
+  "recommendations": [],
+  "learningInsights": [],
+  "agent": {
+    "name": "SystemCheckAgent",
+    "version": "1.0.0",
+    "status": "active"
+  },
+  "performance": {
+    "checksPerformed": 2,
+    "issuesDetected": 450,
+    "recommendationsGenerated": 4,
+    "learningInsights": 4
+  },
+  "learning": {
+    "high_complexity": {
+      "frequency": 75,
+      "impact": "high",
+      "resolution": "refactor",
+      "learned": true,
+      "lastSeen": "2025-10-26T15:49:26.659Z"
+    },
+    "performance_bottleneck": {
+      "frequency": 42,
+      "impact": "medium",
+      "resolution": "optimize",
+      "learned": true,
+      "lastSeen": "2025-10-26T15:49:26.659Z"
+    },
+    "missing_documentation": {
+      "frequency": 34,
+      "impact": "low",
+      "resolution": "document",
+      "learned": true,
+      "lastSeen": "2025-10-26T15:49:26.659Z"
+    },
+    "unused_imports": {
+      "frequency": 74,
+      "impact": "low",
+      "resolution": "cleanup",
+      "learned": true,
+      "lastSeen": "2025-10-26T15:49:26.659Z"
+    }
+  }
+}
