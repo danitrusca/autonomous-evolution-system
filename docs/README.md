@@ -12,6 +12,9 @@ You are about to recreate a complete **Autonomous Evolution System** that transf
 - ✅ **Self-Improvement** - Continuous optimization based on experience
 - ✅ **Living Memory** - Persistent evolution history and learning
 - ✅ **Core-Extensions Separation** - Clean core system with optional extensions
+- ✅ **Epistemic Humility** - Confidence calibration and uncertainty acknowledgment
+- ✅ **Direct Evolution** - /evolve command for immediate system evolution
+- ✅ **Solution Generalization** - Learns from specific solutions and applies to similar problems
 
 ---
 
@@ -46,6 +49,52 @@ You are about to recreate a complete **Autonomous Evolution System** that transf
 
 ---
 
+## 🧠 **CORE SYSTEM COMPONENTS**
+
+### **Autonomous Evolution Engine**
+The core engine that orchestrates all system evolution and learning:
+- **Evolution Triggers**: Detects when evolution is needed
+- **Pattern Recognition**: Identifies successful solution patterns
+- **Meta-Learning**: Learns how to learn more effectively
+- **Cross-Session Memory**: Maintains knowledge across sessions
+
+### **Extension Loader**
+Manages optional extensions safely:
+- **Dynamic Loading**: Loads extensions on demand
+- **Safety Checks**: Validates extension integrity
+- **Configuration Management**: Handles extension settings
+- **Dependency Resolution**: Manages extension dependencies
+
+### **System Integrity Agent**
+Monitors and maintains system health:
+- **Health Scanning**: Regular system health checks
+- **Performance Monitoring**: Tracks system performance
+- **Issue Detection**: Identifies potential problems
+- **Optimization Suggestions**: Recommends improvements
+
+### **Idea Capture Agent**
+Captures and processes ideas for system evolution:
+- **Idea Collection**: Gathers ideas from various sources
+- **Categorization**: Organizes ideas by type and priority
+- **Evolution Integration**: Connects ideas to system evolution
+- **Learning Capture**: Documents lessons learned
+
+### **Epistemic Humility Agent**
+Manages uncertainty and confidence calibration:
+- **Confidence Assessment**: Evaluates certainty levels
+- **Uncertainty Acknowledgment**: Prevents overconfident assertions
+- **Mitigation Strategies**: Suggests actions for uncertainty
+- **Calibration Tracking**: Monitors confidence accuracy
+
+### **Meta-Learning Agent**
+Learns how to learn more effectively:
+- **Pattern Analysis**: Analyzes solution patterns
+- **Solution Generalization**: Creates reusable templates
+- **Meta-Insights**: Extracts learning principles
+- **Template Creation**: Builds solution templates
+
+---
+
 ## 📁 **REPOSITORY STRUCTURE**
 
 The AES repository has a clean, flat structure optimized for distribution with core-extensions separation:
@@ -77,11 +126,21 @@ autonomous-evolution-system/
 ├── agents/                           # Core agent system
 │   ├── system-integrity-agent.js    # System health monitoring
 │   ├── idea-capture-agent.js        # Idea capture and processing
+│   ├── epistemic-humility-agent.js  # Confidence assessment and uncertainty handling
+│   ├── meta-learning-agent.js       # Solution pattern generalization
 │   ├── agent-coordinator.js         # Multi-agent coordination
-│   ├── task-orchestrator.js         # Task management
-│   ├── quality-monitor.js           # Quality assurance
-│   └── evolution-trigger.js         # Evolution triggers
+│   ├── agent-creator.js             # Dynamic agent creation
+│   ├── change-impact-agent.js       # Change impact analysis
+│   ├── meta-orchestrator.js         # Meta-level orchestration
+│   └── docs/                        # Agent documentation
 ├── commands/                         # Core ECP commands
+│   ├── evolve.md                     # /evolve command for direct system evolution
+│   ├── design.md                     # /design command
+│   ├── ecp.md                        # /ecp command
+│   ├── frame.md                      # /frame command
+│   ├── implement.md                  # /implement command
+│   ├── plan.md                       # /plan command
+│   └── review.md                     # /review command
 ├── memories/                         # Core learning memory
 ├── extensions/                       # Optional extensions
 │   └── [extension-name]/            # Individual extensions
@@ -134,17 +193,31 @@ autonomous-evolution-system/
 
 ## 🔄 **LATEST UPDATES**
 
-### **Core-Extensions Architecture (Latest)**
+### **Direct Evolution System (Latest)**
+- **/evolve Command**: Direct system evolution based on specific problem-solving
+- **Epistemic Humility**: Confidence calibration and uncertainty acknowledgment
+- **Meta-Learning**: Solution pattern generalization for similar problems
+- **Solution Templates**: Reusable patterns extracted from specific solutions
+
+### **Enhanced Agent System**
+- **Epistemic Humility Agent**: Manages uncertainty and confidence assessment
+- **Meta-Learning Agent**: Learns how to learn more effectively
+- **System Integrity Agent**: Continuous health monitoring
+- **Idea Capture Agent**: Automated idea processing
+- **Agent Creator**: Dynamic agent creation capabilities
+- **Change Impact Agent**: Change impact analysis
+- **Meta-Orchestrator**: Meta-level orchestration
+
+### **Complete ECP Command Suite**
+- **/evolve**: Direct system evolution command
+- **/design, /ecp, /frame, /implement, /plan, /review**: Full ECP protocol
+- **Command Documentation**: Complete command reference
+
+### **Core-Extensions Architecture**
 - **Clean Separation**: Core system separated from optional extensions
 - **Extension Loader**: Safe loading and management of extensions
 - **Configuration System**: Extension enable/disable via config
 - **Modular Design**: Extensions can evolve independently
-
-### **Enhanced Agent System**
-- **System Integrity Agent**: Continuous health monitoring
-- **Idea Capture Agent**: Automated idea processing
-- **Improved Coordination**: Better multi-agent collaboration
-- **Performance Optimization**: Enhanced system performance
 
 ### **Simplified Documentation**
 - **Consolidated README**: Single source of truth
@@ -1178,6 +1251,161 @@ class EvolutionTrigger {
 }
 
 module.exports = EvolutionTrigger;
+```
+
+### **5. Epistemic Humility Agent (.cursor/agents/epistemic-humility-agent.js)**
+
+```javascript
+/**
+ * Epistemic Humility Agent
+ * 
+ * Manages uncertainty acknowledgment, confidence calibration, and
+ * prevents overconfident assertions by maintaining awareness of
+ * system limitations and knowledge boundaries.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+class EpistemicHumilityAgent {
+    constructor() {
+        this.uncertaintyLogPath = path.join(__dirname, '..', 'docs', 'UNCERTAINTY_LOG.md');
+        this.confidenceCalibrationPath = path.join(__dirname, '..', 'docs', 'CONFIDENCE_CALIBRATION.md');
+        this.knowledgeBoundariesPath = path.join(__dirname, '..', 'docs', 'KNOWLEDGE_BOUNDARIES.md');
+        
+        this.uncertaintyThresholds = {
+            high: 0.8,      // High confidence
+            medium: 0.6,    // Medium confidence
+            low: 0.4,       // Low confidence
+            very_low: 0.2   // Very low confidence
+        };
+        
+        this.initializeUncertaintyLog();
+    }
+
+    /**
+     * Assess confidence level for a given situation
+     */
+    assessConfidence(context, evidence, experience) {
+        const confidenceFactors = {
+            evidenceStrength: this.assessEvidenceStrength(evidence),
+            experienceLevel: this.assessExperienceLevel(experience),
+            contextClarity: this.assessContextClarity(context),
+            patternMatch: this.assessPatternMatch(context, experience)
+        };
+
+        const confidence = this.calculateConfidence(confidenceFactors);
+        const uncertaintyLevel = this.categorizeUncertainty(confidence);
+
+        return {
+            confidence,
+            uncertaintyLevel,
+            factors: confidenceFactors,
+            timestamp: new Date().toISOString()
+        };
+    }
+
+    /**
+     * Generate epistemic humility statement
+     */
+    generateHumilityStatement(assessment) {
+        const statements = {
+            high: "I am confident in this approach based on strong evidence and experience.",
+            medium: "I am moderately confident, but there may be factors I haven't considered.",
+            low: "I have some confidence, but there are significant uncertainties to consider.",
+            very_low: "I have very low confidence and recommend seeking additional expertise."
+        };
+
+        return statements[assessment.uncertaintyLevel] || statements.very_low;
+    }
+
+    // ... (additional methods would be included here)
+}
+
+module.exports = EpistemicHumilityAgent;
+```
+
+### **6. Meta-Learning Agent (.cursor/agents/meta-learning-agent.js)**
+
+```javascript
+/**
+ * Meta-Learning Agent
+ * 
+ * Learns how to learn more effectively by analyzing patterns
+ * in problem-solving approaches and generalizing solutions
+ * for similar future problems.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+class MetaLearningAgent {
+    constructor() {
+        this.patternDatabasePath = path.join(__dirname, '..', 'docs', 'PATTERN_DATABASE.md');
+        this.solutionTemplatesPath = path.join(__dirname, '..', 'docs', 'SOLUTION_TEMPLATES.md');
+        this.learningInsightsPath = path.join(__dirname, '..', 'docs', 'LEARNING_INSIGHTS.md');
+        
+        this.patternDatabase = new Map();
+        this.solutionTemplates = new Map();
+        this.learningInsights = [];
+        
+        this.initializeMetaLearning();
+    }
+
+    /**
+     * Process evolution request and extract learnable patterns
+     */
+    processEvolution(context, problemType, solutionPattern) {
+        const analysis = this.analyzeSolutionPattern(context, problemType, solutionPattern);
+        const generalization = this.generalizeSolution(analysis);
+        const metaInsights = this.extractMetaInsights(analysis, generalization);
+        
+        this.updatePatternDatabase(analysis);
+        this.updateSolutionTemplates(generalization);
+        this.updateLearningInsights(metaInsights);
+        
+        return {
+            analysis,
+            generalization,
+            metaInsights,
+            evolutionPlan: this.createEvolutionPlan(analysis, generalization)
+        };
+    }
+
+    /**
+     * Analyze solution pattern for learnable elements
+     */
+    analyzeSolutionPattern(context, problemType, solutionPattern) {
+        const analysis = {
+            problemType,
+            solutionPattern,
+            context,
+            timestamp: new Date().toISOString(),
+            learnableElements: [],
+            successFactors: [],
+            failurePoints: [],
+            generalizablePrinciples: []
+        };
+
+        // Extract learnable elements
+        analysis.learnableElements = this.extractLearnableElements(solutionPattern);
+        
+        // Identify success factors
+        analysis.successFactors = this.identifySuccessFactors(context, solutionPattern);
+        
+        // Identify potential failure points
+        analysis.failurePoints = this.identifyFailurePoints(context, solutionPattern);
+        
+        // Extract generalizable principles
+        analysis.generalizablePrinciples = this.extractGeneralizablePrinciples(analysis);
+
+        return analysis;
+    }
+
+    // ... (additional methods would be included here)
+}
+
+module.exports = MetaLearningAgent;
 ```
 
 ---
@@ -2963,20 +3191,42 @@ Create all 22 rule files in `rules/` with the content provided above.
 Create all skills system files in `skills/` with the JavaScript code provided above.
 
 ### **Step 5: Create Core Agent System**
-Create all agent system files in `agents/` with the JavaScript code provided above.
+Create all agent system files in `agents/` with the JavaScript code provided above:
 
-### **Step 6: Create Core Documentation**
+**Required Agent Files:**
+- `system-integrity-agent.js` - System health monitoring
+- `idea-capture-agent.js` - Idea capture and processing
+- `epistemic-humility-agent.js` - Confidence assessment and uncertainty handling
+- `meta-learning-agent.js` - Solution pattern generalization
+- `agent-coordinator.js` - Multi-agent coordination
+- `agent-creator.js` - Dynamic agent creation
+- `change-impact-agent.js` - Change impact analysis
+- `meta-orchestrator.js` - Meta-level orchestration
+
+### **Step 6: Create Core Commands**
+Create all command files in `commands/` with the content provided above:
+
+**Required Command Files:**
+- `evolve.md` - /evolve command for direct system evolution
+- `design.md` - /design command
+- `ecp.md` - /ecp command
+- `frame.md` - /frame command
+- `implement.md` - /implement command
+- `plan.md` - /plan command
+- `review.md` - /review command
+
+### **Step 7: Create Core Documentation**
 - `docs/README.md` - This comprehensive documentation
 - `docs/AUTONOMOUS_EVOLUTION_JOURNAL.md` - Evolution journal
 - `docs/CHANGES_JOURNAL.md` - Changes tracking
 
-### **Step 7: Initialize Core System**
+### **Step 8: Initialize Core System**
 Run the autonomous startup system to initialize everything.
 
-### **Step 8: Test Core System**
+### **Step 9: Test Core System**
 Run the health check and autonomous tests to verify everything is working.
 
-### **Step 9: Optional Extensions**
+### **Step 10: Optional Extensions**
 Extensions are optional and can be added to the `extensions/` folder as needed.
 
 ---
@@ -2986,9 +3236,29 @@ Extensions are optional and can be added to the `extensions/` folder as needed.
 ### **Basic Usage**
 1. **Initialize System**: The system automatically initializes on startup
 2. **Use ECP Commands**: Use `/ecp`, `/frame`, `/design`, `/plan`, `/implement`, `/review`
-3. **Monitor Learning**: The system automatically captures lessons and learns
-4. **Check Health**: Use `/diagnose` to check system health
-5. **Trigger Evolution**: Use `/autonomous` to trigger system evolution
+3. **Direct Evolution**: Use `/evolve [context] [problem-type] [solution-pattern]` for immediate system evolution
+4. **Monitor Learning**: The system automatically captures lessons and learns
+5. **Check Health**: Use `/diagnose` to check system health
+6. **Trigger Evolution**: Use `/autonomous` to trigger system evolution
+
+### **/evolve Command Usage**
+The `/evolve` command enables direct system evolution based on specific problem-solving experiences:
+
+```
+/evolve [context] [problem-type] [solution-pattern]
+```
+
+**Examples:**
+- `/evolve git-submodule-setup repository-management git-submodule-pattern`
+- `/evolve false-certainty epistemic-humility uncertainty-acknowledgment-pattern`
+- `/evolve meta-learning solution-generalization pattern-extraction-pattern`
+
+**What it does:**
+1. **Assesses Confidence**: Uses epistemic humility to evaluate certainty
+2. **Extracts Patterns**: Analyzes solution for learnable elements
+3. **Generalizes Solution**: Creates reusable templates and principles
+4. **Applies Evolution**: Updates system with new capabilities
+5. **Logs Learning**: Tracks evolution for future reference
 
 ### **Advanced Usage**
 1. **Custom Patterns**: Add your own learning patterns
