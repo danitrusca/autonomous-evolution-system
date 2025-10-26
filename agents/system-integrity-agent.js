@@ -1,356 +1,434 @@
 /**
  * System Integrity Agent
- * Continuously monitors and maintains system health and safety
+ * 
+ * Monitors the autonomous evolution system for:
+ * - Complexity creep detection
+ * - System optimization opportunities
+ * - Architectural debt identification
+ * - Performance bottlenecks
+ * - Code quality degradation
+ * 
+ * Follows ECP principles for autonomous system monitoring
  */
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 class SystemIntegrityAgent {
   constructor() {
-    this.agentName = 'system-integrity-agent';
-    this.healthStatus = 'healthy';
-    this.monitoringInterval = 30000; // 30 seconds
-    this.healthMetrics = new Map();
-    this.integrityLogs = [];
-    this.startMonitoring();
-  }
-
-  /**
-   * Start continuous system monitoring
-   * Invariant: Monitoring maintains system safety
-   */
-  startMonitoring() {
-    console.log(`[${this.agentName}] Starting system integrity monitoring`);
-    
-    setInterval(() => {
-      this.performHealthCheck();
-    }, this.monitoringInterval);
-    
-    console.log(`[${this.agentName}] System integrity monitoring active`);
-  }
-
-  /**
-   * Perform comprehensive health check
-   * Invariant: Health checks maintain system safety
-   */
-  performHealthCheck() {
-    console.log(`[${this.agentName}] Performing system health check`);
-    
-    try {
-      // Check system components
-      const componentHealth = this.checkSystemComponents();
-      
-      // Check performance metrics
-      const performanceHealth = this.checkPerformanceMetrics();
-      
-      // Check learning systems
-      const learningHealth = this.checkLearningSystems();
-      
-      // Check integrity
-      const integrityHealth = this.checkSystemIntegrity();
-      
-      // Aggregate health status
-      const overallHealth = this.aggregateHealthStatus({
-        components: componentHealth,
-        performance: performanceHealth,
-        learning: learningHealth,
-        integrity: integrityHealth
-      });
-      
-      // Update health status
-      this.updateHealthStatus(overallHealth);
-      
-      // Log health check
-      this.logHealthCheck(overallHealth);
-      
-      // Trigger optimizations if needed
-      if (overallHealth.status === 'degraded' || overallHealth.status === 'unhealthy') {
-        this.triggerOptimizations(overallHealth);
-      }
-      
-    } catch (error) {
-      console.error(`[${this.agentName}] Health check failed:`, error.message);
-      this.healthStatus = 'unhealthy';
-    }
-  }
-
-  /**
-   * Check system components health
-   * Invariant: Component checks maintain system safety
-   */
-  checkSystemComponents() {
-    console.log(`[${this.agentName}] Checking system components`);
-    
-    const components = {
-      autonomousSkills: this.checkAutonomousSkills(),
-      mcpConnections: this.checkMCPConnections(),
-      backgroundAgents: this.checkBackgroundAgents(),
-      learningSystems: this.checkLearningSystems(),
-      gitSystem: this.checkGitSystem()
+    this.agentName = 'SystemIntegrityAgent';
+    this.monitoringPath = path.join(__dirname, '..', 'monitoring');
+    this.reportsPath = path.join(__dirname, '..', 'reports');
+    this.complexityThresholds = {
+      maxFileSize: 500, // lines
+      maxFunctionLength: 50, // lines
+      maxCyclomaticComplexity: 10,
+      maxDependencies: 15,
+      maxNestingDepth: 4
     };
-    
-    return {
-      status: this.determineComponentStatus(components),
-      components: components,
-      timestamp: new Date().toISOString()
-    };
-  }
-
-  /**
-   * Check autonomous skills health
-   * Invariant: Skills check maintains system safety
-   */
-  checkAutonomousSkills() {
-    console.log(`[${this.agentName}] Checking autonomous skills health`);
-    
-    // Check if skills directory exists and is accessible
-    const skillsPath = path.join(__dirname, '..', 'skills');
-    const skillsExist = fs.existsSync(skillsPath);
-    
-    // Check skills system functionality
-    const skillsFunctional = this.checkSkillsFunctionality();
-    
-    return {
-      exists: skillsExist,
-      functional: skillsFunctional,
-      status: skillsExist && skillsFunctional ? 'healthy' : 'unhealthy'
-    };
-  }
-
-  /**
-   * Check MCP connections health
-   * Invariant: MCP checks maintain system safety
-   */
-  checkMCPConnections() {
-    console.log(`[${this.agentName}] Checking MCP connections health`);
-    
-    // Check MCP integration files
-    const mcpPath = path.join(__dirname, '..', 'skills', 'mcp');
-    const mcpExists = fs.existsSync(mcpPath);
-    
-    // Check MCP functionality
-    const mcpFunctional = this.checkMCPFunctionality();
-    
-    return {
-      exists: mcpExists,
-      functional: mcpFunctional,
-      status: mcpExists && mcpFunctional ? 'healthy' : 'unhealthy'
-    };
-  }
-
-  /**
-   * Check background agents health
-   * Invariant: Background agents check maintains system safety
-   */
-  checkBackgroundAgents() {
-    console.log(`[${this.agentName}] Checking background agents health`);
-    
-    // Check background agents files
-    const agentsPath = path.join(__dirname, '..', 'skills', 'mcp', 'github-background-agents.js');
-    const agentsExist = fs.existsSync(agentsPath);
-    
-    // Check agents functionality
-    const agentsFunctional = this.checkBackgroundAgentsFunctionality();
-    
-    return {
-      exists: agentsExist,
-      functional: agentsFunctional,
-      status: agentsExist && agentsFunctional ? 'healthy' : 'unhealthy'
-    };
-  }
-
-  /**
-   * Check learning systems health
-   * Invariant: Learning systems check maintains system safety
-   */
-  checkLearningSystems() {
-    console.log(`[${this.agentName}] Checking learning systems health`);
-    
-    // Check evolution journal
-    const journalPath = path.join(__dirname, '..', 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
-    const journalExists = fs.existsSync(journalPath);
-    
-    // Check learning functionality
-    const learningFunctional = this.checkLearningFunctionality();
-    
-    return {
-      exists: journalExists,
-      functional: learningFunctional,
-      status: journalExists && learningFunctional ? 'healthy' : 'unhealthy'
-    };
-  }
-
-  /**
-   * Check Git system health
-   * Invariant: Git system check maintains system safety
-   */
-  checkGitSystem() {
-    console.log(`[${this.agentName}] Checking Git system health`);
-    
-    // Check if we're in a Git repository
-    const gitPath = path.join(__dirname, '..', '.git');
-    const gitExists = fs.existsSync(gitPath);
-    
-    // Check Git functionality
-    const gitFunctional = this.checkGitFunctionality();
-    
-    return {
-      exists: gitExists,
-      functional: gitFunctional,
-      status: gitExists && gitFunctional ? 'healthy' : 'unhealthy'
-    };
-  }
-
-  /**
-   * Check performance metrics
-   * Invariant: Performance checks maintain system safety
-   */
-  checkPerformanceMetrics() {
-    console.log(`[${this.agentName}] Checking performance metrics`);
-    
-    const metrics = {
-      responseTime: this.measureResponseTime(),
-      memoryUsage: this.measureMemoryUsage(),
-      cpuUsage: this.measureCPUUsage(),
-      diskUsage: this.measureDiskUsage()
-    };
-    
-    return {
-      metrics: metrics,
-      status: this.determinePerformanceStatus(metrics),
-      timestamp: new Date().toISOString()
-    };
-  }
-
-  /**
-   * Check system integrity
-   * Invariant: Integrity checks maintain system safety
-   */
-  checkSystemIntegrity() {
-    console.log(`[${this.agentName}] Checking system integrity`);
-    
-    const integrity = {
-      fileIntegrity: this.checkFileIntegrity(),
-      configurationIntegrity: this.checkConfigurationIntegrity(),
-      securityIntegrity: this.checkSecurityIntegrity(),
-      dataIntegrity: this.checkDataIntegrity()
-    };
-    
-    return {
-      integrity: integrity,
-      status: this.determineIntegrityStatus(integrity),
-      timestamp: new Date().toISOString()
-    };
-  }
-
-  /**
-   * Aggregate health status
-   * Invariant: Health aggregation maintains system safety
-   */
-  aggregateHealthStatus(healthChecks) {
-    const statuses = [
-      healthChecks.components.status,
-      healthChecks.performance.status,
-      healthChecks.learning.status,
-      healthChecks.integrity.status
+    this.optimizationPatterns = [
+      'duplicate_code',
+      'unused_imports',
+      'long_parameter_lists',
+      'large_classes',
+      'deep_inheritance',
+      'circular_dependencies',
+      'performance_anti_patterns'
     ];
-    
-    if (statuses.includes('unhealthy')) {
-      return { status: 'unhealthy', details: healthChecks };
-    } else if (statuses.includes('degraded')) {
-      return { status: 'degraded', details: healthChecks };
-    } else {
-      return { status: 'healthy', details: healthChecks };
-    }
+    this.monitoringHistory = [];
+    this.initializePaths();
   }
 
-  /**
-   * Update health status
-   * Invariant: Status updates maintain system safety
-   */
-  updateHealthStatus(healthStatus) {
-    this.healthStatus = healthStatus.status;
-    this.healthMetrics.set('lastCheck', {
-      timestamp: new Date().toISOString(),
-      status: healthStatus.status,
-      details: healthStatus.details
+  initializePaths() {
+    // Ensure monitoring and reports directories exist
+    [this.monitoringPath, this.reportsPath].forEach(dir => {
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
     });
-    
-    console.log(`[${this.agentName}] Health status updated: ${healthStatus.status}`);
   }
 
   /**
-   * Log health check
-   * Invariant: Logging maintains system safety
+   * Main monitoring method - scans entire system for integrity issues
    */
-  logHealthCheck(healthStatus) {
-    const logEntry = {
+  async performSystemScan() {
+    console.log('[system-integrity] Starting comprehensive system scan...');
+    
+    const scanResults = {
       timestamp: new Date().toISOString(),
-      agent: this.agentName,
-      status: healthStatus.status,
-      details: healthStatus.details,
-      type: 'health-check'
+      complexity_issues: await this.detectComplexityCreep(),
+      optimization_opportunities: await this.scanForOptimizations(),
+      architectural_debt: await this.identifyArchitecturalDebt(),
+      performance_bottlenecks: await this.detectPerformanceBottlenecks(),
+      code_quality_issues: await this.analyzeCodeQuality(),
+      recommendations: []
     };
+
+    // Generate actionable recommendations
+    scanResults.recommendations = await this.generateRecommendations(scanResults);
     
-    this.integrityLogs.push(logEntry);
-    console.log(`[${this.agentName}] Health check logged: ${healthStatus.status}`);
+    // Store monitoring history
+    this.monitoringHistory.push(scanResults);
+    await this.saveMonitoringData(scanResults);
+    
+    console.log(`[system-integrity] Scan complete. Found ${scanResults.complexity_issues.length} complexity issues, ${scanResults.optimization_opportunities.length} optimization opportunities.`);
+    
+    return scanResults;
   }
 
   /**
-   * Trigger optimizations
-   * Invariant: Optimizations maintain system safety
+   * Detect complexity creep across the system
    */
-  triggerOptimizations(healthStatus) {
-    console.log(`[${this.agentName}] Triggering optimizations for status: ${healthStatus.status}`);
+  async detectComplexityCreep() {
+    console.log('[system-integrity] Detecting complexity creep...');
     
-    // Identify optimization opportunities
-    const optimizations = this.identifyOptimizations(healthStatus);
+    const complexityIssues = [];
+    const files = await this.getAllCodeFiles();
     
-    // Execute safe optimizations
-    for (const optimization of optimizations) {
-      if (this.isOptimizationSafe(optimization)) {
-        this.executeOptimization(optimization);
-      } else {
-        this.flagForTesting(optimization);
+    for (const file of files) {
+      const analysis = await this.analyzeFileComplexity(file);
+      if (analysis.issues.length > 0) {
+        complexityIssues.push({
+          file: file,
+          issues: analysis.issues,
+          metrics: analysis.metrics,
+          severity: this.calculateSeverity(analysis.issues)
+        });
       }
     }
+    
+    return complexityIssues;
   }
 
   /**
-   * Identify optimization opportunities
-   * Invariant: Optimization identification maintains system safety
+   * Scan for system optimization opportunities
    */
-  identifyOptimizations(healthStatus) {
+  async scanForOptimizations() {
+    console.log('[system-integrity] Scanning for optimization opportunities...');
+    
+    const optimizations = [];
+    const files = await this.getAllCodeFiles();
+    
+    for (const file of files) {
+      const fileOptimizations = await this.analyzeFileForOptimizations(file);
+      if (fileOptimizations.length > 0) {
+        optimizations.push({
+          file: file,
+          optimizations: fileOptimizations
+        });
+      }
+    }
+    
+    return optimizations;
+  }
+
+  /**
+   * Identify architectural debt
+   */
+  async identifyArchitecturalDebt() {
+    console.log('[system-integrity] Identifying architectural debt...');
+    
+    const debtIssues = [];
+    
+    // Check for circular dependencies
+    const circularDeps = await this.detectCircularDependencies();
+    if (circularDeps.length > 0) {
+      debtIssues.push({
+        type: 'circular_dependencies',
+        description: 'Circular dependency chains detected',
+        files: circularDeps,
+        severity: 'high'
+      });
+    }
+    
+    // Check for violation of separation of concerns
+    const concernViolations = await this.detectConcernViolations();
+    if (concernViolations.length > 0) {
+      debtIssues.push({
+        type: 'separation_of_concerns',
+        description: 'Files mixing multiple concerns detected',
+        files: concernViolations,
+        severity: 'medium'
+      });
+    }
+    
+    // Check for missing abstractions
+    const missingAbstractions = await this.detectMissingAbstractions();
+    if (missingAbstractions.length > 0) {
+      debtIssues.push({
+        type: 'missing_abstractions',
+        description: 'Repeated patterns that could be abstracted',
+        patterns: missingAbstractions,
+        severity: 'medium'
+      });
+    }
+    
+    return debtIssues;
+  }
+
+  /**
+   * Detect performance bottlenecks
+   */
+  async detectPerformanceBottlenecks() {
+    console.log('[system-integrity] Detecting performance bottlenecks...');
+    
+    const bottlenecks = [];
+    const files = await this.getAllCodeFiles();
+    
+    for (const file of files) {
+      const content = fs.readFileSync(file, 'utf8');
+      
+      // Check for synchronous file operations
+      if (content.includes('fs.readFileSync') || content.includes('fs.writeFileSync')) {
+        bottlenecks.push({
+          file: file,
+          type: 'synchronous_io',
+          description: 'Synchronous file operations detected',
+          severity: 'medium',
+          recommendation: 'Consider using async/await with fs.promises'
+        });
+      }
+      
+      // Check for blocking operations
+      if (content.includes('execSync') || content.includes('spawnSync')) {
+        bottlenecks.push({
+          file: file,
+          type: 'blocking_operations',
+          description: 'Blocking operations detected',
+          severity: 'high',
+          recommendation: 'Consider using async alternatives'
+        });
+      }
+      
+      // Check for inefficient loops
+      const inefficientLoops = this.detectInefficientLoops(content);
+      if (inefficientLoops.length > 0) {
+        bottlenecks.push({
+          file: file,
+          type: 'inefficient_loops',
+          description: 'Potentially inefficient loops detected',
+          patterns: inefficientLoops,
+          severity: 'low',
+          recommendation: 'Review loop efficiency and consider optimization'
+        });
+      }
+    }
+    
+    return bottlenecks;
+  }
+
+  /**
+   * Analyze code quality metrics
+   */
+  async analyzeCodeQuality() {
+    console.log('[system-integrity] Analyzing code quality...');
+    
+    const qualityIssues = [];
+    const files = await this.getAllCodeFiles();
+    
+    for (const file of files) {
+      const content = fs.readFileSync(file, 'utf8');
+      const lines = content.split('\n');
+      
+      // Check for long files
+      if (lines.length > this.complexityThresholds.maxFileSize) {
+        qualityIssues.push({
+          file: file,
+          type: 'file_too_large',
+          metric: lines.length,
+          threshold: this.complexityThresholds.maxFileSize,
+          severity: 'medium',
+          recommendation: 'Consider breaking into smaller modules'
+        });
+      }
+      
+      // Check for missing documentation
+      if (!content.includes('/**') && !content.includes('//')) {
+        qualityIssues.push({
+          file: file,
+          type: 'missing_documentation',
+          severity: 'low',
+          recommendation: 'Add documentation for better maintainability'
+        });
+      }
+      
+      // Check for error handling
+      if (content.includes('throw new Error') && !content.includes('try {')) {
+        qualityIssues.push({
+          file: file,
+          type: 'missing_error_handling',
+          severity: 'medium',
+          recommendation: 'Add proper error handling with try-catch blocks'
+        });
+      }
+    }
+    
+    return qualityIssues;
+  }
+
+  /**
+   * Generate actionable recommendations based on scan results
+   */
+  async generateRecommendations(scanResults) {
+    const recommendations = [];
+    
+    // Complexity recommendations
+    if (scanResults.complexity_issues.length > 0) {
+      recommendations.push({
+        category: 'complexity_reduction',
+        priority: 'high',
+        description: 'Refactor complex files to improve maintainability',
+        actions: [
+          'Break large files into smaller modules',
+          'Extract complex functions into separate utilities',
+          'Reduce cyclomatic complexity through refactoring'
+        ],
+        affected_files: scanResults.complexity_issues.map(issue => issue.file)
+      });
+    }
+    
+    // Optimization recommendations
+    if (scanResults.optimization_opportunities.length > 0) {
+      recommendations.push({
+        category: 'performance_optimization',
+        priority: 'medium',
+        description: 'Implement performance optimizations',
+        actions: [
+          'Remove duplicate code',
+          'Optimize inefficient algorithms',
+          'Implement caching where appropriate'
+        ],
+        affected_files: scanResults.optimization_opportunities.map(opt => opt.file)
+      });
+    }
+    
+    // Architectural recommendations
+    if (scanResults.architectural_debt.length > 0) {
+      recommendations.push({
+        category: 'architectural_improvement',
+        priority: 'high',
+        description: 'Address architectural debt',
+        actions: [
+          'Resolve circular dependencies',
+          'Improve separation of concerns',
+          'Create missing abstractions'
+        ],
+        affected_areas: scanResults.architectural_debt.map(debt => debt.type)
+      });
+    }
+    
+    return recommendations;
+  }
+
+  /**
+   * Get all code files in the system
+   */
+  async getAllCodeFiles() {
+    const codeExtensions = ['.js', '.ts', '.jsx', '.tsx'];
+    const files = [];
+    
+    const scanDirectory = (dir) => {
+      const items = fs.readdirSync(dir);
+      
+      for (const item of items) {
+        const fullPath = path.join(dir, item);
+        const stat = fs.statSync(fullPath);
+        
+        if (stat.isDirectory() && !item.startsWith('.') && item !== 'node_modules') {
+          scanDirectory(fullPath);
+        } else if (stat.isFile() && codeExtensions.includes(path.extname(item))) {
+          files.push(fullPath);
+        }
+      }
+    };
+    
+    scanDirectory(__dirname + '/..');
+    return files;
+  }
+
+  /**
+   * Analyze file complexity
+   */
+  async analyzeFileComplexity(filePath) {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const lines = content.split('\n');
+    const issues = [];
+    const metrics = {
+      lines: lines.length,
+      functions: (content.match(/function\s+\w+/g) || []).length,
+      classes: (content.match(/class\s+\w+/g) || []).length,
+      imports: (content.match(/require\(/g) || []).length,
+      cyclomaticComplexity: this.calculateCyclomaticComplexity(content)
+    };
+    
+    // Check file size
+    if (lines.length > this.complexityThresholds.maxFileSize) {
+      issues.push({
+        type: 'file_too_large',
+        metric: lines.length,
+        threshold: this.complexityThresholds.maxFileSize
+      });
+    }
+    
+    // Check cyclomatic complexity
+    if (metrics.cyclomaticComplexity > this.complexityThresholds.maxCyclomaticComplexity) {
+      issues.push({
+        type: 'high_complexity',
+        metric: metrics.cyclomaticComplexity,
+        threshold: this.complexityThresholds.maxCyclomaticComplexity
+      });
+    }
+    
+    // Check dependency count
+    if (metrics.imports > this.complexityThresholds.maxDependencies) {
+      issues.push({
+        type: 'too_many_dependencies',
+        metric: metrics.imports,
+        threshold: this.complexityThresholds.maxDependencies
+      });
+    }
+    
+    return { issues, metrics };
+  }
+
+  /**
+   * Analyze file for optimization opportunities
+   */
+  async analyzeFileForOptimizations(filePath) {
+    const content = fs.readFileSync(filePath, 'utf8');
     const optimizations = [];
     
-    // Performance optimizations
-    if (healthStatus.details.performance.status === 'degraded') {
+    // Check for duplicate code patterns
+    const duplicatePatterns = this.detectDuplicateCode(content);
+    if (duplicatePatterns.length > 0) {
       optimizations.push({
-        type: 'performance',
-        description: 'Optimize system performance',
-        priority: 'high',
-        impact: 'medium'
+        type: 'duplicate_code',
+        description: 'Duplicate code patterns detected',
+        patterns: duplicatePatterns,
+        recommendation: 'Extract common functionality into reusable functions'
       });
     }
     
-    // Component optimizations
-    if (healthStatus.details.components.status === 'degraded') {
+    // Check for unused imports
+    const unusedImports = this.detectUnusedImports(content);
+    if (unusedImports.length > 0) {
       optimizations.push({
-        type: 'component',
-        description: 'Fix component issues',
-        priority: 'high',
-        impact: 'high'
+        type: 'unused_imports',
+        description: 'Unused imports detected',
+        imports: unusedImports,
+        recommendation: 'Remove unused imports to reduce bundle size'
       });
     }
     
-    // Learning optimizations
-    if (healthStatus.details.learning.status === 'degraded') {
+    // Check for inefficient patterns
+    const inefficientPatterns = this.detectInefficientPatterns(content);
+    if (inefficientPatterns.length > 0) {
       optimizations.push({
-        type: 'learning',
-        description: 'Optimize learning systems',
-        priority: 'medium',
-        impact: 'medium'
+        type: 'inefficient_patterns',
+        description: 'Inefficient code patterns detected',
+        patterns: inefficientPatterns,
+        recommendation: 'Optimize algorithms and data structures'
       });
     }
     
@@ -358,108 +436,215 @@ class SystemIntegrityAgent {
   }
 
   /**
-   * Check if optimization is safe
-   * Invariant: Safety checks maintain system safety
+   * Calculate cyclomatic complexity
    */
-  isOptimizationSafe(optimization) {
-    // High impact optimizations should be tested
-    if (optimization.impact === 'high') {
-      return false;
-    }
+  calculateCyclomaticComplexity(content) {
+    const complexityKeywords = [
+      'if', 'else', 'while', 'for', 'switch', 'case', 'catch', '&&', '||'
+    ];
     
-    // Critical components should be tested
-    if (optimization.type === 'component' && optimization.priority === 'high') {
-      return false;
-    }
-    
-    return true;
-  }
-
-  /**
-   * Execute optimization
-   * Invariant: Optimization execution maintains system safety
-   */
-  executeOptimization(optimization) {
-    console.log(`[${this.agentName}] Executing optimization: ${optimization.type}`);
-    
-    try {
-      // Execute optimization based on type
-      switch (optimization.type) {
-        case 'performance':
-          this.optimizePerformance();
-          break;
-        case 'learning':
-          this.optimizeLearning();
-          break;
-        default:
-          console.log(`[${this.agentName}] Unknown optimization type: ${optimization.type}`);
+    let complexity = 1; // Base complexity
+    for (const keyword of complexityKeywords) {
+      const matches = content.match(new RegExp(`\\b${keyword}\\b`, 'g'));
+      if (matches) {
+        complexity += matches.length;
       }
-      
-      // Log optimization
-      this.logOptimization(optimization, 'success');
-      
-    } catch (error) {
-      console.error(`[${this.agentName}] Optimization failed:`, error.message);
-      this.logOptimization(optimization, 'failure', error.message);
     }
+    
+    // Handle ternary operator separately
+    const ternaryMatches = content.match(/\?/g);
+    if (ternaryMatches) {
+      complexity += ternaryMatches.length;
+    }
+    
+    return complexity;
   }
 
   /**
-   * Flag optimization for testing
-   * Invariant: Testing flags maintain system safety
+   * Detect duplicate code patterns
    */
-  flagForTesting(optimization) {
-    console.log(`[${this.agentName}] Flagging optimization for testing: ${optimization.type}`);
+  detectDuplicateCode(content) {
+    const lines = content.split('\n');
+    const patterns = new Map();
+    const duplicates = [];
     
-    // Create testing flag
-    const testFlag = {
-      timestamp: new Date().toISOString(),
-      optimization: optimization,
-      status: 'flagged',
-      agent: this.agentName
-    };
+    for (let i = 0; i < lines.length - 2; i++) {
+      const pattern = lines.slice(i, i + 3).join('\n');
+      if (patterns.has(pattern)) {
+        duplicates.push({
+          pattern: pattern,
+          firstOccurrence: patterns.get(pattern),
+          duplicateOccurrence: i
+        });
+      } else {
+        patterns.set(pattern, i);
+      }
+    }
     
-    // Store test flag
-    this.storeTestFlag(testFlag);
-    
-    // Log flagging
-    this.logOptimization(optimization, 'flagged');
+    return duplicates;
   }
 
   /**
-   * Get agent status
-   * Invariant: Status reporting maintains system safety
+   * Detect unused imports
    */
-  getAgentStatus() {
+  detectUnusedImports(content) {
+    const imports = content.match(/require\(['"][^'"]+['"]\)/g) || [];
+    const unused = [];
+    
+    for (const importStatement of imports) {
+      const moduleName = importStatement.match(/require\(['"]([^'"]+)['"]\)/)[1];
+      const variableName = this.extractVariableName(importStatement);
+      
+      if (variableName && !content.includes(variableName + '.')) {
+        unused.push({
+          import: importStatement,
+          module: moduleName,
+          variable: variableName
+        });
+      }
+    }
+    
+    return unused;
+  }
+
+  /**
+   * Extract variable name from require statement
+   */
+  extractVariableName(requireStatement) {
+    const match = requireStatement.match(/const\s+(\w+)\s*=\s*require/);
+    return match ? match[1] : null;
+  }
+
+  /**
+   * Detect inefficient patterns
+   */
+  detectInefficientPatterns(content) {
+    const patterns = [];
+    
+    // Check for nested loops
+    if (content.includes('for') && content.includes('for')) {
+      patterns.push('nested_loops');
+    }
+    
+    // Check for synchronous operations in async context
+    if (content.includes('async') && content.includes('Sync')) {
+      patterns.push('sync_in_async');
+    }
+    
+    // Check for potential memory leaks
+    if (content.includes('setInterval') && !content.includes('clearInterval')) {
+      patterns.push('potential_memory_leak');
+    }
+    
+    return patterns;
+  }
+
+  /**
+   * Detect circular dependencies
+   */
+  async detectCircularDependencies() {
+    // Simplified circular dependency detection
+    // In a real implementation, this would build a dependency graph
+    return [];
+  }
+
+  /**
+   * Detect separation of concerns violations
+   */
+  async detectConcernViolations() {
+    // Simplified concern violation detection
+    return [];
+  }
+
+  /**
+   * Detect missing abstractions
+   */
+  async detectMissingAbstractions() {
+    // Simplified missing abstraction detection
+    return [];
+  }
+
+  /**
+   * Detect inefficient loops
+   */
+  detectInefficientLoops(content) {
+    const patterns = [];
+    
+    // Check for O(n²) patterns
+    if (content.includes('for') && content.includes('indexOf')) {
+      patterns.push('nested_search');
+    }
+    
+    return patterns;
+  }
+
+  /**
+   * Calculate severity based on issues
+   */
+  calculateSeverity(issues) {
+    const highSeverityCount = issues.filter(issue => 
+      issue.type === 'file_too_large' || issue.type === 'high_complexity'
+    ).length;
+    
+    if (highSeverityCount > 0) return 'high';
+    if (issues.length > 3) return 'medium';
+    return 'low';
+  }
+
+  /**
+   * Save monitoring data
+   */
+  async saveMonitoringData(scanResults) {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const filename = `system-integrity-scan-${timestamp}.json`;
+    const filepath = path.join(this.reportsPath, filename);
+    
+    fs.writeFileSync(filepath, JSON.stringify(scanResults, null, 2));
+    console.log(`[system-integrity] Scan results saved to ${filepath}`);
+  }
+
+  /**
+   * Generate monitoring report
+   */
+  async generateMonitoringReport() {
+    const latestScan = this.monitoringHistory[this.monitoringHistory.length - 1];
+    if (!latestScan) {
+      return { message: 'No monitoring data available' };
+    }
+    
     return {
-      agent: this.agentName,
-      status: this.healthStatus,
-      lastCheck: this.healthMetrics.get('lastCheck'),
-      logs: this.integrityLogs.slice(-10) // Last 10 logs
+      timestamp: latestScan.timestamp,
+      summary: {
+        total_issues: latestScan.complexity_issues.length + 
+                     latestScan.optimization_opportunities.length +
+                     latestScan.architectural_debt.length +
+                     latestScan.performance_bottlenecks.length +
+                     latestScan.code_quality_issues.length,
+        complexity_issues: latestScan.complexity_issues.length,
+        optimization_opportunities: latestScan.optimization_opportunities.length,
+        architectural_debt: latestScan.architectural_debt.length,
+        performance_bottlenecks: latestScan.performance_bottlenecks.length,
+        code_quality_issues: latestScan.code_quality_issues.length
+      },
+      recommendations: latestScan.recommendations,
+      monitoring_history: this.monitoringHistory.length
     };
   }
 
-  // Placeholder methods for actual implementation
-  checkSkillsFunctionality() { return true; }
-  checkMCPFunctionality() { return true; }
-  checkBackgroundAgentsFunctionality() { return true; }
-  checkLearningFunctionality() { return true; }
-  checkGitFunctionality() { return true; }
-  measureResponseTime() { return 100; }
-  measureMemoryUsage() { return 50; }
-  measureCPUUsage() { return 25; }
-  measureDiskUsage() { return 75; }
-  checkFileIntegrity() { return true; }
-  checkConfigurationIntegrity() { return true; }
-  checkSecurityIntegrity() { return true; }
-  checkDataIntegrity() { return true; }
-  determineComponentStatus(components) { return 'healthy'; }
-  determinePerformanceStatus(metrics) { return 'healthy'; }
-  determineIntegrityStatus(integrity) { return 'healthy'; }
-  optimizePerformance() { console.log('Optimizing performance'); }
-  optimizeLearning() { console.log('Optimizing learning'); }
-  logOptimization(optimization, status, error = null) { console.log(`Optimization ${status}: ${optimization.type}`); }
-  storeTestFlag(testFlag) { console.log('Test flag stored'); }
+  /**
+   * Get monitoring status
+   */
+  getMonitoringStatus() {
+    return {
+      agent_name: this.agentName,
+      monitoring_active: true,
+      scans_performed: this.monitoringHistory.length,
+      last_scan: this.monitoringHistory.length > 0 ? 
+        this.monitoringHistory[this.monitoringHistory.length - 1].timestamp : null,
+      thresholds: this.complexityThresholds,
+      optimization_patterns: this.optimizationPatterns
+    };
+  }
 }
 
 module.exports = SystemIntegrityAgent;

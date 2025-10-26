@@ -1,0 +1,19 @@
+{
+  "enabled": [
+    "market-intelligence"
+  ],
+  "disabled": [],
+  "autoLoad": true,
+  "extensions": {
+    "market-intelligence": {
+      "enabled": true,
+      "autoStart": false,
+      "config": {
+        "monitoringInterval": 86400000,
+        "filterThreshold": 0.6,
+        "trendThreshold": 0.7,
+        "digestFrequency": "weekly"
+      }
+    }
+  }
+}

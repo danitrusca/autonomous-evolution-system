@@ -5,6 +5,9 @@
 
 const fs = require('fs');
 const path = require('path');
+const ExtensionLoader = require('./extension-loader');
+const SystemIntegrityAgent = require('./agents/system-integrity-agent');
+const IdeaCaptureAgent = require('./agents/idea-capture-agent');
 
 class AutonomousEvolutionEngine {
   constructor() {
@@ -41,6 +44,191 @@ class AutonomousEvolutionEngine {
     this.metaCognitiveLayer = new MetaCognitiveLayer();
     this.selfAssessmentSystem = new SelfAssessmentSystem();
     this.architectureEvolutionEngine = new ArchitectureEvolutionEngine();
+    
+    // Initialize extension loader
+    this.extensionLoader = new ExtensionLoader();
+    this.extensions = new Map();
+    
+    // Initialize system integrity agent
+    this.systemIntegrityAgent = new SystemIntegrityAgent();
+    
+    // Initialize idea capture agent
+    this.ideaCaptureAgent = new IdeaCaptureAgent();
+  }
+
+  /**
+   * Initialize extensions
+   * Invariant: Extensions must be initialized safely
+   */
+  async initializeExtensions() {
+    try {
+      console.log('[autonomous-evolution] Initializing extensions...');
+      await this.extensionLoader.initializeExtensions();
+      
+      // Store loaded extensions
+      const loadedExtensions = this.extensionLoader.getLoadedExtensions();
+      loadedExtensions.forEach(extension => {
+        this.extensions.set(extension.name, extension);
+      });
+      
+      console.log(`[autonomous-evolution] Extensions initialized: ${this.extensions.size} loaded`);
+      
+    } catch (error) {
+      console.error('[autonomous-evolution] Error initializing extensions:', error.message);
+    }
+  }
+
+  /**
+   * Get extension by name
+   * Invariant: Extension must exist
+   */
+  getExtension(extensionName) {
+    const extension = this.extensions.get(extensionName);
+    if (!extension) {
+      throw new Error(`Extension ${extensionName} not found`);
+    }
+    return extension;
+  }
+
+  /**
+   * Get all loaded extensions
+   * Invariant: Extension list must be accurate
+   */
+  getLoadedExtensions() {
+    return Array.from(this.extensions.values());
+  }
+
+  /**
+   * Get extension status
+   * Invariant: Extension status must be comprehensive
+   */
+  getExtensionStatus() {
+    return this.extensionLoader.getExtensionStatus();
+  }
+
+  /**
+   * System Integrity Monitoring
+   * Monitors system for complexity creep and optimization opportunities
+   */
+  async performSystemIntegrityScan() {
+    console.log('[autonomous-evolution] Performing system integrity scan...');
+    
+    try {
+      const scanResults = await this.systemIntegrityAgent.performSystemScan();
+      
+      // Store integrity scan results
+      this.evolutionHistory.push({
+        timestamp: new Date().toISOString(),
+        type: 'system_integrity_scan',
+        results: scanResults
+      });
+      
+      console.log(`[autonomous-evolution] System integrity scan complete. Found ${scanResults.complexity_issues.length} complexity issues, ${scanResults.optimization_opportunities.length} optimization opportunities.`);
+      
+      return scanResults;
+    } catch (error) {
+      console.error('[autonomous-evolution] Error performing system integrity scan:', error.message);
+      throw error;
+    }
+  }
+
+  /**
+   * Get system integrity status
+   */
+  getSystemIntegrityStatus() {
+    return this.systemIntegrityAgent.getMonitoringStatus();
+  }
+
+  /**
+   * Generate system integrity report
+   */
+  async generateSystemIntegrityReport() {
+    return await this.systemIntegrityAgent.generateMonitoringReport();
+  }
+
+  /**
+   * Idea Capture and Management
+   * Captures, categorizes, and manages ideas for continuous innovation
+   */
+  async captureIdea(ideaData) {
+    console.log('[autonomous-evolution] Capturing idea...');
+    
+    try {
+      const capturedIdea = await this.ideaCaptureAgent.captureIdea(ideaData);
+      
+      // Store idea capture in evolution history
+      this.evolutionHistory.push({
+        timestamp: new Date().toISOString(),
+        type: 'idea_captured',
+        idea_id: capturedIdea.id,
+        idea_title: capturedIdea.title,
+        category: capturedIdea.category,
+        priority: capturedIdea.priority
+      });
+      
+      console.log(`[autonomous-evolution] Idea captured: ${capturedIdea.title} (${capturedIdea.category})`);
+      
+      return capturedIdea;
+    } catch (error) {
+      console.error('[autonomous-evolution] Error capturing idea:', error.message);
+      throw error;
+    }
+  }
+
+  /**
+   * Capture user idea
+   */
+  async captureUserIdea(userInput, context = {}) {
+    return await this.ideaCaptureAgent.captureUserIdea(userInput, context);
+  }
+
+  /**
+   * Capture system analysis idea
+   */
+  async captureSystemIdea(analysisData, context = {}) {
+    return await this.ideaCaptureAgent.captureSystemIdea(analysisData, context);
+  }
+
+  /**
+   * Capture pattern detection idea
+   */
+  async capturePatternIdea(patternData, context = {}) {
+    return await this.ideaCaptureAgent.capturePatternIdea(patternData, context);
+  }
+
+  /**
+   * Capture external signal idea
+   */
+  async captureExternalIdea(signalData, context = {}) {
+    return await this.ideaCaptureAgent.captureExternalIdea(signalData, context);
+  }
+
+  /**
+   * Search ideas
+   */
+  async searchIdeas(query, filters = {}) {
+    return await this.ideaCaptureAgent.searchIdeas(query, filters);
+  }
+
+  /**
+   * Get idea by ID
+   */
+  async getIdea(ideaId) {
+    return await this.ideaCaptureAgent.getIdea(ideaId);
+  }
+
+  /**
+   * Generate idea capture report
+   */
+  async generateIdeaReport() {
+    return await this.ideaCaptureAgent.generateIdeaReport();
+  }
+
+  /**
+   * Get idea capture status
+   */
+  getIdeaCaptureStatus() {
+    return this.ideaCaptureAgent.getAgentStatus();
   }
 
   /**
