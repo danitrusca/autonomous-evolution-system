@@ -1,6 +1,6 @@
 {
   "name": "autonomous-evolution-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A comprehensive, self-learning AI development system that provides autonomous evolution capabilities, pattern recognition, and cross-session learning for AI-assisted development.",
   "main": "distributed-startup.js",
   "scripts": {

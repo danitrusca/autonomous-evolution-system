@@ -6,12 +6,14 @@
 const SystemIntegrityAgent = require('./system-integrity-agent');
 const ChangeImpactAgent = require('./change-impact-agent');
 const AgentCreator = require('./agent-creator');
+const GitVersioningIntegration = require('./git-versioning-integration');
 
 class AgentCoordinator {
   constructor() {
     this.coordinatorName = 'agent-coordinator';
     this.agents = new Map();
     this.coordinationLogs = [];
+    this.versioningIntegration = new GitVersioningIntegration();
     this.startCoordination();
   }
 
@@ -50,6 +52,9 @@ class AgentCoordinator {
     const agentCreator = new AgentCreator();
     this.agents.set('agent-creator', agentCreator);
     
+    // Git Versioning Integration
+    this.agents.set('git-versioning', this.versioningIntegration);
+    
     console.log(`[${this.coordinatorName}] Agents initialized: ${this.agents.size}`);
   }
 
@@ -69,6 +74,11 @@ class AgentCoordinator {
     setInterval(() => {
       this.monitorAgentHealth();
     }, 60000); // 1 minute
+    
+    // Monitor Git commits for versioning every 2 minutes
+    setInterval(() => {
+      this.monitorCommitsForVersioning();
+    }, 120000); // 2 minutes
   }
 
   /**
@@ -263,11 +273,21 @@ class AgentCoordinator {
     console.log(`[${this.coordinatorName}] Monitoring agent health`);
     
     for (const [name, agent] of this.agents) {
-      const status = agent.getAgentStatus();
-      
-      if (status.status === 'unhealthy') {
-        console.log(`[${this.coordinatorName}] Agent unhealthy: ${name}`);
-        this.handleUnhealthyAgent(name, agent);
+      try {
+        // Check if agent has getAgentStatus method
+        if (typeof agent.getAgentStatus === 'function') {
+          const status = agent.getAgentStatus();
+          
+          if (status && status.status === 'unhealthy') {
+            console.log(`[${this.coordinatorName}] Agent unhealthy: ${name}`);
+            this.handleUnhealthyAgent(name, agent);
+          }
+        } else {
+          // For agents without getAgentStatus, assume healthy
+          console.log(`[${this.coordinatorName}] Agent ${name} status check not available, assuming healthy`);
+        }
+      } catch (error) {
+        console.error(`[${this.coordinatorName}] Error checking agent ${name} health:`, error.message);
       }
     }
   }
@@ -466,6 +486,42 @@ class AgentCoordinator {
   
   alertOtherAgents(agentName, agent) {
     console.log(`Other agents alerted about: ${agentName}`);
+  }
+
+  /**
+   * Monitor commits for versioning
+   * Invariant: Versioning monitoring maintains system safety
+   */
+  monitorCommitsForVersioning() {
+    try {
+      console.log(`[${this.coordinatorName}] Monitoring commits for versioning`);
+      
+      // Use the versioning integration to monitor recent commits
+      this.versioningIntegration.monitorRecentCommits(3);
+      
+      // Log versioning status
+      const versioningStatus = this.versioningIntegration.getVersioningStatus();
+      console.log(`[${this.coordinatorName}] Versioning status: ${JSON.stringify(versioningStatus)}`);
+      
+    } catch (error) {
+      console.error(`[${this.coordinatorName}] Error monitoring commits for versioning:`, error);
+    }
+  }
+
+  /**
+   * Get versioning statistics
+   * Invariant: Statistics are always accurate
+   */
+  getVersioningStatistics() {
+    return this.versioningIntegration.getVersioningStatistics();
+  }
+
+  /**
+   * Manually trigger versioning for a commit
+   * Invariant: Manual versioning is safe
+   */
+  manualVersionCommit(commitHash, version = null) {
+    return this.versioningIntegration.manualVersionCommit(commitHash, version);
   }
   
   determineOverallHealth(agentStatuses) {

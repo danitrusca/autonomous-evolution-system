@@ -134,6 +134,9 @@ class IdeaCaptureAgent {
       // Update IDEA_JOURNAL
       await this.updateIdeaJournal(idea);
       
+      // Update unified evolution journal
+      await this.updateEvolutionJournal(idea);
+      
       console.log(`[idea-capture] Idea captured: ${ideaId} - ${idea.title}`);
       
       return idea;
@@ -758,6 +761,96 @@ ${idea.evolution.evolution_history.map(ev => `- ${ev.timestamp}: ${ev.action} - 
     }
     
     return potential;
+  }
+
+  /**
+   * Update unified evolution journal with idea
+   * Invariant: Journal updates maintain system coherence
+   */
+  async updateEvolutionJournal(idea) {
+    try {
+      const journalPath = path.join(__dirname, '..', 'docs', 'EVOLUTION_JOURNAL.md');
+      
+      if (!fs.existsSync(journalPath)) {
+        console.warn(`[${this.agentName}] Evolution journal not found at ${journalPath}`);
+        return;
+      }
+      
+      let journalContent = fs.readFileSync(journalPath, 'utf8');
+      
+      // Generate idea entry
+      const ideaEntry = this.generateIdeaEntry(idea);
+      
+      // Insert idea entry in the Revolutionary Ideas section
+      const ideasSectionRegex = /## Revolutionary Ideas\n\n(### [^\n]+\n(?:\*\*[^*]+\*\*: [^\n]+\n)*[^#]*)+/;
+      const match = journalContent.match(ideasSectionRegex);
+      
+      if (match) {
+        // Insert new idea entry after the first idea
+        const firstIdeaEnd = journalContent.indexOf('### ', journalContent.indexOf('## Revolutionary Ideas'));
+        const nextIdeaStart = journalContent.indexOf('### ', firstIdeaEnd + 1);
+        
+        if (nextIdeaStart === -1) {
+          // Insert at the end of the ideas section
+          const ideasEnd = journalContent.indexOf('\n## Learning Patterns');
+          journalContent = journalContent.slice(0, ideasEnd) + '\n\n' + ideaEntry + journalContent.slice(ideasEnd);
+        } else {
+          // Insert between first and second idea
+          journalContent = journalContent.slice(0, nextIdeaStart) + ideaEntry + '\n\n' + journalContent.slice(nextIdeaStart);
+        }
+      } else {
+        // Fallback: insert after Revolutionary Ideas header
+        const ideasHeader = journalContent.indexOf('## Revolutionary Ideas');
+        const nextSection = journalContent.indexOf('##', ideasHeader + 1);
+        journalContent = journalContent.slice(0, nextSection) + '\n\n' + ideaEntry + '\n\n' + journalContent.slice(nextSection);
+      }
+      
+      // Write updated journal
+      fs.writeFileSync(journalPath, journalContent);
+      console.log(`[${this.agentName}] Updated evolution journal with idea ${idea.id}`);
+      
+    } catch (error) {
+      console.error(`[${this.agentName}] Error updating evolution journal:`, error);
+    }
+  }
+
+  /**
+   * Generate idea entry for evolution journal
+   * Invariant: Idea entry is always valid
+   */
+  generateIdeaEntry(idea) {
+    const date = new Date(idea.timestamp).toISOString().split('T')[0];
+    const title = idea.title || 'Untitled Idea';
+    const description = idea.description || idea.content || '';
+    const category = idea.category || 'general';
+    const priority = idea.priority || 'medium';
+    const evolutionPotential = idea.metadata?.evolution_potential || 'medium';
+    const impactPotential = idea.metadata?.impact_potential || 'medium';
+    const implementationComplexity = idea.metadata?.implementation_complexity || 'medium';
+    
+    return `### Idea ${this.ideaCounter}: ${title}
+**ID**: \`${idea.id}\`
+**Status**: ${idea.status}
+**Priority**: ${priority}
+**Category**: ${category}
+**Evolution Potential**: ${evolutionPotential}
+**Impact Potential**: ${impactPotential}
+**Implementation Complexity**: ${implementationComplexity}
+
+**The Idea**: ${description}
+
+**Revolutionary Potential**:
+- **Autonomous Capability**: ${evolutionPotential} potential for autonomous implementation
+- **System Impact**: ${impactPotential} impact on system capabilities
+- **Implementation Feasibility**: ${implementationComplexity} complexity - requires planning
+
+**Tags**: ${idea.tags?.join(', ') || 'none'}
+**Source**: ${idea.source}
+**Context**: ${idea.metadata?.context || 'general'}
+
+**Evolution History**:
+- **${date}**: Captured and analyzed
+- **Future**: Potential for implementation and evolution`;
   }
 
   /**
