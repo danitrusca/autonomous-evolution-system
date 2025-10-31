@@ -70,6 +70,66 @@ The Autonomous Evolution System uses a **multi-agent architecture** where specia
 - **Integration**: Creates agents as needed by the Agent Coordinator
 - **Documentation**: See JSDoc in `agents/agent-creator.js`
 
+## 🧠 **Meta-Learning and Orchestration Agents**
+
+### **Meta Learning Agent**
+- **Purpose**: Learns how to learn more effectively by analyzing patterns in problem-solving approaches
+- **Key Capabilities**: Pattern analysis, solution template generation, meta-insight extraction, evolution planning
+- **Integration**: Feeds evolution plans and insights to the Evolution Engine
+- **Documentation**: [META_LEARNING_AGENT.md](./META_LEARNING_AGENT.md)
+
+### **Meta Orchestrator**
+- **Purpose**: Keeps the triad (rules, skills, agents) in harmonic proportion
+- **Key Capabilities**: Harmony monitoring, system re-balancing, continuous optimization
+- **Integration**: Monitors and optimizes all three system layers
+- **Documentation**: [META_ORCHESTRATOR.md](./META_ORCHESTRATOR.md)
+
+### **Epistemic Humility Agent**
+- **Purpose**: Manages uncertainty acknowledgment and confidence calibration
+- **Key Capabilities**: Confidence assessment, uncertainty tracking, confidence calibration, knowledge boundary management
+- **Integration**: Provides confidence calibration for all decision-making systems
+- **Documentation**: [EPISTEMIC_HUMILITY_AGENT.md](./EPISTEMIC_HUMILITY_AGENT.md)
+
+## 🧠 **Psychological System Agents**
+
+### **Technical-Psychological Analyzer**
+- **Purpose**: Analyzes technical errors with dual-layer approach (technical + psychological)
+- **Key Capabilities**: Dual-layer error analysis, psychological pattern recognition, connection discovery
+- **Integration**: Works with Connection Discoverer and Mistake Prevention Engine
+- **Documentation**: [TECHNICAL_PSYCHOLOGICAL_ANALYZER.md](./TECHNICAL_PSYCHOLOGICAL_ANALYZER.md)
+
+### **Psychological Decision Monitor**
+- **Purpose**: Monitors decision-making patterns and prevents psychological mistakes
+- **Key Capabilities**: Decision monitoring, bias detection, stress identification, recommendations
+- **Integration**: Provides psychological layer for mistake prevention
+- **Documentation**: [PSYCHOLOGICAL_DECISION_MONITOR.md](./PSYCHOLOGICAL_DECISION_MONITOR.md)
+
+### **Connection Discoverer**
+- **Purpose**: Discovers patterns connecting technical errors to psychological root causes
+- **Key Capabilities**: Connection discovery, pattern recognition, learning system
+- **Integration**: Works with Technical-Psychological Analyzer and Mistake Prevention Engine
+- **Documentation**: [CONNECTION_DISCOVERER.md](./CONNECTION_DISCOVERER.md)
+
+## 🔧 **Support and Integration Agents**
+
+### **Documentation Updater**
+- **Purpose**: Automatically updates all related documentation when systems are implemented
+- **Key Capabilities**: Automatic documentation updates, documentation generation, consistency maintenance
+- **Integration**: Triggered after system implementations, updates all documentation files
+- **Documentation**: [DOCUMENTATION_UPDATER.md](./DOCUMENTATION_UPDATER.md)
+
+### **Git Versioning Integration**
+- **Purpose**: Bridges autonomous versioning agent with Git operations
+- **Key Capabilities**: Commit monitoring, automatic versioning, version analysis, Git integration
+- **Integration**: Works with Autonomous Versioning Agent and Git system
+- **Documentation**: [GIT_VERSIONING_INTEGRATION.md](./GIT_VERSIONING_INTEGRATION.md)
+
+### **Principles Engine**
+- **Purpose**: Provides access to the principles library for autonomous decision making
+- **Key Capabilities**: Principle access, principle suggestions, principle statistics
+- **Integration**: Provides principles to all decision-making systems
+- **Documentation**: [PRINCIPLES_ENGINE.md](./PRINCIPLES_ENGINE.md)
+
 ## 🔄 **Agent Collaboration Patterns**
 
 ### **Health Monitoring Chain**
@@ -80,9 +140,17 @@ The Autonomous Evolution System uses a **multi-agent architecture** where specia
 
 ### **Evolution Cycle**
 1. **Idea Capture Agent** collects ideas and insights
-2. **Agent Creator** creates new agents for new capabilities
-3. **System Integrity Agent** monitors evolution impact
-4. **Agent Coordinator** manages the evolution process
+2. **Meta Learning Agent** analyzes patterns and generates solution templates
+3. **Agent Creator** creates new agents for new capabilities
+4. **System Integrity Agent** monitors evolution impact
+5. **Meta Orchestrator** maintains system harmony during evolution
+6. **Agent Coordinator** manages the evolution process
+
+### **Psychological Learning Cycle**
+1. **Technical-Psychological Analyzer** analyzes errors with dual-layer approach
+2. **Connection Discoverer** discovers psychological-technical connections
+3. **Psychological Decision Monitor** monitors decisions for biases
+4. **Mistake Prevention Engine** prevents errors at psychological source
 
 ### **Change Management Flow**
 1. **Change Impact Agent** analyzes proposed changes

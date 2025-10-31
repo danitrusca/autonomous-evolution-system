@@ -1,0 +1,96 @@
+{
+  "last": {
+    "ts": "2025-10-31",
+    "average_saved_percent": 16.3
+  },
+  "history": [
+    {
+      "ts": "2025-10-30",
+      "average_saved_percent": -108.7
+    },
+    {
+      "ts": "2025-10-30",
+      "average_saved_percent": 16.3
+    },
+    {
+      "ts": "2025-10-31",
+      "average_saved_percent": 16.3
+    }
+  ],
+  "last_rows": [
+    {
+      "file": "verbose.txt",
+      "mode": "strip-fillers",
+      "before": {
+        "chars": 235,
+        "tokens": 59,
+        "model": "gpt-4o-mini"
+      },
+      "after": {
+        "chars": 128,
+        "tokens": 32,
+        "model": "gpt-4o-mini"
+      },
+      "percent": 45.8,
+      "rules": [
+        "strip-fillers"
+      ]
+    },
+    {
+      "file": "large.json",
+      "mode": "strip-fillers",
+      "before": {
+        "chars": 431,
+        "tokens": 108,
+        "model": "gpt-4o-mini"
+      },
+      "after": {
+        "chars": 415,
+        "tokens": 104,
+        "model": "gpt-4o-mini"
+      },
+      "percent": 3.7,
+      "rules": [
+        "strip-fillers"
+      ]
+    },
+    {
+      "file": "mixed.md",
+      "mode": "strip-fillers",
+      "before": {
+        "chars": 301,
+        "tokens": 76,
+        "model": "gpt-4o-mini"
+      },
+      "after": {
+        "chars": 253,
+        "tokens": 64,
+        "model": "gpt-4o-mini"
+      },
+      "percent": 15.8,
+      "rules": [
+        "strip-fillers"
+      ]
+    },
+    {
+      "file": "diff-example",
+      "mode": "diff",
+      "before": {
+        "chars": 31,
+        "tokens": 10,
+        "model": "gpt-4o-mini",
+        "note": "Heuristic – Code Context"
+      },
+      "after": {
+        "chars": 143,
+        "tokens": 42,
+        "model": "gpt-4o-mini",
+        "note": "Heuristic – Code Context"
+      },
+      "percent": 0,
+      "rules": [
+        "diff-only"
+      ]
+    }
+  ]
+}

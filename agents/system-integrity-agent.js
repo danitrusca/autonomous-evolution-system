@@ -173,7 +173,26 @@ class SystemIntegrityAgent {
       'performance_anti_patterns'
     ];
     this.monitoringHistory = [];
+    this.tokenOptimizer = null;
     this.initializePaths();
+    this.initializeTokenOptimizer();
+  }
+
+  /**
+   * Initialize token optimizer (optional, gracefully handles if unavailable)
+   */
+  initializeTokenOptimizer() {
+    try {
+      const { getTokenOptimizer } = require('../utils/token-optimizer.js');
+      this.tokenOptimizer = getTokenOptimizer();
+      // Initialize async (won't block if not ready)
+      this.tokenOptimizer.initialize().catch(() => {
+        // Silent fail - token optimizer is optional
+      });
+    } catch (error) {
+      // Token optimizer not available - system continues normally
+      this.tokenOptimizer = null;
+    }
   }
 
   initializePaths() {
@@ -729,13 +748,25 @@ class SystemIntegrityAgent {
 
   /**
    * Save monitoring data
+   * Optionally optimizes JSON output if token optimizer is available
    */
   async saveMonitoringData(scanResults) {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = `system-integrity-scan-${timestamp}.json`;
     const filepath = path.join(this.reportsPath, filename);
     
-    fs.writeFileSync(filepath, JSON.stringify(scanResults, null, 2));
+    let jsonOutput = JSON.stringify(scanResults, null, 2);
+    
+    // Optimize JSON output if token optimizer is available and file is large
+    if (this.tokenOptimizer && this.tokenOptimizer.isAvailable() && jsonOutput.length > 10000) {
+      const optimized = this.tokenOptimizer.minifyJSON(jsonOutput);
+      if (optimized.available && optimized.savingsPercent > 10) {
+        jsonOutput = optimized.optimized;
+        console.log(`[system-integrity] JSON optimized: ${optimized.savingsPercent.toFixed(1)}% token savings`);
+      }
+    }
+    
+    fs.writeFileSync(filepath, jsonOutput);
     console.log(`[system-integrity] Scan results saved to ${filepath}`);
   }
 
@@ -768,6 +799,21 @@ class SystemIntegrityAgent {
   }
 
   /**
+   * Optimize large text output (helper method)
+   * @param {string} text - Text to optimize
+   * @param {Object} options - Optimization options
+   * @returns {string} - Optimized text
+   */
+  optimizeOutput(text, options = {}) {
+    if (!this.tokenOptimizer || !this.tokenOptimizer.isAvailable()) {
+      return text;
+    }
+    
+    const result = this.tokenOptimizer.optimizeContext(text, options);
+    return result.available && result.savingsPercent > 5 ? result.optimized : text;
+  }
+
+  /**
    * Get monitoring status
    */
   getMonitoringStatus() {
@@ -778,6 +824,7 @@ class SystemIntegrityAgent {
       last_scan: this.monitoringHistory.length > 0 ? 
         this.monitoringHistory[this.monitoringHistory.length - 1].timestamp : null,
       thresholds: this.complexityThresholds,
+      token_optimizer_available: this.tokenOptimizer ? this.tokenOptimizer.isAvailable() : false,
       optimization_patterns: this.optimizationPatterns
     };
   }

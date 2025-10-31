@@ -1,0 +1,16 @@
+{
+  "users": [
+    { "id": 1, "name": "Alice", "roles": ["admin", "editor"], "meta": { "active": true, "notes": "   spaced   " } },
+    { "id": 2, "name": "Bob",   "roles": ["viewer"], "meta": { "active": false, "notes": "   many   spaces   " } }
+  ],
+  "config": {
+    "features": {
+      "beta": true,
+      "logging":   {
+        "level":   "info",
+        "targets": [ "file",   "stdout" ]
+      }
+    }
+  }
+}
+

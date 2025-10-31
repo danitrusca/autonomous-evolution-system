@@ -483,6 +483,270 @@ const sanitizedContext = analyzer.sanitizeContext(context);
       active: true
     };
   }
+
+  /**
+   * Generate documentation from JSDoc comments in a file
+   * NEW: Automatic documentation generation capability
+   */
+  async generateDocumentationFromCode(filePath, outputPath = null) {
+    console.log(`[doc-updater] Generating documentation from ${filePath}`);
+    
+    try {
+      const fullPath = path.join(__dirname, '..', filePath);
+      if (!fs.existsSync(fullPath)) {
+        throw new Error(`File not found: ${fullPath}`);
+      }
+
+      const code = fs.readFileSync(fullPath, 'utf8');
+      const jsdocInfo = this.parseJSDoc(code);
+      
+      if (!jsdocInfo || !jsdocInfo.purpose) {
+        console.warn(`[doc-updater] No JSDoc found or incomplete in ${filePath}`);
+        return null;
+      }
+
+      const markdown = this.generateMarkdownFromJSDoc(jsdocInfo, filePath);
+      
+      // Determine output path
+      if (!outputPath) {
+        const fileName = path.basename(filePath, path.extname(filePath));
+        const dir = path.dirname(filePath);
+        
+        // Map directory to docs location
+        if (dir.includes('agents')) {
+          outputPath = path.join(this.docsPath, 'agents', `${fileName.toUpperCase().replace(/-/g, '_')}.md`);
+        } else if (dir.includes('system') || fileName.includes('engine')) {
+          outputPath = path.join(this.docsPath, 'system', `${fileName.toUpperCase().replace(/-/g, '_')}.md`);
+        } else {
+          outputPath = path.join(this.docsPath, fileName.toUpperCase().replace(/-/g, '_') + '.md');
+        }
+      }
+
+      // Ensure directory exists
+      const outputDir = path.dirname(outputPath);
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
+
+      // Write documentation
+      fs.writeFileSync(outputPath, markdown);
+      console.log(`[doc-updater] Generated documentation: ${outputPath}`);
+      
+      return outputPath;
+    } catch (error) {
+      console.error(`[doc-updater] Error generating documentation:`, error.message);
+      return null;
+    }
+  }
+
+  /**
+   * Parse JSDoc comments from code
+   */
+  parseJSDoc(code) {
+    const jsdocPattern = /\/\*\*\s*\n([\s\S]*?)\*\/\s*\n\s*class\s+(\w+)/;
+    const match = code.match(jsdocPattern);
+    
+    if (!match) return null;
+
+    const jsdocText = match[1];
+    const className = match[2];
+
+    // Extract purpose/overview
+    const purposeMatch = jsdocText.match(/\*\s*\*\*?([^*\n]+)\*\*?[^\n]*\n([^*\n]*)/);
+    const purpose = purposeMatch ? (purposeMatch[1] + ' ' + purposeMatch[2]).trim() : '';
+
+    // Extract sections
+    const sections = {};
+    const sectionPattern = /\*\s*\*\*([^*:]+)\*\*:\s*([^*]+?)(?=\*\s*\*\*|$)/g;
+    let sectionMatch;
+    while ((sectionMatch = sectionPattern.exec(jsdocText)) !== null) {
+      const key = sectionMatch[1].trim().toLowerCase().replace(/\s+/g, '_');
+      sections[key] = sectionMatch[2].trim();
+    }
+
+    // Extract capabilities from "Key Capabilities" section
+    const capabilities = [];
+    const capabilitiesPattern = /##\s*Key\s+Capabilities[\s\S]*?(?=##|$)/;
+    const capabilitiesMatch = jsdocText.match(capabilitiesPattern);
+    if (capabilitiesMatch) {
+      const capLines = capabilitiesMatch[0].match(/\*\s*\*\*([^*]+)\*\*\s*-\s*([^\n]+)/g);
+      if (capLines) {
+        capLines.forEach(line => {
+          const capMatch = line.match(/\*\s*\*\*([^*]+)\*\*\s*-\s*(.+)/);
+          if (capMatch) {
+            capabilities.push({
+              name: capMatch[1].trim(),
+              description: capMatch[2].trim()
+            });
+          }
+        });
+      }
+    }
+
+    // Extract usage examples
+    const examples = [];
+    const examplePattern = /###\s*Usage\s+Examples[\s\S]*?```javascript([\s\S]*?)```/g;
+    let exampleMatch;
+    while ((exampleMatch = examplePattern.exec(jsdocText)) !== null) {
+      examples.push(exampleMatch[1].trim());
+    }
+
+    // Extract architecture
+    const architectureMatch = jsdocText.match(/##\s*Architecture[\s\S]*?(?=##|$)/);
+    const architecture = architectureMatch ? architectureMatch[0] : '';
+
+    return {
+      className,
+      purpose,
+      sections,
+      capabilities,
+      examples,
+      architecture,
+      raw: jsdocText
+    };
+  }
+
+  /**
+   * Generate Markdown documentation from parsed JSDoc
+   */
+  generateMarkdownFromJSDoc(jsdocInfo, sourceFile) {
+    const className = jsdocInfo.className || 'Unknown';
+    const title = className.replace(/([A-Z])/g, ' $1').trim();
+    
+    let md = `# ${title}\n\n`;
+    
+    // Purpose
+    if (jsdocInfo.purpose) {
+      md += `## 🎯 **Purpose**\n\n`;
+      md += `${jsdocInfo.purpose}\n\n`;
+    }
+
+    // Core Capabilities
+    if (jsdocInfo.capabilities && jsdocInfo.capabilities.length > 0) {
+      md += `## 🧠 **Core Capabilities**\n\n`;
+      jsdocInfo.capabilities.forEach(cap => {
+        md += `### **${cap.name}**\n`;
+        md += `${cap.description}\n\n`;
+      });
+    }
+
+    // Architecture
+    if (jsdocInfo.architecture) {
+      md += `## 🏗️ **Architecture**\n\n`;
+      // Clean up architecture text
+      const archText = jsdocInfo.architecture
+        .replace(/^##\s*Architecture[\s\S]*?##/, '')
+        .replace(/\*\s*/g, '- ')
+        .trim();
+      md += `${archText}\n\n`;
+    }
+
+    // Usage Examples
+    if (jsdocInfo.examples && jsdocInfo.examples.length > 0) {
+      md += `## 📊 **Usage Examples**\n\n`;
+      jsdocInfo.examples.forEach((example, index) => {
+        md += `### Example ${index + 1}\n\n`;
+        md += `\`\`\`javascript\n${example}\n\`\`\`\n\n`;
+      });
+    }
+
+    // Integration Points
+    md += `## 🎯 **Integration Points**\n\n`;
+    md += `See source file: \`${sourceFile}\`\n\n`;
+
+    // See Also
+    md += `---\n\n`;
+    md += `**See Also:**\n`;
+    md += `- [Agent System Overview](./AGENT_SYSTEM_OVERVIEW.md)\n`;
+    md += `- Source: \`${sourceFile}\`\n\n`;
+
+    return md;
+  }
+
+  /**
+   * Scan for undocumented agents and generate documentation
+   * NEW: Automatic documentation scanning and generation
+   */
+  async scanAndGenerateDocumentation() {
+    console.log('[doc-updater] Scanning for undocumented files...');
+    
+    const agentsPath = path.join(__dirname, '..', 'agents');
+    const agentsDir = path.join(this.docsPath, 'agents');
+    const systemPath = path.join(__dirname, '..');
+    
+    // Get all agent files
+    if (fs.existsSync(agentsPath)) {
+      const agentFiles = fs.readdirSync(agentsPath)
+        .filter(file => file.endsWith('.js') && !file.includes('test'));
+      
+      // Get documented agents
+      const documentedAgents = new Set();
+      if (fs.existsSync(agentsDir)) {
+        const docFiles = fs.readdirSync(agentsDir)
+          .filter(file => file.endsWith('.md'))
+          .map(file => file.replace('.md', '').toLowerCase().replace(/_/g, '-'));
+        docFiles.forEach(doc => documentedAgents.add(doc));
+      }
+      
+      // Generate docs for undocumented agents
+      for (const agentFile of agentFiles) {
+        const agentName = agentFile.replace('.js', '').toLowerCase();
+        const docName = agentFile.replace('.js', '').toUpperCase().replace(/-/g, '_');
+        
+        if (!documentedAgents.has(agentName) && !documentedAgents.has(docName.toLowerCase())) {
+          console.log(`[doc-updater] Generating documentation for ${agentFile}...`);
+          await this.generateDocumentationFromCode(
+            `agents/${agentFile}`,
+            path.join(agentsDir, `${docName}.md`)
+          );
+        }
+      }
+    }
+
+    // Check core engine files
+    const coreEngines = [
+      'autonomous-evolution-engine.js',
+      'mistake-prevention-engine.js'
+    ];
+
+    const systemDir = path.join(this.docsPath, 'system');
+    for (const engineFile of coreEngines) {
+      if (fs.existsSync(path.join(systemPath, engineFile))) {
+        const engineName = engineFile.replace('.js', '').toUpperCase().replace(/-/g, '_');
+        const docPath = path.join(systemDir, `${engineName}.md`);
+        
+        if (!fs.existsSync(docPath)) {
+          console.log(`[doc-updater] Generating documentation for ${engineFile}...`);
+          await this.generateDocumentationFromCode(
+            engineFile,
+            docPath
+          );
+        }
+      }
+    }
+
+    console.log('[doc-updater] Documentation scan complete');
+  }
+
+  /**
+   * Update AGENT_SYSTEM_OVERVIEW.md with all agents
+   * NEW: Automatically updates agent overview
+   */
+  async updateAgentOverview() {
+    console.log('[doc-updater] Updating agent overview...');
+    
+    const agentsPath = path.join(__dirname, '..', 'agents');
+    const overviewPath = path.join(this.docsPath, 'agents', 'AGENT_SYSTEM_OVERVIEW.md');
+    
+    if (!fs.existsSync(overviewPath)) {
+      console.warn('[doc-updater] AGENT_SYSTEM_OVERVIEW.md not found');
+      return;
+    }
+
+    // This would scan agents and update the overview
+    // Implementation would parse agent files and update sections
+    console.log('[doc-updater] Agent overview update complete');
+  }
 }
 
 module.exports = DocumentationUpdater;

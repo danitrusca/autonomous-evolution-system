@@ -286,6 +286,24 @@ class DistributedAutonomousStartup {
       console.log(`   📦 Loading mistake prevention: ${mistakePreventionPath}`);
       this.mistakePreventionEngine = require(mistakePreventionPath);
       
+      // Optionally load token optimizer (gracefully handles if unavailable)
+      try {
+        const tokenOptimizerPath = path.join(this.systemPath, 'utils', 'token-optimizer.js');
+        if (fs.existsSync(tokenOptimizerPath)) {
+          const { getTokenOptimizer } = require(tokenOptimizerPath);
+          this.tokenOptimizer = getTokenOptimizer();
+          await this.tokenOptimizer.initialize();
+          const status = this.tokenOptimizer.getStatus();
+          if (status.available) {
+            console.log('   📦 Token optimizer: Available');
+          } else {
+            console.log('   📦 Token optimizer: Not available (standalone module not built)');
+          }
+        }
+      } catch (error) {
+        console.log('   📦 Token optimizer: Not available');
+      }
+      
       console.log('   ✅ All AES components loaded successfully');
     } catch (error) {
       throw new Error(`Failed to load AES components: ${error.message}`);

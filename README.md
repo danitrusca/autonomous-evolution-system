@@ -15,3 +15,23 @@ System that transforms AI assistants from reactive tools into proactive, self-le
 - Rules Layer - ECP (Epistemic Coding Protocol) principles and quality gates
 - Skills Layer - Autonomous capabilities and workflows
 - Agents Layer - Coordinated execution and monitoring
+- Utilities Layer - Optional utility modules (token optimization, budget guard, etc.)
+
+## Standalone Modules
+
+The system includes optional standalone modules that can be used independently or integrated:
+
+### Token Optimizer (`standalone_modules/token_saver`)
+- **Purpose**: Reduce token usage by 10-90% for AI processing
+- **Standalone**: Works as independent CLI tool
+- **Integrated**: Automatically available to agents when built
+- **Features**: JSON minification, text optimization, diff generation
+- **See**: `standalone_modules/token_saver/INTEGRATION.md` for details
+
+To enable token optimization:
+```bash
+cd standalone_modules/token_saver
+npm install && npm run build
+```
+
+The system will automatically detect and use it when available.

@@ -12,13 +12,28 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 - **[SYSTEM_OVERVIEW.md](./system/SYSTEM_OVERVIEW.md)** - Master navigation and system philosophy
 - **[CORE_ARCHITECTURE.md](./system/CORE_ARCHITECTURE.md)** - Rules, Skills, Agents triad
 - **[EVOLUTION_SYSTEM.md](./system/EVOLUTION_SYSTEM.md)** - How the system evolves and learns
+- **[AUTONOMOUS_EVOLUTION_ENGINE.md](./system/AUTONOMOUS_EVOLUTION_ENGINE.md)** - Core evolution engine
+- **[EXTENSION_LOADER.md](./system/EXTENSION_LOADER.md)** - Extension management system
+- **[MISTAKE_PREVENTION_ENGINE.md](./system/MISTAKE_PREVENTION_ENGINE.md)** - Mistake prevention and learning
 
 #### **Agent Documentation** (`agents/`)
 - **[AGENT_SYSTEM_OVERVIEW.md](./agents/AGENT_SYSTEM_OVERVIEW.md)** - Complete agent system overview and architecture
 - **[COORDINATION_PATTERNS.md](./agents/COORDINATION_PATTERNS.md)** - How agents work together and collaborate
 - **[AGENT_DEVELOPMENT_GUIDE.md](./agents/AGENT_DEVELOPMENT_GUIDE.md)** - Creating, extending, and maintaining agents
 - **[TROUBLESHOOTING.md](./agents/TROUBLESHOOTING.md)** - Common issues and solutions
-- **Individual Agent APIs**: See JSDoc documentation in each agent file for detailed API reference
+
+**Individual Agent Documentation:**
+- **[Meta Learning Agent](./agents/META_LEARNING_AGENT.md)** - Pattern analysis and meta-learning
+- **[Meta Orchestrator](./agents/META_ORCHESTRATOR.md)** - System harmony and re-balancing
+- **[Epistemic Humility Agent](./agents/EPISTEMIC_HUMILITY_AGENT.md)** - Confidence calibration and uncertainty management
+- **[Technical-Psychological Analyzer](./agents/TECHNICAL_PSYCHOLOGICAL_ANALYZER.md)** - Dual-layer error analysis
+- **[Psychological Decision Monitor](./agents/PSYCHOLOGICAL_DECISION_MONITOR.md)** - Decision pattern monitoring
+- **[Connection Discoverer](./agents/CONNECTION_DISCOVERER.md)** - Psychological-technical pattern discovery
+- **[Documentation Updater](./agents/DOCUMENTATION_UPDATER.md)** - Automatic documentation generation
+- **[Git Versioning Integration](./agents/GIT_VERSIONING_INTEGRATION.md)** - Git and versioning integration
+- **[Principles Engine](./agents/PRINCIPLES_ENGINE.md)** - Principles library access
+
+**Individual Agent APIs**: See JSDoc documentation in each agent file for detailed API reference
 
 #### **Reference Documentation** (`reference/`)
 - **[API_REFERENCE.md](./reference/API_REFERENCE.md)** - All agent interfaces and methods
