@@ -1,5 +1,39 @@
 # ECP Rules Changelog
 
+## 2025-10-31 - Recursive Code Evolution Loop (RCEL) Protocol
+
+### Changes Made
+
+**23. Recursive Code Evolution Loop Protocol (23-recursive-code-evolution-loop.md)**
+- **Context**: Need for automatic code refinement after implementation to elevate elegance while preserving behavior
+- **Change**: Created RCEL protocol that automatically refines working code through second-thought passes after Implement phase
+- **Expected Impact**: Consistent quality elevation through automatic refinement; functional code becomes more elegant and maintainable
+- **Success Metrics**: Improved code elegance scores, reduced need for later refactoring, better maintainability
+
+### Key Features
+- **Automatic Integration**: Activates after Implement phase in Standard/Feature modes
+- **Conditional Triggers**: Skips in Quick/Emergency modes; respects user opt-out via `[no-rcel]`
+- **Single Pass**: Maximum 1 refinement pass per Implement (vs 3 passes for manual skill)
+- **LOC Limits**: Respects ECP commit limit (≤150 LOC total per refinement)
+- **Five Lenses**: Elegance, Readability, Composability, Observability, Kairos
+- **Complementary with Rule 08**: Rule 08 = broad optimization; RCEL = focused post-Implement refinement
+
+### Integration Points
+- **ECP Workflow**: Frame → Design → Plan → Implement → [RCEL] → Review
+- **Skill Pairing**: Manual skill (recursive-code-evolution-loop.md) supports 3-pass refinement when explicitly invoked
+- **Learning System**: Tracks refinement effectiveness, tunes thresholds, evolves protocol based on outcomes
+- **Rule Conflicts**: Clear boundaries with Rule 08 (Autonomous Optimization) to prevent overlap
+
+### Learning Integration
+- **Pattern**: Implement → RCEL Refinement → Review → Learn from outcomes
+- **Outcome**: System learns what makes code elegant through systematic refinement application
+- **Insight**: Automatic refinement creates consistent quality elevation while learning what works
+
+### Rollback Plan
+- Remove 23-recursive-code-evolution-loop.md
+- Disable RCEL triggers in ECP workflow
+- Manual skill remains available for explicit invocation
+
 ## 2024-12-19 - Rule System Analysis and Optimization
 
 ### Changes Made
