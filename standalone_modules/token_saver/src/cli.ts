@@ -4,6 +4,7 @@ import { estimateTokensHeuristic } from "./estimators/heuristic.js";
 import { jsonMinify } from "./json-minify.js";
 import { unifiedDiff } from "./diff.js";
 import { stripFillers } from "./strip-fillers/engine.js";
+import { optimizeAdvanced, AdvancedOptimizationOptions } from "./optimizers/advanced-engine.js";
 
 function parseArgs(argv: string[]) {
   const opts: Record<string, string | boolean> = {};
@@ -71,7 +72,34 @@ export async function main(argv: string[] = process.argv.slice(2)) {
       }
       return 0;
     }
-    console.error("Usage: token-saver <json-minify|diff|strip-fillers> [args] [--report --model --keep-eol --out]");
+    if (cmd === "optimize" || cmd === "advanced") {
+      const input = args[0] ? readFileText(args[0]) : readStdinSync();
+      const options: AdvancedOptimizationOptions = {
+        preset: (opts.preset as any) || "standard",
+        targetSavingsPercent: opts["target-savings"] ? parseFloat(opts["target-savings"] as string) : undefined,
+        maxTokens: opts["max-tokens"] ? parseInt(opts["max-tokens"] as string, 10) : undefined,
+        enableSemanticCompression: opts["no-semantic"] !== true,
+        enableWhitespaceCompression: opts["no-whitespace"] !== true,
+        enableDuplicateRemoval: opts["no-duplicates"] !== true,
+        enableSummarization: opts["no-summarization"] !== true,
+        enableContextOptimization: opts["no-context"] !== true,
+      };
+      const res = optimizeAdvanced(input, options);
+      outOrStdout(res.output + "\n", opts.out as string | undefined);
+      if (opts.report) {
+        console.error(JSON.stringify({
+          mode: "advanced-optimization",
+          before: { tokens: res.originalTokens },
+          after: { tokens: res.optimizedTokens },
+          saved: res.saved,
+          savingsPercent: res.savingsPercent,
+          strategies: res.strategies,
+          contentType: res.contentType
+        }));
+      }
+      return 0;
+    }
+    console.error("Usage: token-saver <json-minify|diff|strip-fillers|optimize> [args] [--report --model --keep-eol --out --preset --target-savings --max-tokens]");
     return 1;
   } catch (e) {
     const msg = (e as Error).message || String(e);

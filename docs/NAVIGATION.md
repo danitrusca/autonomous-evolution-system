@@ -40,6 +40,7 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 - **[CONFIGURATION_GUIDE.md](./reference/CONFIGURATION_GUIDE.md)** - System configuration and setup
 - **[TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md)** - Common issues and solutions
 - **[PRINCIPLES_LIBRARY.md](./reference/PRINCIPLES_LIBRARY.md)** - Evidence-based decision making
+- **[DEVELOPER_QA.md](./reference/DEVELOPER_QA.md)** - Common questions and answers for developers
 
 #### **Living Documentation** (`living/`)
 - **[EVOLUTION_JOURNAL.md](./living/EVOLUTION_JOURNAL.md)** - Living system history and learning
@@ -60,7 +61,8 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 ### **For Developers**
 1. Review [API_REFERENCE.md](./reference/API_REFERENCE.md) for interfaces
 2. Study [CORE_ARCHITECTURE.md](./system/CORE_ARCHITECTURE.md) for architecture
-3. Check [TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md) for common issues
+3. Check [DEVELOPER_QA.md](./reference/DEVELOPER_QA.md) for common questions and decisions
+4. Check [TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md) for common issues
 
 ### **For System Admins**
 1. Follow [CONFIGURATION_GUIDE.md](./reference/CONFIGURATION_GUIDE.md) for setup
