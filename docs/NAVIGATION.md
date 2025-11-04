@@ -4,6 +4,8 @@
 
 Welcome to the Autonomous Evolution System documentation. This system transforms AI assistants from reactive tools into proactive, self-learning, continuously evolving development partners.
 
+> **🗺️ System Map**: For a bird's eye view of the entire system at a glance, see **[SYSTEM_MAP.md](../SYSTEM_MAP.md)** (root directory - always accessible)
+
 > **📋 Important**: The [README.md](./README.md) contains the **complete 3,271-line recreation prompt** for rebuilding the entire system from scratch. This NAVIGATION.md provides quick access to organized documentation.
 
 ### **📚 Documentation Structure**

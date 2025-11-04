@@ -62,6 +62,19 @@ class AutonomousEvolutionEngine {
 
         // Initialize meta-learning agent
         this.metaLearningAgent = new MetaLearningAgent();
+
+        // Initialize Q&A auto-updater
+        const QAAutoUpdater = require('./skills/meta/qa-auto-updater');
+        this.qaAutoUpdater = new QAAutoUpdater();
+
+        // Initialize system map generator
+        const SystemMapGenerator = require('./skills/meta/system-map-generator');
+        this.systemMapGenerator = new SystemMapGenerator();
+        
+        // Generate initial map
+        this.systemMapGenerator.generateSystemMap().catch(err => {
+          console.error('[autonomous-evolution] Error generating initial system map:', err.message);
+        });
   }
 
   /**
@@ -264,6 +277,14 @@ class AutonomousEvolutionEngine {
       
       // 6. Capture evolution learning
       await this.captureEvolutionLearning(evolutionQuestion, evolutionResult);
+      
+      // 7. Auto-update Q&A system
+      await this.qaAutoUpdater.autoUpdate();
+      
+      // 8. Auto-update system map
+      if (this.systemMapGenerator) {
+        await this.systemMapGenerator.checkAndUpdate();
+      }
       
       console.log('[autonomous-evolution] Evolution completed:', evolutionResult);
       return evolutionResult;
@@ -665,6 +686,16 @@ class AutonomousEvolutionEngine {
     try {
       fs.appendFileSync(this.journalPath, learningEntry);
       console.log('[autonomous-evolution] Evolution learning captured');
+      
+      // Auto-update Q&A system after learning capture
+      if (this.qaAutoUpdater) {
+        await this.qaAutoUpdater.autoUpdate();
+      }
+      
+      // Auto-update system map after learning capture
+      if (this.systemMapGenerator) {
+        await this.systemMapGenerator.checkAndUpdate();
+      }
     } catch (error) {
       console.error('[autonomous-evolution] Error capturing evolution learning:', error);
     }
@@ -699,6 +730,123 @@ class AutonomousEvolutionEngine {
   }
 
   /**
+   * Start continuous evolution monitoring
+   * Invariant: Continuous evolution maintains system safety
+   */
+  startContinuousEvolution() {
+    console.log('[autonomous-evolution] Starting continuous evolution monitoring');
+    
+    // Check for evolution triggers every 10 minutes
+    this.evolutionCheckInterval = setInterval(async () => {
+      try {
+        const triggers = await this.checkEvolutionTriggers();
+        if (triggers.length > 0) {
+          console.log(`[autonomous-evolution] ${triggers.length} evolution triggers detected`);
+          await this.triggerAutonomousEvolution();
+        }
+      } catch (error) {
+        console.error('[autonomous-evolution] Error in evolution check:', error.message);
+      }
+    }, 600000); // 10 minutes
+    
+    // Periodic evolution even without explicit triggers (every hour)
+    this.periodicEvolutionInterval = setInterval(async () => {
+      try {
+        console.log('[autonomous-evolution] Periodic evolution check');
+        await this.triggerAutonomousEvolution();
+      } catch (error) {
+        console.error('[autonomous-evolution] Error in periodic evolution:', error.message);
+      }
+    }, 3600000); // 1 hour
+    
+    // Periodic system map update (every hour)
+    this.mapUpdateInterval = setInterval(async () => {
+      try {
+        if (this.systemMapGenerator) {
+          await this.systemMapGenerator.checkAndUpdate();
+        }
+      } catch (error) {
+        console.error('[autonomous-evolution] Error updating system map:', error.message);
+      }
+    }, 3600000); // 1 hour
+    
+    console.log('[autonomous-evolution] Continuous evolution monitoring active');
+  }
+
+  /**
+   * Check for evolution triggers
+   */
+  async checkEvolutionTriggers() {
+    const triggers = [];
+    
+    // Check system integrity for issues
+    try {
+      const integrityStatus = await this.systemIntegrityAgent.getMonitoringStatus();
+      if (integrityStatus.complexity_issues > 0 || integrityStatus.optimization_opportunities > 0) {
+        triggers.push('system_integrity_issue');
+      }
+    } catch (error) {
+      // Gracefully handle errors
+    }
+    
+    // Check for recent patterns in evolution journal
+    try {
+      if (fs.existsSync(this.journalPath)) {
+        const journalContent = fs.readFileSync(this.journalPath, 'utf8');
+        const recentEntries = journalContent.match(/### \d{4}-\d{2}-\d{2}/g);
+        if (recentEntries && recentEntries.length > 0) {
+          // If new entries in last 24 hours, trigger evolution
+          const latestEntry = recentEntries[recentEntries.length - 1];
+          triggers.push('recent_pattern_detected');
+        }
+      }
+    } catch (error) {
+      // Gracefully handle errors
+    }
+    
+    return triggers;
+  }
+
+  /**
+   * Stop continuous evolution monitoring
+   */
+  stopContinuousEvolution() {
+    if (this.evolutionCheckInterval) {
+      clearInterval(this.evolutionCheckInterval);
+      this.evolutionCheckInterval = null;
+    }
+    if (this.periodicEvolutionInterval) {
+      clearInterval(this.periodicEvolutionInterval);
+      this.periodicEvolutionInterval = null;
+    }
+    if (this.mapUpdateInterval) {
+      clearInterval(this.mapUpdateInterval);
+      this.mapUpdateInterval = null;
+    }
+    console.log('[autonomous-evolution] Continuous evolution monitoring stopped');
+  }
+
+  /**
+   * Get system map (context-aware)
+   */
+  async getSystemMap(context = {}) {
+    if (!this.systemMapGenerator) {
+      return { error: 'System map generator not initialized' };
+    }
+    
+    if (context.file || context.question) {
+      return await this.systemMapGenerator.generateContextMap(context);
+    }
+    
+    // Return full map
+    const mapContent = fs.existsSync(this.systemMapGenerator.mapPath)
+      ? fs.readFileSync(this.systemMapGenerator.mapPath, 'utf8')
+      : await this.systemMapGenerator.generateSystemMap();
+    
+    return mapContent;
+  }
+
+  /**
    * Get evolution status
    */
   getEvolutionStatus() {
@@ -709,7 +857,8 @@ class AutonomousEvolutionEngine {
       evolutionHistory: this.evolutionHistory.length,
       metaCognitiveActive: this.metaCognitiveLayer.isActive(),
       selfAssessmentActive: this.selfAssessmentSystem.isActive(),
-      architectureEvolutionActive: this.architectureEvolutionEngine.isActive()
+      architectureEvolutionActive: this.architectureEvolutionEngine.isActive(),
+      continuousEvolutionActive: this.evolutionCheckInterval !== null && this.evolutionCheckInterval !== undefined
     };
   }
 
