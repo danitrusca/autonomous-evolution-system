@@ -5,6 +5,8 @@
   "main": "distributed-startup.js",
   "scripts": {
     "test": "node test-aes.js",
+    "test:comprehensive": "node test-comprehensive-evolution.js",
+    "test:all": "node test-aes.js && node test-comprehensive-evolution.js",
     "start": "node distributed-startup.js",
     "dev": "node --watch distributed-startup.js"
   },
