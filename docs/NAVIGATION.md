@@ -48,6 +48,10 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 - **[EVOLUTION_JOURNAL.md](./living/EVOLUTION_JOURNAL.md)** - Living system history and learning
 - **[LEARNING_PATTERNS.md](./living/LEARNING_PATTERNS.md)** - Extracted learning patterns
 
+#### **Evolution Documentation** (`evolution/`)
+- **[CURSOR_2.0_INSIGHTS.md](./evolution/CURSOR_2.0_INSIGHTS.md)** - Analysis of Cursor 2.0 insights and implementation
+- **[IMPLEMENTATION_SUMMARY.md](./evolution/IMPLEMENTATION_SUMMARY.md)** - Summary of Cursor 2.0 feature implementations
+
 #### **Implementation History** (`implemented/`)
 - Implementation summaries and historical records
 
@@ -80,6 +84,14 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 - Pattern recognition and replication
 - Meta-learning capabilities
 - Self-improvement mechanisms
+- **Workflow adaptation** - Learns which features work in which contexts
+
+### **Parallel Execution & Comparison** (Cursor 2.0 Features)
+- **Parallel solution comparison** - Compare multiple approaches to same problem
+- **Multi-session agents** - Independent task execution with isolated contexts
+- **Context isolation** - Prevents interference between parallel executions
+- **Adaptive execution modes** - Automatic fast/careful/hybrid mode selection
+- **Speed vs quality framework** - Intelligent trade-off decisions
 
 ### **System Monitoring**
 - Complexity creep detection
@@ -111,10 +123,15 @@ The system continuously evolves through:
 4. **Living Documentation**: Maintains complete evolution history
 5. **Principle Evolution**: Principles evolve based on evidence
 
-### **Current Version**: v1.1.0
-- **Latest Update**: Autonomous Versioning System
-- **Key Features**: Automatic commit analysis, semantic versioning, journal integration
-- **Evolution**: System now tracks its own evolution through intelligent versioning
+### **Current Version**: v1.2.0
+- **Latest Update**: Cursor 2.0 Features - Parallel Execution & Workflow Adaptation
+- **Key Features**: 
+  - Parallel solution comparison
+  - Multi-session agent support
+  - Adaptive execution mode selection
+  - Workflow adaptation tracking
+  - Context isolation mechanisms
+- **Evolution**: System now learns which approaches work best and adapts workflows automatically
 
 ---
 

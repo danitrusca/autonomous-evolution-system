@@ -47,6 +47,9 @@ The Autonomous Evolution System is built on a three-component meta-coding archit
 - External system integration
 - Continuous learning and evolution
 - ECP-compliant workflow execution
+- **Parallel solution comparison** - Compare multiple approaches simultaneously
+- **Adaptive execution modes** - Automatic fast/careful/hybrid mode selection
+- **Workflow adaptation** - Learn which features work in which contexts
 
 ### 3. Agents Layer (`agents/`)
 **Purpose**: Define the execution and coordination  
@@ -61,11 +64,17 @@ The Autonomous Evolution System is built on a three-component meta-coding archit
 - **Execution**: Context-aware autonomous execution
 
 #### **Key Agents**:
-- **Agent Coordinator**: Orchestrates all agents
+- **Agent Coordinator**: Orchestrates all agents, supports multi-session execution
 - **System Integrity Agent**: Monitors system health
 - **Idea Capture Agent**: Manages ideas and insights
 - **Autonomous Versioning Agent**: Handles versioning
 - **Extension Loader**: Manages dynamic extensions
+
+#### **New Capabilities (Cursor 2.0 Features)**:
+- **Multi-session execution** - Independent task execution with isolated contexts
+- **Parallel coordination** - Run multiple tasks simultaneously without interference
+- **Context isolation** - Deep cloning prevents context pollution
+- **Session management** - Track and manage multiple independent agent sessions
 
 ---
 

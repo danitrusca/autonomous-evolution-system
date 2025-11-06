@@ -218,6 +218,238 @@ class SkillCompositionSystem {
   }
 
   /**
+   * Compare multiple solutions to the same problem (Cursor 2.0 Insight)
+   * Runs the same problem through different approaches and selects the best
+   * 
+   * @param {Object} problem - The problem to solve
+   * @param {Array} approaches - Array of approach configurations
+   * @param {Object} context - Execution context
+   * @returns {Object} - Best solution with comparison data
+   */
+  async compareSolutions(problem, approaches, context = {}) {
+    console.log(`[skill-composition] Comparing ${approaches.length} solutions for problem: ${problem.description || problem.id}`);
+    
+    const comparison = {
+      problemId: problem.id || `problem-${Date.now()}`,
+      problem: problem,
+      approaches: approaches,
+      startTime: new Date().toISOString(),
+      results: [],
+      bestSolution: null,
+      comparisonMetrics: {}
+    };
+
+    try {
+      // Execute all approaches in parallel
+      const solutionResults = await Promise.all(
+        approaches.map(async (approach, index) => {
+          const isolatedContext = this.isolateContext(context, approach.id || `approach-${index}`);
+          
+          const result = {
+            approachId: approach.id || `approach-${index}`,
+            approach: approach,
+            startTime: new Date().toISOString(),
+            context: isolatedContext
+          };
+
+          try {
+            // Execute the approach
+            const executionResult = await this.executeApproach(problem, approach, isolatedContext);
+            
+            result.endTime = new Date().toISOString();
+            result.duration = new Date(result.endTime) - new Date(result.startTime);
+            result.success = true;
+            result.solution = executionResult;
+            
+            // Evaluate the solution
+            result.evaluation = await this.evaluateSolution(executionResult, problem, approach);
+            
+          } catch (error) {
+            result.endTime = new Date().toISOString();
+            result.duration = new Date(result.endTime) - new Date(result.startTime);
+            result.success = false;
+            result.error = error.message;
+            result.evaluation = {
+              quality: 0,
+              speed: 0,
+              maintainability: 0,
+              overall: 0
+            };
+          }
+
+          return result;
+        })
+      );
+
+      comparison.results = solutionResults;
+      comparison.endTime = new Date().toISOString();
+      comparison.duration = new Date(comparison.endTime) - new Date(comparison.startTime);
+
+      // Select best solution based on evaluation criteria
+      comparison.bestSolution = this.selectBestSolution(solutionResults, problem);
+      
+      // Generate comparison metrics
+      comparison.comparisonMetrics = this.generateComparisonMetrics(solutionResults);
+
+      console.log(`[skill-composition] Solution comparison completed. Best: ${comparison.bestSolution.approachId} (score: ${comparison.bestSolution.evaluation.overall.toFixed(2)})`);
+
+    } catch (error) {
+      comparison.error = error.message;
+      comparison.status = 'failed';
+      console.error(`[skill-composition] Solution comparison failed: ${error.message}`);
+    }
+
+    return comparison;
+  }
+
+  /**
+   * Execute a single approach to solve a problem
+   */
+  async executeApproach(problem, approach, context) {
+    // This would integrate with actual skill execution
+    // For now, simulate execution
+    return {
+      approachId: approach.id,
+      solution: `Solution using ${approach.name || approach.id}`,
+      artifacts: approach.artifacts || [],
+      metadata: {
+        skills: approach.skills || [],
+        strategy: approach.strategy || 'default'
+      }
+    };
+  }
+
+  /**
+   * Evaluate a solution based on multiple criteria
+   */
+  async evaluateSolution(solution, problem, approach) {
+    // Evaluation criteria (can be customized)
+    const criteria = {
+      quality: this.evaluateQuality(solution, problem),
+      speed: this.evaluateSpeed(solution, approach),
+      maintainability: this.evaluateMaintainability(solution, approach),
+      completeness: this.evaluateCompleteness(solution, problem),
+      robustness: this.evaluateRobustness(solution, problem)
+    };
+
+    // Weighted overall score
+    const weights = {
+      quality: 0.30,
+      speed: 0.15,
+      maintainability: 0.25,
+      completeness: 0.20,
+      robustness: 0.10
+    };
+
+    const overall = Object.entries(criteria).reduce((sum, [key, value]) => {
+      return sum + (value * (weights[key] || 0.1));
+    }, 0);
+
+    return {
+      ...criteria,
+      overall: overall,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  /**
+   * Select the best solution from comparison results
+   */
+  selectBestSolution(results, problem) {
+    // Filter successful results
+    const successfulResults = results.filter(r => r.success);
+    
+    if (successfulResults.length === 0) {
+      // If all failed, return the one with least error impact
+      return results.reduce((best, current) => {
+        return (!best || (current.evaluation?.overall || 0) > (best.evaluation?.overall || 0)) 
+          ? current 
+          : best;
+      }, null);
+    }
+
+    // Select based on overall evaluation score
+    return successfulResults.reduce((best, current) => {
+      const bestScore = best.evaluation?.overall || 0;
+      const currentScore = current.evaluation?.overall || 0;
+      return currentScore > bestScore ? current : best;
+    });
+  }
+
+  /**
+   * Generate comparison metrics across all solutions
+   */
+  generateComparisonMetrics(results) {
+    const successful = results.filter(r => r.success);
+    const failed = results.filter(r => !r.success);
+
+    const metrics = {
+      totalApproaches: results.length,
+      successfulCount: successful.length,
+      failedCount: failed.length,
+      successRate: results.length > 0 ? successful.length / results.length : 0,
+      averageDuration: successful.length > 0
+        ? successful.reduce((sum, r) => sum + (r.duration || 0), 0) / successful.length
+        : 0,
+      averageQuality: successful.length > 0
+        ? successful.reduce((sum, r) => sum + (r.evaluation?.quality || 0), 0) / successful.length
+        : 0,
+      averageOverall: successful.length > 0
+        ? successful.reduce((sum, r) => sum + (r.evaluation?.overall || 0), 0) / successful.length
+        : 0,
+      scoreRange: {
+        min: successful.length > 0
+          ? Math.min(...successful.map(r => r.evaluation?.overall || 0))
+          : 0,
+        max: successful.length > 0
+          ? Math.max(...successful.map(r => r.evaluation?.overall || 0))
+          : 0
+      }
+    };
+
+    return metrics;
+  }
+
+  /**
+   * Isolate context for parallel execution (prevents context pollution)
+   */
+  isolateContext(context, sessionId) {
+    // Deep clone context to prevent interference
+    return {
+      ...JSON.parse(JSON.stringify(context)),
+      sessionId: sessionId,
+      isolated: true,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  // Evaluation helper methods
+  evaluateQuality(solution, problem) {
+    // Placeholder: would analyze solution quality
+    return 0.8; // Default quality score
+  }
+
+  evaluateSpeed(solution, approach) {
+    // Placeholder: would analyze execution speed
+    return 0.7; // Default speed score
+  }
+
+  evaluateMaintainability(solution, approach) {
+    // Placeholder: would analyze code maintainability
+    return 0.75; // Default maintainability score
+  }
+
+  evaluateCompleteness(solution, problem) {
+    // Placeholder: would check if solution addresses all requirements
+    return 0.85; // Default completeness score
+  }
+
+  evaluateRobustness(solution, problem) {
+    // Placeholder: would analyze error handling and edge cases
+    return 0.7; // Default robustness score
+  }
+
+  /**
    * Group skills by parallel execution capability
    */
   groupSkillsByParallel(skills) {

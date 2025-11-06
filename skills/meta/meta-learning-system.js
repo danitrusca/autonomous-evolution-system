@@ -13,6 +13,12 @@ class MetaLearningSystem {
     this.learningEffectiveness = new Map();
     this.adaptationHistory = [];
     this.metaInsights = [];
+    
+    // Workflow adaptation tracking (Cursor 2.0 Insight)
+    this.workflowAdaptations = new Map();
+    this.featureEffectiveness = new Map(); // feature + context -> effectiveness
+    this.approachEffectiveness = new Map(); // approach + context -> effectiveness
+    this.workflowPatterns = [];
   }
 
   /**
@@ -639,6 +645,310 @@ class MetaLearningSystem {
   applyAccelerationSupport(strategy) {
     // Implementation for applying acceleration support
     console.log(`Applying acceleration support: ${strategy}`);
+  }
+
+  /**
+   * Track feature/approach usage and effectiveness (Cursor 2.0 Insight)
+   * Learn which features work in which contexts
+   */
+  trackFeatureUsage(feature, context, outcome) {
+    const key = `${feature}_${this.getContextKey(context)}`;
+    
+    if (!this.featureEffectiveness.has(key)) {
+      this.featureEffectiveness.set(key, {
+        feature: feature,
+        context: context,
+        usageCount: 0,
+        successCount: 0,
+        failureCount: 0,
+        averageQuality: 0,
+        averageSpeed: 0,
+        outcomes: []
+      });
+    }
+
+    const tracking = this.featureEffectiveness.get(key);
+    tracking.usageCount++;
+    tracking.outcomes.push({
+      outcome: outcome,
+      timestamp: new Date().toISOString()
+    });
+
+    if (outcome.success) {
+      tracking.successCount++;
+    } else {
+      tracking.failureCount++;
+    }
+
+    // Update averages
+    if (outcome.quality !== undefined) {
+      tracking.averageQuality = 
+        (tracking.averageQuality * (tracking.usageCount - 1) + outcome.quality) / tracking.usageCount;
+    }
+
+    if (outcome.speed !== undefined) {
+      tracking.averageSpeed = 
+        (tracking.averageSpeed * (tracking.usageCount - 1) + outcome.speed) / tracking.usageCount;
+    }
+
+    // Calculate effectiveness score
+    tracking.effectiveness = this.calculateFeatureEffectiveness(tracking);
+
+    console.log(`[meta-learning] Tracked feature usage: ${feature} in context ${this.getContextKey(context)} (effectiveness: ${tracking.effectiveness.toFixed(2)})`);
+
+    return tracking;
+  }
+
+  /**
+   * Track approach usage and effectiveness
+   */
+  trackApproachUsage(approach, context, outcome) {
+    const key = `${approach}_${this.getContextKey(context)}`;
+    
+    if (!this.approachEffectiveness.has(key)) {
+      this.approachEffectiveness.set(key, {
+        approach: approach,
+        context: context,
+        usageCount: 0,
+        successCount: 0,
+        failureCount: 0,
+        averageQuality: 0,
+        averageSpeed: 0,
+        outcomes: []
+      });
+    }
+
+    const tracking = this.approachEffectiveness.get(key);
+    tracking.usageCount++;
+    tracking.outcomes.push({
+      outcome: outcome,
+      timestamp: new Date().toISOString()
+    });
+
+    if (outcome.success) {
+      tracking.successCount++;
+    } else {
+      tracking.failureCount++;
+    }
+
+    // Update averages
+    if (outcome.quality !== undefined) {
+      tracking.averageQuality = 
+        (tracking.averageQuality * (tracking.usageCount - 1) + outcome.quality) / tracking.usageCount;
+    }
+
+    if (outcome.speed !== undefined) {
+      tracking.averageSpeed = 
+        (tracking.averageSpeed * (tracking.usageCount - 1) + outcome.speed) / tracking.usageCount;
+    }
+
+    // Calculate effectiveness score
+    tracking.effectiveness = this.calculateApproachEffectiveness(tracking);
+
+    console.log(`[meta-learning] Tracked approach usage: ${approach} in context ${this.getContextKey(context)} (effectiveness: ${tracking.effectiveness.toFixed(2)})`);
+
+    return tracking;
+  }
+
+  /**
+   * Recommend approach based on learned patterns
+   */
+  recommendApproach(problem, context) {
+    const contextKey = this.getContextKey(context);
+    const recommendations = [];
+
+    // Find similar contexts and their successful approaches
+    for (const [key, tracking] of this.approachEffectiveness) {
+      if (key.endsWith(contextKey) || this.isSimilarContext(tracking.context, context)) {
+        if (tracking.effectiveness > 0.7 && tracking.usageCount >= 3) {
+          recommendations.push({
+            approach: tracking.approach,
+            effectiveness: tracking.effectiveness,
+            successRate: tracking.successCount / tracking.usageCount,
+            averageQuality: tracking.averageQuality,
+            averageSpeed: tracking.averageSpeed,
+            confidence: Math.min(1, tracking.usageCount / 10) // More usage = higher confidence
+          });
+        }
+      }
+    }
+
+    // Sort by effectiveness and confidence
+    recommendations.sort((a, b) => {
+      const scoreA = a.effectiveness * a.confidence;
+      const scoreB = b.effectiveness * b.confidence;
+      return scoreB - scoreA;
+    });
+
+    return recommendations.length > 0 ? recommendations[0] : null;
+  }
+
+  /**
+   * Adapt workflow based on learned patterns
+   */
+  adaptWorkflow(patterns) {
+    const adaptations = [];
+
+    // Analyze feature effectiveness
+    for (const [key, tracking] of this.featureEffectiveness) {
+      if (tracking.usageCount >= 5) {
+        const successRate = tracking.successCount / tracking.usageCount;
+        
+        // Stop using features that fail frequently
+        if (successRate < 0.3) {
+          adaptations.push({
+            type: 'disable_feature',
+            feature: tracking.feature,
+            context: tracking.context,
+            reason: `Low success rate: ${(successRate * 100).toFixed(1)}%`,
+            recommendation: `Avoid using ${tracking.feature} in ${this.getContextKey(tracking.context)} context`
+          });
+        }
+
+        // Prefer features that work well
+        if (successRate > 0.8 && tracking.effectiveness > 0.8) {
+          adaptations.push({
+            type: 'prefer_feature',
+            feature: tracking.feature,
+            context: tracking.context,
+            reason: `High success rate: ${(successRate * 100).toFixed(1)}%`,
+            recommendation: `Prefer using ${tracking.feature} in ${this.getContextKey(tracking.context)} context`
+          });
+        }
+      }
+    }
+
+    // Analyze approach effectiveness
+    for (const [key, tracking] of this.approachEffectiveness) {
+      if (tracking.usageCount >= 5) {
+        const successRate = tracking.successCount / tracking.usageCount;
+        
+        // Stop using approaches that fail frequently
+        if (successRate < 0.3) {
+          adaptations.push({
+            type: 'disable_approach',
+            approach: tracking.approach,
+            context: tracking.context,
+            reason: `Low success rate: ${(successRate * 100).toFixed(1)}%`,
+            recommendation: `Avoid using ${tracking.approach} in ${this.getContextKey(tracking.context)} context`
+          });
+        }
+
+        // Prefer approaches that work well
+        if (successRate > 0.8 && tracking.effectiveness > 0.8) {
+          adaptations.push({
+            type: 'prefer_approach',
+            approach: tracking.approach,
+            context: tracking.context,
+            reason: `High success rate: ${(successRate * 100).toFixed(1)}%`,
+            recommendation: `Prefer using ${tracking.approach} in ${this.getContextKey(tracking.context)} context`
+          });
+        }
+      }
+    }
+
+    // Apply adaptations
+    this.applyWorkflowAdaptations(adaptations);
+
+    return adaptations;
+  }
+
+  /**
+   * Apply workflow adaptations
+   */
+  applyWorkflowAdaptations(adaptations) {
+    for (const adaptation of adaptations) {
+      this.workflowAdaptations.set(
+        `${adaptation.type}_${adaptation.feature || adaptation.approach}_${this.getContextKey(adaptation.context)}`,
+        {
+          ...adaptation,
+          appliedAt: new Date().toISOString(),
+          active: true
+        }
+      );
+
+      console.log(`[meta-learning] Applied workflow adaptation: ${adaptation.recommendation}`);
+    }
+  }
+
+  /**
+   * Get workflow recommendations for a context
+   */
+  getWorkflowRecommendations(context) {
+    const contextKey = this.getContextKey(context);
+    const recommendations = {
+      preferredFeatures: [],
+      avoidedFeatures: [],
+      preferredApproaches: [],
+      avoidedApproaches: []
+    };
+
+    for (const [key, adaptation] of this.workflowAdaptations) {
+      if (key.includes(contextKey) && adaptation.active) {
+        if (adaptation.type === 'prefer_feature') {
+          recommendations.preferredFeatures.push(adaptation);
+        } else if (adaptation.type === 'disable_feature') {
+          recommendations.avoidedFeatures.push(adaptation);
+        } else if (adaptation.type === 'prefer_approach') {
+          recommendations.preferredApproaches.push(adaptation);
+        } else if (adaptation.type === 'disable_approach') {
+          recommendations.avoidedApproaches.push(adaptation);
+        }
+      }
+    }
+
+    return recommendations;
+  }
+
+  /**
+   * Helper: Get context key for tracking
+   */
+  getContextKey(context) {
+    if (typeof context === 'string') return context;
+    if (context.projectType) return context.projectType;
+    if (context.phase) return context.phase;
+    if (context.type) return context.type;
+    return 'default';
+  }
+
+  /**
+   * Helper: Check if contexts are similar
+   */
+  isSimilarContext(context1, context2) {
+    const key1 = this.getContextKey(context1);
+    const key2 = this.getContextKey(context2);
+    return key1 === key2;
+  }
+
+  /**
+   * Calculate feature effectiveness score
+   */
+  calculateFeatureEffectiveness(tracking) {
+    const successRate = tracking.usageCount > 0 ? tracking.successCount / tracking.usageCount : 0;
+    const qualityScore = tracking.averageQuality || 0.5;
+    const speedScore = tracking.averageSpeed || 0.5;
+    
+    // Weighted effectiveness: success rate (50%), quality (30%), speed (20%)
+    return (successRate * 0.5) + (qualityScore * 0.3) + (speedScore * 0.2);
+  }
+
+  /**
+   * Calculate approach effectiveness score
+   */
+  calculateApproachEffectiveness(tracking) {
+    return this.calculateFeatureEffectiveness(tracking); // Same calculation
+  }
+
+  /**
+   * Get workflow adaptation statistics
+   */
+  getWorkflowAdaptationStatistics() {
+    return {
+      totalAdaptations: this.workflowAdaptations.size,
+      featureTracking: this.featureEffectiveness.size,
+      approachTracking: this.approachEffectiveness.size,
+      activeAdaptations: Array.from(this.workflowAdaptations.values()).filter(a => a.active).length
+    };
   }
 }
 

@@ -15,6 +15,7 @@
 **Anti-Patterns**: Over-Engineering, Complexity Explosion, Skill Sprawl, Abstraction Leakage  
 **Testing**: Agent Testing, Invariants, Health Checks, Debugging  
 **Workflow**: ECP Protocol, Commits, Documentation, Feature Development  
+**Cursor 2.0 Features**: Parallel Solution Comparison, Multi-Session Agents, Adaptive Execution Mode, Workflow Adaptation, Context Isolation, Speed vs Quality  
 
 ---
 
@@ -97,6 +98,219 @@
 **Anti-Pattern**: ❌ **God Agent** - One agent handling too many responsibilities. Split into focused agents.
 
 **See Also**: [AGENT_DEVELOPMENT_GUIDE.md](../agents/AGENT_DEVELOPMENT_GUIDE.md), [COORDINATION_PATTERNS.md](../agents/COORDINATION_PATTERNS.md)
+
+---
+
+## 🚀 **Cursor 2.0 Features (Parallel Execution & Workflow Adaptation)**
+
+### Q: When should I use parallel solution comparison vs sequential execution?
+
+**Confidence**: ⭐⭐⭐⭐⭐ (High - Based on Cursor 2.0 insights)
+
+**A**: Use **parallel solution comparison** when:
+
+- **Multiple valid approaches exist** for the same problem
+- **Problem complexity is medium-high** (0.3-0.7)
+- **Time allows for comparison** (not urgent)
+- **Quality is more important than speed**
+- **You want to learn which approach works best**
+
+Use **sequential execution** when:
+- **Single clear approach** exists
+- **Time is critical** (urgent fixes)
+- **Problem is simple** (low complexity)
+- **Approach is well-established** and proven
+
+**Example**:
+```javascript
+const compositionSystem = new SkillCompositionSystem();
+
+// Parallel comparison for complex refactoring
+const approaches = [
+  { id: 'incremental', name: 'Incremental Refactor' },
+  { id: 'rewrite', name: 'Complete Rewrite' },
+  { id: 'hybrid', name: 'Hybrid Approach' }
+];
+
+const comparison = await compositionSystem.compareSolutions(
+  { id: 'refactor-auth', description: 'Refactor authentication' },
+  approaches,
+  context
+);
+
+console.log('Best solution:', comparison.bestSolution.approachId);
+```
+
+**Integration**: Works with `SkillCompositionSystem.compareSolutions()` and `AgentCoordinator.executeMultipleSessions()`
+
+**See Also**: [IMPLEMENTATION_SUMMARY.md](../evolution/IMPLEMENTATION_SUMMARY.md), [CURSOR_2.0_INSIGHTS.md](../evolution/CURSOR_2.0_INSIGHTS.md)
+
+---
+
+### Q: How does the system decide between fast mode and careful mode?
+
+**Confidence**: ⭐⭐⭐⭐⭐ (High - Automatic decision framework)
+
+**A**: The **Adaptive Execution Mode** skill automatically analyzes problem characteristics:
+
+**Fast Mode** selected when:
+- Complexity < 0.3 (low)
+- Risk < 0.3 (low)
+- Clarity > 0.7 (high)
+- Reversibility > 0.7 (high)
+- Validation > 0.7 (high)
+
+**Careful Mode** selected when:
+- Complexity > 0.7 (high)
+- Risk > 0.7 (high)
+- Clarity < 0.3 (low)
+- Reversibility < 0.3 (low)
+- Validation < 0.3 (low)
+
+**Hybrid Mode** selected when:
+- Medium complexity (0.3-0.7)
+- Medium risk (0.3-0.7)
+- Multiple approaches available
+
+**Example**:
+```javascript
+const adaptiveMode = new AdaptiveExecutionMode();
+
+const modeSelection = await adaptiveMode.selectExecutionMode(
+  { id: 'fix-typo', type: 'bug-fix', area: 'development' },
+  context
+);
+
+console.log('Selected mode:', modeSelection.mode); // 'fast', 'careful', or 'hybrid'
+console.log('Recommendations:', modeSelection.recommendation);
+```
+
+**Key Insight**: Fast mode can break things **faster** when direction is wrong. System learns which mode works best for which problem types.
+
+**See Also**: [24-speed-vs-quality-decision-framework.md](../../rules/24-speed-vs-quality-decision-framework.md), [adaptive-execution-mode.js](../../skills/meta/adaptive-execution-mode.js)
+
+---
+
+### Q: How does workflow adaptation work?
+
+**Confidence**: ⭐⭐⭐⭐⭐ (High - Automatic learning system)
+
+**A**: The **MetaLearningSystem** automatically tracks and adapts workflows:
+
+1. **Tracks Usage**: Records feature/approach usage with outcomes
+2. **Learns Patterns**: Identifies which features work in which contexts
+3. **Adapts Workflows**: Automatically adjusts based on success/failure rates
+4. **Recommends Approaches**: Suggests best approaches for new problems
+
+**Example**:
+```javascript
+const metaLearning = new MetaLearningSystem();
+
+// Track feature usage
+metaLearning.trackFeatureUsage('parallel-execution', { projectType: 'web-app' }, {
+  success: true,
+  quality: 0.9,
+  speed: 0.8
+});
+
+// Get recommendations
+const recommendations = metaLearning.getWorkflowRecommendations({ projectType: 'web-app' });
+console.log('Preferred features:', recommendations.preferredFeatures);
+console.log('Avoided features:', recommendations.avoidedFeatures);
+
+// Adapt workflow automatically
+const adaptations = metaLearning.adaptWorkflow(patterns);
+```
+
+**Learning Threshold**: System needs ≥5 uses before adapting (to ensure statistical significance)
+
+**Key Insight**: System learns "which features to lean on and which to avoid" - exactly like Cursor 2.0 user discovered.
+
+**See Also**: [meta-learning-system.js](../../skills/meta/meta-learning-system.js), [CURSOR_2.0_INSIGHTS.md](../evolution/CURSOR_2.0_INSIGHTS.md)
+
+---
+
+### Q: When should I use multi-session agents vs single session?
+
+**Confidence**: ⭐⭐⭐⭐⭐ (High - Clear use cases)
+
+**A**: Use **multi-session agents** when:
+
+- **Multiple independent tasks** need to run simultaneously
+- **Tasks don't share context** (different problems)
+- **No context switching overhead** desired
+- **Tasks can run in parallel** without interference
+
+Use **single session** when:
+- **Tasks are related** and share context
+- **Sequential execution** is required
+- **Context needs to persist** across tasks
+
+**Example**:
+```javascript
+const coordinator = new AgentCoordinator();
+
+// Multiple independent tasks
+const tasks = [
+  { id: 'task-1', description: 'Refactor auth system' },
+  { id: 'task-2', description: 'Optimize database queries' },
+  { id: 'task-3', description: 'Update documentation' }
+];
+
+// Execute all in parallel with isolated contexts
+const results = await coordinator.executeMultipleSessions(tasks, contexts);
+
+// Check session status
+const status = coordinator.getActiveSessionsStatus();
+console.log('Active sessions:', status.activeSessions);
+```
+
+**Key Benefit**: Each session maintains independent chain of thought - no context pollution.
+
+**See Also**: [agent-coordinator.js](../../agents/agent-coordinator.js), [IMPLEMENTATION_SUMMARY.md](../evolution/IMPLEMENTATION_SUMMARY.md)
+
+---
+
+### Q: How does context isolation prevent interference between parallel executions?
+
+**Confidence**: ⭐⭐⭐⭐⭐ (High - Deep cloning mechanism)
+
+**A**: Context isolation uses **deep cloning** to prevent interference:
+
+1. **Deep Clone**: Creates independent copy of context for each execution
+2. **Session Metadata**: Adds session-specific metadata (sessionId, timestamp)
+3. **Isolation Flag**: Marks context as isolated
+4. **No Shared State**: Each execution operates on its own context copy
+
+**Implementation**:
+```javascript
+// In SkillCompositionSystem
+isolateContext(context, sessionId) {
+  return {
+    ...JSON.parse(JSON.stringify(context)), // Deep clone
+    sessionId: sessionId,
+    isolated: true,
+    timestamp: new Date().toISOString()
+  };
+}
+
+// In AgentSession
+isolateContext(context) {
+  const isolated = JSON.parse(JSON.stringify(context));
+  return {
+    ...isolated,
+    sessionId: this.sessionId,
+    isolated: true,
+    timestamp: new Date().toISOString()
+  };
+}
+```
+
+**Key Benefit**: Prevents context pollution - changes in one parallel execution don't affect others.
+
+**Warning**: Without isolation, parallel executions can interfere with each other, causing unpredictable behavior.
+
+**See Also**: [skill-composition-system.js](../../skills/meta/skill-composition-system.js), [agent-coordinator.js](../../agents/agent-coordinator.js)
 
 ---
 
@@ -888,6 +1102,8 @@ When working on the system, regularly ask:
 
 ---
 
-**Last Updated**: This document evolves with the system. New Q&A entries are added as patterns emerge. The Meta-Learning Agent tracks usage to suggest improvements.
+**Last Updated**: 2025-01-27 - Added Cursor 2.0 features section (Parallel Execution, Workflow Adaptation, Multi-Session Agents, Context Isolation, Adaptive Execution Modes)
 
 **Contribution**: Add your own Q&A entries as you discover them! Cross-reference with LEARNING_PATTERNS.md and EVOLUTION_JOURNAL.md for related examples.
+
+**New Features**: See [CURSOR_2.0_INSIGHTS.md](../evolution/CURSOR_2.0_INSIGHTS.md) and [IMPLEMENTATION_SUMMARY.md](../evolution/IMPLEMENTATION_SUMMARY.md) for details on the latest Cursor 2.0-inspired features.

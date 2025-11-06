@@ -153,6 +153,12 @@ class AgentCoordinator {
     this.agents = new Map();
     this.coordinationLogs = [];
     this.versioningIntegration = new GitVersioningIntegration();
+    
+    // Multi-session agent support (Cursor 2.0 Insight)
+    this.activeSessions = new Map(); // sessionId -> AgentSession
+    this.sessionCounter = 0;
+    this.contextIsolation = true; // Enable context isolation by default
+    
     this.startCoordination();
   }
 
@@ -722,6 +728,280 @@ class AgentCoordinator {
     if (statuses.includes('unhealthy')) return 'unhealthy';
     if (statuses.includes('degraded')) return 'degraded';
     return 'healthy';
+  }
+
+  /**
+   * Create a new agent session for independent task execution (Cursor 2.0 Insight)
+   * Each session maintains isolated context and chain of thought
+   */
+  createAgentSession(task, context = {}) {
+    const sessionId = `session-${++this.sessionCounter}-${Date.now()}`;
+    
+    const session = new AgentSession(sessionId, task, context, this.contextIsolation);
+    this.activeSessions.set(sessionId, session);
+    
+    console.log(`[${this.coordinatorName}] Created agent session: ${sessionId} for task: ${task.id || task.description}`);
+    
+    return session;
+  }
+
+  /**
+   * Execute multiple independent tasks in parallel sessions
+   */
+  async executeMultipleSessions(tasks, contexts = []) {
+    console.log(`[${this.coordinatorName}] Executing ${tasks.length} tasks in parallel sessions`);
+    
+    // Create sessions for each task
+    const sessions = tasks.map((task, index) => {
+      const context = contexts[index] || {};
+      return this.createAgentSession(task, context);
+    });
+
+    // Execute all sessions in parallel
+    const results = await Promise.all(
+      sessions.map(session => session.execute())
+    );
+
+    // Clean up completed sessions
+    sessions.forEach(session => {
+      if (session.isComplete()) {
+        this.activeSessions.delete(session.sessionId);
+      }
+    });
+
+    return results;
+  }
+
+  /**
+   * Get active session status
+   */
+  getActiveSessionsStatus() {
+    const sessions = Array.from(this.activeSessions.values());
+    
+    return {
+      totalSessions: sessions.length,
+      activeSessions: sessions.filter(s => s.isActive()).length,
+      completedSessions: sessions.filter(s => s.isComplete()).length,
+      sessions: sessions.map(s => ({
+        sessionId: s.sessionId,
+        task: s.task,
+        status: s.getStatus(),
+        progress: s.getProgress()
+      }))
+    };
+  }
+
+  /**
+   * Get session by ID
+   */
+  getSession(sessionId) {
+    return this.activeSessions.get(sessionId);
+  }
+
+  /**
+   * Cancel a session
+   */
+  cancelSession(sessionId) {
+    const session = this.activeSessions.get(sessionId);
+    if (session) {
+      session.cancel();
+      this.activeSessions.delete(sessionId);
+      console.log(`[${this.coordinatorName}] Cancelled session: ${sessionId}`);
+      return true;
+    }
+    return false;
+  }
+}
+
+/**
+ * Agent Session class for isolated task execution (Cursor 2.0 Insight)
+ * Maintains independent context and chain of thought
+ */
+class AgentSession {
+  constructor(sessionId, task, context, isolateContext = true) {
+    this.sessionId = sessionId;
+    this.task = task;
+    this.originalContext = context;
+    this.isolatedContext = isolateContext ? this.isolateContext(context) : context;
+    this.chainOfThought = [];
+    this.status = 'created';
+    this.startTime = null;
+    this.endTime = null;
+    this.result = null;
+    this.error = null;
+    this.cancelled = false;
+  }
+
+  /**
+   * Isolate context to prevent interference between sessions
+   */
+  isolateContext(context) {
+    // Deep clone context to prevent interference
+    const isolated = JSON.parse(JSON.stringify(context));
+    
+    return {
+      ...isolated,
+      sessionId: this.sessionId,
+      isolated: true,
+      timestamp: new Date().toISOString(),
+      // Add session-specific metadata
+      sessionMetadata: {
+        taskId: this.task.id || this.task.description,
+        createdAt: new Date().toISOString()
+      }
+    };
+  }
+
+  /**
+   * Execute the session task
+   */
+  async execute() {
+    if (this.cancelled) {
+      throw new Error(`Session ${this.sessionId} was cancelled`);
+    }
+
+    this.status = 'running';
+    this.startTime = new Date().toISOString();
+
+    try {
+      console.log(`[AgentSession:${this.sessionId}] Starting execution`);
+      
+      // Add to chain of thought
+      this.addToChainOfThought({
+        type: 'start',
+        message: `Starting task: ${this.task.id || this.task.description}`,
+        timestamp: this.startTime
+      });
+
+      // Execute task with isolated context
+      // This would integrate with actual agent execution
+      this.result = await this.executeTask(this.task, this.isolatedContext);
+
+      this.status = 'completed';
+      this.endTime = new Date().toISOString();
+
+      this.addToChainOfThought({
+        type: 'complete',
+        message: 'Task completed successfully',
+        result: this.result,
+        timestamp: this.endTime
+      });
+
+      console.log(`[AgentSession:${this.sessionId}] Completed successfully`);
+
+      return {
+        sessionId: this.sessionId,
+        success: true,
+        result: this.result,
+        duration: new Date(this.endTime) - new Date(this.startTime)
+      };
+
+    } catch (error) {
+      this.status = 'failed';
+      this.endTime = new Date().toISOString();
+      this.error = error.message;
+
+      this.addToChainOfThought({
+        type: 'error',
+        message: error.message,
+        timestamp: this.endTime
+      });
+
+      console.error(`[AgentSession:${this.sessionId}] Failed: ${error.message}`);
+
+      return {
+        sessionId: this.sessionId,
+        success: false,
+        error: error.message,
+        duration: new Date(this.endTime) - new Date(this.startTime)
+      };
+    }
+  }
+
+  /**
+   * Execute the actual task (placeholder - would integrate with agents)
+   */
+  async executeTask(task, context) {
+    // This would integrate with actual agent execution
+    // For now, simulate execution
+    return {
+      taskId: task.id || task.description,
+      result: `Task executed in isolated context`,
+      context: context
+    };
+  }
+
+  /**
+   * Add entry to chain of thought
+   */
+  addToChainOfThought(entry) {
+    this.chainOfThought.push({
+      ...entry,
+      step: this.chainOfThought.length + 1
+    });
+  }
+
+  /**
+   * Get chain of thought
+   */
+  getChainOfThought() {
+    return this.chainOfThought;
+  }
+
+  /**
+   * Check if session is active
+   */
+  isActive() {
+    return this.status === 'running';
+  }
+
+  /**
+   * Check if session is complete
+   */
+  isComplete() {
+    return this.status === 'completed' || this.status === 'failed' || this.cancelled;
+  }
+
+  /**
+   * Get session status
+   */
+  getStatus() {
+    return {
+      status: this.status,
+      startTime: this.startTime,
+      endTime: this.endTime,
+      hasResult: this.result !== null,
+      hasError: this.error !== null,
+      cancelled: this.cancelled,
+      chainOfThoughtLength: this.chainOfThought.length
+    };
+  }
+
+  /**
+   * Get session progress
+   */
+  getProgress() {
+    if (!this.startTime) return 0;
+    if (this.isComplete()) return 100;
+    
+    // Estimate progress based on chain of thought
+    // This is a placeholder - actual progress would be tracked during execution
+    return Math.min(50, this.chainOfThought.length * 10);
+  }
+
+  /**
+   * Cancel the session
+   */
+  cancel() {
+    this.cancelled = true;
+    this.status = 'cancelled';
+    this.endTime = new Date().toISOString();
+    
+    this.addToChainOfThought({
+      type: 'cancelled',
+      message: 'Session cancelled',
+      timestamp: this.endTime
+    });
   }
 }
 
