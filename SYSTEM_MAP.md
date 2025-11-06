@@ -1,5 +1,5 @@
 # Autonomous Evolution System - Complete System Map
-*Auto-Generated: 2025-11-04T11:33:47.717Z - Always Current, Always Accessible*
+*Auto-Generated: 2025-11-06T11:44:12.785Z - Always Current, Always Accessible*
 
 > **Purpose**: This is your **single source of truth** for understanding the entire Autonomous Evolution System at a glance. **Auto-updates** when components change.
 
@@ -47,7 +47,7 @@
 - **`system-integrity-agent`** - `agents/system-integrity-agent.js` - Status: active
 - **`technical-psychological-analyzer`** - `agents/technical-psychological-analyzer.js` - Status: active
 
-### **🛠️ Skills Layer** (34 skills)
+### **🛠️ Skills Layer** (36 skills)
 
 **autonomous/** (4 skills)
 - **`autonomous-examples`** - `skills/autonomous/autonomous-examples.md`
@@ -66,8 +66,10 @@
 **examples/** (1 skills)
 - **`skill-creator-examples`** - `skills/examples/skill-creator-examples.md`
 
-**meta/** (23 skills)
+**meta/** (25 skills)
+- **`adaptive-execution-mode`** - `skills/meta/adaptive-execution-mode.md`
 - **`adaptive-learning`** - `skills/meta/adaptive-learning.md`
+- **`ai-collaboration-best-practices`** - `skills/meta/ai-collaboration-best-practices.md`
 - **`ai-feedback-loop`** - `skills/meta/ai-feedback-loop.md`
 - **`ai-friction-detection`** - `skills/meta/ai-friction-detection.md`
 - **`autonomous-skill-learner`** - `skills/meta/autonomous-skill-learner.md`
@@ -95,7 +97,7 @@
 - **`elegance-score`** - `skills/reflection/elegance-score.md`
 - **`learning-log-writer`** - `skills/reflection/learning-log-writer.md`
 
-### **📐 Rules Layer** (25 rules)
+### **📐 Rules Layer** (28 rules)
 
 - **`00-ecp-mode.md`** - `rules/00-ecp-mode.md`
 - **`01-ecp-diagnostics.md`** - `rules/01-ecp-diagnostics.md`
@@ -121,6 +123,9 @@
 - **`21-skills-protocol.md`** - `rules/21-skills-protocol.md`
 - **`22-agent-skills.md`** - `rules/22-agent-skills.md`
 - **`23-recursive-code-evolution-loop.md`** - `rules/23-recursive-code-evolution-loop.md`
+- **`24-speed-vs-quality-decision-framework.md`** - `rules/24-speed-vs-quality-decision-framework.md`
+- **`25-descriptive-file-naming.md`** - `rules/25-descriptive-file-naming.md`
+- **`26-automatic-documentation-organization.md`** - `rules/26-automatic-documentation-organization.md`
 - **`RULES_CHANGELOG.md`** - `rules/RULES_CHANGELOG.md`
 
 ### **🔌 Extensions** (2 extensions)
@@ -132,8 +137,8 @@
 
 - **Evolution Engine**: active
 - **Continuous Evolution**: running
-- **Last Update**: 2025-11-04T11:33:47.707Z
-- **Last Evolution Entry**: 2025-01-24
+- **Last Update**: 2025-11-06T11:44:12.768Z
+- **Last Evolution Entry**: N/A
 
 ## 📍 **Quick Navigation**
 
@@ -153,8 +158,8 @@
 
 ---
 
-**Auto-Generated**: 2025-11-04T11:33:47.717Z  
-**Components Scanned**: 16 agents, 34 skills, 25 rules  
+**Auto-Generated**: 2025-11-06T11:44:12.785Z  
+**Components Scanned**: 16 agents, 36 skills, 28 rules  
 **Update Frequency**: Auto-updates when components change, or on demand via `/system-map`
 
 *This map is automatically generated and always reflects the current system state. Use `/system-map [section]` for context-aware access.*

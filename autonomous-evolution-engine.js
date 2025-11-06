@@ -10,6 +10,8 @@ const SystemIntegrityAgent = require('./agents/system-integrity-agent');
 const IdeaCaptureAgent = require('./agents/idea-capture-agent');
 const EpistemicHumilityAgent = require('./agents/epistemic-humility-agent');
 const MetaLearningAgent = require('./agents/meta-learning-agent');
+const evolutionConfig = require('./evolution-config');
+const AutomaticDocumentationOrganizer = require('./skills/meta/automatic-documentation-organizer');
 
 class AutonomousEvolutionEngine {
   constructor() {
@@ -75,6 +77,25 @@ class AutonomousEvolutionEngine {
         this.systemMapGenerator.generateSystemMap().catch(err => {
           console.error('[autonomous-evolution] Error generating initial system map:', err.message);
         });
+        
+        // Initialize automatic documentation organizer
+        this.docOrganizer = new AutomaticDocumentationOrganizer();
+        
+        // Initialize file operation learning bridge
+        const FileOperationLearningBridge = require('./skills/meta/file-operation-learning-bridge');
+        this.fileOperationBridge = new FileOperationLearningBridge();
+        this.fileOperationBridge.setEvolutionEngine(this);
+        
+        // Initialize file operation monitor
+        const FileOperationMonitor = require('./skills/meta/file-operation-monitor');
+        this.fileOperationMonitor = new FileOperationMonitor(__dirname);
+        this.fileOperationMonitor.setEvolutionEngine(this);
+        
+        // Start monitoring if enabled
+        if (evolutionConfig.behavior.autoLearningCapture) {
+          this.fileOperationMonitor.startMonitoring();
+          console.log('[autonomous-evolution] File operation monitoring started');
+        }
   }
 
   /**
@@ -734,43 +755,95 @@ class AutonomousEvolutionEngine {
    * Invariant: Continuous evolution maintains system safety
    */
   startContinuousEvolution() {
-    console.log('[autonomous-evolution] Starting continuous evolution monitoring');
+    if (!evolutionConfig.behavior.continuousMonitoring) {
+      console.log('[autonomous-evolution] Continuous monitoring disabled by configuration');
+      return;
+    }
     
-    // Check for evolution triggers every 10 minutes
+    console.log('[autonomous-evolution] Starting continuous evolution monitoring');
+    console.log(`[autonomous-evolution] Configuration: Evolution check every ${evolutionConfig.intervals.evolutionCheck / 60000} minutes`);
+    console.log(`[autonomous-evolution] Configuration: Periodic evolution every ${evolutionConfig.intervals.periodicEvolution / 60000} minutes`);
+    
+    // Check for evolution triggers periodically
     this.evolutionCheckInterval = setInterval(async () => {
       try {
         const triggers = await this.checkEvolutionTriggers();
         if (triggers.length > 0) {
-          console.log(`[autonomous-evolution] ${triggers.length} evolution triggers detected`);
+          console.log(`[autonomous-evolution] ${triggers.length} evolution triggers detected: ${triggers.join(', ')}`);
           await this.triggerAutonomousEvolution();
+        } else if (evolutionConfig.behavior.verboseLogging) {
+          console.log('[autonomous-evolution] No evolution triggers detected');
         }
       } catch (error) {
         console.error('[autonomous-evolution] Error in evolution check:', error.message);
       }
-    }, 600000); // 10 minutes
+    }, evolutionConfig.intervals.evolutionCheck);
     
-    // Periodic evolution even without explicit triggers (every hour)
-    this.periodicEvolutionInterval = setInterval(async () => {
-      try {
-        console.log('[autonomous-evolution] Periodic evolution check');
-        await this.triggerAutonomousEvolution();
-      } catch (error) {
-        console.error('[autonomous-evolution] Error in periodic evolution:', error.message);
-      }
-    }, 3600000); // 1 hour
+    // Periodic evolution even without explicit triggers
+    if (evolutionConfig.behavior.periodicEvolution) {
+      this.periodicEvolutionInterval = setInterval(async () => {
+        try {
+          console.log('[autonomous-evolution] Periodic evolution check');
+          await this.triggerAutonomousEvolution();
+        } catch (error) {
+          console.error('[autonomous-evolution] Error in periodic evolution:', error.message);
+        }
+      }, evolutionConfig.intervals.periodicEvolution);
+    }
     
-    // Periodic system map update (every hour)
-    this.mapUpdateInterval = setInterval(async () => {
+    // Periodic system map update
+    if (evolutionConfig.behavior.autoMapUpdate) {
+      this.mapUpdateInterval = setInterval(async () => {
+        try {
+          if (this.systemMapGenerator) {
+            await this.systemMapGenerator.checkAndUpdate();
+          }
+        } catch (error) {
+          console.error('[autonomous-evolution] Error updating system map:', error.message);
+        }
+      }, evolutionConfig.intervals.mapUpdate);
+    }
+    
+    // Periodic Q&A auto-updater check
+    if (evolutionConfig.behavior.autoQAUpdate) {
+      this.qaUpdateInterval = setInterval(async () => {
+        try {
+          if (this.qaAutoUpdater) {
+            await this.qaAutoUpdater.autoUpdate();
+            if (evolutionConfig.behavior.verboseLogging) {
+              console.log('[autonomous-evolution] Q&A system updated');
+            }
+          }
+        } catch (error) {
+          console.error('[autonomous-evolution] Error in Q&A update:', error.message);
+        }
+      }, evolutionConfig.intervals.qaUpdate);
+    }
+    
+    // Periodic documentation organization
+    this.docOrganizationInterval = setInterval(async () => {
       try {
-        if (this.systemMapGenerator) {
-          await this.systemMapGenerator.checkAndUpdate();
+        if (this.docOrganizer) {
+          const result = await this.docOrganizer.autoOrganizeAll();
+          if (result.organized > 0) {
+            console.log(`[autonomous-evolution] Organized ${result.organized} documentation files`);
+          } else if (evolutionConfig.behavior.verboseLogging) {
+            console.log('[autonomous-evolution] No documentation files need organization');
+          }
         }
       } catch (error) {
-        console.error('[autonomous-evolution] Error updating system map:', error.message);
+        console.error('[autonomous-evolution] Error in doc organization:', error.message);
       }
-    }, 3600000); // 1 hour
+    }, evolutionConfig.intervals.qaUpdate); // Same interval as Q&A updates (30 min)
     
     console.log('[autonomous-evolution] Continuous evolution monitoring active');
+    console.log('[autonomous-evolution] Active intervals:', {
+      evolutionCheck: !!this.evolutionCheckInterval,
+      periodicEvolution: !!this.periodicEvolutionInterval,
+      mapUpdate: !!this.mapUpdateInterval,
+      qaUpdate: !!this.qaUpdateInterval,
+      docOrganization: !!this.docOrganizationInterval,
+    });
   }
 
   /**
@@ -782,26 +855,36 @@ class AutonomousEvolutionEngine {
     // Check system integrity for issues
     try {
       const integrityStatus = await this.systemIntegrityAgent.getMonitoringStatus();
-      if (integrityStatus.complexity_issues > 0 || integrityStatus.optimization_opportunities > 0) {
-        triggers.push('system_integrity_issue');
+      if (integrityStatus.complexity_issues >= evolutionConfig.triggers.complexityThreshold) {
+        triggers.push('complexity_threshold_exceeded');
+      }
+      if (integrityStatus.optimization_opportunities >= evolutionConfig.triggers.optimizationThreshold) {
+        triggers.push('optimization_opportunities_detected');
       }
     } catch (error) {
-      // Gracefully handle errors
+      if (evolutionConfig.behavior.verboseLogging) {
+        console.log('[autonomous-evolution] Error checking integrity status:', error.message);
+      }
     }
     
     // Check for recent patterns in evolution journal
     try {
       if (fs.existsSync(this.journalPath)) {
         const journalContent = fs.readFileSync(this.journalPath, 'utf8');
-        const recentEntries = journalContent.match(/### \d{4}-\d{2}-\d{2}/g);
-        if (recentEntries && recentEntries.length > 0) {
-          // If new entries in last 24 hours, trigger evolution
-          const latestEntry = recentEntries[recentEntries.length - 1];
-          triggers.push('recent_pattern_detected');
+        const recentEntries = journalContent.match(/\*\*\d{4}-\d{2}-\d{2}/g);
+        if (recentEntries && recentEntries.length > 10) {
+          triggers.push('high_learning_activity_detected');
         }
       }
     } catch (error) {
-      // Gracefully handle errors
+      if (evolutionConfig.behavior.verboseLogging) {
+        console.log('[autonomous-evolution] Error checking journal patterns:', error.message);
+      }
+    }
+    
+    // Check evolution history for patterns
+    if (this.evolutionHistory.length > evolutionConfig.performance.maxHistorySize) {
+      triggers.push('history_cleanup_needed');
     }
     
     return triggers;
@@ -811,19 +894,35 @@ class AutonomousEvolutionEngine {
    * Stop continuous evolution monitoring
    */
   stopContinuousEvolution() {
+    let stoppedCount = 0;
+    
     if (this.evolutionCheckInterval) {
       clearInterval(this.evolutionCheckInterval);
       this.evolutionCheckInterval = null;
+      stoppedCount++;
     }
     if (this.periodicEvolutionInterval) {
       clearInterval(this.periodicEvolutionInterval);
       this.periodicEvolutionInterval = null;
+      stoppedCount++;
     }
     if (this.mapUpdateInterval) {
       clearInterval(this.mapUpdateInterval);
       this.mapUpdateInterval = null;
+      stoppedCount++;
     }
-    console.log('[autonomous-evolution] Continuous evolution monitoring stopped');
+    if (this.qaUpdateInterval) {
+      clearInterval(this.qaUpdateInterval);
+      this.qaUpdateInterval = null;
+      stoppedCount++;
+    }
+    if (this.docOrganizationInterval) {
+      clearInterval(this.docOrganizationInterval);
+      this.docOrganizationInterval = null;
+      stoppedCount++;
+    }
+    
+    console.log(`[autonomous-evolution] Continuous evolution monitoring stopped (${stoppedCount} intervals cleared)`);
   }
 
   /**
@@ -858,7 +957,19 @@ class AutonomousEvolutionEngine {
       metaCognitiveActive: this.metaCognitiveLayer.isActive(),
       selfAssessmentActive: this.selfAssessmentSystem.isActive(),
       architectureEvolutionActive: this.architectureEvolutionEngine.isActive(),
-      continuousEvolutionActive: this.evolutionCheckInterval !== null && this.evolutionCheckInterval !== undefined
+      continuousMonitoring: {
+        enabled: evolutionConfig.behavior.continuousMonitoring,
+        evolutionCheck: !!this.evolutionCheckInterval,
+        periodicEvolution: !!this.periodicEvolutionInterval,
+        mapUpdate: !!this.mapUpdateInterval,
+        qaUpdate: !!this.qaUpdateInterval,
+        docOrganization: !!this.docOrganizationInterval,
+      },
+      configuration: {
+        intervals: evolutionConfig.intervals,
+        triggers: evolutionConfig.triggers,
+        behavior: evolutionConfig.behavior,
+      }
     };
   }
 

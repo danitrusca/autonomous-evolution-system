@@ -380,10 +380,16 @@ class DistributedAutonomousStartup {
   initializeAutonomousEvolution() {
     console.log('[autonomous-startup] Autonomous evolution engine initialized');
     
+    // Start continuous evolution monitoring
+    if (this.evolutionEngine && typeof this.evolutionEngine.startContinuousEvolution === 'function') {
+      this.evolutionEngine.startContinuousEvolution();
+      console.log('[autonomous-startup] Continuous evolution monitoring started');
+    }
+    
     // System can now autonomously ask itself evolution questions
     // and drive its own evolution without manual intervention
     this.evolutionEngine.triggerAutonomousEvolution().then(result => {
-      console.log('[autonomous-startup] Autonomous evolution triggered:', result);
+      console.log('[autonomous-startup] Initial autonomous evolution triggered:', result);
     }).catch(error => {
       console.error('[autonomous-startup] Autonomous evolution failed:', error);
     });

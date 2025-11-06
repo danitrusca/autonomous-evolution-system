@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const DescriptiveFileNaming = require('../skills/meta/descriptive-file-naming');
 
 class DocumentationUpdater {
   constructor() {
@@ -12,6 +13,9 @@ class DocumentationUpdater {
     this.implementedPath = path.join(this.docsPath, 'implemented');
     this.rulesPath = path.join(__dirname, '..', 'rules');
     this.updateHistory = [];
+    
+    // Initialize descriptive naming system
+    this.descriptiveNaming = new DescriptiveFileNaming();
     
     // Ensure implemented directory exists
     this.ensureImplementedDirectory();
@@ -65,15 +69,36 @@ class DocumentationUpdater {
   }
 
   /**
-   * Move summary to implemented directory
+   * Move summary to implemented directory with descriptive naming
    */
   async moveSummaryToImplemented(summaryFile, systemName, version) {
     const sourcePath = path.join(__dirname, '..', summaryFile);
-    const targetPath = path.join(this.implementedPath, `${systemName.toUpperCase().replace(/-/g, '_')}_IMPLEMENTATION_SUMMARY.md`);
     
     if (fs.existsSync(sourcePath)) {
       // Read source content
       const content = fs.readFileSync(sourcePath, 'utf8');
+      
+      // Generate descriptive name from content
+      const namingResult = await this.descriptiveNaming.generateDescriptiveName(content);
+      
+      let targetFileName = namingResult.name;
+      
+      // Fallback to generic name if confidence is too low
+      if (!targetFileName || namingResult.confidence < 0.5) {
+        console.warn(`[doc-updater] Low confidence (${(namingResult.confidence * 100).toFixed(1)}%) for auto-generated name`);
+        console.warn(`[doc-updater] Suggested: ${namingResult.name}`);
+        console.warn(`[doc-updater] Alternatives: ${namingResult.alternatives.join(', ')}`);
+        
+        // Use fallback naming
+        targetFileName = `${systemName.toUpperCase().replace(/-/g, '_')}_SYSTEM.md`;
+        console.log(`[doc-updater] Using fallback name: ${targetFileName}`);
+      } else {
+        console.log(`[doc-updater] Generated descriptive name: ${targetFileName}`);
+        console.log(`[doc-updater] Confidence: ${(namingResult.confidence * 100).toFixed(1)}%`);
+        console.log(`[doc-updater] Reasoning: ${namingResult.reasoning}`);
+      }
+      
+      const targetPath = path.join(this.implementedPath, targetFileName);
       
       // Add implementation metadata
       const enhancedContent = this.addImplementationMetadata(content, systemName, version);
@@ -84,10 +109,33 @@ class DocumentationUpdater {
       // Remove original file
       fs.unlinkSync(sourcePath);
       
-      console.log(`[doc-updater] Moved ${summaryFile} to implemented directory`);
+      console.log(`[doc-updater] Moved ${summaryFile} to implemented directory as ${targetFileName}`);
+      
+      // Record naming decision
+      this.recordNamingDecision(summaryFile, targetFileName, namingResult);
     } else {
       console.warn(`[doc-updater] Summary file ${summaryFile} not found`);
     }
+  }
+  
+  /**
+   * Record naming decision for learning
+   */
+  recordNamingDecision(originalFile, finalName, namingResult) {
+    const decision = {
+      timestamp: new Date().toISOString(),
+      originalFile,
+      finalName,
+      confidence: namingResult.confidence,
+      reasoning: namingResult.reasoning,
+      alternatives: namingResult.alternatives
+    };
+    
+    // Add to update history
+    this.updateHistory.push({
+      type: 'naming_decision',
+      ...decision
+    });
   }
 
   /**

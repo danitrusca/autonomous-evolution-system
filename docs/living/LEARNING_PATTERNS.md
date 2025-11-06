@@ -86,6 +86,101 @@ This document contains extracted learning patterns from the Autonomous Evolution
 - User intervention can prevent system overcomplication
 - Feedback loops improve system responsiveness
 
+### Pattern 7: File Operation Learning Capture Gap
+**Pattern**: Learning capture mechanisms exist but aren't integrated with all operation types  
+**Frequency**: Observed when bulk file operations didn't trigger automatic learning  
+**Confidence**: 0.95  
+**Evolution**: System needs operation-to-learning bridges for all operation types  
+**Application**: Integrate file operations, bulk operations, and refinement patterns with learning capture
+
+**Key Insights**:
+- **Integration Gap**: Having learning capture isn't enough—must be connected to all operations
+- **Operation Types**: File operations (rename, move, create, delete) need learning hooks
+- **Bulk Operations**: Operations affecting >10 files should trigger learning analysis
+- **Pattern Detection**: Refinement patterns (generate → refine) should be automatically recognized
+- **User Feedback**: User questions about missing automatic capture are learning signals
+- **Bridge Pattern**: Need operation-to-learning bridges for each operation type
+
+**Anti-Patterns Detected**:
+- ❌ Learning capture exists but not triggered by file operations
+- ❌ Bulk operations not recognized as learning opportunities
+- ❌ Refinement patterns not automatically detected
+- ❌ Manual capture required when automatic should work
+
+**Success Patterns**:
+- ✅ Learning capture integrated with evolution triggers
+- ✅ Q&A system auto-updates from evolution journal
+- ✅ System map updates after learning capture
+- ✅ Pattern recognition for evolution opportunities
+
+**Meta-Learning**:
+- **Gap Detection**: User question "Why did you not capture these automatically?" identified gap
+- **Integration Need**: Systems need bridges between operation types and learning capture
+- **Pattern Recognition**: Missing integration is itself a pattern to learn from
+- **Recursive Improvement**: Gap identification should trigger automatic improvement
+
+**Replication**:
+1. Identify operation types not connected to learning capture
+2. Create operation-to-learning bridges
+3. Add pattern detection for each operation type
+4. Enable automatic learning capture for all operations
+5. Monitor for gaps and integrate proactively
+
+**Evolution Impact**:
+- File operation monitoring needs integration with learning capture
+- Bulk operation detection should trigger learning analysis
+- Refinement pattern recognition should be automatic
+- All operation types should have learning hooks
+
+### Pattern 8: Descriptive Naming with Refinement Loops
+**Pattern**: Automated naming systems require refinement loops to balance descriptiveness and conciseness  
+**Frequency**: Observed during documentation renaming (56 files renamed)  
+**Confidence**: 0.90  
+**Evolution**: System learns optimal name length and specificity thresholds  
+**Application**: Apply to all automated naming and generation systems
+
+**Key Insights**:
+- **Balance is Critical**: Names must be descriptive but not verbose (20-60 chars optimal)
+- **Refinement Loops Essential**: First-pass generation often needs refinement based on output quality
+- **User Feedback Integration**: Manual corrections provide learning signals for improvement
+- **Pattern Recognition**: System can learn from corrections (e.g., "too verbose" → adjust thresholds)
+- **Recursive Self-Improvement**: System used its own naming system to name itself, creating feedback loop
+- **Quality Thresholds**: Confidence scores (70%+) indicate good names, but manual review still valuable
+- **Context Matters**: Some names need domain-specific knowledge (e.g., version numbers: "2.0" not "20")
+- **Consistency Over Perfection**: Consistent pattern (`<CORE>_<TYPE>`) more valuable than perfect individual names
+
+**Anti-Patterns Detected**:
+- ❌ Overly verbose names: `DEVELOPER_QA_COMMON_QUESTIONS_WHEN_WORKING_ON_THE_AUTONOMOUS_EVOLUTION_SYSTEM.md` (too long)
+- ❌ Date-based names: `SYSTEM_MAP_10_10_IMPLEMENTATION.md` (unclear, should be `SYSTEM_MAP_IMPLEMENTATION.md`)
+- ❌ Version formatting errors: `CURSOR_20_INSIGHTS.md` (should be `CURSOR_2.0_INSIGHTS.md`)
+- ❌ Generic terms: Names containing only "SUMMARY", "GUIDE", "DOCUMENT" without specificity
+
+**Success Patterns**:
+- ✅ Descriptive and concise: `AUTONOMOUS_FILE_NAMING_EVOLUTION_REPORT.md`
+- ✅ Clear system type: `FRICTION_FEEDBACK_PROTOCOL_MONITOR.md`
+- ✅ Proper formatting: `CURSOR_2.0_INSIGHTS.md` (version numbers preserved)
+- ✅ Self-documenting: `TECHNICAL_PSYCHOLOGICAL_ERROR_ANALYZER.md` (immediately clear purpose)
+
+**Meta-Learning**:
+- **Recursive Application**: System applied its own naming rules to itself, demonstrating meta-cognitive capability
+- **Iterative Refinement**: Process required multiple passes (generate → review → refine → apply)
+- **Learning from Corrections**: Manual refinements provide training data for future improvements
+- **Threshold Tuning**: Optimal name length and confidence thresholds can be learned from outcomes
+
+**Replication**:
+1. Generate descriptive names using content analysis
+2. Apply confidence threshold (50%+ for auto-apply)
+3. Review output for quality (length, clarity, specificity)
+4. Refine overly verbose or unclear names
+5. Learn from corrections to improve future generation
+6. Update thresholds and patterns based on outcomes
+
+**Evolution Impact**:
+- Descriptive naming system now includes refinement awareness
+- Confidence thresholds can be adjusted based on user feedback
+- System learns optimal name length and specificity from corrections
+- Recursive self-improvement capability demonstrated
+
 ---
 
 ## 🔄 **Pattern Evolution**
