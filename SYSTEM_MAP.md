@@ -1,5 +1,5 @@
 # Autonomous Evolution System - Complete System Map
-*Auto-Generated: 2025-11-06T11:44:12.785Z - Always Current, Always Accessible*
+*Auto-Generated: 2025-11-07T08:45:17.315Z - Always Current, Always Accessible*
 
 > **Purpose**: This is your **single source of truth** for understanding the entire Autonomous Evolution System at a glance. **Auto-updates** when components change.
 
@@ -97,7 +97,7 @@
 - **`elegance-score`** - `skills/reflection/elegance-score.md`
 - **`learning-log-writer`** - `skills/reflection/learning-log-writer.md`
 
-### **📐 Rules Layer** (28 rules)
+### **📐 Rules Layer** (31 rules)
 
 - **`00-ecp-mode.md`** - `rules/00-ecp-mode.md`
 - **`01-ecp-diagnostics.md`** - `rules/01-ecp-diagnostics.md`
@@ -126,6 +126,9 @@
 - **`24-speed-vs-quality-decision-framework.md`** - `rules/24-speed-vs-quality-decision-framework.md`
 - **`25-descriptive-file-naming.md`** - `rules/25-descriptive-file-naming.md`
 - **`26-automatic-documentation-organization.md`** - `rules/26-automatic-documentation-organization.md`
+- **`27-execution-protocol.md`** - `rules/27-execution-protocol.md`
+- **`28-idea-capture-rules.md`** - `rules/28-idea-capture-rules.md`
+- **`29-auto-crucible-validation.md`** - `rules/29-auto-crucible-validation.md`
 - **`RULES_CHANGELOG.md`** - `rules/RULES_CHANGELOG.md`
 
 ### **🔌 Extensions** (2 extensions)
@@ -137,7 +140,7 @@
 
 - **Evolution Engine**: active
 - **Continuous Evolution**: running
-- **Last Update**: 2025-11-06T11:44:12.768Z
+- **Last Update**: 2025-11-07T08:45:17.307Z
 - **Last Evolution Entry**: N/A
 
 ## 📍 **Quick Navigation**
@@ -158,8 +161,8 @@
 
 ---
 
-**Auto-Generated**: 2025-11-06T11:44:12.785Z  
-**Components Scanned**: 16 agents, 36 skills, 28 rules  
+**Auto-Generated**: 2025-11-07T08:45:17.315Z  
+**Components Scanned**: 16 agents, 36 skills, 31 rules  
 **Update Frequency**: Auto-updates when components change, or on demand via `/system-map`
 
 *This map is automatically generated and always reflects the current system state. Use `/system-map [section]` for context-aware access.*

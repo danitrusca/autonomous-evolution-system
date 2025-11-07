@@ -316,6 +316,7 @@ Post-Commit Reflection
 - `/ecp review` → Daily Micro-Review
 - `/ecp audit` → Weekly Deep Audit
 - `/optimize-prompt` → Prompt optimization
+- `/aes` → System Context Ping - Load SYSTEM_MAP.md for full system awareness
 - `/build-anything` → Universal problem solver
 - `/autonomous` → Continuous optimization mode
 - `/double-pass` → Dual agent collaboration protocol

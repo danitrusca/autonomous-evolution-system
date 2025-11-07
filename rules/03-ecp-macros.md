@@ -12,6 +12,7 @@
 - /ecp audit → runs Weekly Deep Audit (dry-run by default; compresses lessons into 3 protocol upgrades + CHANGELOG entry).
 - /optimize-prompt → optimize my prompt and respond to the optimized prompt
 - /healthcheck → prints "[macro] healthcheck ok"
+- /aes → System Context Ping - Loads SYSTEM_MAP.md to refresh full system awareness (16 agents, 36 skills, 28 rules, 2 extensions)
 
 ## Skills Macros
 
