@@ -1,0 +1,29 @@
+#!/bin/sh
+# Git post-commit hook
+# Automatically updates CHANGE_LOG.md with every commit
+
+# Get the root directory of the repo
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Path to changelog agent
+AGENT_PATH="$REPO_ROOT/autonomous-evolution-system/agents/changelog-agent.js"
+
+# Check if agent exists
+if [ -f "$AGENT_PATH" ]; then
+  echo "[git-hook] Updating CHANGE_LOG.md..."
+  node "$AGENT_PATH" add HEAD
+  
+  # Check if changelog was modified
+  if git diff --quiet HEAD -- autonomous-evolution-system/docs/logs\&reports/CHANGE_LOG.md; then
+    echo "[git-hook] No changelog updates needed"
+  else
+    echo "[git-hook] Changelog updated successfully"
+    # Note: We don't auto-commit the changelog to avoid infinite loops
+    # User can commit changelog separately or use --amend
+  fi
+else
+  echo "[git-hook] Changelog agent not found at $AGENT_PATH"
+fi
+
+exit 0
+

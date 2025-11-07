@@ -4,6 +4,8 @@
 
 Welcome to the Autonomous Evolution System documentation. This system transforms AI assistants from reactive tools into proactive, self-learning, continuously evolving development partners.
 
+> **⭐ System Highlights**: For an inspiring journey through major achievements, see **[SYSTEM_HIGHLIGHTS.md](./SYSTEM_HIGHLIGHTS.md)** - Your jar of awesome!
+
 > **🗺️ System Map**: For a bird's eye view of the entire system at a glance, see **[SYSTEM_MAP.md](../SYSTEM_MAP.md)** (root directory - always accessible)
 
 > **📋 Important**: The [README.md](./README.md) contains the **complete 3,271-line recreation prompt** for rebuilding the entire system from scratch. This NAVIGATION.md provides quick access to organized documentation.
@@ -47,6 +49,12 @@ Welcome to the Autonomous Evolution System documentation. This system transforms
 #### **Living Documentation** (`living/`)
 - **[EVOLUTION_JOURNAL.md](./living/EVOLUTION_JOURNAL.md)** - Living system history and learning
 - **[LEARNING_PATTERNS.md](./living/LEARNING_PATTERNS.md)** - Extracted learning patterns
+
+#### **History & Reports** (`logs&reports/`)
+- **[SYSTEM_HIGHLIGHTS.md](./SYSTEM_HIGHLIGHTS.md)** ⭐ - Curated major features and breakthroughs (your jar of awesome)
+- **[CHANGE_LOG.md](./logs&reports/CHANGE_LOG.md)** - Complete technical history of all changes
+- **[DOCUMENTATION_COVERAGE_REPORT.md](./logs&reports/DOCUMENTATION_COVERAGE_REPORT.md)** - Documentation completeness assessment
+- **[FULL_SYSTEM_CHECK_REPORT.md](./logs&reports/FULL_SYSTEM_CHECK_REPORT.md)** - System health and status
 
 #### **Evolution Documentation** (`evolution/`)
 - **[CURSOR_2.0_INSIGHTS.md](./evolution/CURSOR_2.0_INSIGHTS.md)** - Analysis of Cursor 2.0 insights and implementation

@@ -1,5 +1,5 @@
 # Autonomous Evolution System - Complete System Map
-*Auto-Generated: 2025-11-07T08:45:17.315Z - Always Current, Always Accessible*
+*Auto-Generated: 2025-11-07T08:54:46.367Z - Always Current, Always Accessible*
 
 > **Purpose**: This is your **single source of truth** for understanding the entire Autonomous Evolution System at a glance. **Auto-updates** when components change.
 
@@ -28,12 +28,13 @@
 
 ## 📊 **System Components Map**
 
-### **🤖 Agents Layer** (16 agents)
+### **🤖 Agents Layer** (17 agents)
 
 - **`agent-coordinator`** - `agents/agent-coordinator.js` - Status: active
 - **`agent-creator`** - `agents/agent-creator.js` - Status: active
 - **`autonomous-versioning-agent`** - `agents/autonomous-versioning-agent.js` - Status: active
 - **`change-impact-agent`** - `agents/change-impact-agent.js` - Status: active
+- **`changelog-agent`** - `agents/changelog-agent.js` - Status: active
 - **`connection-discoverer`** - `agents/connection-discoverer.js` - Status: active
 - **`documentation-updater`** - `agents/documentation-updater.js` - Status: active
 - **`epistemic-humility-agent`** - `agents/epistemic-humility-agent.js` - Status: active
@@ -140,14 +141,16 @@
 
 - **Evolution Engine**: active
 - **Continuous Evolution**: running
-- **Last Update**: 2025-11-07T08:45:17.307Z
+- **Last Update**: 2025-11-07T08:54:46.366Z
 - **Last Evolution Entry**: N/A
 
 ## 📍 **Quick Navigation**
 
+- **System Highlights**: `docs/SYSTEM_HIGHLIGHTS.md` ⭐ (Curated achievements & breakthroughs)
 - **System Overview**: `docs/system/SYSTEM_OVERVIEW.md`
 - **Core Architecture**: `docs/system/CORE_ARCHITECTURE.md`
 - **Evolution Journal**: `docs/living/EVOLUTION_JOURNAL.md`
+- **Change Log**: `docs/logs&reports/CHANGE_LOG.md` (Technical history)
 - **Developer Q&A**: `docs/reference/DEVELOPER_QA.md`
 - **API Reference**: `docs/reference/API_REFERENCE.md`
 
@@ -161,8 +164,8 @@
 
 ---
 
-**Auto-Generated**: 2025-11-07T08:45:17.315Z  
-**Components Scanned**: 16 agents, 36 skills, 31 rules  
+**Auto-Generated**: 2025-11-07T08:54:46.367Z  
+**Components Scanned**: 17 agents, 36 skills, 31 rules  
 **Update Frequency**: Auto-updates when components change, or on demand via `/system-map`
 
 *This map is automatically generated and always reflects the current system state. Use `/system-map [section]` for context-aware access.*
