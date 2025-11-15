@@ -23,6 +23,9 @@ class MistakePreventionEngine {
     this.decisionMonitor = new PsychologicalDecisionMonitor();
     this.connectionDiscoverer = new ConnectionDiscoverer();
     this.psychologicalEnabled = false;
+    
+    // Enforce proactive debugging across all generated code
+    this.registerProactiveDebuggingRequirement();
   }
 
   /**
@@ -223,6 +226,39 @@ class MistakePreventionEngine {
   }
 
   /**
+   * Register proactive debugging enforcement as a mandatory quality gate
+   */
+  registerProactiveDebuggingRequirement() {
+    const gateName = 'Proactive Debugging Coverage';
+    
+    const gate = {
+      name: gateName,
+      description: 'All generated runtime code must include proactive debugging instrumentation or an explicit `@proactive-debugging: skip` exemption.',
+      enforcement: 'mandatory',
+      check: (action, context) => {
+        if (!action || action.type !== 'code_generation') {
+          return true;
+        }
+        
+        const report = context && context.proactiveDebugging;
+        if (!report) {
+          return false;
+        }
+        
+        const status = report.status;
+        return status === 'compliant' ||
+               status === 'compliant_with_exemptions' ||
+               status === 'not_applicable';
+      },
+      prevention: {
+        description: 'Run the proactive debugging skill (Analyze → Integrate → Validate) and add instrumentation (debug.metric/logBus/performance.mark). If intentionally skipping, include `@proactive-debugging: skip` with rationale in the file.',
+      },
+    };
+    
+    this.qualityGates.set(gateName, gate);
+  }
+
+  /**
    * Activate prevention system
    */
   activatePreventionSystem() {
@@ -263,7 +299,32 @@ class MistakePreventionEngine {
           pattern: insight,
           risk: 'high',
           prevention: antiPattern.prevention,
-          recommendation: antiPattern.prevention.description
+          recommendation: antiPattern.prevention?.description || antiPattern.insight || insight
+        });
+      }
+    });
+
+    // Enforce quality gates (including proactive debugging)
+    this.qualityGates.forEach((gate, name) => {
+      if (gate.enforcement !== 'mandatory' || typeof gate.check !== 'function') {
+        return;
+      }
+      
+      let passed = true;
+      try {
+        passed = gate.check(action, context);
+      } catch (error) {
+        console.error(`[MistakePreventionEngine] Gate evaluation failed (${name}):`, error.message);
+        passed = false;
+      }
+      
+      if (!passed) {
+        risks.push({
+          pattern: name,
+          risk: 'high',
+          prevention: gate.prevention,
+          recommendation: gate.prevention?.description || gate.description,
+          type: 'quality_gate'
         });
       }
     });

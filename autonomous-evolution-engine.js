@@ -34,6 +34,7 @@ class AutonomousEvolutionEngine {
       "How can I become autotelic?"
     ];
     this.evolutionTriggers = [
+      'code_generation_learning', // PRIMARY: When code generation patterns are learned
       'pattern_detection',      // When patterns are detected
       'friction_encountered',   // When friction is encountered
       'success_amplification',  // When success patterns emerge
@@ -86,6 +87,11 @@ class AutonomousEvolutionEngine {
         this.fileOperationBridge = new FileOperationLearningBridge();
         this.fileOperationBridge.setEvolutionEngine(this);
         
+        // Initialize code generation learning bridge (PRIMARY USE CASE)
+        const CodeGenerationLearningBridge = require('./skills/meta/code-generation-learning-bridge');
+        this.codeGenerationBridge = new CodeGenerationLearningBridge();
+        this.codeGenerationBridge.setEvolutionEngine(this);
+        
         // Initialize file operation monitor
         const FileOperationMonitor = require('./skills/meta/file-operation-monitor');
         this.fileOperationMonitor = new FileOperationMonitor(__dirname);
@@ -95,6 +101,7 @@ class AutonomousEvolutionEngine {
         if (evolutionConfig.behavior.autoLearningCapture) {
           this.fileOperationMonitor.startMonitoring();
           console.log('[autonomous-evolution] File operation monitoring started');
+          console.log('[autonomous-evolution] Code generation learning bridge initialized (PRIMARY USE CASE)');
         }
   }
 
@@ -271,6 +278,61 @@ class AutonomousEvolutionEngine {
    */
   getIdeaCaptureStatus() {
     return this.ideaCaptureAgent.getAgentStatus();
+  }
+
+  /**
+   * Record a code generation session (PRIMARY USE CASE)
+   * This is the main entry point for learning from code generation
+   * Can be called by external systems (Cursor, extensions, hooks) after code generation
+   * 
+   * @param {Array} files - Array of file objects with path, type, size, content
+   * @param {Object} context - Context about the generation (user query, intent, etc.)
+   * @returns {Promise<Object>} The recorded generation session
+   */
+  async recordCodeGenerationSession(files, context = {}) {
+    if (!this.codeGenerationBridge) {
+      console.warn('[autonomous-evolution] Code generation bridge not initialized');
+      return null;
+    }
+    
+    try {
+      const session = await this.codeGenerationBridge.recordGenerationSession(files, {
+        ...context,
+        recordedBy: 'evolution-engine',
+        timestamp: new Date().toISOString()
+      });
+      
+      console.log(`[autonomous-evolution] Code generation session recorded: ${session.id} (${files.length} files)`);
+      
+      // Trigger evolution check if significant generation occurred
+      if (files.length >= 5 || context.impact === 'high') {
+        console.log('[autonomous-evolution] Significant generation detected, triggering evolution check');
+        // Don't await - let it run in background
+        this.checkEvolutionTriggers().catch(err => {
+          console.error('[autonomous-evolution] Error checking evolution triggers:', err.message);
+        });
+      }
+      
+      return session;
+    } catch (error) {
+      console.error('[autonomous-evolution] Error recording code generation session:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get code generation statistics and learned patterns
+   * @returns {Object} Statistics and patterns
+   */
+  getCodeGenerationStats() {
+    if (!this.codeGenerationBridge) {
+      return { error: 'Code generation bridge not initialized' };
+    }
+    
+    return {
+      statistics: this.codeGenerationBridge.getStatistics(),
+      learnedPatterns: this.codeGenerationBridge.getLearnedPatterns()
+    };
   }
 
   /**
@@ -852,6 +914,28 @@ class AutonomousEvolutionEngine {
   async checkEvolutionTriggers() {
     const triggers = [];
     
+    // PRIMARY: Check code generation learning (most important use case)
+    try {
+      if (this.codeGenerationBridge) {
+        const stats = this.codeGenerationBridge.getStatistics();
+        // Trigger if significant generation activity or patterns learned
+        if (stats.totalSessions > 0 && stats.patternsLearned >= 5) {
+          triggers.push('code_generation_learning');
+        }
+        // Trigger if high-quality generation patterns detected
+        if (stats.recentSessions && stats.recentSessions.length > 0) {
+          const avgQuality = stats.recentSessions.reduce((sum, s) => sum + (s.qualityScore || 0), 0) / stats.recentSessions.length;
+          if (avgQuality > 0.8) {
+            triggers.push('code_generation_high_quality_patterns');
+          }
+        }
+      }
+    } catch (error) {
+      if (evolutionConfig.behavior.verboseLogging) {
+        console.log('[autonomous-evolution] Error checking code generation triggers:', error.message);
+      }
+    }
+    
     // Check system integrity for issues
     try {
       const integrityStatus = await this.systemIntegrityAgent.getMonitoringStatus();
@@ -874,6 +958,10 @@ class AutonomousEvolutionEngine {
         const recentEntries = journalContent.match(/\*\*\d{4}-\d{2}-\d{2}/g);
         if (recentEntries && recentEntries.length > 10) {
           triggers.push('high_learning_activity_detected');
+        }
+        // Check for code generation learning entries
+        if (journalContent.includes('code_generation') || journalContent.includes('Code generation')) {
+          triggers.push('code_generation_learning');
         }
       }
     } catch (error) {

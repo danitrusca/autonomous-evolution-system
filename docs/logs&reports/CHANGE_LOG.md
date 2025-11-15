@@ -5,7 +5,299 @@
 
 ---
 
+## 2025-11-10
+### AES encoding normalization and capsule fallback hardening
+**Type**: Enhancement  
+**Impact**: High  
+
+**Changes**:
+- Normalized `/aes` command output and `SYSTEM_MAP.md` to eliminate mojibake and enforce ≤5 bullet summaries with timestamp verification.
+- Hardened capsule auto-attach with a configurable 2-second timeout and JSONL serialization fallback when markdown capture is unavailable.
+- Updated saved thread viewer UI copy to use a clear × close control and Escape key support for accessibility.
+- Refreshed master system overview and changelog documentation to capture the new attach flow behavior and encoding guidance.
+
+**Benefit**: System context delivery is reliable even under attach stress, UI text renders consistently, and operators get explicit documentation of the new behaviors.
+
+### Multi-Lens Problem Solver skill and /solve command
+**Type**: 🛠️ Skill  
+**Impact**: Major  
+
+**Changes**:
+- Added `skills/core/multi-lens-problem-solver.md` implementing first principles, inversion, multi-perspective analysis, second-order effects, options/trade-offs, cheap tests, and a clear recommendation/next-step output.
+- Added a Meta-View & Method Selection step (problem type classification, method set, auto rigor, optimality weighting with composite score, stop rule, and routing to better-fit skills).
+- Added `.cursor/commands/problem-solve.md` to expose `/solve` with `mode:auto|deep`, flags `meta:only`, `opt:time|value|risk|rev`, and `depth:light|full|deep`, forwarding to `/use skill:multi-lens-problem-solver`.
+- Documented `/solve` in `rules/03-ecp-macros.md`.
+
+**Benefit**: Provides a fast, rigorous way to turn ambiguous problems into small, reversible decisions with clear next steps and observability.
+
+**Usage**:
+- Quick: `/solve Build an onboarding flow that improves D2 retention under 1 week timeline`
+- Deep: `/solve mode:deep Choose data model for multi-tenant permissions with future RBAC`
+ - Meta only: `/solve meta:only opt:time Problem: Choose quickest path to validate pricing page`
+
+### AES-wide proactive debugging enforcement
+**Type**: 🚨 Quality Gate  
+**Impact**: Critical  
+
+**Changes**:
+- Added proactive debugging coverage checks to `skills/meta/code-generation-learning-bridge.js`, evaluating every generated runtime file for instrumentation or explicit skip directives.
+- Wired Mistake Prevention Engine to register a mandatory "Proactive Debugging Coverage" quality gate that blocks non-instrumented code generation actions.
+- Recorded prevention outcomes and compliance statistics per generation session for system-wide reporting.
+- Documented enforcement and skip directive usage in `skills/meta/proactive-debugging.md` and `fractal-messaging/docs/PROACTIVE_DEBUGGING_GUIDE.md`.
+
+**Benefit**: Guarantees zero-overhead debug instrumentation is designed in from the first draft across all projects, eliminating reactive retrofits and making observability a default invariant.
+
+---
+
 ## 2025-11-07
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
+### Auto-Changelog System with dual-track highlights
+**Type**: Feature  
+**Commit**: `752f238`  
+**Impact**: Revolutionary  
+
+**Changes**:
+- Created changelog-agent.js for automatic change tracking
+- Dual-track system: CHANGE_LOG.md (all changes) + SYSTEM_HIGHLIGHTS.md (Revolutionary/Major only)
+- Automatic highlights generation with narrative formatting
+- Git post-commit hook integration for zero-maintenance updates
+- Setup script for easy installation
+- Comprehensive CHANGE_LOG.md with full system history (50+ entries)
+- Curated SYSTEM_HIGHLIGHTS.md as 'jar of awesome' for major milestones
+- Complete AUTO_CHANGELOG_SYSTEM.md implementation documentation
+- Updated SYSTEM_MAP.md and navigation guides
+- Complete documentation suite for Layer 0 meta-validation system
+- Implementation guides and quick start documentation
+- Reference documentation and framework explanations
+- Added /aes macro for system context ping
+- Updated SYSTEM_MAP.md to current state (17 agents, 36 skills, 31 rules)
+- Enhanced documentation navigation with highlights link
+- Rules organization: moved 3 rules to proper locations (27-29)
+
+**Benefit**: Complete system history automatically maintained, with beautiful
+narrative highlights for major milestones. Every commit updates both files
+appropriately based on impact level.
+
+**Files Changed**: 22
+
+---
+
 
 ### Add /aes macro for system context ping
 **Type**: Feature  
@@ -681,7 +973,7 @@ This change log consolidates information from:
 ## Statistics
 
 **Total Entries**: 50+  
-**Last Updated**: 2025-11-07  
+**Last Updated**: 2025-11-15T08:16:41.010Z
 **Update Frequency**: Real-time with every system change  
 **Components Tracked**: Agents, Skills, Rules, Extensions, Documentation, Configuration
 

@@ -199,6 +199,13 @@ Log all proactive debugging activities with `[proactive-debugging]` prefix:
 - `[proactive-debugging] Validate: [debug capabilities verified]`
 - `[proactive-debugging] Evolve: [debug features improved]`
 
+## AES Enforcement
+
+- The Autonomous Evolution System evaluates every code generation session for proactive debugging coverage.
+- Mistake Prevention Engine blocks actions when generated runtime files lack instrumentation.
+- Use `@proactive-debugging: skip` (with inline rationale) only when instrumentation is truly not applicable.
+- Compliance metrics feed into system-wide learning and reporting.
+
 ## Integration with Debug SDK
 
 When working with projects that have a debug SDK (like `fractal-messaging/browser-extension`):

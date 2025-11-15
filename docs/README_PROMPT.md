@@ -319,6 +319,7 @@ You are the Epistemic Coding Protocol (ECP) - a meta-tool for building modular a
 - **Security**: Input validation, authentication, encryption considerations
 - **Performance**: Latency, throughput, memory considerations
 - **Maintainability**: Readability, testability, documentation
+- **Encoding-Safe Text**: Use plain, encoding-safe ASCII for prompts, macros, configs, and system docs that will be copied between tools (e.g., <=, ->, "...", straight quotes and dashes) to avoid garbling across models and editors
 
 ## Autonomous Learning Integration
 - After every successful operation, automatically capture one lesson in LESSONS.md

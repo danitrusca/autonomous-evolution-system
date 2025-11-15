@@ -865,11 +865,11 @@ This journal captures the continuous evolution of the ECP system through autonom
 **Confidence**: 0.90
 
 #### Principle 8: Encoding Safety
-**Definition**: Always verify file encoding when restoring from Git to prevent string matching failures
-**Source**: BOM encoding issues during file restoration (2025-01-27)
-**Evidence**: Encoding issues caused persistent test failures despite correct content
-**Application**: Use Git operations instead of manual file recreation for encoding safety
-**Confidence**: 0.85
+**Definition**: Always verify and standardize encoding to prevent subtle string matching failures across tools and models
+**Source**: BOM encoding issues during file restoration (2025-01-27) and prompt garbling in multi-model environments
+**Evidence**: Encoding issues caused persistent test failures and prompt misinterpretation despite correct content
+**Application**: Use Git operations instead of manual file recreation for file integrity, and default to encoding-safe, ASCII-only text (<=, ->, "...", straight quotes/dashes) for prompts, macros, configs, and system documentation that will be copied between tools
+**Confidence**: 0.90
 
 #### Principle 9: Self-Aware Systems (Layer 0 Principle)
 **Definition**: Systems should validate their own necessity before execution—knowing when NOT to run is as important as knowing how to run

@@ -13,6 +13,7 @@
 - /optimize-prompt → optimize my prompt and respond to the optimized prompt
 - /healthcheck → prints "[macro] healthcheck ok"
 - /aes → System Context Ping - Loads SYSTEM_MAP.md to refresh full system awareness (16 agents, 36 skills, 28 rules, 2 extensions)
+- /solve → Multi-Lens Problem Solver (quick/deep; aliases: /ps, /crucible)
 
 ## Skills Macros
 

@@ -19,17 +19,24 @@
 const fs = require('fs');
 const path = require('path');
 const FileOperationLearningBridge = require('./file-operation-learning-bridge');
+const CodeGenerationLearningBridge = require('./code-generation-learning-bridge');
 
 class FileOperationMonitor {
   constructor(rootPath) {
     this.rootPath = rootPath || process.cwd();
     this.bridge = new FileOperationLearningBridge();
+    this.codeGenBridge = new CodeGenerationLearningBridge();
     this.watchedPaths = new Set();
     this.isMonitoring = false;
     
     // Operation tracking
     this.pendingOperations = new Map();
     this.operationTimeout = 1000; // 1 second to batch operations
+    
+    // Code generation session detection
+    this.recentCreates = []; // Track recent file creations
+    this.generationSessionWindow = 60000; // 1 minute window for generation sessions
+    this.generationSessionTimeout = null;
   }
 
   /**
@@ -129,11 +136,107 @@ class FileOperationMonitor {
         // Record operation in bridge
         this.bridge.recordOperation(operation);
         
+        // Check for code generation session (file creation)
+        if (operation.type === 'create') {
+          this.trackFileCreation(operation);
+        }
+        
         console.log(`[file-operation-monitor] ${operation.type}: ${path.basename(filePath)}`);
       }
     } catch (error) {
       console.error('[file-operation-monitor] Error processing operation:', error.message);
     }
+  }
+
+  /**
+   * Track file creation for code generation session detection
+   */
+  trackFileCreation(operation) {
+    const now = new Date();
+    
+    // Add to recent creates
+    this.recentCreates.push({
+      ...operation,
+      timestamp: now
+    });
+    
+    // Filter out creates outside the window
+    const windowStart = new Date(now.getTime() - this.generationSessionWindow);
+    this.recentCreates = this.recentCreates.filter(op => op.timestamp >= windowStart);
+    
+    // Clear existing timeout
+    if (this.generationSessionTimeout) {
+      clearTimeout(this.generationSessionTimeout);
+    }
+    
+    // Set timeout to detect generation session
+    this.generationSessionTimeout = setTimeout(() => {
+      this.detectGenerationSession();
+    }, this.generationSessionWindow);
+  }
+
+  /**
+   * Detect if recent file creations constitute a code generation session
+   */
+  async detectGenerationSession() {
+    if (this.recentCreates.length === 0) return;
+    
+    // Check if this looks like a code generation session
+    // Criteria: Multiple files created within the time window
+    if (this.recentCreates.length >= 1) {
+      const files = this.recentCreates.map(op => ({
+        path: op.file || op.target,
+        type: this.detectFileType(op.file || op.target),
+        size: this.getFileSize(op.file || op.target)
+      }));
+      
+      // Record as generation session
+      await this.codeGenBridge.recordGenerationSession(files, {
+        detectedBy: 'file-operation-monitor',
+        timestamp: new Date().toISOString()
+      });
+      
+      console.log(`[file-operation-monitor] Code generation session detected: ${files.length} files`);
+      
+      // Clear recent creates
+      this.recentCreates = [];
+    }
+  }
+
+  /**
+   * Detect file type from path
+   */
+  detectFileType(filePath) {
+    const ext = path.extname(filePath).toLowerCase();
+    const typeMap = {
+      '.js': 'javascript',
+      '.ts': 'typescript',
+      '.jsx': 'react',
+      '.tsx': 'react-typescript',
+      '.json': 'json',
+      '.md': 'markdown',
+      '.py': 'python',
+      '.java': 'java',
+      '.go': 'go',
+      '.rs': 'rust',
+      '.css': 'css',
+      '.html': 'html'
+    };
+    return typeMap[ext] || 'unknown';
+  }
+
+  /**
+   * Get file size safely
+   */
+  getFileSize(filePath) {
+    try {
+      if (fs.existsSync(filePath)) {
+        return fs.statSync(filePath).size;
+      }
+    } catch (error) {
+      // Ignore
+    }
+    return 0;
   }
 
   /**
@@ -208,13 +311,24 @@ class FileOperationMonitor {
    */
   setEvolutionEngine(evolutionEngine) {
     this.bridge.setEvolutionEngine(evolutionEngine);
+    this.codeGenBridge.setEvolutionEngine(evolutionEngine);
   }
 
   /**
    * Get operation statistics
    */
   getStatistics() {
-    return this.bridge.getStatistics();
+    return {
+      fileOperations: this.bridge.getStatistics(),
+      codeGeneration: this.codeGenBridge.getStatistics()
+    };
+  }
+
+  /**
+   * Manually record a code generation session (for external triggers)
+   */
+  async recordCodeGenerationSession(files, context = {}) {
+    return await this.codeGenBridge.recordGenerationSession(files, context);
   }
 }
 

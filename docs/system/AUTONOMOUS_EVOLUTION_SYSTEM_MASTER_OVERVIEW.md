@@ -151,6 +151,12 @@ The system continuously evolves through:
 - Git integration
 - Journal updates
 
+### **Context Capsule Delivery**
+- Auto-attach flow enforces a 2-second timeout before falling back gracefully
+- JSONL capsule serialization covers markdown gaps to keep context exports reliable
+- Saved thread viewer now uses a clear close control (×) and Escape-to-close accessibility
+- `/aes` system ping returns ≤5 bullet summaries with verified timestamps and ASCII-safe output
+
 ---
 
 ## 📖 **Further Reading**

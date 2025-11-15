@@ -1,5 +1,40 @@
 # ECP Rules Changelog
 
+## 2025-11-07 - Rules Organization Restructure
+
+### Changes Made
+
+**Rules Folder Reorganization**
+- **Context**: Complex autonomous protocols were misplaced in `.cursor/rules` alongside lightweight AI behavior constraints
+- **Change**: Moved 3 sophisticated systems from `.cursor/rules` to `autonomous-evolution-system/rules/` with renumbering:
+  - `00-execution-protocol.md` → `27-execution-protocol.md`
+  - `04-idea-capture-rules.md` → `28-idea-capture-rules.md`
+  - `05-auto-crucible-validation.md` → `29-auto-crucible-validation.md`
+- **Expected Impact**: Better conceptual cohesion, cleaner separation between universal constraints and contextual protocols
+- **Success Metrics**: Improved rule discoverability, reduced context pollution, clearer loading strategy
+
+### Architecture Benefits
+- **`.cursor/rules` (4 files, ~25 lines)**: Lightweight, always-active universal constraints
+  - Token policy, pruning rules, output formatting, minimization
+- **`autonomous-evolution-system/rules` (31 files)**: Comprehensive development protocols loaded contextually
+  - All autonomous systems now unified in a single location
+  - Clear thematic grouping: ECP core (00-07), systems (08-14), domain checklists (15-19), advanced systems (20-29)
+
+### Updated Cross-References
+- Rule 28 (Idea Capture) references updated to point to Rule 29 (Auto-Crucible)
+- Rule 29 (Auto-Crucible) references updated to point to Rule 28 (Idea Capture) and Rule 27 (Execution Protocol)
+- `.cursor/rules` references maintained for universal constraints
+
+### Learning Integration
+- **Pattern**: Complex protocols belong with their conceptual system, not with basic constraints
+- **Outcome**: Clearer mental model for rule organization and loading strategy
+- **Insight**: Separation by complexity and activation frequency improves system maintainability
+
+### Rollback Plan
+- Move 27-29 back to `.cursor/rules` with original numbers (00, 04, 05)
+- Delete from `autonomous-evolution-system/rules/`
+- Revert cross-reference updates
+
 ## 2025-10-31 - Recursive Code Evolution Loop (RCEL) Protocol
 
 ### Changes Made
