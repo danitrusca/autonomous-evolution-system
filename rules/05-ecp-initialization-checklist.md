@@ -7,9 +7,9 @@ Before first commit with ECP active:
    - `.cursor/rules/02-ecp-commit-contract.md` (gating checks)
    - `.cursor/rules/03-ecp-macros.md` (macro definitions)
    - `.cursor/rules/RULES_CHANGELOG.md` (protocol evolution tracker)
-   - `AUTONOMOUS_EVOLUTION_JOURNAL.md` (comprehensive learning capture and system evolution tracking)
+   - `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md` (comprehensive learning capture and system evolution tracking)
 
-2. **Initialize AUTONOMOUS_EVOLUTION_JOURNAL.md** with header:
+2. **Initialize AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md** with header:
    ```markdown
    # Autonomous Evolution Journal
    *The Living Memory of System Intelligence*
@@ -50,7 +50,7 @@ Before first commit with ECP active:
    chore: initialize ECP protocol
    
    - Added .cursor/rules/ (orchestrator, gating, macros, changelog)
-   - Created AUTONOMOUS_EVOLUTION_JOURNAL.md for comprehensive learning capture and system evolution tracking
+   - Created AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md for comprehensive learning capture and system evolution tracking
    - Established RSI Loop baseline for future micro-reviews
    ```
 
@@ -72,6 +72,6 @@ If ECP is not suitable for the project:
 ```bash
 git revert <commit-hash>  # Revert initialization commit
 rm -rf .cursor/rules/     # Remove protocol files
-rm AUTONOMOUS_EVOLUTION_JOURNAL.md  # Remove evolution journal
+rm AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md  # Remove evolution journal
 ```
 

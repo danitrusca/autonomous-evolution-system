@@ -31,7 +31,7 @@ Automatically capture lessons learned from development activities and structure 
 - Add verification steps
 
 ### 3. Integration
-- Append to AUTONOMOUS_EVOLUTION_JOURNAL.md
+- Append to AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 - Update relevant skill documentation
 - Trigger skill optimization if needed
 - Cross-reference related lessons

@@ -191,7 +191,7 @@ class UnifiedJournalTest {
 
       // Check that old journal files don't exist
       const oldJournals = [
-        'AUTONOMOUS_EVOLUTION_JOURNAL.md',
+        'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md',
         'CHANGES_JOURNAL.md',
         'IDEA_JOURNAL.md'
       ];

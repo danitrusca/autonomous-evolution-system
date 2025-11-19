@@ -352,7 +352,7 @@ class ChangeImpactAgent {
   // Placeholder methods for actual implementation
   isCriticalFile(filePath) {
     return filePath.includes('autonomous-skill-system.js') || 
-           filePath.includes('AUTONOMOUS_EVOLUTION_JOURNAL.md');
+           filePath.includes('AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md');
   }
   
   isImportantFile(filePath) {

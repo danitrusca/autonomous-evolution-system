@@ -15,7 +15,7 @@ class MistakePreventionEngine {
     this.antiPatterns = new Map();
     this.qualityGates = new Map();
     this.preventionRules = new Map();
-    this.journalPath = path.join(__dirname, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+    this.journalPath = path.join(__dirname, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md');
     this.activePrevention = true;
     
     // Initialize psychological analysis components
@@ -412,7 +412,7 @@ class MistakePreventionEngine {
       if (risk.pattern.includes('learning capture')) {
         alternatives.push({
           action: 'Capture lesson in evolution journal',
-          description: 'Add lesson to AUTONOMOUS_EVOLUTION_JOURNAL.md',
+          description: 'Add lesson to AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md',
           command: 'Update evolution journal with lesson'
         });
       }

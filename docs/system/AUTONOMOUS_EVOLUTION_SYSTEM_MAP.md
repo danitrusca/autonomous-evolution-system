@@ -198,7 +198,7 @@ AUTONOMOUS EVOLUTION SYSTEM/
 │       ├── digests/                # Digest data
 │       └── trends/                   # Trend data
 ├── docs/                           # System documentation
-│   ├── AUTONOMOUS_EVOLUTION_JOURNAL.md  # Evolution tracking
+│   ├── AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md  # Evolution tracking
 │   ├── IDEA_JOURNAL.md             # Idea management
 │   ├── CHANGES_JOURNAL.md          # Change tracking
 │   └── SYSTEM_INTEGRITY_AGENT.md   # Agent documentation

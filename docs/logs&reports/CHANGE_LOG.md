@@ -899,7 +899,7 @@ appropriately based on impact level.
 - Added RSI mechanics to 00-ecp-mode.md
 - Gating Checks, Micro-Loop, Daily Review, Weekly Audit
 - Drift Guard, KPIs
-- Created AUTONOMOUS_EVOLUTION_JOURNAL.md
+- Created AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 
 **Benefit**: Every commit now has a learning capture path; protocol can self-upgrade based on friction patterns
 
@@ -1023,7 +1023,7 @@ This change log is automatically updated by:
 
 This change log consolidates information from:
 - Git commit history
-- `AUTONOMOUS_EVOLUTION_JOURNAL.md` (learning patterns)
+- `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md` (learning patterns)
 - `RULES_CHANGELOG.md` (rule changes)
 - Agent activity logs
 - Version milestones

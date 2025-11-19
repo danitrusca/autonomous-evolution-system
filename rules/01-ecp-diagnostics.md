@@ -51,6 +51,6 @@ When diagnostic patterns are detected (repeated failures, performance issues, se
 - **Pattern Detection**: Log `[diagnostic] pattern detected: [type]` when same issue occurs 3+ times
 - **Autonomous Trigger**: Log `[autonomous] optimization triggered for [pattern]` 
 - **Optimization Action**: Apply relevant optimization from 08-autonomous-optimization.md
-- **Learning Capture**: Record pattern and solution in `AUTONOMOUS_EVOLUTION_JOURNAL.md`
+- **Learning Capture**: Record pattern and solution in `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
 
 **Integration Flow**: Diagnostic → Pattern Recognition → Autonomous Optimization → Learning Capture

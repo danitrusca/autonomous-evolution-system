@@ -14,7 +14,7 @@ class AutonomousLearningSystem {
         this.learningTriggers = new Map();
         this.patternRecognition = new Map();
         this.lessonCapture = new Map();
-        this.journalPath = path.join(__dirname, '../../docs/AUTONOMOUS_EVOLUTION_JOURNAL.md');
+        this.journalPath = path.join(__dirname, '../../docs/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md');
         
         this.initializeLearningTriggers();
         this.initializePatternRecognition();

@@ -146,7 +146,7 @@ The system automatically determines impact:
 
 ### Integration Sources
 - Git commit history
-- `AUTONOMOUS_EVOLUTION_JOURNAL.md` (learning patterns)
+- `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md` (learning patterns)
 - `RULES_CHANGELOG.md` (rule changes)
 - Agent activity logs
 - Version milestones
@@ -215,7 +215,7 @@ Each changelog entry includes:
 
 ### With Existing Systems
 
-1. **AUTONOMOUS_EVOLUTION_JOURNAL.md**
+1. **AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md**
    - Changelog tracks "what changed"
    - Evolution journal tracks "what we learned"
    - Both reference each other

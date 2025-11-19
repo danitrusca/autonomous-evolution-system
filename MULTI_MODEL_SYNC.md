@@ -57,7 +57,7 @@ Use the following syntax to signal a mandatory model switch:
 
 - **Phase 2 Persistence Strategy (Architect Decision)**  
   - `solutionTemplates` uses the **same persistence pattern** as `patternDatabase`: markdown file (`docs/SOLUTION_TEMPLATES.md`) wrapping a JSON payload `{ schemaVersion, lastUpdated, templates }`, with deterministic key ordering and atomic writes.  
-  - `learningInsights` uses a **hybrid strategy**: a lightweight, queryable index file (`docs/LEARNING_INSIGHTS.md`) with `{ schemaVersion, lastUpdated, insights[] }` plus rich narrative capture in `docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md`.  
+  - `learningInsights` uses a **hybrid strategy**: a lightweight, queryable index file (`docs/LEARNING_INSIGHTS.md`) with `{ schemaVersion, lastUpdated, insights[] }` plus rich narrative capture in `docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`.  
   - All three stores share the same schema version constant and fenced-JSON parsing helpers, and emit structured logs (`[metaLearning.patterns]`, `[metaLearning.templates]`, `[metaLearning.insights]`) for observability and cross-model monitoring.
 
 ### 📚 Librarian's Scratchpad

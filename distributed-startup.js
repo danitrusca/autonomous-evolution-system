@@ -55,7 +55,7 @@ class DistributedAutonomousStartup {
     const requiredFiles = [
       'autonomous-evolution-engine.js',
       'mistake-prevention-engine.js',
-      'docs/AUTONOMOUS_EVOLUTION_JOURNAL.md'
+      'docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md'
     ];
     
     const currentPath = __dirname;
@@ -86,7 +86,7 @@ class DistributedAutonomousStartup {
     
     if (allFilesExist) {
       this.systemPath = currentPath;
-      this.journalPath = path.join(currentPath, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+      this.journalPath = path.join(currentPath, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md');
       results.found = true;
       results.details = 'All required files found in current directory';
     } else {
@@ -122,7 +122,7 @@ class DistributedAutonomousStartup {
       const requiredFiles = [
         'autonomous-evolution-engine.js',
         'mistake-prevention-engine.js',
-        'docs/AUTONOMOUS_EVOLUTION_JOURNAL.md'
+        'docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md'
       ];
       
       const fileResults = {};
@@ -145,7 +145,7 @@ class DistributedAutonomousStartup {
       
       if (allFilesExist) {
         this.systemPath = currentDir;
-        this.journalPath = path.join(currentDir, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+        this.journalPath = path.join(currentDir, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md');
         results.found = true;
         results.path = currentDir;
         results.files = fileResults;
@@ -178,7 +178,7 @@ class DistributedAutonomousStartup {
         
         if (aesAllFilesExist) {
           this.systemPath = aesFolder;
-          this.journalPath = path.join(aesFolder, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+          this.journalPath = path.join(aesFolder, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md');
           results.found = true;
           results.path = aesFolder;
           results.files = aesFileResults;

@@ -23,4 +23,4 @@ Delete this file if testing checklist becomes obsolete.
 ## General
 - [ ] Consult Mode Selection Guide
 - [ ] Run /ecp review after ≥3 commits
-- [ ] Log friction in AUTONOMOUS_EVOLUTION_JOURNAL.md (≤140 chars)
+- [ ] Log friction in AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md (≤140 chars)

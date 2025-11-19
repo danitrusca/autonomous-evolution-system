@@ -15,7 +15,7 @@ const AutomaticDocumentationOrganizer = require('./skills/meta/automatic-documen
 
 class AutonomousEvolutionEngine {
   constructor() {
-    this.journalPath = path.join(__dirname, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+    this.journalPath = path.join(__dirname, 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md');
     this.evolutionQuestions = [
       "What's the next evolution of the system?",
       "What capabilities am I missing?",

@@ -8,7 +8,7 @@
 - /review → runs the Challenge Block.
 - /emergency → Emergency Mode (direct implement + post-commit review required)
 - /diag-net → generates the server HEAD probe + `/api/db-check` route and a `scripts/net-diagnose.ts`.
-- /ecp review → runs Daily Micro-Review (scans last 10 commits + AUTONOMOUS_EVOLUTION_JOURNAL.md, emits Micro-Review Card with friction patterns).
+- /ecp review → runs Daily Micro-Review (scans last 10 commits + AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md, emits Micro-Review Card with friction patterns).
 - /ecp audit → runs Weekly Deep Audit (dry-run by default; compresses lessons into 3 protocol upgrades + CHANGELOG entry).
 - /optimize-prompt → optimize my prompt and respond to the optimized prompt
 - /healthcheck → prints "[macro] healthcheck ok"

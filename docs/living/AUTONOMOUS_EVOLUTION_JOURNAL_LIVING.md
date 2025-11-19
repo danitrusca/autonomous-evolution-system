@@ -1,6 +1,8 @@
 # Autonomous Evolution Journal
 *The Living Memory of System Intelligence*
 
+> **Living Log**: This is the human-editable working journal. Capture all new lessons, breakthroughs, and decisions here—the automation pipeline will ingest these entries and mirror them into the archive.
+
 ## Purpose
 
 This journal captures the continuous evolution of the ECP system through autonomous learning, pattern recognition, and self-improvement. It serves as the central repository for all insights, breakthroughs, and system enhancements.
@@ -17,6 +19,12 @@ This journal captures the continuous evolution of the ECP system through autonom
 - Autonomous optimization and evolution
 
 ## System Evolution Timeline
+
+### 2025-11-19: Journal Split Clarified
+**Change**: Renamed the automation archive to `docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md` and the working log to `docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`.
+- **Insight**: Two files with the same name created confusion about where humans vs agents should edit.
+- **Impact**: Archive stays append-only for autonomous ingestion, while the living journal remains the single manual capture surface.
+- **Invariant**: All lessons are still recorded here first, then mirrored to the archive automatically.
 
 ### v2.0.0 (2025-11-07): Auto-Crucible v2.0 - Self-Aware Validation System
 **Breakthrough**: Revolutionary meta-validation layer - system validates whether to validate before validating
@@ -1424,7 +1432,7 @@ This journal captures the continuous evolution of the ECP system through autonom
 - **Impact**: Created single source of truth for all system evolution, patterns, and insights
 - **Evolution**: System now has comprehensive evolution tracking and autonomous optimization capabilities
 
-**2025-01-16 18:20** – Systematic Change Management → Updated all references from LESSONS.md to AUTONOMOUS_EVOLUTION_JOURNAL.md
+**2025-01-16 18:20** – Systematic Change Management → Updated all references from LESSONS.md to AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 - **Insight**: Systematic change management is crucial when updating architecture - all references must be updated consistently
 - **Impact**: Found and updated 10 references across multiple rules files, ensuring system consistency
 - **Evolution**: System now has better change management practices and consistency validation
@@ -1938,7 +1946,7 @@ This analysis provides empirical validation of ECP's core principles and identif
 **Breakthrough**: Cross-Session Learning Persistence
 - **Insight**: Autonomous evolution system needs persistent memory across AI sessions to maintain learning continuity
 - **Impact**: Enhanced autonomous-skill-system.js with persistent memory integration and cross-session learning
-- **Evolution**: System now loads existing learning from AUTONOMOUS_EVOLUTION_JOURNAL.md and saves lessons to multiple memory systems
+- **Evolution**: System now loads existing learning from AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md and saves lessons to multiple memory systems
 - **Learning**: True persistence requires both file-based storage and cross-session memory integration
 - **Pattern**: Load existing learning → Parse patterns → Save to multiple systems → Maintain continuity
 - **Quality Gate**: All lessons must be saved to both evolution journal and persistent memory
@@ -2725,3 +2733,5 @@ This analysis provides empirical validation of ECP's core principles and identif
 - **Lesson**: Lightweight git branches enable rapid experimentation without polluting main history—experiment freely, merge selectively
 - **Evolution**: System now recognizes clean experimentation patterns as essential for rapid iteration
 - **Application**: Apply to any development workflow where experimentation is needed—use branches for isolation
+
+<!-- 2025-11-19 12:50 – Fractal Messaging implementation note moved to FM_PROJECT_JOURNAL.md (TreeTOC/thread-tree selector is project-scoped, not AES system-level). -->

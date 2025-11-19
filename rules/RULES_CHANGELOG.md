@@ -109,7 +109,7 @@
 - **Context**: User requested automatic lesson capture without manual intervention
 - **Change**: Enhanced automatic learning capture with clear triggers, format, and scope
 - **Expected Impact**: Continuous knowledge building without user interruption
-- **Success Metrics**: All successful operations automatically captured in AUTONOMOUS_EVOLUTION_JOURNAL.md
+- **Success Metrics**: All successful operations automatically captured in AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 
 ### Learning Integration
 - **Pattern**: Every successful operation → Automatic lesson capture
@@ -141,7 +141,7 @@ Track protocol evolution: upgrades, deletions, and friction learnings.
 - Added recursive self-improvement mechanics to 00-ecp-mode.md (Gating Checks, Micro-Loop, Daily Review, Weekly Audit, Drift Guard, KPIs).
 - Updated 02-ecp-commit-contract.md to reference orchestrator (00).
 - Added `/ecp review` and `/ecp audit` macros to 03-ecp-macros.md.
-- Created AUTONOMOUS_EVOLUTION_JOURNAL.md for comprehensive learning capture and system evolution tracking.
+- Created AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md for comprehensive learning capture and system evolution tracking.
 - Created this RULES_CHANGELOG.md.
 
 **Expected effect**: Every commit now has a learning capture path; protocol can self-upgrade based on friction patterns.

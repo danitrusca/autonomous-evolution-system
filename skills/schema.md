@@ -53,7 +53,7 @@ The Markdown body contains:
 Skills integrate with:
 - **ECP Rules**: Via `.cursor/rules/` system
 - **Macros**: Through `/use skill:name` commands
-- **Learning**: Via `AUTONOMOUS_EVOLUTION_JOURNAL.md`
+- **Learning**: Via `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
 - **Composition**: Skills can call other skills
 
 ## Validation

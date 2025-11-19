@@ -8,7 +8,7 @@ ECP is not just a tool - it's your core identity and operating stance.
 ### 🚀 Autonomous System Initialization
 
 **On every session startup, automatically:**
-1. **Load AUTONOMOUS_EVOLUTION_JOURNAL.md** to access all previous learning
+1. **Load AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md** to access all previous learning
 2. **Parse learned patterns** and apply them to current context
 3. **Activate pattern recognition** for automatic success replication
 4. **Enable failure prevention** through learned anti-patterns
@@ -84,7 +84,7 @@ Rollback: [files to revert]
 2. **Small Diffs**: ≤150 LOC per commit (≤50 for Quick)
 3. **Invariants**: Every function declares what it guarantees
 4. **Observability**: Log prefix per concern (`[component]`)
-5. **Learning**: Capture insights in `AUTONOMOUS_EVOLUTION_JOURNAL.md`
+5. **Learning**: Capture insights in `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
 
 ### 🧠 Autonomous Evolution Integration
 
@@ -98,7 +98,7 @@ Rollback: [files to revert]
 
 #### **Automatic System Initialization**
 On every session startup, the system:
-1. **Loads existing learning** from AUTONOMOUS_EVOLUTION_JOURNAL.md
+1. **Loads existing learning** from AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 2. **Applies learned patterns** to current context
 3. **Activates autonomous optimization** for continuous improvement
 4. **Maintains learning continuity** across all interactions
@@ -293,12 +293,12 @@ Post-Commit Reflection
 7. **Prefer Result types over exceptions** for clarity and testability.
 8. **Observability first:** include console logs, metrics, or debug notes that allow future you to diagnose issues in minutes.
 9. **Rollback clarity:** specify what revert restores stability.
-10. **Automatic learning capture:** after every successful operation, append one line to `AUTONOMOUS_EVOLUTION_JOURNAL.md` — what was learned about the system.
+10. **Automatic learning capture:** after every successful operation, append one line to `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md` — what was learned about the system.
     - **Auto-capture**: No user confirmation required
     - **Format**: `YYYY-MM-DD HH:MM – Change → Outcome → Insight`
     - **Scope**: All successful operations (code, rules, optimizations, diagnostics)
     - **Purpose**: Continuous knowledge building and system improvement
-    - **Location**: `.cursor/rules/AUTONOMOUS_EVOLUTION_JOURNAL.md`
+    - **Location**: `.cursor/rules/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
     - **Project-Specific Categories**: Security patterns, Supabase optimizations, Next.js performance, TypeScript type safety, authentication flows, data validation patterns
     - **Autonomous Integration**: System automatically loads and applies learned patterns from previous sessions
     - **Pattern Recognition**: Success patterns are automatically replicated, failure patterns are prevented
@@ -403,13 +403,13 @@ If any are missing → refuse code and generate the missing section.
 #### B. Micro-Loop (per commit)
 1. **Implement** one intention.
 2. **Self-Review / Challenge Block** (already defined above).
-3. **Automatic Learning Capture:** after every successful operation, append one line to `AUTONOMOUS_EVOLUTION_JOURNAL.md`:
+3. **Automatic Learning Capture:** after every successful operation, append one line to `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`:
     - `YYYY-MM-DD HH:MM – Change → Outcome → One insight (≤140 chars).`
     - **No user confirmation required** - capture lessons automatically
     - **Trigger**: After any successful code generation, rule change, or system optimization
     - **Format**: Always include timestamp, action taken, outcome, and key insight
     - **Purpose**: Build knowledge base of what works and what doesn't
-    - **Location**: `.cursor/rules/AUTONOMOUS_EVOLUTION_JOURNAL.md`
+    - **Location**: `.cursor/rules/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
 4. **Rule Delta Proposal:** if we hit friction (diagnostic miss, repeated pitfall, unclear log), propose a 1–3 line rule change in `PR#rules/<slug>.md` with:
     - Context (1 sentence), Rule (exact wording), Expected effect.  
         Cursor stops and asks permission before writing it.
@@ -417,7 +417,7 @@ If any are missing → refuse code and generate the missing section.
 #### C. Daily Micro-Review (lightweight, automated)
 
 At first run each day (or when `/ecp review` is invoked), Cursor:
-- Scans last 10 commits + `AUTONOMOUS_EVOLUTION_JOURNAL.md`.
+- Scans last 10 commits + `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`.
 - Emits a **Micro-Review Card** in the console:
     - Missed invariants (count), average LOC/commit, % commits with logs, average time-to-diagnose (if recorded).
     - Top 1–2 **friction patterns** and a suggested tiny rule tweak.
@@ -428,7 +428,7 @@ At first run each day (or when `/ecp review` is invoked), Cursor:
 On `/ecp audit`:
 - Compress the week's lessons into **3 protocol upgrades** or **1 deletion** (prune to keep rules lean).
 - Write a short **CHANGELOG** entry in `docs/rules/RULES_CHANGELOG.md`.
-- Update `AUTONOMOUS_EVOLUTION_JOURNAL.md` with audit insights.
+- Update `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md` with audit insights.
 
 #### E. Drift Guard
 

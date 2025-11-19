@@ -73,7 +73,7 @@ Invoke skills via Cursor macros:
 ## Evolution
 
 Skills evolve through:
-- Performance tracking in `AUTONOMOUS_EVOLUTION_JOURNAL.md`
+- Performance tracking in `AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`
 - Pattern detection and optimization
 - User feedback and iteration
 - Cross-skill learning and composition

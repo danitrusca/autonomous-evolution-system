@@ -366,7 +366,7 @@ If accuracy < 80%:
    - Only capture 7+/10 ideas
    - Metadata includes scores
 
-7. **`AUTONOMOUS_EVOLUTION_JOURNAL.md`** (updated)
+7. **`AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md`** (updated)
    - v2.0.0 timeline entry
    - 10 detailed lesson entries
    - 4 new principles

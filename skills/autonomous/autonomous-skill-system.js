@@ -17,7 +17,7 @@ const SkillSimplifier = require('../meta/skill-simplifier.js');
 class AutonomousSkillSystem {
   constructor() {
     this.skillsPath = path.join(__dirname, '..');
-    this.learningPath = path.join(__dirname, '..', '..', 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL.md');
+    this.learningPath = path.join(__dirname, '..', '..', 'docs', 'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md');
     this.skills = new Map();
     this.patterns = new Map();
     this.autonomousMode = true;
@@ -76,7 +76,7 @@ class AutonomousSkillSystem {
    */
   async saveLessonToPersistentMemory(lesson) {
     try {
-      // 1. Save to AUTONOMOUS_EVOLUTION_JOURNAL.md (existing system)
+      // 1. Save to AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md (existing system)
       await this.saveToEvolutionJournal(lesson);
       
       // 2. Save to Cursor memory for cross-session persistence

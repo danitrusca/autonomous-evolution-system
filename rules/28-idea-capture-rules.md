@@ -44,13 +44,18 @@ Monitor for these patterns in YOUR OWN responses:
    `[CAPTURE] TITLE -> evolution/` or `[CAPTURE] TITLE -> implemented/`.
 
 ### Quality Filters
-Only capture if the idea meets at least 2 of these criteria:
-- Reusable in future contexts.
-- General-purpose (not one-off to this exact situation).
-- Adds something meaningfully new (not a trivial variant or duplicate).
-- Clear enough that a future reader can understand it without the original conversation.
-- Actually useful in practice (not just clever or aesthetic).
-- Scores >= 7/10 on Auto-Crucible validation (when applicable).
+Only capture into AES when the idea:
+
+- Directly advances the **autonomous-evolution system itself** (rules, skills, agents, orchestration), or encodes a reusable meta-pattern that can apply across projects.
+- Meets at least 2 of these criteria:
+  - Reusable in future contexts.
+  - General-purpose (not one-off to this exact situation).
+  - Adds something meaningfully new (not a trivial variant or duplicate).
+  - Clear enough that a future reader can understand it without the original conversation.
+  - Actually useful in practice (not just clever or aesthetic).
+  - Scores >= 7/10 on Auto-Crucible validation (when applicable).
+
+Project-specific implementation details (for example, a one-off browser-extension UI tweak) should be captured in that project’s own living docs, and only reflected into AES if you explicitly promote them into a reusable pattern.
 
 ### Target Location
 Use these default targets when file-writing is available:

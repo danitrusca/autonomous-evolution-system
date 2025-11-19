@@ -26,7 +26,7 @@ autonomous-evolution-system/
 │   ├── autonomous-evolution-engine.js # Core evolution engine
 │   ├── mistake-prevention-engine.js  # Mistake prevention system
 │   ├── docs/                         # Learning and documentation
-│   │   ├── AUTONOMOUS_EVOLUTION_JOURNAL.md
+│   │   ├── AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
 │   │   ├── README.md
 │   │   └── CHANGES_JOURNAL.md
 │   ├── rules/                        # ECP rules and protocols

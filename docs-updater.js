@@ -52,14 +52,14 @@ class DocumentationUpdater {
       
       // Replace old journal references
       const replacements = [
-        { from: 'AUTONOMOUS_EVOLUTION_JOURNAL.md', to: 'EVOLUTION_JOURNAL.md' },
-        { from: 'docs/AUTONOMOUS_EVOLUTION_JOURNAL.md', to: 'docs/living/EVOLUTION_JOURNAL.md' },
+        { from: 'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md', to: 'EVOLUTION_JOURNAL.md' },
+        { from: 'docs/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md', to: 'docs/living/EVOLUTION_JOURNAL.md' },
         { from: 'docs/AUTONOMOUS_EVOLUTION_JOURNAL', to: 'docs/living/EVOLUTION_JOURNAL.md' },
-        { from: 'this.journalPath = path.join(__dirname, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL.md\');', to: 'this.journalPath = path.join(__dirname, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\');' },
-        { from: 'path.join(currentDir, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL.md\')', to: 'path.join(currentDir, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\')' },
-        { from: 'path.join(aesFolder, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL.md\')', to: 'path.join(aesFolder, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\')' },
-        { from: '\'docs/AUTONOMOUS_EVOLUTION_JOURNAL.md\'', to: '\'docs/living/EVOLUTION_JOURNAL.md\'' },
-        { from: 'docs/AUTONOMOUS_EVOLUTION_JOURNAL.md', to: 'docs/living/EVOLUTION_JOURNAL.md' }
+        { from: 'this.journalPath = path.join(__dirname, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md\');', to: 'this.journalPath = path.join(__dirname, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\');' },
+        { from: 'path.join(currentDir, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md\')', to: 'path.join(currentDir, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\')' },
+        { from: 'path.join(aesFolder, \'docs\', \'AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md\')', to: 'path.join(aesFolder, \'docs\', \'living\', \'EVOLUTION_JOURNAL.md\')' },
+        { from: '\'docs/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md\'', to: '\'docs/living/EVOLUTION_JOURNAL.md\'' },
+        { from: 'docs/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md', to: 'docs/living/EVOLUTION_JOURNAL.md' }
       ];
       
       let updated = false;

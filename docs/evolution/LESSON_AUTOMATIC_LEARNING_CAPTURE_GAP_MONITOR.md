@@ -7,7 +7,7 @@
 
 The autonomous evolution system has:
 - ✅ `learning-log-writer` skill designed to automatically capture lessons
-- ✅ Rules stating "after every successful operation, automatically capture one line to AUTONOMOUS_EVOLUTION_JOURNAL.md"
+- ✅ Rules stating "after every successful operation, automatically capture one line to AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md"
 - ✅ Autonomous learning systems with `autoCaptureLesson()` methods
 - ✅ Code infrastructure for automatic journal updates
 
