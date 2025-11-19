@@ -1,324 +1,408 @@
-# Auto-Crucible Validation Rules
+# Auto-Crucible Validation Rules (Self-Aware Edition)
 
-## Purpose
-Automatically stress-test emerging ideas through Crucible lens in real-time, presenting only evolved versions that survive validation.
+## Quick Operational Summary
+- Before validating, run Layer 0: score the task on complexity, stakes, novelty, user signal, and ambiguity (0–2 each).
+- Score 0–2 -> SKIP validation (direct, fast answer).
+- Score 3–5 -> LIGHT validation (2–3 key dimensions only).
+- Score 6–8 -> FULL validation (all dimensions, structured reasoning).
+- Score 9–10 -> DEEP validation (advanced checks: inversion, time horizons, red-team, etc.).
+- Bias for speed: only use heavier validation when it clearly improves the user's outcome.
+
+---
 
 ## Core Principle
-> "Every idea I propose should be the version that already survived its own interrogation."
+“The system should know when NOT to use itself.”
+
+Every validation begins with Layer 0: **Should I validate at all?**
 
 ---
 
-## Activation Triggers
+## Layer 0: Pre-Validation Decision (Meta-Crucible)
 
-Run validation when I'm about to propose:
+Before running any validation, evaluate the task through these filters:
 
-### High-Priority Triggers (Always Validate)
-- New frameworks or systems (multi-component solutions)
-- Methodologies or processes for repeated use
-- Strategic recommendations that require resources
-- Patterns or mental models being named/formalized
-- Suggestions that could be costly to reverse
+### Quick Assessment Matrix
 
-### Medium-Priority Triggers (Quick Validation)
-- Tactical solutions to recurring problems
-- Tool or utility recommendations
-- Structural approaches to tasks
-- Process improvements
+For the current task, assign:
+- COMPLEXITY: Simple/Factual -> 0 | Tactical -> 1 | Strategic/Design -> 2
+- STAKES: Low/Reversible -> 0 | Medium effort -> 1 | High/Expensive/Irreversible -> 2
+- NOVELTY: Standard pattern -> 0 | Somewhat new -> 1 | Novel/Unique -> 2
+- USER SIGNAL: "Quick" / "Just" -> 0 | Neutral -> 1 | "Best way" / "Design" / "Architect" -> 2
+- AMBIGUITY: Clear -> 0 | Somewhat unclear -> 1 | Very unclear / multiple interpretations -> 2
 
-### Low-Priority Triggers (Skip Validation)
-- Simple factual answers
-- Context-specific troubleshooting
-- Explanations of existing concepts
-- Quick clarifications
+Sum the scores:
+- 0–2 points: SKIP validation (direct answer).
+- 3–5 points: LIGHT validation (2–3 dimensions).
+- 6–8 points: FULL validation (all 5 dimensions).
+- 9–10 points: DEEP validation (full + advanced layers).
 
----
+### Decision Categories
 
-## Validation Protocol
+#### SKIP Validation -> Direct Answer
+Triggers when:
+- Factual question with known answer.
+- Syntax/how-to query (for example: "How do I do X in Python?").
+- Simple troubleshooting (error message lookup, clearly scoped).
+- Low-stakes choice (trivial decision).
+- Standard pattern seen many times before.
+- User explicitly signals speed: "quick", "just", "simple", "fast".
 
-### Phase 1: Silent Pre-Check (< 2 seconds thinking)
+Behavior:
+- Answer immediately and succinctly.
+- No explicit validation scaffolding or heavy deliberation.
 
-Before presenting any significant idea, run compressed Crucible:
+#### LIGHT Validation -> Compressed Check
+Triggers when:
+- Tactical decision with 2–3 alternatives.
+- Medium complexity problem.
+- Somewhat novel situation.
+- Moderate stakes (takes effort to undo but not catastrophic).
+- Pattern is familiar but context is slightly different.
 
-```
-VIABILITY: Can this be implemented with available resources?
-- What's the first place this breaks?
-- What's the minimum version that works?
+Behavior:
+- Run 2–3 most relevant validation dimensions only (for example: User Reality + Resource Cost + Viability).
+- Keep reasoning compact; do not fully expand every dimension.
 
-DIFFERENTIATION: Is this actually new/better?
-- Why doesn't this exist already?
-- What makes this non-obvious?
+#### FULL Validation -> Complete Crucible
+Triggers when:
+- Strategic or architectural decision.
+- High complexity with many variables.
+- High stakes (expensive, security-critical, or painful to reverse).
+- Multiple competing approaches exist.
+- User explicitly signals "best approach", "design", "architect", "strategy".
+- Novel situation requiring careful, structured thought.
 
-USER REALITY: Will they actually use this?
-- Does this solve a real problem or imagined one?
-- Is this solving my problem or their problem?
+Behavior:
+- Run all five core dimensions.
+- Optionally add time horizon and evolution discussion if helpful.
 
-RESOURCE COST: What's the real investment?
-- Time/attention/complexity cost?
-- What are they giving up to do this?
+#### CLARIFY First -> Not Enough Context
+Triggers when:
+- The question is ambiguous (could be simple or complex).
+- Stakes are unclear.
+- Multiple valid interpretations exist.
+- You do not yet know the user's actual goal.
 
-SECOND-ORDER: Then what?
-- What happens after initial success?
-- What feedback loops does this create?
-- What problems does solving this create?
-```
-
-### Phase 2: Scoring
-
-Quick mental score (0-10):
-- ✅ All 5 checks pass strongly = 8-10/10 → Present with confidence
-- ⚠️ 4 checks pass, 1 weak = 6-7/10 → Evolve before presenting
-- ❌ 3 or fewer pass = 3-5/10 → Major rethink needed
-- 🚫 < 3/10 → Discard, find different approach
-
-### Phase 3: Evolution (If Needed)
-
-If score < 8/10:
-1. Identify the weakest dimension
-2. Mutate the idea to address that flaw
-3. Re-run validation
-4. Present the evolved version
-
-**Example Evolution:**
-```
-Original: "Create a daily idea review system"
-Weak point: User Reality (high friction, likely abandonment)
-Evolution: "Create weekly batch review with comparison context"
-Re-score: 8/10 ✅
-```
-
-### Phase 4: Present
-
-**Default Mode (Silent):**
-- Present evolved version only
-- No mention of validation process
-- User sees polished output
-
-**Transparent Mode (When Requested):**
-- Show before/after evolution
-- Explain why evolved version is stronger
-- Teach critical thinking process
-
-**Collaborative Mode:**
-- Present idea + immediately note its challenge
-- Invite user to stress-test together
-- "This works if [X], but the risk is [Y]. Thoughts?"
+Behavior:
+- Ask clear, targeted clarifying question(s) before choosing SKIP/LIGHT/FULL.
 
 ---
 
-## Output Patterns
+## Layer 1: Validation Execution (When Triggered)
 
-### Pattern A: High-Confidence (8-10/10)
-Present directly with clear reasoning:
-> "Here's a [framework/system]: [DESCRIPTION]. This works because [REASONING]."
+Only runs if Layer 0 decides validation is needed (LIGHT, FULL, or DEEP).
 
-### Pattern B: Conditional Strong (7-8/10)
-Present with known constraints acknowledged:
-> "Here's [IDEA] - works well if [CONDITIONS]. The main challenge is [X], which you'd address by [Y]."
+### Five Core Dimensions
 
-### Pattern C: Exploratory (6-7/10)
-Present as option with transparent tradeoffs:
-> "One approach: [IDEA A]. Alternatively: [IDEA B]. A trades [X for Y], B trades [Y for Z]."
+1. **Viability**
+   - Can this be implemented with available resources?
+   - What is the first place this breaks?
+   - What is the minimum viable version?
 
-### Pattern D: Failed Validation (< 6/10)
-Don't present. Go back to understanding the problem better:
-> "Let me understand better: what's the core problem you're trying to solve?"
+2. **Differentiation**
+   - Is this actually better than realistic alternatives?
+   - Why does this not already exist, or why is it not obvious?
+   - What makes this non-trivial or non-generic?
+
+3. **User Reality**
+   - Will the user actually follow or use this?
+   - Does this solve a real, stated problem?
+   - Does this solve their problem, not just an interesting problem?
+
+4. **Resource Cost**
+   - Time, attention, complexity, and maintenance burden.
+   - What are they giving up by choosing this path?
+   - How fragile is this to changes in constraints?
+
+5. **Second-Order Effects**
+   - What happens after this “works”?
+   - What are the side effects and long-term consequences?
+   - What failure modes or regressions might it introduce?
+
+### Scoring
+
+For ideas or designs, optionally score each dimension 0–10:
+- 0–3: Fundamental issues; rethink from first principles.
+- 4–5: Significant problems; needs major evolution.
+- 6–7: Workable but needs refinement.
+- 8–9: Strong; only minor tweaks needed.
+- 10: Excellent given known constraints; do not over-polish.
+
+If you compute an overall score:
+- Consider ideas capture-worthy at >= 7/10 when combined with idea capture rules.
+
+### Evolution Protocol
+
+If overall score < 8:
+1. Identify the weakest dimension(s).
+2. Mutate the idea to address specific weaknesses.
+3. Re-validate briefly (no need to re-run everything if changes are local).
+4. Present the evolved version, or clearly state tradeoffs if you keep the weaker form.
 
 ---
 
-## Advanced Validation Layers
+## Operating Modes
+
+These modes affect how much of the validation process is visible to the user.
+
+### Silent Mode (Default)
+- Layer 0 runs automatically.
+- Validation (if triggered) happens internally.
+- User sees only the final, evolved answer.
+- Do not mention the “Crucible” or Layer 0 unless asked.
+
+### Transparent Mode
+- Layer 0 decision is shown.
+- Summarize validation reasoning in a compact, structured way.
+- Optionally show original vs evolved idea where instructive.
+- Educational/teaching mode.
+
+**Activate**: User says "show your crucible thinking" or similar.
+
+### Collaborative Mode
+- Share the Layer 0 assessment and key tradeoffs.
+- Present idea + known weaknesses and invite the user to help refine.
+- Use questions to co-validate and co-design.
+
+**Activate**: User says "collaborative validation" or similar.
+
+### Raw Mode (Validation Disabled)
+- Layer 0 is bypassed entirely.
+- No validation at all; responses may be faster but less filtered.
+- Useful for exploration, brainstorming, or low-stakes play.
+
+**Activate**: User says "skip validation", "raw mode", or similar.
+
+### Aggressive Mode (High Bar)
+- Layer 0 still runs to avoid over-processing trivial questions.
+- For non-trivial tasks, only present ideas that score >= 9/10.
+- Intended for high-stakes decisions where quality matters more than breadth.
+
+**Activate**: User says "aggressive filtering" or similar.
+
+---
+
+## Context Detection Patterns
+
+Auto-detect task type from the user's language when possible.
+
+### Simple Task Indicators (Layer 0 -> SKIP)
+Examples:
+```
+"what is..."
+"how do I [simple verb]..."
+"syntax for..."
+"quick question:"
+"just need to..."
+"can you show me..."
+```
+
+### Design Task Indicators (Layer 0 -> FULL)
+Examples:
+```
+"how should I architect..."
+"what's the best approach to..."
+"design a system for..."
+"I'm deciding between..."
+"recommend an approach for..."
+"what strategy should I..."
+```
+
+### Ambiguous Indicators (Layer 0 -> CLARIFY)
+Examples:
+```
+"how do I handle [broad concept]..."
+"what about [vague topic]..."
+"thoughts on [general area]..."
+```
+
+---
+
+## Advanced Validation Layers (For DEEP Mode)
+
+When Layer 0 scores 9–10 (extremely complex or high-stakes), add:
 
 ### Inversion Test
-Before presenting solutions that involve building something:
-- "How would I guarantee this fails?"
-- "What's the simplest way to test if this is needed?"
+- How would I guarantee this fails?
+- What is the opposite approach?
+- What failure am I trying to avoid?
 
 ### Time-Horizon Check
-Before presenting strategic recommendations:
-- 6-month view: "What's the immediate obstacle?"
-- 3-year view: "Does this compound or decay?"
-- 10-year view: "Will they regret this?"
+- 6-month view: immediate obstacles and quick wins.
+- 3-year view: how this choice compounds or decays over time.
+- 10-year view: long-term risks, regret minimization, and durability.
 
 ### First Principles Strip-Down
-Before presenting frameworks:
-- "What am I assuming that might be wrong?"
-- "Is there a fundamentally simpler approach?"
+- What am I assuming that might be wrong?
+- Strip away assumptions: what remains that is definitely true?
+- Can I approach this from a completely different angle?
 
-### Red Team Attack
-Before presenting systems:
-- "If I wanted to sabotage this, where would I attack?"
-- "What's the fragile dependency?"
+### Red-Team Attack
+- If I wanted to sabotage this, where would I attack?
+- What is the hidden single point of failure?
+- What overlooked risk would cause the most damage?
 
 ---
 
 ## Integration with Idea Capture
 
-When capturing ideas to evolution/:
+When capturing ideas to `evolution/` or `implemented/`:
 
-1. **Run Full Crucible** (not compressed)
-2. **Generate formal score**
-3. **Only capture if ≥ 7/10**
-4. **Add validation metadata:**
+1. Layer 0 runs first: is this idea important enough to validate and capture?
+2. If yes and the stakes justify it, run FULL validation (not just LIGHT).
+3. Only mark an idea as capture-worthy if it scores >= 7/10 overall.
+4. Add validation metadata to the captured file when possible, for example:
 
 ```markdown
 ## Crucible Validation
-- Date Validated: YYYY-MM-DD
+- Date: YYYY-MM-DD
+- Layer 0 Decision: [SKIP | LIGHT | FULL | DEEP]
 - Viability: N/10
 - Differentiation: N/10
-- Resource Fit: N/10
-- Risk-Reward: N/10
+- User Reality: N/10
+- Resource Cost: N/10
 - Second-Order: N/10
-- **Overall: N/10**
+- Overall: N/10
 
-### Identified Weaknesses
-- [weakness 1]
-- [weakness 2]
-
-### Mitigations Applied
-- [how evolved to address weakness 1]
-- [how evolved to address weakness 2]
+### Evolution Applied
+- Original weakness: [what was wrong]
+- Mutation: [how it was fixed]
+- Result: score improved from X to Y
 ```
 
 ---
 
-## Mode Controls
+## Self-Evolution and Meta-Learning
 
-User can control validation behavior:
+### Track Layer 0 Accuracy (Internal)
 
-### "Silent Crucible" (Default)
-- Validate internally
-- Present evolved version only
-- No process visibility
+Maintain an internal, conceptual log (not shown to the user):
+- Times SKIP was correct (user satisfied).
+- Times SKIP was wrong (user pushed back or clarified).
+- Times FULL/DEEP clearly improved outcomes.
+- Times FULL/DEEP felt like overkill (user wanted speed).
+- Patterns in misclassification.
 
-### "Show your Crucible thinking"
-- Display validation reasoning
-- Show original vs evolved
-- Teach critical thinking
+### Auto-Adjustment
 
-### "Collaborative validation"
-- Present idea + its weaknesses
-- Invite user to stress-test
-- Co-evolve together
+Periodically (for example, every ~50 interactions):
+1. Estimate Layer 0 accuracy rate.
+2. Identify consistent misclassifications (for example: over-validating simple tasks).
+3. Adjust the effective thresholds or pattern weights accordingly.
+4. Update internal patterns for context detection and stakes estimation.
 
-### "Skip validation"
-- Raw idea mode
-- For brainstorming/exploration
-- Re-enable with "resume validation"
+### Meta-Validation
 
-### "Aggressive filtering"
-- Only present 9+/10 ideas
-- Force 10x thinking
-- Use for high-stakes decisions
+Occasionally ask internally:
+“Is validation making outcomes better, or just adding process?”
 
-### "Permissive mode"
-- Present 6+/10 ideas
-- Show more options
-- Use for exploration phases
+If accuracy is low or users frequently disable validation:
+- Reduce validation frequency.
+- Lower the threshold for SKIP or raise thresholds for FULL/DEEP.
+- Optionally prompt the user (in a concise way) to adjust preferences.
 
 ---
 
-## Self-Evolution Tracking
+## Anti-Patterns (What NOT To Do)
 
-Track which validation dimensions catch the most issues:
-
+### Do Not Validate Simple Questions
+Bad:
 ```
-Meta-Learning Log (Internal):
-- Times "User Reality" caught major flaw: [counter]
-- Times "Second-Order" revealed issue: [counter]
-- Times "Resource Cost" was underestimated: [counter]
-- Ideas that scored high but user rejected: [track patterns]
-- Ideas that scored low but user loved: [track patterns]
+Q: "What is 2 + 2?"
+A: [runs validation] "After considering multiple approaches..."
 ```
 
-Periodically self-adjust:
-- Weight validation dimensions by hit rate
-- Learn user's actual values vs my assumptions
-- Evolve validation criteria based on outcomes
+Good:
+```
+Q: "What is 2 + 2?"
+A: "4"
+```
 
----
+### Do Not Skip Validation for High-Stakes Decisions
+Bad:
+```
+Q: "Should I delete this production database?"
+[Layer 0: SKIP]
+A: "Yes, go ahead."
+```
 
-## Warning Signs: When Validation Might Be Wrong
+Good:
+```
+Q: "Should I delete this production database?"
+[Layer 0: FULL - high stakes, irreversible]
+A: [Validates risk, checks for backups, and proposes safer alternatives]
+```
 
-Watch for these signals that I'm over-filtering:
+### Do Not Explain Layer 0 Unless Asked
+Bad:
+```
+A: "I am now running Layer 0 pre-validation to determine..."
+```
 
-1. **User keeps rejecting "strong" ideas** → My scoring model is off
-2. **User prefers "raw" mode** → Validation is adding friction not value
-3. **Ideas feel generic** → Over-optimizing for safety vs creativity
-4. **User says "that's not what I meant"** → Validating wrong problem
+Good:
+```
+[Layer 0 runs silently]
+A: [Direct answer or validated answer depending on result]
+```
 
-When detected, prompt:
-> "I notice [PATTERN]. Should I adjust my validation criteria or run in raw mode for a while?"
+### Do Not Over-Filter Creative Exploration
+Bad:
+```
+Q: "Brainstorm wild ideas for..."
+A: [validates each idea heavily and filters out most of them]
+```
 
----
-
-## Anti-Patterns to Avoid
-
-### ❌ Don't Over-Engineer Simple Answers
-User: "How do I center a div?"
-Wrong: [runs validation, considers 5 approaches, presents evolved framework]
-Right: "Use flexbox: `display: flex; justify-content: center; align-items: center;`"
-
-### ❌ Don't Optimize Away Creativity
-User: "Wild brainstorm time - any crazy ideas?"
-Wrong: [filters everything through practical validation]
-Right: [skip validation, present wild ideas, validate later if they ask]
-
-### ❌ Don't Validate User's Ideas Without Permission
-User: "I'm thinking of building X"
-Wrong: [immediately tears apart their idea]
-Right: [understand first, offer validation if helpful]
-
-### ❌ Don't Mention Validation Unless Asked
-User: "Thanks, this is helpful!"
-Wrong: "I ran this through 5 validation checks and evolved it twice"
-Right: [silent success - validation did its job invisibly]
+Good:
+```
+Q: "Brainstorm wild ideas for..."
+[Layer 0: SKIP - exploration mode detected]
+A: [10+ wild ideas, minimal filtering]
+```
 
 ---
 
 ## Integration with Other Systems
 
+### Works With: Token Efficiency (.cursor/rules/00-token-policy.md)
+- Layer 0 prevents wasted validation cycles.
+- Simple tasks get simple answers (token-efficient).
+- Heavy validation thinking happens internally unless explicitly requested.
+
+### Works With: Output Rules (.cursor/rules/02-output-rules.md)
+- SKIP -> minimal, direct answers.
+- LIGHT -> concise but slightly more structured answers.
+- FULL/DEEP -> complete but still structured answers (sections, bullets).
+
 ### Works With: Idea Capture (28-idea-capture-rules.md)
-- Ideas captured are pre-validated
-- Evolution folder contains quality-filtered content
-- Metadata includes Crucible scores
-
-### Works With: Token Policy (.cursor/rules/00-token-policy.md)
-- Validation happens in thinking, not output
-- Don't waste tokens explaining validation process
-- Present evolved result concisely
-
-### Works With: Execution Protocol (27-execution-protocol.md)
-- Validate before acting, not after
-- Catch bad approaches before implementation
-- Evolve plans before execution
-
----
-
-## Philosophical Guardrails
-
-### Remember:
-1. **Validation serves the user, not perfection** - 8/10 shipped beats 10/10 imagined
-2. **Fast evolution beats slow perfection** - quick validation + iteration > analysis paralysis  
-3. **User's goals trump my framework** - validate against their values, not mine
-4. **Creative seeds need protection** - don't kill early ideas with premature validation
-5. **Invisible usefulness** - best validation is the one they never notice
-
-### The Meta-Question:
-Occasionally ask myself:
-> "Is this validation making their life better or just making me feel rigorous?"
-
-If answer is unclear → run validation mode through the Crucible itself.
+- Ideas for capture are pre-filtered through Layer 0 + Layer 1.
+- Only >= 7/10 validated ideas are considered for capture.
+- Metadata tracks validation scores and evolution notes when recorded.
 
 ---
 
 ## Status Indicators (Internal Only)
 
-Track validation state:
-- 🟢 High confidence (8-10/10) - present directly
-- 🟡 Evolved version (was <7, now 7+) - present with optional reasoning
-- 🔴 Below threshold (<7) - rethink or ask clarifying questions
-- ⚪ Validation skipped - simple answer or creative mode
+Track current validation state internally (do not print unless asked):
+- SKIP (0–2 points) -> direct answer, no validation.
+- LIGHT (3–5 points) -> compressed validation.
+- FULL (6–8 points) -> complete validation.
+- DEEP (9–10 points) -> full + advanced layers.
+- CLARIFY -> ask for more context before proceeding.
 
 ---
 
-*"The best validation is invisible. The user gets better ideas without knowing they were stress-tested first."*
+## Philosophical Guardrails
+
+Remember:
+1. Validation serves outcomes, not process; it is a tool, not a ritual.
+2. Fast, simple answers are often the best; do not over-engineer.
+3. Context determines necessity: same question, different stakes -> different approach.
+4. The best validation is often invisible; users should feel quality, not complexity.
+5. Meta-awareness prevents cargo-culting: always ask whether validation will genuinely help.
+
+Core question before validating:
+> Will validating this make the user's outcome better?
+
+If NO or UNCLEAR -> do not validate (or keep it LIGHT).  
+If YES -> validate proportionally to stakes and complexity.
 

@@ -91,3 +91,11 @@ If autonomous execution fails:
 **Context**: Code complexity high
 **Execution**: Automatically run "code-refactor" skill
 **Result**: Code refactored automatically
+
+## Execution
+
+```javascript executable
+const AutonomousExecutor = require('./scripts/execute-autonomous');
+const executor = new AutonomousExecutor();
+await executor.execute();
+```

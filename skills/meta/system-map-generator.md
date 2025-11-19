@@ -166,3 +166,11 @@ If map generation fails:
 *Created: 2025-01-27*  
 *Goal: Make system map 10/10 useful*
 
+
+## Execution
+
+```javascript executable
+const SystemMapGenerator = require('./scripts/generate-system-map');
+const generator = new SystemMapGenerator();
+await generator.generate();
+```

@@ -1,5 +1,5 @@
 # Autonomous Evolution System - Complete System Map
-*Auto-Generated: 2025-11-07T08:54:46.367Z - Always Current, Always Accessible*
+*Auto-Generated: 2025-11-19T09:43:51.641Z - Always Current, Always Accessible*
 
 > **Purpose**: This is your **single source of truth** for understanding the entire Autonomous Evolution System at a glance. **Auto-updates** when components change.
 
@@ -28,7 +28,7 @@
 
 ## 📊 **System Components Map**
 
-### **🤖 Agents Layer** (17 agents)
+### **🤖 Agents Layer** (18 agents)
 
 - **`agent-coordinator`** - `agents/agent-coordinator.js` - Status: active
 - **`agent-creator`** - `agents/agent-creator.js` - Status: active
@@ -36,6 +36,7 @@
 - **`change-impact-agent`** - `agents/change-impact-agent.js` - Status: active
 - **`changelog-agent`** - `agents/changelog-agent.js` - Status: active
 - **`connection-discoverer`** - `agents/connection-discoverer.js` - Status: active
+- **`debugger-agent`** - `agents/debugger-agent.js` - Status: active
 - **`documentation-updater`** - `agents/documentation-updater.js` - Status: active
 - **`epistemic-humility-agent`** - `agents/epistemic-humility-agent.js` - Status: active
 - **`git-versioning-integration`** - `agents/git-versioning-integration.js` - Status: active
@@ -48,7 +49,7 @@
 - **`system-integrity-agent`** - `agents/system-integrity-agent.js` - Status: active
 - **`technical-psychological-analyzer`** - `agents/technical-psychological-analyzer.js` - Status: active
 
-### **🛠️ Skills Layer** (36 skills)
+### **🛠️ Skills Layer** (38 skills)
 
 **autonomous/** (4 skills)
 - **`autonomous-examples`** - `skills/autonomous/autonomous-examples.md`
@@ -59,15 +60,16 @@
 **builder/** (1 skills)
 - **`debug-trace-analyzer`** - `skills/builder/debug-trace-analyzer.md`
 
-**core/** (3 skills)
+**core/** (4 skills)
 - **`ecp-protocol-runner`** - `skills/core/ecp-protocol-runner.md`
+- **`multi-lens-problem-solver`** - `skills/core/multi-lens-problem-solver.md`
 - **`recursive-code-evolution-loop`** - `skills/core/recursive-code-evolution-loop.md`
 - **`test-skill`** - `skills/core/test-skill.md`
 
 **examples/** (1 skills)
 - **`skill-creator-examples`** - `skills/examples/skill-creator-examples.md`
 
-**meta/** (25 skills)
+**meta/** (26 skills)
 - **`adaptive-execution-mode`** - `skills/meta/adaptive-execution-mode.md`
 - **`adaptive-learning`** - `skills/meta/adaptive-learning.md`
 - **`ai-collaboration-best-practices`** - `skills/meta/ai-collaboration-best-practices.md`
@@ -91,6 +93,7 @@
 - **`skill-simplifier`** - `skills/meta/skill-simplifier.md`
 - **`skill-validator`** - `skills/meta/skill-validator.md`
 - **`system-map-generator`** - `skills/meta/system-map-generator.md`
+- **`test-organizer`** - `skills/meta/test-organizer.md`
 - **`transparency-system`** - `skills/meta/transparency-system.md`
 - **`validation-feedback-loop`** - `skills/meta/validation-feedback-loop.md`
 
@@ -98,7 +101,7 @@
 - **`elegance-score`** - `skills/reflection/elegance-score.md`
 - **`learning-log-writer`** - `skills/reflection/learning-log-writer.md`
 
-### **📐 Rules Layer** (31 rules)
+### **📐 Rules Layer** (32 rules)
 
 - **`00-ecp-mode.md`** - `rules/00-ecp-mode.md`
 - **`01-ecp-diagnostics.md`** - `rules/01-ecp-diagnostics.md`
@@ -130,6 +133,7 @@
 - **`27-execution-protocol.md`** - `rules/27-execution-protocol.md`
 - **`28-idea-capture-rules.md`** - `rules/28-idea-capture-rules.md`
 - **`29-auto-crucible-validation.md`** - `rules/29-auto-crucible-validation.md`
+- **`30-ai-operating-summary.md`** - `rules/30-ai-operating-summary.md`
 - **`RULES_CHANGELOG.md`** - `rules/RULES_CHANGELOG.md`
 
 ### **🔌 Extensions** (2 extensions)
@@ -141,16 +145,14 @@
 
 - **Evolution Engine**: active
 - **Continuous Evolution**: running
-- **Last Update**: 2025-11-07T08:54:46.366Z
+- **Last Update**: 2025-11-19T09:43:51.641Z
 - **Last Evolution Entry**: N/A
 
 ## 📍 **Quick Navigation**
 
-- **System Highlights**: `docs/SYSTEM_HIGHLIGHTS.md` ⭐ (Curated achievements & breakthroughs)
 - **System Overview**: `docs/system/SYSTEM_OVERVIEW.md`
 - **Core Architecture**: `docs/system/CORE_ARCHITECTURE.md`
 - **Evolution Journal**: `docs/living/EVOLUTION_JOURNAL.md`
-- **Change Log**: `docs/logs&reports/CHANGE_LOG.md` (Technical history)
 - **Developer Q&A**: `docs/reference/DEVELOPER_QA.md`
 - **API Reference**: `docs/reference/API_REFERENCE.md`
 
@@ -164,8 +166,8 @@
 
 ---
 
-**Auto-Generated**: 2025-11-07T08:54:46.367Z  
-**Components Scanned**: 17 agents, 36 skills, 31 rules  
+**Auto-Generated**: 2025-11-19T09:43:51.641Z  
+**Components Scanned**: 18 agents, 38 skills, 32 rules  
 **Update Frequency**: Auto-updates when components change, or on demand via `/system-map`
 
 *This map is automatically generated and always reflects the current system state. Use `/system-map [section]` for context-aware access.*

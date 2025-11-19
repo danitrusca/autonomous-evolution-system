@@ -113,6 +113,6 @@ ideas/
 integration/
 reports/
 demo-*.js
-test-*.js
+
 trigger-*.js
 EXTENSION_ARCHITECTURE.md

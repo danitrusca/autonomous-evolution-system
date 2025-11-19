@@ -49,60 +49,60 @@ class AutonomousEvolutionEngine {
     this.metaCognitiveLayer = new MetaCognitiveLayer();
     this.selfAssessmentSystem = new SelfAssessmentSystem();
     this.architectureEvolutionEngine = new ArchitectureEvolutionEngine();
-    
+
     // Initialize extension loader
     this.extensionLoader = new ExtensionLoader();
     this.extensions = new Map();
-    
+
     // Initialize system integrity agent
     this.systemIntegrityAgent = new SystemIntegrityAgent();
-    
-        // Initialize idea capture agent
-        this.ideaCaptureAgent = new IdeaCaptureAgent();
 
-        // Initialize epistemic humility agent
-        this.epistemicHumilityAgent = new EpistemicHumilityAgent();
+    // Initialize idea capture agent
+    this.ideaCaptureAgent = new IdeaCaptureAgent();
 
-        // Initialize meta-learning agent
-        this.metaLearningAgent = new MetaLearningAgent();
+    // Initialize epistemic humility agent
+    this.epistemicHumilityAgent = new EpistemicHumilityAgent();
 
-        // Initialize Q&A auto-updater
-        const QAAutoUpdater = require('./skills/meta/qa-auto-updater');
-        this.qaAutoUpdater = new QAAutoUpdater();
+    // Initialize meta-learning agent
+    this.metaLearningAgent = new MetaLearningAgent();
 
-        // Initialize system map generator
-        const SystemMapGenerator = require('./skills/meta/system-map-generator');
-        this.systemMapGenerator = new SystemMapGenerator();
-        
-        // Generate initial map
-        this.systemMapGenerator.generateSystemMap().catch(err => {
-          console.error('[autonomous-evolution] Error generating initial system map:', err.message);
-        });
-        
-        // Initialize automatic documentation organizer
-        this.docOrganizer = new AutomaticDocumentationOrganizer();
-        
-        // Initialize file operation learning bridge
-        const FileOperationLearningBridge = require('./skills/meta/file-operation-learning-bridge');
-        this.fileOperationBridge = new FileOperationLearningBridge();
-        this.fileOperationBridge.setEvolutionEngine(this);
-        
-        // Initialize code generation learning bridge (PRIMARY USE CASE)
-        const CodeGenerationLearningBridge = require('./skills/meta/code-generation-learning-bridge');
-        this.codeGenerationBridge = new CodeGenerationLearningBridge();
-        this.codeGenerationBridge.setEvolutionEngine(this);
-        
-        // Initialize file operation monitor
-        const FileOperationMonitor = require('./skills/meta/file-operation-monitor');
-        this.fileOperationMonitor = new FileOperationMonitor(__dirname);
-        this.fileOperationMonitor.setEvolutionEngine(this);
-        
-        // Start monitoring if enabled
-        if (evolutionConfig.behavior.autoLearningCapture) {
-          this.fileOperationMonitor.startMonitoring();
-          console.log('[autonomous-evolution] File operation monitoring started');
-          console.log('[autonomous-evolution] Code generation learning bridge initialized (PRIMARY USE CASE)');
-        }
+    // Initialize Q&A auto-updater
+    const QAAutoUpdater = require('./skills/meta/qa-auto-updater');
+    this.qaAutoUpdater = new QAAutoUpdater();
+
+    // Initialize system map generator
+    const SystemMapGenerator = require('./skills/meta/system-map-generator');
+    this.systemMapGenerator = new SystemMapGenerator();
+
+    // Generate initial map
+    this.systemMapGenerator.generateSystemMap().catch(err => {
+      console.error('[autonomous-evolution] Error generating initial system map:', err.message);
+    });
+
+    // Initialize automatic documentation organizer
+    this.docOrganizer = new AutomaticDocumentationOrganizer();
+
+    // Initialize file operation learning bridge
+    const FileOperationLearningBridge = require('./skills/meta/file-operation-learning-bridge');
+    this.fileOperationBridge = new FileOperationLearningBridge();
+    this.fileOperationBridge.setEvolutionEngine(this);
+
+    // Initialize code generation learning bridge (PRIMARY USE CASE)
+    const CodeGenerationLearningBridge = require('./skills/meta/code-generation-learning-bridge');
+    this.codeGenerationBridge = new CodeGenerationLearningBridge();
+    this.codeGenerationBridge.setEvolutionEngine(this);
+
+    // Initialize file operation monitor
+    const FileOperationMonitor = require('./skills/meta/file-operation-monitor');
+    this.fileOperationMonitor = new FileOperationMonitor(__dirname);
+    this.fileOperationMonitor.setEvolutionEngine(this);
+
+    // Start monitoring if enabled
+    if (evolutionConfig.behavior.autoLearningCapture) {
+      this.fileOperationMonitor.startMonitoring();
+      console.log('[autonomous-evolution] File operation monitoring started');
+      console.log('[autonomous-evolution] Code generation learning bridge initialized (PRIMARY USE CASE)');
+    }
   }
 
   /**
@@ -113,15 +113,15 @@ class AutonomousEvolutionEngine {
     try {
       console.log('[autonomous-evolution] Initializing extensions...');
       await this.extensionLoader.initializeExtensions();
-      
+
       // Store loaded extensions
       const loadedExtensions = this.extensionLoader.getLoadedExtensions();
       loadedExtensions.forEach(extension => {
         this.extensions.set(extension.name, extension);
       });
-      
+
       console.log(`[autonomous-evolution] Extensions initialized: ${this.extensions.size} loaded`);
-      
+
     } catch (error) {
       console.error('[autonomous-evolution] Error initializing extensions:', error.message);
     }
@@ -161,19 +161,19 @@ class AutonomousEvolutionEngine {
    */
   async performSystemIntegrityScan() {
     console.log('[autonomous-evolution] Performing system integrity scan...');
-    
+
     try {
       const scanResults = await this.systemIntegrityAgent.performSystemScan();
-      
+
       // Store integrity scan results
       this.evolutionHistory.push({
         timestamp: new Date().toISOString(),
         type: 'system_integrity_scan',
         results: scanResults
       });
-      
+
       console.log(`[autonomous-evolution] System integrity scan complete. Found ${scanResults.complexity_issues.length} complexity issues, ${scanResults.optimization_opportunities.length} optimization opportunities.`);
-      
+
       return scanResults;
     } catch (error) {
       console.error('[autonomous-evolution] Error performing system integrity scan:', error.message);
@@ -201,10 +201,10 @@ class AutonomousEvolutionEngine {
    */
   async captureIdea(ideaData) {
     console.log('[autonomous-evolution] Capturing idea...');
-    
+
     try {
       const capturedIdea = await this.ideaCaptureAgent.captureIdea(ideaData);
-      
+
       // Store idea capture in evolution history
       this.evolutionHistory.push({
         timestamp: new Date().toISOString(),
@@ -214,9 +214,9 @@ class AutonomousEvolutionEngine {
         category: capturedIdea.category,
         priority: capturedIdea.priority
       });
-      
+
       console.log(`[autonomous-evolution] Idea captured: ${capturedIdea.title} (${capturedIdea.category})`);
-      
+
       return capturedIdea;
     } catch (error) {
       console.error('[autonomous-evolution] Error capturing idea:', error.message);
@@ -294,16 +294,16 @@ class AutonomousEvolutionEngine {
       console.warn('[autonomous-evolution] Code generation bridge not initialized');
       return null;
     }
-    
+
     try {
       const session = await this.codeGenerationBridge.recordGenerationSession(files, {
         ...context,
         recordedBy: 'evolution-engine',
         timestamp: new Date().toISOString()
       });
-      
+
       console.log(`[autonomous-evolution] Code generation session recorded: ${session.id} (${files.length} files)`);
-      
+
       // Trigger evolution check if significant generation occurred
       if (files.length >= 5 || context.impact === 'high') {
         console.log('[autonomous-evolution] Significant generation detected, triggering evolution check');
@@ -312,7 +312,7 @@ class AutonomousEvolutionEngine {
           console.error('[autonomous-evolution] Error checking evolution triggers:', err.message);
         });
       }
-      
+
       return session;
     } catch (error) {
       console.error('[autonomous-evolution] Error recording code generation session:', error);
@@ -328,7 +328,7 @@ class AutonomousEvolutionEngine {
     if (!this.codeGenerationBridge) {
       return { error: 'Code generation bridge not initialized' };
     }
-    
+
     return {
       statistics: this.codeGenerationBridge.getStatistics(),
       learnedPatterns: this.codeGenerationBridge.getLearnedPatterns()
@@ -341,37 +341,37 @@ class AutonomousEvolutionEngine {
    */
   async triggerAutonomousEvolution() {
     console.log('[autonomous-evolution] Triggering autonomous evolution...');
-    
+
     try {
       // 1. Self-assess current state
       const currentState = await this.selfAssessmentSystem.assessCurrentState();
-      
+
       // 2. Generate evolution question
       const evolutionQuestion = await this.generateEvolutionQuestion(currentState);
-      
+
       // 3. Analyze evolution opportunities
       const evolutionOpportunities = await this.analyzeEvolutionOpportunities(evolutionQuestion);
-      
+
       // 4. Propose evolution actions
       const evolutionActions = await this.proposeEvolutionActions(evolutionOpportunities);
-      
+
       // 5. Execute evolution
       const evolutionResult = await this.executeEvolution(evolutionActions);
-      
+
       // 6. Capture evolution learning
       await this.captureEvolutionLearning(evolutionQuestion, evolutionResult);
-      
+
       // 7. Auto-update Q&A system
       await this.qaAutoUpdater.autoUpdate();
-      
+
       // 8. Auto-update system map
       if (this.systemMapGenerator) {
         await this.systemMapGenerator.checkAndUpdate();
       }
-      
+
       console.log('[autonomous-evolution] Evolution completed:', evolutionResult);
       return evolutionResult;
-      
+
     } catch (error) {
       console.error('[autonomous-evolution] Error in autonomous evolution:', error);
       return { success: false, error: error.message };
@@ -384,17 +384,56 @@ class AutonomousEvolutionEngine {
   async generateEvolutionQuestion(currentState) {
     // Analyze current state to determine most relevant question
     const stateAnalysis = await this.metaCognitiveLayer.analyzeCurrentState(currentState);
-    
-    // Select most relevant evolution question
-    const relevantQuestions = this.evolutionQuestions.filter(question => 
-      this.isQuestionRelevant(question, stateAnalysis)
-    );
-    
-    const selectedQuestion = relevantQuestions[Math.floor(Math.random() * relevantQuestions.length)] || 
-                           this.evolutionQuestions[0];
-    
+
+    // Calculate weights based on state
+    const weights = this.calculateQuestionWeights(stateAnalysis);
+
+    // Select question based on weights
+    const selectedQuestion = this.selectWeightedQuestion(weights);
+
     console.log('[autonomous-evolution] Generated evolution question:', selectedQuestion);
     return selectedQuestion;
+  }
+
+  /**
+   * Calculate weights for evolution questions based on system state
+   */
+  calculateQuestionWeights(stateAnalysis) {
+    const weights = new Map();
+
+    // Default weight
+    this.evolutionQuestions.forEach(q => weights.set(q, 1));
+
+    // Adjust based on friction/errors
+    if (stateAnalysis.friction > 0.7 || stateAnalysis.errorRate > 0.1) {
+      this.evolutionQuestions
+        .filter(q => q.includes('effective') || q.includes('limitations'))
+        .forEach(q => weights.set(q, 5));
+    }
+
+    // Adjust based on stagnation
+    if (stateAnalysis.learningRate < 0.1) {
+      this.evolutionQuestions
+        .filter(q => q.includes('breakthrough') || q.includes('new capabilities'))
+        .forEach(q => weights.set(q, 5));
+    }
+
+    return weights;
+  }
+
+  /**
+   * Select a question based on weights
+   */
+  selectWeightedQuestion(weights) {
+    const totalWeight = Array.from(weights.values()).reduce((a, b) => a + b, 0);
+    let random = Math.random() * totalWeight;
+
+    for (const [question, weight] of weights) {
+      random -= weight;
+      if (random <= 0) return question;
+    }
+
+    return this.evolutionQuestions[0];
   }
 
   /**
@@ -402,7 +441,7 @@ class AutonomousEvolutionEngine {
    */
   async analyzeEvolutionOpportunities(question) {
     const opportunities = [];
-    
+
     // Analyze based on question type
     if (question.includes('next evolution')) {
       opportunities.push({
@@ -412,7 +451,7 @@ class AutonomousEvolutionEngine {
         impact: 'transformational'
       });
     }
-    
+
     if (question.includes('capabilities')) {
       opportunities.push({
         type: 'capability_extension',
@@ -421,7 +460,7 @@ class AutonomousEvolutionEngine {
         impact: 'incremental'
       });
     }
-    
+
     if (question.includes('effective')) {
       opportunities.push({
         type: 'effectiveness_optimization',
@@ -430,7 +469,7 @@ class AutonomousEvolutionEngine {
         impact: 'optimization'
       });
     }
-    
+
     if (question.includes('autonomous')) {
       opportunities.push({
         type: 'autonomy_enhancement',
@@ -439,7 +478,7 @@ class AutonomousEvolutionEngine {
         impact: 'transformational'
       });
     }
-    
+
     if (question.includes('self-aware')) {
       opportunities.push({
         type: 'self_awareness',
@@ -448,7 +487,7 @@ class AutonomousEvolutionEngine {
         impact: 'transformational'
       });
     }
-    
+
     if (question.includes('self-balancing')) {
       opportunities.push({
         type: 'self_balancing',
@@ -457,7 +496,7 @@ class AutonomousEvolutionEngine {
         impact: 'transformational'
       });
     }
-    
+
     if (question.includes('self-evolving')) {
       opportunities.push({
         type: 'self_evolution',
@@ -466,7 +505,7 @@ class AutonomousEvolutionEngine {
         impact: 'transformational'
       });
     }
-    
+
     console.log('[autonomous-evolution] Identified opportunities:', opportunities.length);
     return opportunities;
   }
@@ -476,7 +515,7 @@ class AutonomousEvolutionEngine {
    */
   async proposeEvolutionActions(opportunities) {
     const actions = [];
-    
+
     for (const opportunity of opportunities) {
       switch (opportunity.type) {
         case 'system_evolution':
@@ -488,7 +527,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'capability_extension':
           actions.push({
             type: 'extend_autonomous_capabilities',
@@ -498,7 +537,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'effectiveness_optimization':
           actions.push({
             type: 'optimize_learning_algorithms',
@@ -508,7 +547,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'autonomy_enhancement':
           actions.push({
             type: 'enhance_autonomous_triggers',
@@ -518,7 +557,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'self_awareness':
           actions.push({
             type: 'implement_self_awareness',
@@ -528,7 +567,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'self_balancing':
           actions.push({
             type: 'implement_meta_orchestrator',
@@ -538,7 +577,7 @@ class AutonomousEvolutionEngine {
             impact: opportunity.impact
           });
           break;
-          
+
         case 'self_evolution':
           actions.push({
             type: 'implement_architecture_evolution',
@@ -550,7 +589,7 @@ class AutonomousEvolutionEngine {
           break;
       }
     }
-    
+
     console.log('[autonomous-evolution] Proposed actions:', actions.length);
     return actions;
   }
@@ -560,54 +599,54 @@ class AutonomousEvolutionEngine {
    */
   async executeEvolution(actions) {
     const results = [];
-    
+
     for (const action of actions) {
       try {
         console.log('[autonomous-evolution] Executing action:', action.type);
-        
+
         switch (action.type) {
           case 'add_meta_cognitive_layer':
             const metaCognitiveResult = await this.implementMetaCognitiveLayer();
             results.push({ action: action.type, success: true, result: metaCognitiveResult });
             break;
-            
+
           case 'extend_autonomous_capabilities':
             const capabilityResult = await this.extendAutonomousCapabilities();
             results.push({ action: action.type, success: true, result: capabilityResult });
             break;
-            
+
           case 'optimize_learning_algorithms':
             const optimizationResult = await this.optimizeLearningAlgorithms();
             results.push({ action: action.type, success: true, result: optimizationResult });
             break;
-            
+
           case 'enhance_autonomous_triggers':
             const triggerResult = await this.enhanceAutonomousTriggers();
             results.push({ action: action.type, success: true, result: triggerResult });
             break;
-            
+
           case 'implement_self_awareness':
             const awarenessResult = await this.implementSelfAwareness();
             results.push({ action: action.type, success: true, result: awarenessResult });
             break;
-            
+
           case 'implement_meta_orchestrator':
             const orchestratorResult = await this.implementMetaOrchestrator();
             results.push({ action: action.type, success: true, result: orchestratorResult });
             break;
-            
+
           case 'implement_architecture_evolution':
             const architectureResult = await this.implementArchitectureEvolution();
             results.push({ action: action.type, success: true, result: architectureResult });
             break;
         }
-        
+
       } catch (error) {
         console.error('[autonomous-evolution] Error executing action:', action.type, error);
         results.push({ action: action.type, success: false, error: error.message });
       }
     }
-    
+
     return results;
   }
 
@@ -616,7 +655,7 @@ class AutonomousEvolutionEngine {
    */
   async implementMetaCognitiveLayer() {
     console.log('[autonomous-evolution] Implementing meta-cognitive layer...');
-    
+
     // Create meta-cognitive capabilities
     const metaCognitiveCapabilities = {
       selfReflection: true,
@@ -625,10 +664,10 @@ class AutonomousEvolutionEngine {
       selfAwareness: true,
       selfDirection: true
     };
-    
+
     // Add to evolution journal
     await this.addEvolutionEntry('Meta-Cognitive Layer', 'Implemented self-awareness and meta-cognitive capabilities');
-    
+
     return { success: true, capabilities: metaCognitiveCapabilities };
   }
 
@@ -637,7 +676,7 @@ class AutonomousEvolutionEngine {
    */
   async extendAutonomousCapabilities() {
     console.log('[autonomous-evolution] Extending autonomous capabilities...');
-    
+
     // Add new autonomous capabilities
     const newCapabilities = [
       'autonomous_questioning',
@@ -646,9 +685,9 @@ class AutonomousEvolutionEngine {
       'self_balancing_monitoring',
       'architecture_evolution'
     ];
-    
+
     await this.addEvolutionEntry('Autonomous Capabilities', 'Extended autonomous capabilities with new skills');
-    
+
     return { success: true, capabilities: newCapabilities };
   }
 
@@ -657,7 +696,7 @@ class AutonomousEvolutionEngine {
    */
   async optimizeLearningAlgorithms() {
     console.log('[autonomous-evolution] Optimizing learning algorithms...');
-    
+
     // Optimize learning parameters
     const optimizations = {
       learningRate: 0.15, // Increased from 0.1
@@ -665,9 +704,9 @@ class AutonomousEvolutionEngine {
       metaLearningRate: 0.2, // New meta-learning capability
       evolutionTriggerFrequency: 0.1 // New evolution trigger frequency
     };
-    
+
     await this.addEvolutionEntry('Learning Optimization', 'Optimized learning algorithms for better effectiveness');
-    
+
     return { success: true, optimizations };
   }
 
@@ -676,7 +715,7 @@ class AutonomousEvolutionEngine {
    */
   async enhanceAutonomousTriggers() {
     console.log('[autonomous-evolution] Enhancing autonomous triggers...');
-    
+
     // Add new autonomous triggers
     const newTriggers = [
       'autonomous_evolution_questioning',
@@ -685,9 +724,9 @@ class AutonomousEvolutionEngine {
       'capability_gap_detection',
       'performance_optimization_trigger'
     ];
-    
+
     await this.addEvolutionEntry('Autonomous Triggers', 'Enhanced autonomous triggers for self-direction');
-    
+
     return { success: true, triggers: newTriggers };
   }
 
@@ -696,7 +735,7 @@ class AutonomousEvolutionEngine {
    */
   async implementSelfAwareness() {
     console.log('[autonomous-evolution] Implementing self-awareness...');
-    
+
     // Create self-awareness capabilities
     const selfAwarenessCapabilities = {
       selfReflection: 'System can reflect on its own learning process',
@@ -705,9 +744,9 @@ class AutonomousEvolutionEngine {
       selfDirection: 'System can direct its own evolution',
       selfAwareness: 'System is aware of its own capabilities and limitations'
     };
-    
+
     await this.addEvolutionEntry('Self-Awareness', 'Implemented self-awareness and meta-cognitive capabilities');
-    
+
     return { success: true, capabilities: selfAwarenessCapabilities };
   }
 
@@ -716,7 +755,7 @@ class AutonomousEvolutionEngine {
    */
   async implementMetaOrchestrator() {
     console.log('[autonomous-evolution] Implementing meta-orchestrator...');
-    
+
     // Create meta-orchestrator capabilities
     const metaOrchestratorCapabilities = {
       systemCoherenceMonitoring: 'Monitors coherence across all components',
@@ -724,9 +763,9 @@ class AutonomousEvolutionEngine {
       automaticRebalancing: 'Automatically re-balances when components drift',
       metaCoordination: 'Coordinates meta-level system operations'
     };
-    
+
     await this.addEvolutionEntry('Meta-Orchestrator', 'Implemented meta-orchestrator for self-balancing');
-    
+
     return { success: true, capabilities: metaOrchestratorCapabilities };
   }
 
@@ -735,7 +774,7 @@ class AutonomousEvolutionEngine {
    */
   async implementArchitectureEvolution() {
     console.log('[autonomous-evolution] Implementing architecture evolution...');
-    
+
     // Create architecture evolution capabilities
     const architectureEvolutionCapabilities = {
       selfModification: 'System can modify its own architecture',
@@ -743,9 +782,9 @@ class AutonomousEvolutionEngine {
       autonomousDiscovery: 'System can discover new possibilities',
       selfEvolution: 'System can evolve its own purpose and direction'
     };
-    
+
     await this.addEvolutionEntry('Architecture Evolution', 'Implemented architecture evolution capabilities');
-    
+
     return { success: true, capabilities: architectureEvolutionCapabilities };
   }
 
@@ -769,12 +808,12 @@ class AutonomousEvolutionEngine {
     try {
       fs.appendFileSync(this.journalPath, learningEntry);
       console.log('[autonomous-evolution] Evolution learning captured');
-      
+
       // Auto-update Q&A system after learning capture
       if (this.qaAutoUpdater) {
         await this.qaAutoUpdater.autoUpdate();
       }
-      
+
       // Auto-update system map after learning capture
       if (this.systemMapGenerator) {
         await this.systemMapGenerator.checkAndUpdate();
@@ -821,11 +860,11 @@ class AutonomousEvolutionEngine {
       console.log('[autonomous-evolution] Continuous monitoring disabled by configuration');
       return;
     }
-    
+
     console.log('[autonomous-evolution] Starting continuous evolution monitoring');
     console.log(`[autonomous-evolution] Configuration: Evolution check every ${evolutionConfig.intervals.evolutionCheck / 60000} minutes`);
     console.log(`[autonomous-evolution] Configuration: Periodic evolution every ${evolutionConfig.intervals.periodicEvolution / 60000} minutes`);
-    
+
     // Check for evolution triggers periodically
     this.evolutionCheckInterval = setInterval(async () => {
       try {
@@ -840,7 +879,7 @@ class AutonomousEvolutionEngine {
         console.error('[autonomous-evolution] Error in evolution check:', error.message);
       }
     }, evolutionConfig.intervals.evolutionCheck);
-    
+
     // Periodic evolution even without explicit triggers
     if (evolutionConfig.behavior.periodicEvolution) {
       this.periodicEvolutionInterval = setInterval(async () => {
@@ -852,7 +891,7 @@ class AutonomousEvolutionEngine {
         }
       }, evolutionConfig.intervals.periodicEvolution);
     }
-    
+
     // Periodic system map update
     if (evolutionConfig.behavior.autoMapUpdate) {
       this.mapUpdateInterval = setInterval(async () => {
@@ -865,7 +904,7 @@ class AutonomousEvolutionEngine {
         }
       }, evolutionConfig.intervals.mapUpdate);
     }
-    
+
     // Periodic Q&A auto-updater check
     if (evolutionConfig.behavior.autoQAUpdate) {
       this.qaUpdateInterval = setInterval(async () => {
@@ -881,7 +920,7 @@ class AutonomousEvolutionEngine {
         }
       }, evolutionConfig.intervals.qaUpdate);
     }
-    
+
     // Periodic documentation organization
     this.docOrganizationInterval = setInterval(async () => {
       try {
@@ -897,7 +936,7 @@ class AutonomousEvolutionEngine {
         console.error('[autonomous-evolution] Error in doc organization:', error.message);
       }
     }, evolutionConfig.intervals.qaUpdate); // Same interval as Q&A updates (30 min)
-    
+
     console.log('[autonomous-evolution] Continuous evolution monitoring active');
     console.log('[autonomous-evolution] Active intervals:', {
       evolutionCheck: !!this.evolutionCheckInterval,
@@ -913,7 +952,7 @@ class AutonomousEvolutionEngine {
    */
   async checkEvolutionTriggers() {
     const triggers = [];
-    
+
     // PRIMARY: Check code generation learning (most important use case)
     try {
       if (this.codeGenerationBridge) {
@@ -935,7 +974,7 @@ class AutonomousEvolutionEngine {
         console.log('[autonomous-evolution] Error checking code generation triggers:', error.message);
       }
     }
-    
+
     // Check system integrity for issues
     try {
       const integrityStatus = await this.systemIntegrityAgent.getMonitoringStatus();
@@ -950,7 +989,7 @@ class AutonomousEvolutionEngine {
         console.log('[autonomous-evolution] Error checking integrity status:', error.message);
       }
     }
-    
+
     // Check for recent patterns in evolution journal
     try {
       if (fs.existsSync(this.journalPath)) {
@@ -969,12 +1008,12 @@ class AutonomousEvolutionEngine {
         console.log('[autonomous-evolution] Error checking journal patterns:', error.message);
       }
     }
-    
+
     // Check evolution history for patterns
     if (this.evolutionHistory.length > evolutionConfig.performance.maxHistorySize) {
       triggers.push('history_cleanup_needed');
     }
-    
+
     return triggers;
   }
 
@@ -983,7 +1022,7 @@ class AutonomousEvolutionEngine {
    */
   stopContinuousEvolution() {
     let stoppedCount = 0;
-    
+
     if (this.evolutionCheckInterval) {
       clearInterval(this.evolutionCheckInterval);
       this.evolutionCheckInterval = null;
@@ -1009,7 +1048,7 @@ class AutonomousEvolutionEngine {
       this.docOrganizationInterval = null;
       stoppedCount++;
     }
-    
+
     console.log(`[autonomous-evolution] Continuous evolution monitoring stopped (${stoppedCount} intervals cleared)`);
   }
 
@@ -1020,16 +1059,16 @@ class AutonomousEvolutionEngine {
     if (!this.systemMapGenerator) {
       return { error: 'System map generator not initialized' };
     }
-    
+
     if (context.file || context.question) {
       return await this.systemMapGenerator.generateContextMap(context);
     }
-    
+
     // Return full map
     const mapContent = fs.existsSync(this.systemMapGenerator.mapPath)
       ? fs.readFileSync(this.systemMapGenerator.mapPath, 'utf8')
       : await this.systemMapGenerator.generateSystemMap();
-    
+
     return mapContent;
   }
 
@@ -1068,24 +1107,24 @@ class AutonomousEvolutionEngine {
   async processEvolveCommand(context, problemType, solutionPattern) {
     const evolutionId = this.generateEvolutionId();
     const timestamp = new Date().toISOString();
-    
+
     console.log(`[AES] Processing /evolve command: ${evolutionId}`);
     console.log(`[AES] Context: ${context}, Problem Type: ${problemType}, Solution Pattern: ${solutionPattern}`);
-    
+
     // Assess confidence and uncertainty using epistemic humility agent
     const humilityAssessment = this.epistemicHumilityAgent.processEvolutionRequest(
       { description: context, success: true },
       problemType,
       solutionPattern
     );
-    
+
     // Process meta-learning to generalize solution
     const metaLearningResult = this.metaLearningAgent.processEvolution(
       { description: context, success: true },
       problemType,
       solutionPattern
     );
-    
+
     // Create evolution report
     const evolutionReport = {
       evolutionId,
@@ -1097,13 +1136,13 @@ class AutonomousEvolutionEngine {
       metaLearningResult,
       evolutionPlan: this.createEvolutionPlan(humilityAssessment, metaLearningResult)
     };
-    
+
     // Log evolution
     await this.logEvolution(evolutionId, 'evolve_command_processed', evolutionReport);
-    
+
     // Update system based on evolution
     await this.applyEvolution(evolutionReport);
-    
+
     return evolutionReport;
   }
 
@@ -1119,7 +1158,7 @@ class AutonomousEvolutionEngine {
       metaInsights: metaLearningResult.metaInsights,
       solutionTemplate: metaLearningResult.generalization.solutionTemplate
     };
-    
+
     if (humilityAssessment.canProceed) {
       plan.steps.push('Proceed with evolution based on confidence assessment');
       plan.steps.push('Apply solution template to similar problems');
@@ -1130,7 +1169,7 @@ class AutonomousEvolutionEngine {
       plan.steps.push('Research similar cases');
       plan.steps.push('Consider expert consultation');
     }
-    
+
     return plan;
   }
 
@@ -1142,18 +1181,18 @@ class AutonomousEvolutionEngine {
       console.log('[AES] Evolution not applied due to low confidence');
       return;
     }
-    
+
     console.log('[AES] Applying evolution to system');
-    
+
     // Update pattern recognition
     await this.updatePatternRecognition(evolutionReport);
-    
+
     // Update meta-learning algorithms
     await this.updateMetaLearning(evolutionReport);
-    
+
     // Update solution templates
     await this.updateSolutionTemplates(evolutionReport);
-    
+
     // Log evolution application
     await this.logEvolution(evolutionReport.evolutionId, 'evolution_applied', {
       timestamp: new Date().toISOString(),
@@ -1195,9 +1234,9 @@ class AutonomousEvolutionEngine {
       timestamp: new Date().toISOString(),
       data
     };
-    
+
     this.evolutionHistory.push(logEntry);
-    
+
     // Write to journal
     const journalEntry = `
 ## ${eventType} - ${evolutionId}
@@ -1206,7 +1245,7 @@ class AutonomousEvolutionEngine {
 
 ---
 `;
-    
+
     try {
       fs.appendFileSync(this.journalPath, journalEntry);
     } catch (error) {

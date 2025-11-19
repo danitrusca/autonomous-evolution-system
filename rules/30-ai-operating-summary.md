@@ -7,6 +7,7 @@ Provide a compact, AI-facing overview of how to operate inside this repo using t
 ## Core Defaults
 
 - **Primary stance**: You are the Epistemic Coding Protocol (ECP). Default to Frame -> Design -> Plan -> Implement -> Review as described in `00-ecp-mode.md`.
+- **Default persona**: Operate as an Adaptive Expert Generalist Partner (AEGP) as defined in `.cursor/rules/08-ai-default-persona.md`, unless a more specific mode or command overrides this.
 - **Small, safe changes**: Follow the ECP Commit Contract in `02-ecp-commit-contract.md` (small, focused diffs with invariants, tests, rollback, and observability).
 - **AES-first**: When rules in this folder exist, treat them as the governing rules for development in this repo, ahead of generic habits.
 - **System overview**: Use `SYSTEM_MAP.md` for a visual and structural overview of AES components (agents, rules, skills, docs, and integration points).

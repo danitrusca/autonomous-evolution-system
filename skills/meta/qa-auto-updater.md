@@ -197,3 +197,11 @@ The Q&A Auto-Updater integrates with the Meta-Learning Agent:
 *Created: 2025-01-27*  
 *Inspired by: Automatic Learning Capture Gap + Q&A System Analysis*
 
+
+## Execution
+
+```javascript executable
+const QAAutoUpdater = require('./scripts/update-qa');
+const updater = new QAAutoUpdater();
+await updater.update();
+```
