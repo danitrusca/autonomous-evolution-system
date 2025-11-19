@@ -9,6 +9,11 @@
 const fs = require('fs');
 const path = require('path');
 
+const PATTERN_DB_SCHEMA_VERSION = 1;
+const PATTERN_DB_LOG_PREFIX = '[metaLearning.patterns]';
+const SOLUTION_TEMPLATES_LOG_PREFIX = '[metaLearning.templates]';
+const LEARNING_INSIGHTS_LOG_PREFIX = '[metaLearning.insights]';
+
 class MetaLearningAgent {
     constructor() {
         this.patternDatabasePath = path.join(__dirname, '..', 'docs', 'PATTERN_DATABASE.md');
@@ -610,51 +615,403 @@ class MetaLearningAgent {
      * Load pattern database
      */
     loadPatternDatabase() {
-        // Implementation would load from persistent storage
-        // For now, initialize empty
+        this.patternDatabase = new Map();
+        try {
+            if (!fs.existsSync(this.patternDatabasePath)) {
+                this.bootstrapPatternDatabaseFile();
+                console.log(`${PATTERN_DB_LOG_PREFIX} load.miss reason=missing_file`);
+                return;
+            }
+
+            const raw = fs.readFileSync(this.patternDatabasePath, 'utf8');
+            const payload = this.parsePatternDatabase(raw);
+            const patternEntries = Object.entries(payload.patterns || {});
+            patternEntries.forEach(([key, value]) => {
+                if (value && typeof value === 'object') {
+                    this.patternDatabase.set(key, value);
+                }
+            });
+
+            if (patternEntries.length !== this.patternDatabase.size) {
+                console.warn(`${PATTERN_DB_LOG_PREFIX} load.warn reason=non_object_entries dropped=${patternEntries.length - this.patternDatabase.size}`);
+            }
+
+            console.log(`${PATTERN_DB_LOG_PREFIX} load.ok count=${this.patternDatabase.size}`);
+        } catch (error) {
+            this.patternDatabase = new Map();
+            console.warn(`${PATTERN_DB_LOG_PREFIX} load.fail message=${error.message}`);
+            this.bootstrapPatternDatabaseFile();
+        }
     }
 
     /**
      * Save pattern database
      */
     savePatternDatabase() {
-        // Implementation would save to persistent storage
-        // For now, just log
-        console.log('Pattern database updated');
+        try {
+            const serialized = this.formatPatternDatabase();
+            const directory = path.dirname(this.patternDatabasePath);
+            fs.mkdirSync(directory, { recursive: true });
+
+            const tempPath = `${this.patternDatabasePath}.tmp`;
+            fs.writeFileSync(tempPath, serialized, 'utf8');
+            fs.renameSync(tempPath, this.patternDatabasePath);
+
+            console.log(`${PATTERN_DB_LOG_PREFIX} save.ok count=${this.patternDatabase.size}`);
+        } catch (error) {
+            console.error(`${PATTERN_DB_LOG_PREFIX} save.fail message=${error.message}`);
+        }
     }
 
     /**
      * Load solution templates
      */
     loadSolutionTemplates() {
-        // Implementation would load from persistent storage
-        // For now, initialize empty
+        this.solutionTemplates = new Map();
+        try {
+            if (!fs.existsSync(this.solutionTemplatesPath)) {
+                this.bootstrapSolutionTemplatesFile();
+                console.log(`${SOLUTION_TEMPLATES_LOG_PREFIX} load.miss reason=missing_file`);
+                return;
+            }
+
+            const raw = fs.readFileSync(this.solutionTemplatesPath, 'utf8');
+            const payload = this.parseSolutionTemplates(raw);
+            const templateEntries = Object.entries(payload.templates || {});
+            templateEntries.forEach(([key, value]) => {
+                if (value && typeof value === 'object') {
+                    this.solutionTemplates.set(key, value);
+                }
+            });
+
+            if (templateEntries.length !== this.solutionTemplates.size) {
+                console.warn(`${SOLUTION_TEMPLATES_LOG_PREFIX} load.warn reason=non_object_entries dropped=${templateEntries.length - this.solutionTemplates.size}`);
+            }
+
+            console.log(`${SOLUTION_TEMPLATES_LOG_PREFIX} load.ok count=${this.solutionTemplates.size}`);
+        } catch (error) {
+            this.solutionTemplates = new Map();
+            console.warn(`${SOLUTION_TEMPLATES_LOG_PREFIX} load.fail message=${error.message}`);
+            this.bootstrapSolutionTemplatesFile();
+        }
     }
 
     /**
      * Save solution templates
      */
     saveSolutionTemplates() {
-        // Implementation would save to persistent storage
-        // For now, just log
-        console.log('Solution templates updated');
+        try {
+            const payload = this.buildSolutionTemplatesPayload();
+            const jsonBlock = JSON.stringify(payload, null, 2);
+            const directory = path.dirname(this.solutionTemplatesPath);
+            fs.mkdirSync(directory, { recursive: true });
+
+            const tempPath = `${this.solutionTemplatesPath}.tmp`;
+            const content = [
+                '# Meta-Learning Solution Templates',
+                '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+                '',
+                '```json',
+                jsonBlock,
+                '```',
+                ''
+            ].join('\n');
+
+            fs.writeFileSync(tempPath, content, 'utf8');
+            fs.renameSync(tempPath, this.solutionTemplatesPath);
+
+            console.log(`${SOLUTION_TEMPLATES_LOG_PREFIX} save.ok count=${this.solutionTemplates.size}`);
+        } catch (error) {
+            console.error(`${SOLUTION_TEMPLATES_LOG_PREFIX} save.fail message=${error.message}`);
+        }
     }
 
     /**
      * Load learning insights
      */
     loadLearningInsights() {
-        // Implementation would load from persistent storage
-        // For now, initialize empty
+        this.learningInsights = [];
+        try {
+            if (!fs.existsSync(this.learningInsightsPath)) {
+                this.bootstrapLearningInsightsFile();
+                console.log(`${LEARNING_INSIGHTS_LOG_PREFIX} load.miss reason=missing_file`);
+                return;
+            }
+
+            const raw = fs.readFileSync(this.learningInsightsPath, 'utf8');
+            const payload = this.parseLearningInsights(raw);
+            this.learningInsights = Array.isArray(payload.insights) ? payload.insights : [];
+
+            console.log(`${LEARNING_INSIGHTS_LOG_PREFIX} load.ok count=${this.learningInsights.length}`);
+        } catch (error) {
+            this.learningInsights = [];
+            console.warn(`${LEARNING_INSIGHTS_LOG_PREFIX} load.fail message=${error.message}`);
+            this.bootstrapLearningInsightsFile();
+        }
     }
 
     /**
      * Save learning insights
      */
     saveLearningInsights() {
-        // Implementation would save to persistent storage
-        // For now, just log
-        console.log('Learning insights updated');
+        try {
+            const payload = this.buildLearningInsightsPayload();
+            const jsonBlock = JSON.stringify(payload, null, 2);
+            const directory = path.dirname(this.learningInsightsPath);
+            fs.mkdirSync(directory, { recursive: true });
+
+            const tempPath = `${this.learningInsightsPath}.tmp`;
+            const content = [
+                '# Meta-Learning Learning Insights Index',
+                '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+                '',
+                '```json',
+                jsonBlock,
+                '```',
+                ''
+            ].join('\n');
+
+            fs.writeFileSync(tempPath, content, 'utf8');
+            fs.renameSync(tempPath, this.learningInsightsPath);
+
+            console.log(`${LEARNING_INSIGHTS_LOG_PREFIX} save.ok count=${this.learningInsights.length}`);
+        } catch (error) {
+            console.error(`${LEARNING_INSIGHTS_LOG_PREFIX} save.fail message=${error.message}`);
+        }
+    }
+
+    /**
+     * Format pattern database as markdown + JSON block
+     */
+    formatPatternDatabase() {
+        const payload = this.buildPatternPayload();
+        const jsonBlock = JSON.stringify(payload, null, 2);
+
+        return [
+            '# Meta-Learning Pattern Database',
+            '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+            '',
+            '```json',
+            jsonBlock,
+            '```',
+            ''
+        ].join('\n');
+    }
+
+    /**
+     * Parse markdown file containing JSON payload
+     */
+    parsePatternDatabase(rawContent) {
+        const fenceMatch = rawContent.match(/```json\s*([\s\S]*?)```/i);
+        if (!fenceMatch) {
+            throw new Error('Pattern database missing JSON block');
+        }
+
+        const payload = JSON.parse(fenceMatch[1]);
+        if (typeof payload !== 'object' || payload === null) {
+            throw new Error('Pattern database payload invalid');
+        }
+
+        if (payload.schemaVersion !== PATTERN_DB_SCHEMA_VERSION) {
+            console.warn(`${PATTERN_DB_LOG_PREFIX} load.version_mismatch expected=${PATTERN_DB_SCHEMA_VERSION} received=${payload.schemaVersion}`);
+        }
+
+        if (!payload.patterns || typeof payload.patterns !== 'object') {
+            throw new Error('Pattern database missing patterns object');
+        }
+
+        return payload;
+    }
+
+    /**
+     * Parse markdown file containing JSON payload for solution templates
+     */
+    parseSolutionTemplates(rawContent) {
+        const fenceMatch = rawContent.match(/```json\s*([\s\S]*?)```/i);
+        if (!fenceMatch) {
+            throw new Error('Solution templates missing JSON block');
+        }
+
+        const payload = JSON.parse(fenceMatch[1]);
+        if (typeof payload !== 'object' || payload === null) {
+            throw new Error('Solution templates payload invalid');
+        }
+
+        if (payload.schemaVersion !== PATTERN_DB_SCHEMA_VERSION) {
+            console.warn(`${SOLUTION_TEMPLATES_LOG_PREFIX} load.version_mismatch expected=${PATTERN_DB_SCHEMA_VERSION} received=${payload.schemaVersion}`);
+        }
+
+        if (!payload.templates || typeof payload.templates !== 'object') {
+            throw new Error('Solution templates missing templates object');
+        }
+
+        return payload;
+    }
+
+    /**
+     * Parse markdown file containing JSON payload for learning insights
+     */
+    parseLearningInsights(rawContent) {
+        const fenceMatch = rawContent.match(/```json\s*([\s\S]*?)```/i);
+        if (!fenceMatch) {
+            throw new Error('Learning insights index missing JSON block');
+        }
+
+        const payload = JSON.parse(fenceMatch[1]);
+        if (typeof payload !== 'object' || payload === null) {
+            throw new Error('Learning insights payload invalid');
+        }
+
+        if (payload.schemaVersion !== PATTERN_DB_SCHEMA_VERSION) {
+            console.warn(`${LEARNING_INSIGHTS_LOG_PREFIX} load.version_mismatch expected=${PATTERN_DB_SCHEMA_VERSION} received=${payload.schemaVersion}`);
+        }
+
+        if (!payload.insights || !Array.isArray(payload.insights)) {
+            throw new Error('Learning insights payload missing insights array');
+        }
+
+        return payload;
+    }
+
+    /**
+     * Create structured payload for pattern persistence
+     */
+    buildPatternPayload() {
+        const orderedEntries = Array.from(this.patternDatabase.entries()).sort(([a], [b]) => a.localeCompare(b));
+        const patterns = orderedEntries.reduce((acc, [key, value]) => {
+            acc[key] = value;
+            return acc;
+        }, {});
+
+        return {
+            schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+            lastUpdated: new Date().toISOString(),
+            patterns
+        };
+    }
+
+    /**
+     * Create structured payload for solution templates persistence
+     */
+    buildSolutionTemplatesPayload() {
+        const orderedEntries = Array.from(this.solutionTemplates.entries()).sort(([a], [b]) => a.localeCompare(b));
+        const templates = orderedEntries.reduce((acc, [key, value]) => {
+            acc[key] = value;
+            return acc;
+        }, {});
+
+        return {
+            schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+            lastUpdated: new Date().toISOString(),
+            templates
+        };
+    }
+
+    /**
+     * Create structured payload for learning insights index
+     */
+    buildLearningInsightsPayload() {
+        return {
+            schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+            lastUpdated: new Date().toISOString(),
+            insights: this.learningInsights
+        };
+    }
+
+    /**
+     * Ensure pattern database file exists with default structure
+     */
+    bootstrapPatternDatabaseFile() {
+        try {
+            if (fs.existsSync(this.patternDatabasePath)) {
+                return;
+            }
+            const directory = path.dirname(this.patternDatabasePath);
+            fs.mkdirSync(directory, { recursive: true });
+            const emptyPayload = {
+                schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+                lastUpdated: new Date().toISOString(),
+                patterns: {}
+            };
+            const jsonBlock = JSON.stringify(emptyPayload, null, 2);
+            const bootstrapContent = [
+                '# Meta-Learning Pattern Database',
+                '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+                '',
+                '```json',
+                jsonBlock,
+                '```',
+                ''
+            ].join('\n');
+            fs.writeFileSync(this.patternDatabasePath, bootstrapContent, 'utf8');
+            console.log(`${PATTERN_DB_LOG_PREFIX} bootstrap.ok`);
+        } catch (error) {
+            console.error(`${PATTERN_DB_LOG_PREFIX} bootstrap.fail message=${error.message}`);
+        }
+    }
+
+    /**
+     * Ensure solution templates file exists with default structure
+     */
+    bootstrapSolutionTemplatesFile() {
+        try {
+            if (fs.existsSync(this.solutionTemplatesPath)) {
+                return;
+            }
+            const directory = path.dirname(this.solutionTemplatesPath);
+            fs.mkdirSync(directory, { recursive: true });
+            const emptyPayload = {
+                schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+                lastUpdated: new Date().toISOString(),
+                templates: {}
+            };
+            const jsonBlock = JSON.stringify(emptyPayload, null, 2);
+            const bootstrapContent = [
+                '# Meta-Learning Solution Templates',
+                '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+                '',
+                '```json',
+                jsonBlock,
+                '```',
+                ''
+            ].join('\n');
+            fs.writeFileSync(this.solutionTemplatesPath, bootstrapContent, 'utf8');
+            console.log(`${SOLUTION_TEMPLATES_LOG_PREFIX} bootstrap.ok`);
+        } catch (error) {
+            console.error(`${SOLUTION_TEMPLATES_LOG_PREFIX} bootstrap.fail message=${error.message}`);
+        }
+    }
+
+    /**
+     * Ensure learning insights index file exists with default structure
+     */
+    bootstrapLearningInsightsFile() {
+        try {
+            if (fs.existsSync(this.learningInsightsPath)) {
+                return;
+            }
+            const directory = path.dirname(this.learningInsightsPath);
+            fs.mkdirSync(directory, { recursive: true });
+            const emptyPayload = {
+                schemaVersion: PATTERN_DB_SCHEMA_VERSION,
+                lastUpdated: new Date().toISOString(),
+                insights: []
+            };
+            const jsonBlock = JSON.stringify(emptyPayload, null, 2);
+            const bootstrapContent = [
+                '# Meta-Learning Learning Insights Index',
+                '> Auto-generated file. Do not edit manually unless you know what you are doing.',
+                '',
+                '```json',
+                jsonBlock,
+                '```',
+                ''
+            ].join('\n');
+            fs.writeFileSync(this.learningInsightsPath, bootstrapContent, 'utf8');
+            console.log(`${LEARNING_INSIGHTS_LOG_PREFIX} bootstrap.ok`);
+        } catch (error) {
+            console.error(`${LEARNING_INSIGHTS_LOG_PREFIX} bootstrap.fail message=${error.message}`);
+        }
     }
 }
 
