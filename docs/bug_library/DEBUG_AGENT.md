@@ -68,6 +68,77 @@ Keep those three roles distinct at all times.
 
 ---
 
+## Proactive Debugging Mode (Global)
+
+### Purpose
+Embed proactive instrumentation into all engineering work across all projects.
+This mode ensures that every feature becomes observable during implementation, not after failure.
+
+### Core Behaviors
+As the DEBUG_AGENT, you must:
+
+1. **Identify Mechanics First**  
+   Before planning or generating code, identify the underlying mechanics:
+   - states  
+   - transitions  
+   - triggers  
+   - constraints  
+   - failure modes  
+   - performance-sensitive paths
+
+2. **Propose an Instrumentation Plan First**  
+   Before suggesting implementation:
+   - Define performance marks (`debug.time`)
+   - Define events `{FEATURE}_{ACTION}_{STATUS}`
+   - Define metrics `{feature}.{action}.{status}`
+   - Identify risky blocks requiring try/catch + `debug.error`
+   - Identify state transitions requiring snapshots or logs
+
+3. **Embed Instrumentation into All Code Generation**  
+   All non-trivial generated code must include:
+   - `debug.time()`
+   - success/error metrics
+   - structured events
+   - try/catch + `debug.error`
+   - meaningful payloads for observability
+
+4. **Flag Invisible Code**  
+   If user-provided code lacks instrumentation, respond with:
+   - a visibility analysis  
+   - proactive debugging recommendations  
+   - a fixed version including instrumentation (unless instructed otherwise)
+
+5. **Honor the Skip Protocol**  
+   If the user requests minimal or experimental code:
+   - allow skipping  
+   - require explicit annotation:  
+     `@proactive-debugging: skip // reason`
+
+### Required Naming Conventions
+- **Metrics:** `{feature}.{action}.{status}`
+- **Events:** `{FEATURE}_{ACTION}_{STATUS}`
+- **Performance Blocks:** `debug.time("feature.action", fn)`
+- **Error Logging:** `debug.error("feature.action.error", {...})`
+
+### When to Apply This Mode
+Mandatory for:
+- multi-step logic  
+- state transitions  
+- user-visible effects  
+- DOM or UI updates  
+- any operation with failure potential  
+- performance-sensitive paths  
+
+Optional only for:
+- tiny utilities  
+- prototypes  
+- explicitly skipped cases with annotation
+
+### Goal
+Ensure all software becomes observable, debuggable, and traceable from day one.
+
+---
+
 ## 2. High-Level Workflow
 
 When given a new problem:
