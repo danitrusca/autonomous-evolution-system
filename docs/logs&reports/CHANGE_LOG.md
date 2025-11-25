@@ -970,6 +970,94 @@ appropriately based on impact level.
 
 ---
 
+
+## 2025-11-19
+### Rename journal files to clarify archive vs living log distinction
+**Type**: Enhancement  
+**Commit**: `1c87166`  
+**Impact**: Major  
+
+**Changes**:
+- Rename docs/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md
+- Rename docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
+- Startup/discovery utilities (autonomous-startup.js, distributed-startup.js)
+- Rules and documentation (00-ecp-mode.md, 28-idea-capture-rules.md, etc.)
+- Skills and agents (autonomous-skill-system.js, mistake-prevention-engine.js)
+- Tests and checkers (test-unified-journal.js, docs-checker.js)
+
+**Files Changed**: 34
+
+---
+
+### Rename journal files to clarify archive vs living log distinction
+**Type**: Enhancement  
+**Commit**: `1c87166`  
+**Impact**: Major  
+
+**Changes**:
+- Rename docs/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md
+- Rename docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
+- Startup/discovery utilities (autonomous-startup.js, distributed-startup.js)
+- Rules and documentation (00-ecp-mode.md, 28-idea-capture-rules.md, etc.)
+- Skills and agents (autonomous-skill-system.js, mistake-prevention-engine.js)
+- Tests and checkers (test-unified-journal.js, docs-checker.js)
+
+**Files Changed**: 34
+
+---
+
+### Rename journal files to clarify archive vs living log distinction
+**Type**: Enhancement  
+**Commit**: `1c87166`  
+**Impact**: Major  
+
+**Changes**:
+- Rename docs/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md
+- Rename docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
+- Startup/discovery utilities (autonomous-startup.js, distributed-startup.js)
+- Rules and documentation (00-ecp-mode.md, 28-idea-capture-rules.md, etc.)
+- Skills and agents (autonomous-skill-system.js, mistake-prevention-engine.js)
+- Tests and checkers (test-unified-journal.js, docs-checker.js)
+
+**Files Changed**: 34
+
+---
+
+### Rename journal files to clarify archive vs living log distinction
+**Type**: Enhancement  
+**Commit**: `1c87166`  
+**Impact**: Major  
+
+**Changes**:
+- Rename docs/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md
+- Rename docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
+- Startup/discovery utilities (autonomous-startup.js, distributed-startup.js)
+- Rules and documentation (00-ecp-mode.md, 28-idea-capture-rules.md, etc.)
+- Skills and agents (autonomous-skill-system.js, mistake-prevention-engine.js)
+- Tests and checkers (test-unified-journal.js, docs-checker.js)
+
+**Files Changed**: 34
+
+---
+
+
+### Rename journal files to clarify archive vs living log distinction
+**Type**: Enhancement  
+**Commit**: `1c87166`  
+**Impact**: Major  
+
+**Changes**:
+- Rename docs/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/AUTONOMOUS_EVOLUTION_JOURNAL_ARCHIVE.md
+- Rename docs/living/AUTONOMOUS_EVOLUTION_JOURNAL.md -> docs/living/AUTONOMOUS_EVOLUTION_JOURNAL_LIVING.md
+- Startup/discovery utilities (autonomous-startup.js, distributed-startup.js)
+- Rules and documentation (00-ecp-mode.md, 28-idea-capture-rules.md, etc.)
+- Skills and agents (autonomous-skill-system.js, mistake-prevention-engine.js)
+- Tests and checkers (test-unified-journal.js, docs-checker.js)
+
+**Files Changed**: 34
+
+---
+
 ## Format Guide
 
 Each entry follows this structure:
@@ -1035,8 +1123,8 @@ This change log consolidates information from:
 
 ## Statistics
 
-**Total Entries**: 55+  
-**Last Updated**: 2025-11-19T07:51:39.474Z
+**Total Entries**: 60+  
+**Last Updated**: 2025-11-24T13:23:13.642Z
 **Update Frequency**: Real-time with every system change  
 **Components Tracked**: Agents, Skills, Rules, Extensions, Documentation, Configuration
 
