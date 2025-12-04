@@ -1,0 +1,14 @@
+{
+  "original_idea": {
+    "title": "Build a smart documentation generator that keeps docs up-to-date automatically",
+    "description": "Build a smart documentation generator that keeps docs up-to-date automatically",
+    "content": "Build a smart documentation generator that keeps docs up-to-date automatically",
+    "source": "user_input",
+    "author": "user",
+    "context": "user_suggestion",
+    "timestamp": "2025-10-25T09:29:26.392Z"
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

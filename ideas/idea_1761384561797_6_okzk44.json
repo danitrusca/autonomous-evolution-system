@@ -1,0 +1,49 @@
+{
+  "id": "idea_1761384561797_6_okzk44",
+  "timestamp": "2025-10-25T09:29:21.797Z",
+  "title": "System Analysis: scalability_issue",
+  "description": "Memory usage growing linearly with user count",
+  "content": "Need to implement caching and optimization strategies",
+  "source": "system_analysis",
+  "category": "user_experience",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "optimization",
+    "scalability"
+  ],
+  "metadata": {
+    "author": "system",
+    "context": "system_analysis",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561757_4_20ac0f",
+      "idea_1761384561783_5_51h7cv"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "System Analysis: scalability_issue",
+      "description": "Memory usage growing linearly with user count",
+      "content": "Need to implement caching and optimization strategies",
+      "source": "system_analysis",
+      "author": "system",
+      "context": "system_analysis",
+      "metadata": {
+        "current_users": 10000,
+        "memory_per_user": "1MB"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "idea_1761386789523_1_rf2yvc",
+  "timestamp": "2025-10-25T10:06:29.523Z",
+  "title": "Idea 1",
+  "description": "What if the system autonomously created and tested various evolutionary paths? This would create a digital evolution laboratory where the system can experiment with different evolutionary directions simultaneously. The system would generate multiple evolutionary trajectories, test them in parallel, measure their effectiveness, and automatically select optimal evolutionary directions. This could combine successful elements from different paths to create hybrid evolutionary approaches.",
+  "content": "What if the system autonomously created and tested various evolutionary paths? This would create a digital evolution laboratory where the system can experiment with different evolutionary directions simultaneously. The system would generate multiple evolutionary trajectories, test them in parallel, measure their effectiveness, and automatically select optimal evolutionary directions. This could combine successful elements from different paths to create hybrid evolutionary approaches.",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [],
+  "metadata": {
+    "author": "user",
+    "context": "revolutionary_concept",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561691_2_xrbvsv",
+      "idea_1761384561718_3_9fcnbr",
+      "idea_1761384566353_1_luof95",
+      "idea_1761384566372_2_ot24b6",
+      "idea_1761384566393_3_l8itgz",
+      "idea_1761384566425_5_19rgh4"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Idea 1",
+      "description": "What if the system autonomously created and tested various evolutionary paths? This would create a digital evolution laboratory where the system can experiment with different evolutionary directions simultaneously. The system would generate multiple evolutionary trajectories, test them in parallel, measure their effectiveness, and automatically select optimal evolutionary directions. This could combine successful elements from different paths to create hybrid evolutionary approaches.",
+      "content": "What if the system autonomously created and tested various evolutionary paths? This would create a digital evolution laboratory where the system can experiment with different evolutionary directions simultaneously. The system would generate multiple evolutionary trajectories, test them in parallel, measure their effectiveness, and automatically select optimal evolutionary directions. This could combine successful elements from different paths to create hybrid evolutionary approaches.",
+      "source": "user_input",
+      "author": "user",
+      "context": "revolutionary_concept",
+      "timestamp": "2025-10-25T10:06:29.522Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

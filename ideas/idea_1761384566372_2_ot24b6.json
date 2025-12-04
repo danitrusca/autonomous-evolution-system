@@ -1,0 +1,47 @@
+{
+  "id": "idea_1761384566372_2_ot24b6",
+  "timestamp": "2025-10-25T09:29:26.373Z",
+  "title": "Implement autonomous system health monitoring that can self-heal common issues",
+  "description": "Implement autonomous system health monitoring that can self-heal common issues",
+  "content": "Implement autonomous system health monitoring that can self-heal common issues",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "monitoring"
+  ],
+  "metadata": {
+    "author": "user",
+    "context": "user_suggestion",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561691_2_xrbvsv",
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561718_3_9fcnbr",
+      "idea_1761384566353_1_luof95"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Implement autonomous system health monitoring that can self-heal common issues",
+      "description": "Implement autonomous system health monitoring that can self-heal common issues",
+      "content": "Implement autonomous system health monitoring that can self-heal common issues",
+      "source": "user_input",
+      "author": "user",
+      "context": "user_suggestion",
+      "timestamp": "2025-10-25T09:29:26.372Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

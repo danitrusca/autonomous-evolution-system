@@ -1,0 +1,43 @@
+{
+  "id": "idea_1761384561661_1_v0f9oq",
+  "timestamp": "2025-10-25T09:29:21.661Z",
+  "title": "Create an AI system that automatically reviews code for quality, security, and best practices",
+  "description": "Create an AI system that automatically reviews code for quality, security, and best practices",
+  "content": "Create an AI system that automatically reviews code for quality, security, and best practices",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "ai",
+    "security"
+  ],
+  "metadata": {
+    "author": "developer",
+    "context": "code_quality_improvement",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Create an AI system that automatically reviews code for quality, security, and best practices",
+      "description": "Create an AI system that automatically reviews code for quality, security, and best practices",
+      "content": "Create an AI system that automatically reviews code for quality, security, and best practices",
+      "source": "user_input",
+      "author": "developer",
+      "context": "code_quality_improvement",
+      "timestamp": "2025-10-25T09:29:21.656Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "original_idea": {
+    "title": "Pattern Detected: Microservices Communication Pattern",
+    "description": "Standardized approach for service-to-service communication",
+    "content": "Common pattern observed: services using message queues for async communication. Could be standardized.",
+    "source": "pattern_detection",
+    "author": "system",
+    "context": "pattern_detection",
+    "metadata": {
+      "frequency": "high",
+      "complexity": "medium",
+      "adoption": "80%"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

@@ -1,0 +1,51 @@
+{
+  "id": "idea_1761384566552_11_65tb37",
+  "timestamp": "2025-10-25T09:29:26.552Z",
+  "title": "External Signal: market_trend",
+  "description": "AI-powered development tools gaining traction",
+  "content": "Market research shows 40% increase in AI tool adoption among developers",
+  "source": "external_signal",
+  "category": "features",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "ai"
+  ],
+  "metadata": {
+    "author": "system",
+    "context": "external_signal",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561718_3_9fcnbr",
+      "idea_1761384561825_9_b46a2e",
+      "idea_1761384566353_1_luof95"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "External Signal: market_trend",
+      "description": "AI-powered development tools gaining traction",
+      "content": "Market research shows 40% increase in AI tool adoption among developers",
+      "source": "external_signal",
+      "author": "system",
+      "context": "external_signal",
+      "metadata": {
+        "source": "market_research",
+        "confidence": "high",
+        "trend": "upward"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

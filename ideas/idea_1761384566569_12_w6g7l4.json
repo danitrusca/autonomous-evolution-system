@@ -1,0 +1,53 @@
+{
+  "id": "idea_1761384566569_12_w6g7l4",
+  "timestamp": "2025-10-25T09:29:26.569Z",
+  "title": "External Signal: technology_advancement",
+  "description": "New JavaScript features for better performance",
+  "content": "Latest JavaScript features offer 30% performance improvements in web applications",
+  "source": "external_signal",
+  "category": "system_evolution",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "javascript",
+    "web",
+    "performance"
+  ],
+  "metadata": {
+    "author": "system",
+    "context": "external_signal",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561836_10_gu4myy",
+      "idea_1761384561757_4_20ac0f",
+      "idea_1761384566408_4_guq9c4",
+      "idea_1761384566441_6_7kcoyp"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "External Signal: technology_advancement",
+      "description": "New JavaScript features for better performance",
+      "content": "Latest JavaScript features offer 30% performance improvements in web applications",
+      "source": "external_signal",
+      "author": "system",
+      "context": "external_signal",
+      "metadata": {
+        "source": "tech_news",
+        "confidence": "medium",
+        "impact": "performance"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

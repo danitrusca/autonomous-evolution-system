@@ -1,0 +1,49 @@
+// package.json
+var package_default = {
+  name: "@aes/token-saver",
+  version: "0.1.0",
+  description: "Deterministic, zero-API token optimization CLI/library (json-minify, strip-fillers, diff)",
+  type: "module",
+  main: "dist/index.js",
+  module: "dist/index.js",
+  types: "dist/index.d.ts",
+  bin: {
+    "token-saver": "bin/token-saver.js"
+  },
+  files: [
+    "dist",
+    "bin",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  scripts: {
+    build: "tsup src/index.ts src/cli.ts --format esm --dts --sourcemap",
+    dev: "tsup src/index.ts src/cli.ts --format esm --dts --sourcemap --watch",
+    test: "vitest run",
+    typecheck: "tsc --noEmit",
+    prepare: "npm run build"
+  },
+  keywords: [
+    "token",
+    "optimizer",
+    "json",
+    "diff",
+    "cli"
+  ],
+  license: "MIT",
+  devDependencies: {
+    tsup: "^8.0.1",
+    typescript: "^5.6.3",
+    vitest: "^1.6.0",
+    "@types/node": "^20.12.12",
+    "@types/diff": "^5.2.1"
+  },
+  dependencies: {
+    diff: "^5.2.0"
+  }
+};
+export {
+  package_default as default
+};
+//# sourceMappingURL=package-6FOLK36W.js.map

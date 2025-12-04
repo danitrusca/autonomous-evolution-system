@@ -1,0 +1,17 @@
+{
+  "original_idea": {
+    "title": "System Analysis: performance_bottleneck",
+    "description": "Database query optimization needed",
+    "content": "Slow queries detected in user authentication system",
+    "source": "system_analysis",
+    "author": "system",
+    "context": "system_analysis",
+    "metadata": {
+      "query_time": "2.5s",
+      "threshold": "1s"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

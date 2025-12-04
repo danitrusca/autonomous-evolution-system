@@ -1,0 +1,47 @@
+{
+  "id": "idea_1761384566408_4_guq9c4",
+  "timestamp": "2025-10-25T09:29:26.408Z",
+  "title": "Develop a predictive analytics system for system performance optimization",
+  "description": "Develop a predictive analytics system for system performance optimization",
+  "content": "Develop a predictive analytics system for system performance optimization",
+  "source": "user_input",
+  "category": "optimization",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "optimization",
+    "performance"
+  ],
+  "metadata": {
+    "author": "user",
+    "context": "user_suggestion",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561757_4_20ac0f",
+      "idea_1761384561797_6_okzk44",
+      "idea_1761384561836_10_gu4myy"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Develop a predictive analytics system for system performance optimization",
+      "description": "Develop a predictive analytics system for system performance optimization",
+      "content": "Develop a predictive analytics system for system performance optimization",
+      "source": "user_input",
+      "author": "user",
+      "context": "user_suggestion",
+      "timestamp": "2025-10-25T09:29:26.407Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

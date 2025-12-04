@@ -1,0 +1,48 @@
+{
+  "id": "idea_1761384566538_10_y7buih",
+  "timestamp": "2025-10-25T09:29:26.538Z",
+  "title": "Pattern Detected: Error Handling Strategy",
+  "description": "Consistent error handling across all services",
+  "content": "Standardized error response format and logging strategy observed across multiple services",
+  "source": "pattern_detection",
+  "category": "architecture",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [],
+  "metadata": {
+    "author": "system",
+    "context": "pattern_detection",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561809_7_22sxn8",
+      "idea_1761384561818_8_udndb8",
+      "idea_1761384566523_9_kamd3o"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Pattern Detected: Error Handling Strategy",
+      "description": "Consistent error handling across all services",
+      "content": "Standardized error response format and logging strategy observed across multiple services",
+      "source": "pattern_detection",
+      "author": "system",
+      "context": "pattern_detection",
+      "metadata": {
+        "frequency": "high",
+        "complexity": "low",
+        "consistency": "90%"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

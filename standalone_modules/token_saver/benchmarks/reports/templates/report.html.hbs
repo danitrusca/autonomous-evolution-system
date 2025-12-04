@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Token Optimization Report</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <h1>Token Optimization Report — {{date}}</h1>
+  <p><b>Average Savings:</b> {{avg}}%</p>
+  <p><b>Total Runs:</b> {{runCount}}</p>
+  <h2>Average by Mode</h2>
+  <ul>
+    {{byMode}}
+  </ul>
+  <h2>Savings Over Time</h2>
+  <div class="chart">
+    {{bars}}
+  </div>
+</body>
+</html>
+

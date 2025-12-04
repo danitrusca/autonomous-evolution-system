@@ -1,0 +1,17 @@
+{
+  "original_idea": {
+    "title": "External Signal: technology_advancement",
+    "description": "New JavaScript features for better performance",
+    "content": "Latest JavaScript features offer significant performance improvements",
+    "source": "external_signal",
+    "author": "system",
+    "context": "external_signal",
+    "metadata": {
+      "source": "tech_news",
+      "confidence": "medium"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

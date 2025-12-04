@@ -1,0 +1,47 @@
+{
+  "id": "idea_1761384561757_4_20ac0f",
+  "timestamp": "2025-10-25T09:29:21.758Z",
+  "title": "System Analysis: performance_bottleneck",
+  "description": "Database query optimization needed",
+  "content": "Slow queries detected in user authentication system",
+  "source": "system_analysis",
+  "category": "optimization",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "database",
+    "optimization",
+    "performance"
+  ],
+  "metadata": {
+    "author": "system",
+    "context": "system_analysis",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "System Analysis: performance_bottleneck",
+      "description": "Database query optimization needed",
+      "content": "Slow queries detected in user authentication system",
+      "source": "system_analysis",
+      "author": "system",
+      "context": "system_analysis",
+      "metadata": {
+        "query_time": "2.5s",
+        "threshold": "1s"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

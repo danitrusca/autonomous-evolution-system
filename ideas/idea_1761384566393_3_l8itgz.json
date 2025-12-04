@@ -1,0 +1,48 @@
+{
+  "id": "idea_1761384566393_3_l8itgz",
+  "timestamp": "2025-10-25T09:29:26.393Z",
+  "title": "Build a smart documentation generator that keeps docs up-to-date automatically",
+  "description": "Build a smart documentation generator that keeps docs up-to-date automatically",
+  "content": "Build a smart documentation generator that keeps docs up-to-date automatically",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "documentation"
+  ],
+  "metadata": {
+    "author": "user",
+    "context": "user_suggestion",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561718_3_9fcnbr",
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561691_2_xrbvsv",
+      "idea_1761384566353_1_luof95",
+      "idea_1761384566372_2_ot24b6"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Build a smart documentation generator that keeps docs up-to-date automatically",
+      "description": "Build a smart documentation generator that keeps docs up-to-date automatically",
+      "content": "Build a smart documentation generator that keeps docs up-to-date automatically",
+      "source": "user_input",
+      "author": "user",
+      "context": "user_suggestion",
+      "timestamp": "2025-10-25T09:29:26.392Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

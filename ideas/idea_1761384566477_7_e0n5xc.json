@@ -1,0 +1,50 @@
+{
+  "id": "idea_1761384566477_7_e0n5xc",
+  "timestamp": "2025-10-25T09:29:26.477Z",
+  "title": "System Analysis: security_vulnerability",
+  "description": "Potential XSS vulnerability in user input handling",
+  "content": "User input not properly sanitized in comment system - requires immediate attention",
+  "source": "system_analysis",
+  "category": "user_experience",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "security"
+  ],
+  "metadata": {
+    "author": "system",
+    "context": "system_analysis",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561783_5_51h7cv",
+      "idea_1761384561797_6_okzk44"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "System Analysis: security_vulnerability",
+      "description": "Potential XSS vulnerability in user input handling",
+      "content": "User input not properly sanitized in comment system - requires immediate attention",
+      "source": "system_analysis",
+      "author": "system",
+      "context": "system_analysis",
+      "metadata": {
+        "severity": "medium",
+        "component": "comment_system",
+        "risk": "medium"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

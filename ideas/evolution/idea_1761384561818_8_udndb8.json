@@ -1,0 +1,17 @@
+{
+  "original_idea": {
+    "title": "Pattern Detected: Error Handling Strategy",
+    "description": "Consistent error handling across all services",
+    "content": "Standardized error response format and logging strategy",
+    "source": "pattern_detection",
+    "author": "system",
+    "context": "pattern_detection",
+    "metadata": {
+      "frequency": "high",
+      "complexity": "low"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

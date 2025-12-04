@@ -1,0 +1,43 @@
+{
+  "id": "idea_1761384561809_7_22sxn8",
+  "timestamp": "2025-10-25T09:29:21.809Z",
+  "title": "Pattern Detected: Microservices Communication Pattern",
+  "description": "Common pattern for service-to-service communication",
+  "content": "Standardized approach for inter-service communication using message queues",
+  "source": "pattern_detection",
+  "category": "architecture",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [],
+  "metadata": {
+    "author": "system",
+    "context": "pattern_detection",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Pattern Detected: Microservices Communication Pattern",
+      "description": "Common pattern for service-to-service communication",
+      "content": "Standardized approach for inter-service communication using message queues",
+      "source": "pattern_detection",
+      "author": "system",
+      "context": "pattern_detection",
+      "metadata": {
+        "frequency": "high",
+        "complexity": "medium"
+      }
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

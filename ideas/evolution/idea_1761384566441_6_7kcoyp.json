@@ -1,0 +1,18 @@
+{
+  "original_idea": {
+    "title": "System Analysis: performance_bottleneck",
+    "description": "Database query optimization needed",
+    "content": "Slow queries detected in user authentication system - average response time 2.5s vs 1s threshold",
+    "source": "system_analysis",
+    "author": "system",
+    "context": "system_analysis",
+    "metadata": {
+      "query_time": "2.5s",
+      "threshold": "1s",
+      "impact": "high"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

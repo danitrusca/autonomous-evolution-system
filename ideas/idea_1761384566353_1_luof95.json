@@ -1,0 +1,47 @@
+{
+  "id": "idea_1761384566353_1_luof95",
+  "timestamp": "2025-10-25T09:29:26.353Z",
+  "title": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+  "description": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+  "content": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "ai"
+  ],
+  "metadata": {
+    "author": "user",
+    "context": "user_suggestion",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561718_3_9fcnbr",
+      "idea_1761384561825_9_b46a2e",
+      "idea_1761384561691_2_xrbvsv"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+      "description": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+      "content": "Create an AI-powered code review system that automatically detects bugs and suggests improvements",
+      "source": "user_input",
+      "author": "user",
+      "context": "user_suggestion",
+      "timestamp": "2025-10-25T09:29:26.352Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}

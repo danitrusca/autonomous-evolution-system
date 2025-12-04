@@ -1,0 +1,18 @@
+{
+  "original_idea": {
+    "title": "External Signal: market_trend",
+    "description": "AI-powered development tools gaining traction",
+    "content": "Market research shows 40% increase in AI tool adoption among developers",
+    "source": "external_signal",
+    "author": "system",
+    "context": "external_signal",
+    "metadata": {
+      "source": "market_research",
+      "confidence": "high",
+      "trend": "upward"
+    }
+  },
+  "evolution_history": [],
+  "current_state": "captured",
+  "future_potential": []
+}

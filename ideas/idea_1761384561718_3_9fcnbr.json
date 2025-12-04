@@ -1,0 +1,46 @@
+{
+  "id": "idea_1761384561718_3_9fcnbr",
+  "timestamp": "2025-10-25T09:29:21.718Z",
+  "title": "AI-powered system that automatically generates and maintains documentation",
+  "description": "AI-powered system that automatically generates and maintains documentation",
+  "content": "AI-powered system that automatically generates and maintains documentation",
+  "source": "user_input",
+  "category": "automation",
+  "priority": "medium",
+  "status": "captured",
+  "tags": [
+    "ai",
+    "documentation"
+  ],
+  "metadata": {
+    "author": "technical_writer",
+    "context": "documentation_automation",
+    "related_ideas": [],
+    "evolution_potential": "medium",
+    "implementation_complexity": "medium",
+    "impact_potential": "medium"
+  },
+  "relationships": {
+    "parent_ideas": [],
+    "child_ideas": [],
+    "related_ideas": [
+      "idea_1761384561661_1_v0f9oq",
+      "idea_1761384561691_2_xrbvsv"
+    ],
+    "conflicting_ideas": []
+  },
+  "evolution": {
+    "original_idea": {
+      "title": "AI-powered system that automatically generates and maintains documentation",
+      "description": "AI-powered system that automatically generates and maintains documentation",
+      "content": "AI-powered system that automatically generates and maintains documentation",
+      "source": "user_input",
+      "author": "technical_writer",
+      "context": "documentation_automation",
+      "timestamp": "2025-10-25T09:29:21.716Z"
+    },
+    "evolution_history": [],
+    "current_state": "captured",
+    "future_potential": []
+  }
+}
